@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist xmlns="http://xspf.org/ns/0/" version="1">
+  <title/>
+  <creator/>
+  <trackList>
+    <track>
+      <location>http://stream.urbanspaceradio.com:8000/urban-space-radio</location>
+      <title>SUOK - Lucky People</title>
+      <annotation>Stream Title: Urban Space Radio
+Stream Description: The new ukrainian music
+Content Type:audio/mpeg
+Bitrate: 128
+Current Listeners: 6
+Peak Listeners: 14
+Stream Genre: Alternative</annotation>
+      <info>http://urbanspaceradio.com</info>
+    </track>
+  </trackList>
+</playlist>
