@@ -70,7 +70,7 @@
 						<a href="https://www.google.com/podcasts?feed=aHR0cDovL3VyYmFuc3BhY2VyYWRpby5jb20vZmVlZC9wb2RjYXN0" target="_blank" class="soc-googlepodcasts"></a>
 					</div>
 					<h1 class="main-logo">
-						<img src="<?php echo get_bloginfo('template_url'); ?>/assets/img/logo-uxr.svg" width="211" height="84">
+						<img src="<?php echo get_bloginfo('template_url'); ?>/assets/img/logo-usr.svg" width="200" height="76">
 						<span>Urban Space Radio</span>
 					</h1>
 				</header>
@@ -110,8 +110,8 @@
 				<section class="section2">
 					<div class="season">
                         <h1 class="season-logo">
-							<p>Коли вже буде нова музика?</p>
-							<p class="seasontype">Давайте після свят!</p>
+							<p>LOADING</p>
+                            <p class="seasontype">something new</br>on Urban Space Radio</p>
 						</h1>
 						<div onclick="runWfpWdgt('https://secure.wayforpay.com/button/b569b98266d95');" class="button-donation" onmouseout="this.style.opacity='0.6';" onmouseover="this.style.opacity='1';">
 							<span class="button-donation-text">ПІДТРИМАТИ ПРОЕКТ</span>
