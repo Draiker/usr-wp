@@ -2,8 +2,8 @@
 Contributors: PodcastMotor, psykro, simondowdles, hlashbrooke, seriouspodcaster
 Tags: seriously simple podcasting, stats, statistics, listeners, analytics, podcast, podcasting, ssp, free, add-ons, extensions, addons
 Requires at least: 4.4
-Tested up to: 4.8.2
-Stable tag: 1.2.1
+Tested up to: 5.3.2
+Stable tag: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,27 @@ Note that Stitcher download stats are not currently possible to gather accuratel
 Yes. This plugin uses the [Crawler Detect](https://github.com/JayBizzle/Crawler-Detect) library to make sure that crawlers/bots are not recorded as listens.
 
 == Changelog ==
+
+= 1.2.6 =
+* 2019-12-20
+* [UPDATE] Updated crawler detect library
+
+= 1.2.5 =
+* 2018-08-13
+* [FIX] Fixed a bug in the All episode stats pagination (props [wudanbal](https://github.com/wudanbal))
+* [UPDATE] Default sorting for All episode stats set to date (props [wudanbal](https://github.com/wudanbal))
+* [UPDATE] Date display field uses WordPress Date Format setting, to display date (props [wudanbal](https://github.com/wudanbal))
+
+= 1.2.4 =
+* 2018-07-31
+* [FIX] Fixed a PHP warning which only occurs on the last day of the month
+
+= 1.2.3 =
+* 2018-07-10
+* [NEW] Added the ability to sort the "All Episodes for the Last Three Months" Stats data
+* [FIX] Fixed a bug where filtering stats data by series was broken.
+* [UPDATE] Updated the plugin to use composer based autoloading
+* [UPDATE] Updated the CrawlerDetect library
 
 = 1.2.2 =
 * 2018-05-28
