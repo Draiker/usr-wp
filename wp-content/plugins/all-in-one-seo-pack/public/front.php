@@ -48,7 +48,7 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Front' ) ) {
 				 */
 				$noindex = apply_filters( 'aioseop_noindex_rss', true );
 				if ( $noindex ) {
-					header( 'X-Robots-Tag: noindex, follow', true );
+					header( 'X-Robots-Tag: index, follow', true );
 				}
 			}
 		}
