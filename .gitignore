@@ -58,6 +58,13 @@ wp-config.php
 /wp-content/plugins/seriously-simple-stats/vendor/jaybizzle/crawler-detect/.gitignore
 /wp-content/plugins/seriously-simple-stats/vendor/jaybizzle/crawler-detect/composer.phar
 /wp-content/plugins/seriously-simple-stats/vendor/jaybizzle/crawler-detect/composer.lock
-
+/wp-content/plugins/seriously-simple-stats/vendor/jaybizzle/crawler-detect/tests
+/wp-content/plugins/seriously-simple-stats/vendor/jaybizzle/crawler-detect/.coveralls.yml
+/wp-content/plugins/seriously-simple-stats/vendor/jaybizzle/crawler-detect/.gitattributes
+/wp-content/plugins/seriously-simple-stats/vendor/jaybizzle/crawler-detect/.gitignore
+/wp-content/plugins/seriously-simple-stats/vendor/jaybizzle/crawler-detect/.styleci.yml
+/wp-content/plugins/seriously-simple-stats/vendor/jaybizzle/crawler-detect/.travis.yml
+/wp-content/plugins/seriously-simple-stats/vendor/jaybizzle/crawler-detect/CONTRIBUTING.md
+/wp-content/plugins/seriously-simple-stats/vendor/jaybizzle/crawler-detect/phpunit.xml
 
 
