@@ -383,12 +383,16 @@ class Stats {
 					break;
 					case 'android':
 						++$android;
-					case 'podcast_addict':
-						++$podcast_addict;
-					case 'playerfm':
-						++$playerfm;
+					break;
 					case 'google_play':
 						++$google_play;
+					break;
+					case 'podcast_addict':
+						++$podcast_addict;
+					break;
+					case 'playerfm':
+						++$playerfm;
+					break;
 					default:
 						++$unknown;
 					break;
@@ -422,19 +426,19 @@ class Stats {
 					$html .= '<li class="player">' . __( 'Audio player', 'seriously-simple-stats' ) . ': <b>' . $player . '</b></li>';
 				}
 				// Commented out for now, could be included in the future
-				/*if( $android ){
+				if( $android ){
 					$html .= '<li class="android">' . __( 'Android App', 'seriously-simple-stats' ) . ': <b>' . $android . '</b></li>';
-				}*/
+				}
+				// Commented out for now, could be used in the future
+				if( $google_play ){
+					$html .= '<li class="google_play">' . __( 'Google Play', 'seriously-simple-stats' ) . ': <b>' . $google_play . '</b></li>';
+				}
 				if( $podcast_addict ){
 					$html .= '<li class="podcast_addict">' . __( 'Podcast Addict', 'seriously-simple-stats' ) . ': <b>' . $podcast_addict . '</b></li>';
 				}
 				if( $playerfm ){
 					$html .= '<li class="playerfm">' . __( 'Player FM', 'seriously-simple-stats' ) . ': <b>' . $playerfm . '</b></li>';
 				}
-				// Commented out for now, could be used in the future
-				/*if( $google_play ){
-					$html .= '<li class="google_play">' . __( 'Google Play', 'seriously-simple-stats' ) . ': <b>' . $google_play . '</b></li>';
-				}*/
 				if( $unknown ) {
 					$html .= '<li class="unknown">' . __( 'Other', 'seriously-simple-stats' ) . ': <b>' . $unknown . '</b></li>';
 				}
