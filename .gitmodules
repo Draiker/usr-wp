@@ -1,0 +1,9 @@
+[submodule "wp-content/plugins/seriously-simple-stats/vendor/jaybizzle/crawler-detect"]
+	path = wp-content/plugins/seriously-simple-stats/vendor/jaybizzle/crawler-detect
+	url = https://github.com/JayBizzle/Crawler-Detect.git
+[submodule "wp-content/plugins/seriously-simple-stats"]
+	path = wp-content/plugins/seriously-simple-stats
+	url = https://github.com/Draiker/Seriously-Simple-Stats.git
+[submodule "wp-content/plugins/seriously-simple-podcasting"]
+	path = wp-content/plugins/seriously-simple-podcasting
+	url = https://github.com/Draiker/Seriously-Simple-Podcasting.git
