@@ -18,6 +18,12 @@
 						<span class="sorting-indicator"></span>
 					</a>
 				</th>
+				<th style="text-align: left; width: 25%;" class="<?php echo $sort_order['episode_series'][0]; ?>">
+					<a href="<?php echo $sort_order['episode_nameseries'][1] ?>">
+						<span><?php echo __( 'Episode Series', 'seriously-simple-stats' ); ?></span>
+						<span class="sorting-indicator"></span>
+					</a>
+				</th>
 				<?php foreach ( $this->dates as $date ) { ?>
 					<th style="text-align: center;" class="<?php echo $sort_order[ $date ][0]; ?>">
 						<a style="margin-left: 40%" href="<?php echo $sort_order[ $date ][1] ?>">
@@ -38,6 +44,7 @@
 				<tr>
 					<td><?php echo $episode['formatted_date']; ?></td>
 					<td style="width: 50%;"><a href='<?php echo $episode['slug']; ?>'><?php echo $episode['episode_name']; ?></a></td>
+					<td><?php echo $episode['episode_series']; ?></td>
 					<?php foreach ( $this->dates as $date ) { ?>
 							<td style='text-align: center;'><?php echo $episode[$date]; ?></td>
 					<?php } ?>

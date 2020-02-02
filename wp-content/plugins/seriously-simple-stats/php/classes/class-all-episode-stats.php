@@ -123,10 +123,20 @@ class All_Episode_Stats {
 					++ $total_listens_array[ intval( date( 'm', intval( $ref->date ) ) ) ];
 				}
 			}
+			$sql = "SELECT `wp_posts`.`ID`, `wp_terms`.`name` ".
+				"FROM `wp_posts`, `wp_terms`, `wp_term_taxonomy`, `wp_term_relationships` ".
+				"WHERE `wp_posts`.`ID` = $post->ID ".
+				"AND `wp_term_taxonomy`.`taxonomy` = 'series' ".
+				"AND `wp_posts`.`ID` = `wp_term_relationships`.`object_id` ".
+				"AND `wp_term_relationships`.`term_taxonomy_id` = `wp_term_taxonomy`.`term_taxonomy_id` ".
+				"AND `wp_term_taxonomy`.`term_id` = `wp_terms`.`term_id`";
+									
+			$episode_series = $wpdb->get_results( $sql );
 
 			$episode_stats = array(
 				'episode_name' => $post->post_title,
 				'date'         => date( 'Y-m-d', strtotime( $post->post_date ) ), 
+				'episode_series'	=> $episode_series[0]->name,
 				'slug'         => admin_url( 'post.php?post=' . $post->ID . '&action=edit' ),
 				'listens'      => $lifetime_count,
 				'formatted_date'  => date_i18n( get_option('date_format'), strtotime( $post->post_date ) ), 

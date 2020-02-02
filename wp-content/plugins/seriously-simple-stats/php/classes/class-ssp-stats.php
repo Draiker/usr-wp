@@ -362,40 +362,40 @@ class Stats {
 				switch( $stat->referrer ) {
 					case 'itunes':
 						++$itunes;
-					break;
+						break;
 					case 'stitcher':
 						++$stitcher;
-					break;
+						break;
 					case 'overcast':
 						++$overcast;
-					break;
+						break;
 					case 'pocketcasts':
 						++$pocketcasts;
-					break;
+						break;
 					case 'download':
 						++$direct;
-					break;
+						break;
 					case 'new_window':
 						++$new_window;
-					break;
+						break;
 					case 'player':
 						++$player;
-					break;
+						break;
 					case 'android':
 						++$android;
-					break;
+						break;
 					case 'google_play':
 						++$google_play;
-					break;
+						break;
 					case 'podcast_addict':
 						++$podcast_addict;
-					break;
+						break;
 					case 'playerfm':
 						++$playerfm;
-					break;
+						break;
 					default:
 						++$unknown;
-					break;
+						break;
 				}
 			}
 
@@ -884,10 +884,10 @@ class Stats {
 			'overcast' => __( 'Overcast', 'seriously-simple-stats' ),
 			'pocketcasts' => __( 'Pocket Casts', 'seriously-simple-stats' ),
 			'other' => __( 'Other', 'seriously-simple-stats' ),
-			// 'android' => __('Android App', 'seriously-simple-stats'), //Commented out for now
+			'android' => __('Android App', 'seriously-simple-stats'), //Commented out for now
 			'podcast_addict' => __( 'Podcast Addict', 'seriously-simple-stats' ),
 			'playerfm' => __( 'Player FM', 'seriously-simple-stats' ),
-			// 'google_play' => __( 'Google Play', 'seriously-simple-stats' ) //Commented out for now
+			'google_play' => __( 'Google Play', 'seriously-simple-stats' ) //Commented out for now
 		);
 
 		$data = array();
