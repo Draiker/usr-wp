@@ -3,6 +3,8 @@
 Thumbs.db
 /wp-content/uploads
 wp-config.php
+_old
+stats/
 
 /wp-content/plugins/seriously-simple-podcasting/.idea
 /wp-content/plugins/seriously-simple-podcasting/.distignore

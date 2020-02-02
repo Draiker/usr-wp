@@ -1,467 +1,467 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-    <head>
-        <title>Urban Space Radio - powered by SAM Broadcaster</title>
-        <link rel="shortcut icon" href="favicon.ico" />
-        <!-- General styles of the samPHPweb pages -->
-        <link rel="stylesheet" type="text/css" href="styles/style.css" />
-
-        <!-- Common Javascript functions -->
-        <script type="text/javascript" src="js/common.js"></script>
-        <!-- Javascript for request and songinfo actions -->
-        <script type="text/javascript">
-            /**
-             * Open a popup window to send a song request to SAM
-             */
-            function request(songID)
-            {
-                var samhost = "192.168.123.30";
-                var samport = "1221";
-                requestAudioRealm(songID, samhost, samport);
-            }
-        </script>
-        <!-- AddThis javascript -->
-        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=spacialaudio"></script>
-        <!-- JQuery library to do cool Javascript stuff -->
-        <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
-        <!-- JQuery plugin for Cross-Browser compatible rounding of corners -->
-        <script type="text/javascript" src="js/jquery.corner.js"></script>
-
-    </head>
-
-    <body>
-
-        <!-- BEGIN:PAGE -->
-        <div id="page">
-
-
-            <!-- BEGIN:LOGO -->
-            <div id="logo">
-                <a href="./">
-                    <img src="images/logo.png"/>
-                    Urban Space Radio
-                </a>
-                <div id="listener_count">Users Listening: 5</div>
-            </div>
-            <!-- END:LOGO -->
-
-
-            <!-- BEGIN:NAVIGATION -->
-            <div id="navigation">
-                <dl>
-                    <dt>Menu</dt>
-                    <dd><a href="javascript:player(0)" title="Click to Listen"><img src="images/menu/speaker.png" /> Listen</a></dd>
-                    <dd><a href="playing.html" title="Now playing"><img src="images/menu/play.png" /> Now playing</a></dd>
-                    <dd><a href="playlistA.html" title="Playlist &amp; Requests"><img src="images/menu/tb-file-list.png" /> Playlist &amp; Requests</a></dd>
-                    <dd><a href="mailto:email@mailbox.com" title="Email us!"><img src="images/menu/email.png" /> Email us!</a></dd>
-                </dl>
-            </div>
-            <!-- END:NAVIGATION -->
-
-
-            <!-- BEGIN:TOP_REQUESTS -->
-
-            
-            
-
-
-            
-            <!-- END:TOP_REQUESTS -->
-
-
-            <!-- BEGIN:PARTER LINKS -->
-            <div id="partner-links">
-
-                <!--- SpacialAudioSolutions_Link_BEGIN -->
-                <a href="http://audiorealm.com" title="AudioRealm Network Station" target="_blank"> <img src="http://media.audiorealm.com/images/AudioRealmBadge.png" title="AudioRealm Network Station" border="0" /> </a>
-                <!--- SpacialAudioSolutions_Link_END -->
-
-                <br />
-                <br />
-
-                <!--- SpacialAudioSolutions_Link_BEGIN -->
-                <a href="http://spacial.com/sam-broadcaster" title="Powered by SAM Broadcaster" target="_blank"> <img src="http://media.audiorealm.com/images/SAM-BC-BUTTON.gif" title="Powered by SAM Broadcaster" border="0" /> </a>
-                <!--- SpacialAudioSolutions_Link_END -->
-
-                <br />
-                <br />
-
-                <!--- Station Share BEGIN -->
-                <a id="shareButton">
-                    <img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark or Share this Station" title="Bookmark or Share this Station" style="border:0"/>
-                </a>
-
-                <script type="text/javascript">
-                    //<![CDATA[
-                    function DrawAddThisButton()
-                    {
-                        var addthis_share = {'url': 'http://audiorealm.com/play/0 . '/' . Urban Space Radio; ?>', 'title': 'Urban Space Radio', 'templates': {'twitter': 'Listen to {{title}} on AudioRealm ({{url}})'}};
-                        var addthis_config = {'data_track_clickback': true};
-                        addthis.button('#shareButton', addthis_config, addthis_share);
-                    }
-                    DrawAddThisButton();
-                    //]]>
-                </script>
-                <!--- Station Share END -->
-
-            </div>
-            <!-- END:PARTER LINKS -->
-
-
-
-
-
-                        <!-- BEGIN:CURRENTLY PLAYING -->
-                        <div id="currently_playing_wrapper">
-                            <div id="currently_playing">
-                                <table cellpadding="0" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th align="left" style="width: 170px;">
-                                                Currently Playing
-                                            </th>
-                                            <th align="center">
-                                            </th>
-                                            <th align="left">
-                                            </th>
-                                            <th align="right" style="width: 50px;">
-                                                Time
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td align="center">
-                                                <a href="http://www.audiorealm.com/findcd.html?artist=Love'n'Joy&title=Ramenta%20Stella&album=" target="_blank">
-                                                    <img id="cpPictureMainSong" onload="showPicture(this, true)" width="100" height="100" src="na.gif" alt="Buy CD!" title="Buy CD!" />
-                                                </a>
-                                                <br />
-
-                                                <a href="http://www.audiorealm.com/findcd.html?artist=Love'n'Joy&title=Ramenta%20Stella&album=" target="_blank">
-                                                    <img src="images/buy.png" alt="Buy this CD now!" title="Buy this CD now!" />
-                                                </a>
-                                                <a href="http://www.audiorealm.com/findwebsite.html?artist=Love'n'Joy&title=Ramenta%20Stella&album=" target="_blank">
-                                                    <img src="images/home.png" alt="Artist homepage" title="Artist homepage" />
-                                                </a>
-                                                <a href="javascript:songinfo(6280)">
-                                                    <img src="images/info.png" alt="Track information" title="Track information" />
-                                                </a>
-
-                                            </td>
-                                            <td colspan="2">
-                                                <span id="currently-playing-title">Love'n'Joy - Ramenta Stella</span>
-                                                <br />by <span id="currently-playing-artist"><a href="http://www.audiorealm.com/findwebsite.html?artist=Love'n'Joy&title=Ramenta%20Stella&album=" target="_blank">Love'n'Joy</a></span>
-                                                <br />from <span id="currently-playing-artist"><a href="http://www.audiorealm.com/findcd.html?artist=Love'n'Joy&title=Ramenta%20Stella&album=" target="_blank"></a></span>
-                                            </td>
-                                            <td align="right">
-                                                <span id="currently-playing-duration">3:42</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <!-- END:CURRENTLY PLAYING -->
-
-
-                        <!-- BEGIN:COMING UP -->
-                        
-                        <div id="coming-up_wrapper">
-                            <div id="coming-up">
-                                <table cellpadding="0" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th colspan="1" align="left">
-                                                Coming up
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                
-                                                <div>
-                                                    <span class="comingIndex">1</span>
-                                                    Radio from Ukraine
-                                                    <br />by Urban Space Radio
-                                                </div>
-                                                
-                                                <div>
-                                                    <span class="comingIndex">2</span>
-                                                    ALONE
-                                                    <br />by ONUKA
-                                                </div>
-                                                
-                                                <hr style="width:100%;border:none;"/>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <!-- END:COMING UP -->
-
-
-                        <!-- BEGIN:RECENTLY PLAYED -->
-                        <div id="recently_played_wrapper">
-                            <div id="recently_played">
-                                <table cellpadding="0" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th colspan="2" align="left">
-                                                Recently Played
-                                            </th>
-                                            <th class="links" align="center">
-                                                Links
-                                            </th>
-                                            <th align="left">
-                                                Album
-                                            </th>
-                                            <th align="right">
-                                                Time
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-                                        
-                                        <tr>
-                                            <td>
-                                                <a href="http://www.audiorealm.com/findcd.html?artist=Lakeway&title=Stars%20Collide&album=" target="_blank">
-                                                    <img class="rpPicture" id="rpPicture1" onload="showPicture(this, true)" width="60" height="60" src="na.gif" alt="Buy CD!" title="Buy CD!" />
-                                                </a>
-                                            </td>
-
-                                            <td>
-                                                Lakeway - Stars Collide
-                                            </td>
-                                            <td align="center">
-                                                <a href="http://www.audiorealm.com/findcd.html?artist=Lakeway&title=Stars%20Collide&album=" target="_blank">
-                                                    <img src="images/buy.png" alt="Buy this CD now!" title="Buy this CD now!" />
-                                                </a>
-                                                <a href="http://www.audiorealm.com/findwebsite.html?artist=Lakeway&title=Stars%20Collide&album=" target="_blank">
-                                                    <img src="images/home.png" alt="Artist homepage" title="Artist homepage" />
-                                                </a>
-                                            </td>
-
-                                            <td>
-                                                
-                                            </td>
-                                            <td align="right">
-                                                5:12
-                                            </td>
-                                        </tr>
-                                        
-                                        
-                                        <tr>
-                                            <td>
-                                                <a href="http://www.audiorealm.com/findcd.html?artist=Granula%20Grace&title=%D0%9A%D0%BE%D0%BB%D0%BE&album=" target="_blank">
-                                                    <img class="rpPicture" id="rpPicture2" onload="showPicture(this, true)" width="60" height="60" src="na.gif" alt="Buy CD!" title="Buy CD!" />
-                                                </a>
-                                            </td>
-
-                                            <td>
-                                                Granula Grace - Коло
-                                            </td>
-                                            <td align="center">
-                                                <a href="http://www.audiorealm.com/findcd.html?artist=Granula%20Grace&title=%D0%9A%D0%BE%D0%BB%D0%BE&album=" target="_blank">
-                                                    <img src="images/buy.png" alt="Buy this CD now!" title="Buy this CD now!" />
-                                                </a>
-                                                <a href="http://www.audiorealm.com/findwebsite.html?artist=Granula%20Grace&title=%D0%9A%D0%BE%D0%BB%D0%BE&album=" target="_blank">
-                                                    <img src="images/home.png" alt="Artist homepage" title="Artist homepage" />
-                                                </a>
-                                            </td>
-
-                                            <td>
-                                                
-                                            </td>
-                                            <td align="right">
-                                                3:54
-                                            </td>
-                                        </tr>
-                                        
-                                        
-                                        <tr>
-                                            <td>
-                                                <a href="http://www.audiorealm.com/findcd.html?artist=Monophonic&title=Not%20Just%20Like%20You&album=" target="_blank">
-                                                    <img class="rpPicture" id="rpPicture3" onload="showPicture(this, true)" width="60" height="60" src="na.gif" alt="Buy CD!" title="Buy CD!" />
-                                                </a>
-                                            </td>
-
-                                            <td>
-                                                Monophonic - Not Just Like You
-                                            </td>
-                                            <td align="center">
-                                                <a href="http://www.audiorealm.com/findcd.html?artist=Monophonic&title=Not%20Just%20Like%20You&album=" target="_blank">
-                                                    <img src="images/buy.png" alt="Buy this CD now!" title="Buy this CD now!" />
-                                                </a>
-                                                <a href="http://www.audiorealm.com/findwebsite.html?artist=Monophonic&title=Not%20Just%20Like%20You&album=" target="_blank">
-                                                    <img src="images/home.png" alt="Artist homepage" title="Artist homepage" />
-                                                </a>
-                                            </td>
-
-                                            <td>
-                                                
-                                            </td>
-                                            <td align="right">
-                                                4:35
-                                            </td>
-                                        </tr>
-                                        
-                                        
-                                        <tr>
-                                            <td>
-                                                <a href="http://www.audiorealm.com/findcd.html?artist=Urban%20Space%20Radio&title=We%20Play%20Only%20Ukrainian%20Music&album=" target="_blank">
-                                                    <img class="rpPicture" id="rpPicture4" onload="showPicture(this, true)" width="60" height="60" src="na.gif" alt="Buy CD!" title="Buy CD!" />
-                                                </a>
-                                            </td>
-
-                                            <td>
-                                                Urban Space Radio - We Play Only Ukrainian Music
-                                            </td>
-                                            <td align="center">
-                                                <a href="http://www.audiorealm.com/findcd.html?artist=Urban%20Space%20Radio&title=We%20Play%20Only%20Ukrainian%20Music&album=" target="_blank">
-                                                    <img src="images/buy.png" alt="Buy this CD now!" title="Buy this CD now!" />
-                                                </a>
-                                                <a href="http://www.audiorealm.com/findwebsite.html?artist=Urban%20Space%20Radio&title=We%20Play%20Only%20Ukrainian%20Music&album=" target="_blank">
-                                                    <img src="images/home.png" alt="Artist homepage" title="Artist homepage" />
-                                                </a>
-                                            </td>
-
-                                            <td>
-                                                
-                                            </td>
-                                            <td align="right">
-                                                0:43
-                                            </td>
-                                        </tr>
-                                        
-                                        
-                                        <tr>
-                                            <td>
-                                                <a href="http://www.audiorealm.com/findcd.html?artist=Johnny%20Bardo&title=Give%20It%20All%20For%20Love&album=" target="_blank">
-                                                    <img class="rpPicture" id="rpPicture5" onload="showPicture(this, true)" width="60" height="60" src="na.gif" alt="Buy CD!" title="Buy CD!" />
-                                                </a>
-                                            </td>
-
-                                            <td>
-                                                Johnny Bardo - Give It All For Love
-                                            </td>
-                                            <td align="center">
-                                                <a href="http://www.audiorealm.com/findcd.html?artist=Johnny%20Bardo&title=Give%20It%20All%20For%20Love&album=" target="_blank">
-                                                    <img src="images/buy.png" alt="Buy this CD now!" title="Buy this CD now!" />
-                                                </a>
-                                                <a href="http://www.audiorealm.com/findwebsite.html?artist=Johnny%20Bardo&title=Give%20It%20All%20For%20Love&album=" target="_blank">
-                                                    <img src="images/home.png" alt="Artist homepage" title="Artist homepage" />
-                                                </a>
-                                            </td>
-
-                                            <td>
-                                                
-                                            </td>
-                                            <td align="right">
-                                                3:09
-                                            </td>
-                                        </tr>
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <!-- END:RECENTLY PLAYED -->
-                        
-
-                        <script type="text/javascript">
-                        //<![CDATA[
-                            var refreshID = "";
-                            refreshID = setTimeout("DoRefresh()", 90000);
-
-                            function DoRefresh()
-                            {
-                                var buster = Math.random();
-                                document.location.href = 'playing.html?buster='+buster;
-                            }
-                        //]]>
-                        </script>
-
-                        <!-- JQuery to round corners some of the HTML items on the page -->
-                        <script type="text/javascript">
-                        //<![CDATA[
-                        // Make sure the DOM is ready
-                        $(document).ready(function() {
-                                // Rounding of corners (Cross-browser compatible)
-                                // See http://jquery.malsup.com/corner/ for different Styles.
-
-                                // Rounds the page corners
-                                $('#page').corner();
-
-                                // Rounds the Navigation Menu Corners
-                                $('#navigation dl').corner();
-
-                                // Rounds the Currently Playing Table Corners
-                                $('#currently_playing').corner();
-
-                                // Rounds the Coming Up Corners
-                                $('#coming-up').corner();
-
-                                // Rounds the Recently Played Table Corners
-                                $('#recently_played').corner();
-                                // Style odd and even rows in Currently Playing Table (Cross-browser compatible)
-                                $('#recently_played table tbody tr:nth-child(odd)').addClass('recently_played_odd');
-                                $('#recently_played table tbody tr:nth-child(even)').addClass('recently_played_even');
-
-                                // Round the Dedication Corners
-                                $('#dedication dl').corner('tl tr').corner();
-
-                                // Round the Top Request Corners
-                                $('#top_requests dl').corner();
-                        });
-                        //]]>
-                        </script>
-
-            <!-- BEGIN:FOOTER -->
-            <div id="footer">
-                <!-- Please leave at a minimum one link back to AudioRealm.com or SpacialAudio.com if you appreciate our hard work! - The SpacialAudio Team -->
-                <p>
-                    This station is part of the <a href="http://audiorealm.com">AudioRealm</a> and <a href="http://www.spacialnet.com">SpacialNet</a> networks.<br />
-                    This page was produced using <a target="_blank" href="http://spacial.com/sam-broadcaster">SAM Broadcaster</a>. &copy; Copyright
-                    <a target="_blank" href="http://spacial.com">Spacial Audio Solutions, LLC</a> 1999 - 2011.
-                </p>
-            </div>
-            <!-- END:FOOTER -->
-
-
-        </div>
-        <!-- END:PAGE -->
-
-
-    </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>Urban Space Radio - powered by SAM Broadcaster</title>
+        <link rel="shortcut icon" href="favicon.ico" />
+        <!-- General styles of the samPHPweb pages -->
+        <link rel="stylesheet" type="text/css" href="styles/style.css" />
+
+        <!-- Common Javascript functions -->
+        <script type="text/javascript" src="js/common.js"></script>
+        <!-- Javascript for request and songinfo actions -->
+        <script type="text/javascript">
+            /**
+             * Open a popup window to send a song request to SAM
+             */
+            function request(songID)
+            {
+                var samhost = "192.168.123.30";
+                var samport = "1221";
+                requestAudioRealm(songID, samhost, samport);
+            }
+        </script>
+        <!-- AddThis javascript -->
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=spacialaudio"></script>
+        <!-- JQuery library to do cool Javascript stuff -->
+        <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+        <!-- JQuery plugin for Cross-Browser compatible rounding of corners -->
+        <script type="text/javascript" src="js/jquery.corner.js"></script>
+
+    </head>
+
+    <body>
+
+        <!-- BEGIN:PAGE -->
+        <div id="page">
+
+
+            <!-- BEGIN:LOGO -->
+            <div id="logo">
+                <a href="./">
+                    <img src="images/logo.png"/>
+                    Urban Space Radio
+                </a>
+                <div id="listener_count">Users Listening: 5</div>
+            </div>
+            <!-- END:LOGO -->
+
+
+            <!-- BEGIN:NAVIGATION -->
+            <div id="navigation">
+                <dl>
+                    <dt>Menu</dt>
+                    <dd><a href="javascript:player(0)" title="Click to Listen"><img src="images/menu/speaker.png" /> Listen</a></dd>
+                    <dd><a href="playing.html" title="Now playing"><img src="images/menu/play.png" /> Now playing</a></dd>
+                    <dd><a href="playlistA.html" title="Playlist &amp; Requests"><img src="images/menu/tb-file-list.png" /> Playlist &amp; Requests</a></dd>
+                    <dd><a href="mailto:email@mailbox.com" title="Email us!"><img src="images/menu/email.png" /> Email us!</a></dd>
+                </dl>
+            </div>
+            <!-- END:NAVIGATION -->
+
+
+            <!-- BEGIN:TOP_REQUESTS -->
+
+            
+            
+
+
+            
+            <!-- END:TOP_REQUESTS -->
+
+
+            <!-- BEGIN:PARTER LINKS -->
+            <div id="partner-links">
+
+                <!--- SpacialAudioSolutions_Link_BEGIN -->
+                <a href="http://audiorealm.com" title="AudioRealm Network Station" target="_blank"> <img src="http://media.audiorealm.com/images/AudioRealmBadge.png" title="AudioRealm Network Station" border="0" /> </a>
+                <!--- SpacialAudioSolutions_Link_END -->
+
+                <br />
+                <br />
+
+                <!--- SpacialAudioSolutions_Link_BEGIN -->
+                <a href="http://spacial.com/sam-broadcaster" title="Powered by SAM Broadcaster" target="_blank"> <img src="http://media.audiorealm.com/images/SAM-BC-BUTTON.gif" title="Powered by SAM Broadcaster" border="0" /> </a>
+                <!--- SpacialAudioSolutions_Link_END -->
+
+                <br />
+                <br />
+
+                <!--- Station Share BEGIN -->
+                <a id="shareButton">
+                    <img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark or Share this Station" title="Bookmark or Share this Station" style="border:0"/>
+                </a>
+
+                <script type="text/javascript">
+                    //<![CDATA[
+                    function DrawAddThisButton()
+                    {
+                        var addthis_share = {'url': 'http://audiorealm.com/play/0 . '/' . Urban Space Radio; ?>', 'title': 'Urban Space Radio', 'templates': {'twitter': 'Listen to {{title}} on AudioRealm ({{url}})'}};
+                        var addthis_config = {'data_track_clickback': true};
+                        addthis.button('#shareButton', addthis_config, addthis_share);
+                    }
+                    DrawAddThisButton();
+                    //]]>
+                </script>
+                <!--- Station Share END -->
+
+            </div>
+            <!-- END:PARTER LINKS -->
+
+
+
+
+
+                        <!-- BEGIN:CURRENTLY PLAYING -->
+                        <div id="currently_playing_wrapper">
+                            <div id="currently_playing">
+                                <table cellpadding="0" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th align="left" style="width: 170px;">
+                                                Currently Playing
+                                            </th>
+                                            <th align="center">
+                                            </th>
+                                            <th align="left">
+                                            </th>
+                                            <th align="right" style="width: 50px;">
+                                                Time
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td align="center">
+                                                <a href="http://www.audiorealm.com/findcd.html?artist=%D0%96%D0%B5%D0%BD%D1%8F%20%D1%96%20%D0%9A%D0%B0%D1%82%D1%8F&title=%D0%92%D1%82%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B5%20%D0%BC%D1%96%D1%81%D1%82%D0%BE&album=" target="_blank">
+                                                    <img id="cpPictureMainSong" onload="showPicture(this, true)" width="100" height="100" src="na.gif" alt="Buy CD!" title="Buy CD!" />
+                                                </a>
+                                                <br />
+
+                                                <a href="http://www.audiorealm.com/findcd.html?artist=%D0%96%D0%B5%D0%BD%D1%8F%20%D1%96%20%D0%9A%D0%B0%D1%82%D1%8F&title=%D0%92%D1%82%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B5%20%D0%BC%D1%96%D1%81%D1%82%D0%BE&album=" target="_blank">
+                                                    <img src="images/buy.png" alt="Buy this CD now!" title="Buy this CD now!" />
+                                                </a>
+                                                <a href="http://www.audiorealm.com/findwebsite.html?artist=%D0%96%D0%B5%D0%BD%D1%8F%20%D1%96%20%D0%9A%D0%B0%D1%82%D1%8F&title=%D0%92%D1%82%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B5%20%D0%BC%D1%96%D1%81%D1%82%D0%BE&album=" target="_blank">
+                                                    <img src="images/home.png" alt="Artist homepage" title="Artist homepage" />
+                                                </a>
+                                                <a href="javascript:songinfo(11665)">
+                                                    <img src="images/info.png" alt="Track information" title="Track information" />
+                                                </a>
+
+                                            </td>
+                                            <td colspan="2">
+                                                <span id="currently-playing-title">Женя і Катя - Втомлене місто</span>
+                                                <br />by <span id="currently-playing-artist"><a href="http://www.audiorealm.com/findwebsite.html?artist=%D0%96%D0%B5%D0%BD%D1%8F%20%D1%96%20%D0%9A%D0%B0%D1%82%D1%8F&title=%D0%92%D1%82%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B5%20%D0%BC%D1%96%D1%81%D1%82%D0%BE&album=" target="_blank">Женя і Катя</a></span>
+                                                <br />from <span id="currently-playing-artist"><a href="http://www.audiorealm.com/findcd.html?artist=%D0%96%D0%B5%D0%BD%D1%8F%20%D1%96%20%D0%9A%D0%B0%D1%82%D1%8F&title=%D0%92%D1%82%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B5%20%D0%BC%D1%96%D1%81%D1%82%D0%BE&album=" target="_blank"></a></span>
+                                            </td>
+                                            <td align="right">
+                                                <span id="currently-playing-duration">3:31</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- END:CURRENTLY PLAYING -->
+
+
+                        <!-- BEGIN:COMING UP -->
+                        
+                        <div id="coming-up_wrapper">
+                            <div id="coming-up">
+                                <table cellpadding="0" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="1" align="left">
+                                                Coming up
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                
+                                                <div>
+                                                    <span class="comingIndex">1</span>
+                                                    New Ukrainian Radio
+                                                    <br />by Urban Space Radio
+                                                </div>
+                                                
+                                                <div>
+                                                    <span class="comingIndex">2</span>
+                                                    Тобі
+                                                    <br />by DUDA  ft. Vera Kekelia
+                                                </div>
+                                                
+                                                <hr style="width:100%;border:none;"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <!-- END:COMING UP -->
+
+
+                        <!-- BEGIN:RECENTLY PLAYED -->
+                        <div id="recently_played_wrapper">
+                            <div id="recently_played">
+                                <table cellpadding="0" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2" align="left">
+                                                Recently Played
+                                            </th>
+                                            <th class="links" align="center">
+                                                Links
+                                            </th>
+                                            <th align="left">
+                                                Album
+                                            </th>
+                                            <th align="right">
+                                                Time
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        
+                                        <tr>
+                                            <td>
+                                                <a href="http://www.audiorealm.com/findcd.html?artist=%D0%AF%D0%B4%D0%B5%D1%80%D0%BD%D0%B0%20%D0%9C%D0%BE%D0%B3%D0%B8%D0%BB%D0%B0%2F%D0%94%D0%B6%D0%BE%D0%BD%D0%BD%D1%96%20%D0%94%D0%B8%D0%B2%D0%BD%D0%B8%D0%B9&title=%D0%92%D1%82%D0%BE%D0%BC%D0%B0&album=%D0%92%D1%82%D0%BE%D0%BC%D0%B0" target="_blank">
+                                                    <img class="rpPicture" id="rpPicture1" onload="showPicture(this, true)" width="60" height="60" src="az_B12385__  .jpg" alt="Buy CD!" title="Buy CD!" />
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                Ядерна Могила/Джонні Дивний - Втома
+                                            </td>
+                                            <td align="center">
+                                                <a href="http://www.audiorealm.com/findcd.html?artist=%D0%AF%D0%B4%D0%B5%D1%80%D0%BD%D0%B0%20%D0%9C%D0%BE%D0%B3%D0%B8%D0%BB%D0%B0%2F%D0%94%D0%B6%D0%BE%D0%BD%D0%BD%D1%96%20%D0%94%D0%B8%D0%B2%D0%BD%D0%B8%D0%B9&title=%D0%92%D1%82%D0%BE%D0%BC%D0%B0&album=%D0%92%D1%82%D0%BE%D0%BC%D0%B0" target="_blank">
+                                                    <img src="images/buy.png" alt="Buy this CD now!" title="Buy this CD now!" />
+                                                </a>
+                                                <a href="http://www.audiorealm.com/findwebsite.html?artist=%D0%AF%D0%B4%D0%B5%D1%80%D0%BD%D0%B0%20%D0%9C%D0%BE%D0%B3%D0%B8%D0%BB%D0%B0%2F%D0%94%D0%B6%D0%BE%D0%BD%D0%BD%D1%96%20%D0%94%D0%B8%D0%B2%D0%BD%D0%B8%D0%B9&title=%D0%92%D1%82%D0%BE%D0%BC%D0%B0&album=%D0%92%D1%82%D0%BE%D0%BC%D0%B0" target="_blank">
+                                                    <img src="images/home.png" alt="Artist homepage" title="Artist homepage" />
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                Втома
+                                            </td>
+                                            <td align="right">
+                                                3:15
+                                            </td>
+                                        </tr>
+                                        
+                                        
+                                        <tr>
+                                            <td>
+                                                <a href="http://www.audiorealm.com/findcd.html?artist=PURPUR&title=Fire&album=" target="_blank">
+                                                    <img class="rpPicture" id="rpPicture2" onload="showPicture(this, true)" width="60" height="60" src="na.gif" alt="Buy CD!" title="Buy CD!" />
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                PURPUR - Fire
+                                            </td>
+                                            <td align="center">
+                                                <a href="http://www.audiorealm.com/findcd.html?artist=PURPUR&title=Fire&album=" target="_blank">
+                                                    <img src="images/buy.png" alt="Buy this CD now!" title="Buy this CD now!" />
+                                                </a>
+                                                <a href="http://www.audiorealm.com/findwebsite.html?artist=PURPUR&title=Fire&album=" target="_blank">
+                                                    <img src="images/home.png" alt="Artist homepage" title="Artist homepage" />
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                
+                                            </td>
+                                            <td align="right">
+                                                2:52
+                                            </td>
+                                        </tr>
+                                        
+                                        
+                                        <tr>
+                                            <td>
+                                                <a href="http://www.audiorealm.com/findcd.html?artist=Cepasa&title=Waves&album=" target="_blank">
+                                                    <img class="rpPicture" id="rpPicture3" onload="showPicture(this, true)" width="60" height="60" src="na.gif" alt="Buy CD!" title="Buy CD!" />
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                Cepasa - Waves
+                                            </td>
+                                            <td align="center">
+                                                <a href="http://www.audiorealm.com/findcd.html?artist=Cepasa&title=Waves&album=" target="_blank">
+                                                    <img src="images/buy.png" alt="Buy this CD now!" title="Buy this CD now!" />
+                                                </a>
+                                                <a href="http://www.audiorealm.com/findwebsite.html?artist=Cepasa&title=Waves&album=" target="_blank">
+                                                    <img src="images/home.png" alt="Artist homepage" title="Artist homepage" />
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                
+                                            </td>
+                                            <td align="right">
+                                                4:38
+                                            </td>
+                                        </tr>
+                                        
+                                        
+                                        <tr>
+                                            <td>
+                                                <a href="http://www.audiorealm.com/findcd.html?artist=Urban%20Space%20Radio&title=New%20Ukrainian%20Radio&album=" target="_blank">
+                                                    <img class="rpPicture" id="rpPicture4" onload="showPicture(this, true)" width="60" height="60" src="na.gif" alt="Buy CD!" title="Buy CD!" />
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                Urban Space Radio - New Ukrainian Radio
+                                            </td>
+                                            <td align="center">
+                                                <a href="http://www.audiorealm.com/findcd.html?artist=Urban%20Space%20Radio&title=New%20Ukrainian%20Radio&album=" target="_blank">
+                                                    <img src="images/buy.png" alt="Buy this CD now!" title="Buy this CD now!" />
+                                                </a>
+                                                <a href="http://www.audiorealm.com/findwebsite.html?artist=Urban%20Space%20Radio&title=New%20Ukrainian%20Radio&album=" target="_blank">
+                                                    <img src="images/home.png" alt="Artist homepage" title="Artist homepage" />
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                
+                                            </td>
+                                            <td align="right">
+                                                0:10
+                                            </td>
+                                        </tr>
+                                        
+                                        
+                                        <tr>
+                                            <td>
+                                                <a href="http://www.audiorealm.com/findcd.html?artist=Postman&title=Like%20a%20Child&album=Everything%20Is%20New" target="_blank">
+                                                    <img class="rpPicture" id="rpPicture5" onload="showPicture(this, true)" width="60" height="60" src="az_B123125_Everything Is New_Postman.jpg" alt="Buy CD!" title="Buy CD!" />
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                Postman - Like a Child
+                                            </td>
+                                            <td align="center">
+                                                <a href="http://www.audiorealm.com/findcd.html?artist=Postman&title=Like%20a%20Child&album=Everything%20Is%20New" target="_blank">
+                                                    <img src="images/buy.png" alt="Buy this CD now!" title="Buy this CD now!" />
+                                                </a>
+                                                <a href="http://www.audiorealm.com/findwebsite.html?artist=Postman&title=Like%20a%20Child&album=Everything%20Is%20New" target="_blank">
+                                                    <img src="images/home.png" alt="Artist homepage" title="Artist homepage" />
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                Everything Is New
+                                            </td>
+                                            <td align="right">
+                                                3:17
+                                            </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- END:RECENTLY PLAYED -->
+                        
+
+                        <script type="text/javascript">
+                        //<![CDATA[
+                            var refreshID = "";
+                            refreshID = setTimeout("DoRefresh()", 90000);
+
+                            function DoRefresh()
+                            {
+                                var buster = Math.random();
+                                document.location.href = 'playing.html?buster='+buster;
+                            }
+                        //]]>
+                        </script>
+
+                        <!-- JQuery to round corners some of the HTML items on the page -->
+                        <script type="text/javascript">
+                        //<![CDATA[
+                        // Make sure the DOM is ready
+                        $(document).ready(function() {
+                                // Rounding of corners (Cross-browser compatible)
+                                // See http://jquery.malsup.com/corner/ for different Styles.
+
+                                // Rounds the page corners
+                                $('#page').corner();
+
+                                // Rounds the Navigation Menu Corners
+                                $('#navigation dl').corner();
+
+                                // Rounds the Currently Playing Table Corners
+                                $('#currently_playing').corner();
+
+                                // Rounds the Coming Up Corners
+                                $('#coming-up').corner();
+
+                                // Rounds the Recently Played Table Corners
+                                $('#recently_played').corner();
+                                // Style odd and even rows in Currently Playing Table (Cross-browser compatible)
+                                $('#recently_played table tbody tr:nth-child(odd)').addClass('recently_played_odd');
+                                $('#recently_played table tbody tr:nth-child(even)').addClass('recently_played_even');
+
+                                // Round the Dedication Corners
+                                $('#dedication dl').corner('tl tr').corner();
+
+                                // Round the Top Request Corners
+                                $('#top_requests dl').corner();
+                        });
+                        //]]>
+                        </script>
+
+            <!-- BEGIN:FOOTER -->
+            <div id="footer">
+                <!-- Please leave at a minimum one link back to AudioRealm.com or SpacialAudio.com if you appreciate our hard work! - The SpacialAudio Team -->
+                <p>
+                    This station is part of the <a href="http://audiorealm.com">AudioRealm</a> and <a href="http://www.spacialnet.com">SpacialNet</a> networks.<br />
+                    This page was produced using <a target="_blank" href="http://spacial.com/sam-broadcaster">SAM Broadcaster</a>. &copy; Copyright
+                    <a target="_blank" href="http://spacial.com">Spacial Audio Solutions, LLC</a> 1999 - 2011.
+                </p>
+            </div>
+            <!-- END:FOOTER -->
+
+
+        </div>
+        <!-- END:PAGE -->
+
+
+    </body>
 </html>
