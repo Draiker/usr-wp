@@ -70,7 +70,7 @@
 						<a href="https://www.google.com/podcasts?feed=aHR0cDovL3VyYmFuc3BhY2VyYWRpby5jb20vZmVlZC9wb2RjYXN0" target="_blank" class="soc-googlepodcasts"></a>
 					</div>
 					<h1 class="main-logo">
-						<img src="<?php echo get_bloginfo('template_url'); ?>/assets/img/logo-usr.svg" width="200" height="76">
+						<img src="<?php echo get_bloginfo('template_url'); ?>/assets/img/logo-usr_karantyn.svg" width="200" height="76">
 						<span>Urban Space Radio</span>
 					</h1>
 				</header>
