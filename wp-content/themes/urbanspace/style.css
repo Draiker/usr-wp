@@ -306,7 +306,7 @@ filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
 	overflow: auto;
 	padding-bottom: 94px;
 	background-color: #fff;
-	background-image: url(assets/img/usr_beforeseason_2020_Web-v2.jpg);
+	background-image: url(assets/img/usr_karantin_2020_Web.jpg);
 	background-position: top center;
 	background-repeat: no-repeat;
     background-size: auto 100%;
@@ -634,47 +634,47 @@ transform:scale(1)
 	opacity: 1
 }
 .soc-fb {
-	background: #101010 url("assets/img/socials/fb.svg") center center no-repeat;
+	background: #78b9c1 url("assets/img/socials/fb.svg") center center no-repeat;
 	background-size: 50%;
 }
 .soc-tw {
-	background: #101010 url("assets/img/socials/tw.svg") center center no-repeat;
+	background: #78b9c1 url("assets/img/socials/tw.svg") center center no-repeat;
 	background-size: 50%;
 }
 .soc-gplus {
-	background: #101010 url("assets/img/socials/gplus.svg") center center no-repeat;
+	background: #78b9c1 url("assets/img/socials/gplus.svg") center center no-repeat;
 	background-size: 50%;
 }
 .soc-youtube {
-	background: #101010 url("assets/img/socials/youtube.svg") center center no-repeat;
+	background: #78b9c1 url("assets/img/socials/youtube.svg") center center no-repeat;
 	background-size: 50%;
 }
 .soc-4sqr {
-	background: #101010 url("assets/img/socials/4sqr.svg") center center no-repeat;
+	background: #78b9c1 url("assets/img/socials/4sqr.svg") center center no-repeat;
 	background-size: 50%;
 }
 .soc-mixcloud {
-	background: #101010 url("assets/img/socials/mixcloud.svg") center center no-repeat;
+	background: #78b9c1 url("assets/img/socials/mixcloud.svg") center center no-repeat;
 	background-size: 50%;
 }
 .soc-instagram {
-	background: #101010 url("assets/img/socials/instagram.svg") center center no-repeat;
+	background: #78b9c1 url("assets/img/socials/instagram.svg") center center no-repeat;
 	background-size: 50%;
 }
 .soc-playlist {
-	background: #101010 url("assets/img/socials/playlist.svg") center center no-repeat;
+	background: #78b9c1 url("assets/img/socials/playlist.svg") center center no-repeat;
 	background-size: 50%;
 }
 .soc-tunein {
-	background: #101010 url("assets/img/socials/tunein.svg") center center no-repeat;
+	background: #78b9c1 url("assets/img/socials/tunein.svg") center center no-repeat;
 	background-size: 50%;
 }
 .soc-applepodcasts {
-	background: #101010 url("assets/img/socials/applepodcasts.svg") center center no-repeat;
+	background: #78b9c1 url("assets/img/socials/applepodcasts.svg") center center no-repeat;
 	background-size: 50%;
 }
 .soc-googlepodcasts {
-	background: #101010 url("assets/img/socials/googlepodcasts.svg") center center no-repeat;
+	background: #78b9c1 url("assets/img/socials/googlepodcasts.svg") center center no-repeat;
 	background-size: 50%;
 }
 
@@ -724,7 +724,7 @@ transform:scale(1)
 }
 .season {
 	margin-bottom: 200px;
-	color: #0f0f0f;
+	color: #78b9c1;
 	font-family: 'Roboto slab', monospace;
 	font-style: normal;
 	font-weight: 700;

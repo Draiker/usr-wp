@@ -110,8 +110,8 @@
 				<section class="section2">
 					<div class="season">
                         <h1 class="season-logo">
-							<p>LOADING</p>
-                            <p class="seasontype">something new</br>on Urban Space Radio</p>
+							<p>ЗБЕРІГАЙТЕ СПОКІЙ</p>
+                            <p class="seasontype">та слухайте подкасти</p>
 						</h1>
 						<div onclick="runWfpWdgt('https://secure.wayforpay.com/button/b569b98266d95');" class="button-donation" onmouseout="this.style.opacity='0.6';" onmouseover="this.style.opacity='1';">
 							<span class="button-donation-text">ПІДТРИМАТИ ПРОЕКТ</span>
