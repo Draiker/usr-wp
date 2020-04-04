@@ -13,7 +13,7 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Wpml' ) ) {
 	 * @link https://wpml.org/
 	 * @package All-in-One-SEO-Pack
 	 * @author Alejandro Mostajo
-	 * @copyright Semperfi Web Design <https://semperplugins.com/>
+	 * @copyright All in One SEO <https://semperplugins.com/>
 	 * @version 2.3.13
 	 */
 	class All_in_One_SEO_Pack_Wpml extends All_in_One_SEO_Pack_Compatible {

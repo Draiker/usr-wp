@@ -134,12 +134,6 @@ class AIOSEOP_Updates {
 		}
 
 		if (
-			version_compare( $old_version, '3.0.3', '<' )
-		) {
-			$this->reset_review_notice_201906();
-		}
-
-		if (
 				version_compare( $old_version, '3.1', '<' )
 		) {
 			$this->reset_flush_rewrite_rules_201906();
@@ -349,18 +343,6 @@ class AIOSEOP_Updates {
 	}
 
 	/**
-	 * Removes Review Plugin Notice
-	 *
-	 * @since 3.0.3
-	 */
-	public function reset_review_notice_201906() {
-		global $aioseop_notices;
-
-		$aioseop_notices->reset_notice( 'review_plugin' );
-		$aioseop_notices->remove_notice( 'review_plugin' );
-	}
-
-	/**
 	 * Flushes rewrite rules for XML Sitemap URL changes
 	 *
 	 * @since 3.1
@@ -421,5 +403,3 @@ class AIOSEOP_Updates {
 	}
 
 }
-
-

@@ -51,6 +51,8 @@ class AIOSEOP_Graph_WebPage extends AIOSEOP_Graph_Creativework {
 		global $post;
 		global $aioseop_options;
 
+		$context = AIOSEOP_Context::get_instance();
+
 		$current_url  = '';
 		$current_name = '';
 		$current_desc = '';
@@ -75,6 +77,26 @@ class AIOSEOP_Graph_WebPage extends AIOSEOP_Graph_Creativework {
 			$current_url  = home_url() . '/';
 			$current_name = get_the_title();
 			$current_desc = $this->get_post_description( $post );
+		} elseif ( is_post_type_archive() ) {
+			if (
+					function_exists( 'is_shop' ) &&
+					function_exists( 'wc_get_page_id' ) &&
+					is_shop()
+			) {
+				// WooCommerce - Shop Page.
+				$shop_page = get_post( wc_get_page_id( 'shop' ) );
+
+				$current_url  = wp_get_canonical_url( $shop_page );
+				$current_name = get_the_title( $shop_page );
+				$current_desc = $this->get_post_description( $shop_page );
+			} else {
+				// WP - Post Type.
+				$wp_obj = get_queried_object();
+
+				$current_url  = get_post_type_archive_link( $post );
+				$current_name = $wp_obj->label;
+				$current_desc = $wp_obj->description;
+			}
 		} elseif ( is_singular() || is_single() ) {
 			$current_url  = wp_get_canonical_url( $post );
 			$current_name = get_the_title();
@@ -118,11 +140,17 @@ class AIOSEOP_Graph_WebPage extends AIOSEOP_Graph_Creativework {
 			'isPartOf'   => array(
 				'@id' => home_url() . '/#website',
 			),
-
+			'breadcrumb' => array(
+				'@id' => $context->get_url() . '#breadcrumblist',
+			),
 		);
 
 		// Handles pages.
 		if ( is_singular() || is_single() ) {
+			if ( is_attachment() ) {
+				unset( $rtn_data['breadcrumb'] );
+			}
+
 			if ( has_post_thumbnail( $post ) ) {
 				$image_id = get_post_thumbnail_id();
 

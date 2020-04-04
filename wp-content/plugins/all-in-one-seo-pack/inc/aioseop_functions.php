@@ -202,11 +202,11 @@ if ( ! function_exists( 'aioseop_addmycolumns' ) ) {
 				add_filter( 'manage_posts_columns', 'aioseop_mrt_pcolumns' );
 			}
 			if ( 'attachment' === $post_type ) {
-				add_action( 'manage_media_custom_column', 'aioseop_mrt_pccolumn', 10, 2 );
+				add_action( 'manage_media_custom_column', 'render_seo_column', 10, 2 );
 			} elseif ( is_post_type_hierarchical( $post_type ) ) {
-				add_action( 'manage_pages_custom_column', 'aioseop_mrt_pccolumn', 10, 2 );
+				add_action( 'manage_pages_custom_column', 'render_seo_column', 10, 2 );
 			} else {
-				add_action( 'manage_posts_custom_column', 'aioseop_mrt_pccolumn', 10, 2 );
+				add_action( 'manage_posts_custom_column', 'render_seo_column', 10, 2 );
 			}
 		}
 	}
@@ -242,7 +242,7 @@ if ( ! function_exists( 'aioseop_admin_head' ) ) {
 	 * @since ?
 	 */
 	function aioseop_admin_head() {
-		wp_enqueue_script( 'aioseop_welcome_js', AIOSEOP_PLUGIN_URL . 'js/quickedit_functions.js', array( 'jquery' ), AIOSEOP_VERSION );
+		wp_enqueue_script( 'aioseop-quickedit', AIOSEOP_PLUGIN_URL . 'js/admin/aioseop-quickedit.js', array( 'jquery' ), AIOSEOP_VERSION );
 		?>
 		<style>
 			.aioseop_mpc_admin_meta_options {
@@ -295,7 +295,13 @@ if ( ! function_exists( 'aioseop_admin_head' ) ) {
 				pleaseWait: "<?php _e( 'Please wait...', 'all-in-one-seo-pack' ); ?>",
 				slugEmpty: "<?php _e( 'Slug may not be empty!', 'all-in-one-seo-pack' ); ?>",
 				Revisions: "<?php _e( 'Revisions', 'all-in-one-seo-pack' ); ?>",
-				Time: "<?php _e( 'Insert time', 'all-in-one-seo-pack' ); ?>"
+				Time: "<?php _e( 'Insert time', 'all-in-one-seo-pack' ); ?>",
+				i18n: {
+					save: "<?php _e( 'Save', 'all-in-one-seo-pack' ); ?>",
+					cancel: "<?php _e( 'Cancel', 'all-in-one-seo-pack' ); ?>",
+					wait: "<?php _e( 'Please wait...', 'all-in-one-seo-pack' ); ?>",
+					noValue: "<?php _e( 'No value', 'all-in-one-seo-pack' ); ?>"
+				}
 			}
 			//]]>
 		</script>
@@ -386,55 +392,6 @@ if ( ! function_exists( 'aioseop_output_dismissable_notice' ) ) {
 	}
 }
 
-if ( ! function_exists( 'aioseop_ajax_save_meta' ) ) {
-
-	/**
-	 * AIOSEOP AJAX Save Meta
-	 */
-	function aioseop_ajax_save_meta() {
-		if ( ! empty( $_POST['_inline_edit'] ) && ( 'undefined' !== $_POST['_inline_edit'] ) ) {
-			check_ajax_referer( 'inlineeditnonce', '_inline_edit' );
-		}
-		$post_id  = intval( $_POST['post_id'] );
-		$new_meta = strip_tags( $_POST['new_meta'] );
-		$target   = $_POST['target_meta'];
-		check_ajax_referer( 'aioseop_meta_' . $target . '_' . $post_id, '_nonce' );
-		$result = '';
-		if ( in_array(
-			$target,
-			array(
-				'title',
-				'description',
-				'keywords',
-			)
-		) && current_user_can( 'edit_post', $post_id )
-		) {
-			update_post_meta( $post_id, '_aioseop_' . $target, esc_attr( $new_meta ) );
-			$result = get_post_meta( $post_id, '_aioseop_' . $target, true );
-		} else {
-			die();
-		}
-		if ( '' != $result ) :
-			$label = "<label id='aioseop_label_{$target}_{$post_id}' class='aioseop-label-quickedit' for='{$target}editlink{$post_id}'>" . $result . '</label>';
-		else :
-			$label = "<label id='aioseop_label_{$target}_{$post_id}' class='aioseop-label-quickedit' for='{$target}editlink{$post_id}'></label><strong><i>" . __( 'No', 'all-in-one-seo-pack' ) . ' ' . $target . '</i></strong>';
-		endif;
-		$nonce   = wp_create_nonce( "aioseop_meta_{$target}_{$post_id}" );
-		$output  = '<a id="' . $target . 'editlink' . $post_id . '" '
-			. 'class="aioseop_edit_link aioseop-icon-cog-edit" '
-			. 'href="javascript:void(0);" '
-			. 'onclick=\'aioseop_ajax_edit_meta_form(' . $post_id . ', "' . $target . '", "' . $nonce . '");return false;\' '
-			. 'title="' . __( 'Edit', 'all-in-one-seo-pack' ) . '"></a>';
-		$output .= $label;
-		die(
-			"jQuery('div#aioseop_" . $target . '_' . $post_id . "').fadeOut('fast', function() {
-				 var my_label = " . json_encode( $output ) . ";
-				 jQuery('div#aioseop_" . $target . '_' . $post_id . "').html(my_label).fadeIn('fast');
-			});"
-		);
-	}
-}
-
 if ( ! function_exists( 'aioseop_ajax_init' ) ) {
 
 	/**
@@ -514,7 +471,11 @@ if ( ! function_exists( 'aioseop_ajax_save_url' ) ) {
 			} elseif ( ! empty( $_POST['settings'] ) && ( 'news_sitemap_addl_pages' === $_POST['settings'] ) ) {
 				$module = $aioseop_modules->return_module( 'All_in_One_SEO_Pack_News_Sitemap' );
 			} else {
-				$module = $aioseop_modules->return_module( 'All_in_One_SEO_Pack_Sitemap' );
+				if ( AIOSEOPPRO ) {
+					$module = $aioseop_modules->return_module( 'All_in_One_SEO_Pack_Sitemap_Pro' );
+				} else {
+					$module = $aioseop_modules->return_module( 'All_in_One_SEO_Pack_Sitemap' );
+				}
 			}
 			$_POST['location'] = null;
 			$_POST['Submit']   = 'ajax';
@@ -561,7 +522,10 @@ if ( ! function_exists( 'aioseop_ajax_delete_url' ) ) {
 		global $aiosp, $aioseop_modules;
 		aioseop_load_modules();
 		$aiosp->admin_menu();
-		$module            = $aioseop_modules->return_module( 'All_in_One_SEO_Pack_Sitemap' );
+		$module = $aioseop_modules->return_module( 'All_in_One_SEO_Pack_Sitemap' );
+		if ( AIOSEOPPRO ) {
+			$module = $aioseop_modules->return_module( 'All_in_One_SEO_Pack_Sitemap_Pro' );
+		}
 		$_POST['location'] = null;
 		$_POST['Submit']   = 'ajax';
 		$module->add_page_hooks();
@@ -812,57 +776,151 @@ if ( ! function_exists( 'aioseop_ajax_get_menu_links' ) ) {
 	}
 }
 
-if ( ! function_exists( 'aioseop_mrt_pccolumn' ) ) {
+if ( ! function_exists( 'render_seo_column' ) ) {
 
 	/**
-	 * AIOSEOP (MRT) Column
+	 * Generates the content for a given SEO column.
 	 *
-	 * @since ?
+	 * @since   3.4.0   Added support for image title attribute and alt tag attribute. Refactored + renamed function to better reflect purpose.
 	 *
-	 * @param $aioseopcn
-	 * @param $aioseoppi
+	 * @param   string  $column_name    The name of the column.
+	 * @param   int     $post_id        The ID of the post.
+	 *
+	 * @return  void
 	 */
-	function aioseop_mrt_pccolumn( $aioseopcn, $aioseoppi ) {
-		$id     = $aioseoppi;
-		$target = null;
-		if ( 'seotitle' === $aioseopcn ) {
-			$target = 'title';
-		}
-		if ( 'seokeywords' === $aioseopcn ) {
-			$target = 'keywords';
-		}
-		if ( 'seodesc' === $aioseopcn ) {
-			$target = 'description';
-		}
-		if ( ! $target ) {
+	function render_seo_column( $column_name, $post_id ) {
+		$name  = '';
+		$value = '';
+		$label = '';
+
+		if ( ! current_user_can( 'edit_post', $post_id ) && ! current_user_can( 'manage_aiosp' ) ) {
 			return;
 		}
-		if ( current_user_can( 'edit_post', $id ) ) {
-			?>
-			<div class="aioseop_mpc_admin_meta_container">
-				<div
-					class="aioseop_mpc_admin_meta_options"
-					id="aioseop_<?php print $target; ?>_<?php echo $id; ?>"
-					style="float:left;">
-					<?php
-					$content = strip_tags( stripslashes( get_post_meta( $id, '_aioseop_' . $target, true ) ) );
-					if ( ! empty( $content ) ) :
-						$label = "<label id='aioseop_label_{$target}_{$id}' class='aioseop-label-quickedit'>" . $content . '</label>';
-					else :
-						$label = "<label id='aioseop_label_{$target}_{$id}' class='aioseop-label-quickedit'></label><strong><i>" . __( 'No', 'all-in-one-seo-pack' ) . ' ' . $target . '</i></strong>';
-					endif;
-					$nonce = wp_create_nonce( "aioseop_meta_{$target}_{$id}" );
-					echo '<a id="' . $target . 'editlink' . $id . '" '
-						. 'class="aioseop_edit_link aioseop-icon-cog-edit" '
-						. 'href="javascript:void(0);" '
-						. 'onclick=\'aioseop_ajax_edit_meta_form(' . $id . ', "' . $target . '", "' . $nonce . '");return false;\' '
-						. 'title="' . __( 'Edit', 'all-in-one-seo-pack' ) . '"></a>';
-					echo $label;
-					?>
-				</div>
-			</div>
-			<?php
+
+		$post_type = get_post_type( $post_id );
+
+		if ( 'attachment' === $post_type ) {
+			$image_seo_columns    = array( 'image_title', 'image_alt_tag' );
+			$supported_mime_types = array( 'image/jpeg', 'image/jpg', 'image/png', 'image/gif' );
+			$mime_type            = get_post_mime_type( $post_id );
+
+			if ( in_array( $column_name, $image_seo_columns ) && ! in_array( $mime_type, $supported_mime_types ) ) {
+				return;
+			}
 		}
+
+		switch ( $column_name ) {
+			case 'seotitle': {
+				$name  = __( 'title', 'all-in-one-seo-pack' );
+				$value = get_post_meta( $post_id, '_aioseop_title', true );
+				break;
+			}
+			case 'seodesc': {
+				$name  = __( 'description', 'all-in-one-seo-pack' );
+				$value = get_post_meta( $post_id, '_aioseop_description', true );
+				break;
+			}
+			case 'seokeywords': {
+				$name  = __( 'keywords', 'all-in-one-seo-pack' );
+				$value = get_post_meta( $post_id, '_aioseop_keywords', true );
+				break;
+			}
+			case 'image_title': {
+				$name  = __( 'image_title', 'all-in-one-seo-pack' );
+				$value = get_the_title( get_post( $post_id ) );
+				break;
+			}
+			case 'image_alt_tag': {
+				$name  = __( 'image_alt_tag', 'all-in-one-seo-pack' );
+				$value = get_post_meta( $post_id, '_wp_attachment_image_alt', true );
+				break;
+			}
+			default: {
+				return;
+			}
+		}
+
+		if ( empty( $value ) ) {
+			$value = sprintf( '<strong>%s</strong>', sprintf( __( 'No value', 'all-in-one-seo-pack' ), str_replace( '_', ' ', $name ) ) );
+		}
+
+		$span  = "<span id='aioseop_{$column_name}_{$post_id}_value'>" . trim( $value ) . '</span>';
+		$nonce = wp_create_nonce( "aioseop_meta_{$column_name}_{$post_id}" );
+
+		?>
+		<div id="<?php echo "aioseop_${column_name}_${post_id}"; ?>" class="aioseop_mpc_admin_meta_options aio_editing">
+			<a
+				class="dashicons dashicons-edit aioseop-quickedit-pencil" 
+				href="javascript:void(0);"
+				onclick="<?php printf( 'aioseopQuickEdit.aioseop_ajax_edit_meta_form(%s, \'%s\', \'%s\'); return false;', $post_id, $column_name, $nonce ); ?>"
+				title="<?php _e( 'Edit', 'all-in-one-seo-pack' ); ?>"
+			>
+			</a><?php echo $span; ?></div>
+		<?php
+	}
+}
+
+if ( ! function_exists( 'aioseop_ajax_save_meta' ) ) {
+
+	/**
+	 * Updates the post meta value for a given key.
+	 *
+	 * @since   3.4.0   Added support for image title attribute and alt tag attribute. Refactored.
+	 */
+	function aioseop_ajax_save_meta() {
+		$post_id = intval( $_POST['post_id'] );
+		$value   = sanitize_text_field( $_POST['value'] );
+		$key     = $_POST['key'];
+
+		check_ajax_referer( "aioseop_meta_${key}_${post_id}" );
+
+		$allowed_attributes = array(
+			'seotitle',
+			'seodesc',
+			'seokeywords',
+			'image_title',
+			'image_alt_tag',
+		);
+
+		$result = '';
+
+		if ( ! current_user_can( 'edit_post', $post_id ) && ! current_user_can( 'manage_aiosp' ) ) {
+			die();
+		}
+
+		if ( ! in_array( $key, $allowed_attributes ) ) {
+			die();
+		}
+
+		switch ( $key ) {
+			case 'seotitle': {
+				$key = '_aioseop_title';
+				break;
+			}
+			case 'seodesc': {
+				$key = '_aioseop_description';
+				break;
+			}
+			case 'seokeywords': {
+				$key = '_aioseop_keywords';
+				break;
+			}
+			case 'image_title': {
+				wp_update_post(
+					array(
+						'ID'         => $post_id,
+						'post_title' => $value,
+					)
+				);
+				die();
+			}
+			case 'image_alt_tag': {
+				$key = '_wp_attachment_image_alt';
+				break;
+			}
+		}
+
+		update_post_meta( $post_id, $key, $value );
 	}
 }
 
@@ -1274,7 +1332,11 @@ if ( ! function_exists( 'aioseop_get_logo' ) ) {
  */
 function aioseop_do_shortcodes( $content ) {
 	$conflicting_shortcodes = array(
-		'WooCommerce Login' => '[woocommerce_my_account]',
+		'WooCommerce Login'          => '[woocommerce_my_account]',
+		'WooCommerce Checkout'       => '[woocommerce_checkout]',
+		'WooCommerce Order Tracking' => '[woocommerce_order_tracking]',
+		'WooCommerce Cart'           => '[woocommerce_cart]',
+		'WooCommerce Registration'   => '[wwp_registration_form]',
 	);
 
 	$rtn_conflict_shortcodes = array();
@@ -1393,4 +1455,93 @@ function get_major_version( $version ) {
 	$major_version = substr( $version, 0, $offset2 );
 
 	return $major_version;
+}
+
+if ( ! function_exists( 'aioseop_get_admin_screens' ) ) {
+
+	/**
+	 * Returns a list with our admin screens.
+	 *
+	 * @since   3.4.0
+	 *
+	 * @return  array   A key-value array with our admin screens.
+	 */
+	function aioseop_get_admin_screens() {
+		return array(
+			'General Settings'   => 'toplevel_page_' . AIOSEOP_PLUGIN_DIRNAME . '/aioseop_class',
+			'Performance'        => 'all-in-one-seo_page_' . AIOSEOP_PLUGIN_DIRNAME . '/modules/aioseop_performance',
+			'XML Sitemap'        => AIOSEOPPRO ? 'all-in-one-seo_page_' . AIOSEOP_PLUGIN_DIRNAME . '/pro/class-aioseop-pro-sitemap' : 'all-in-one-seo_page_' . AIOSEOP_PLUGIN_DIRNAME . '/modules/aioseop_sitemap',
+			'Social Meta'        => 'all-in-one-seo_page_aiosp_opengraph',
+			'Robots Generator'   => 'all-in-one-seo_page_aiosp_robots_generator',
+			'Robots.txt'         => 'all-in-one-seo_page_' . AIOSEOP_PLUGIN_DIRNAME . '/modules/aioseop_robots',
+			'File Editor'        => 'all-in-one-seo_page_' . AIOSEOP_PLUGIN_DIRNAME . '/modules/aioseop_file_editor',
+			'Importer/Exporter'  => 'all-in-one-seo_page_' . AIOSEOP_PLUGIN_DIRNAME . '/modules/aioseop_importer_exporter',
+			'Bad Robots Blocker' => 'all-in-one-seo_page_' . AIOSEOP_PLUGIN_DIRNAME . '/modules/aioseop_bad_robots',
+			'Feature Manager'    => 'all-in-one-seo_page_' . AIOSEOP_PLUGIN_DIRNAME . '/modules/aioseop_feature_manager',
+			'Video Sitemap'      => 'all-in-one-seo_page_' . AIOSEOP_PLUGIN_DIRNAME . '/pro/video_sitemap',
+			'Image SEO'          => 'all-in-one-seo_page_aiosp_image_seo',
+			'About Us'           => 'all-in-one-seo_page_aioseop-about',
+		);
+	}
+}
+
+if ( ! function_exists( 'aioseop_get_utm_url' ) ) {
+
+	/**
+	 * Returns a UTM structured URL to our product page.
+	 *
+	 * @since   3.4.0
+	 *
+	 * @param   string  $medium
+	 * @param   string  $source
+	 * @param   string  $campaign
+	 *
+	 * @return  string  $href
+	 */
+	function aioseop_get_utm_url( $medium, $source = 'WordPress', $campaign = 'liteplugin' ) {
+
+		$href = 'https://semperplugins.com/all-in-one-seo-pack-pro-version/';
+
+		$href = add_query_arg(
+			array(
+				'utm_source'   => $source,
+				'utm_campaign' => $campaign,
+				'utm_medium'   => $medium,
+			),
+			$href
+		);
+
+		return $href;
+	}
+}
+
+if ( ! function_exists( 'aioseop_get_site_logo_url' ) ) {
+	/**
+	 * Returns the URL of the site logo if it exists.
+	 *
+	 * @since 3.4.0
+	 *
+	 * @return string
+	 */
+	function aioseop_get_site_logo_url() {
+		if ( ! get_theme_support( 'custom-logo' ) ) {
+			return false;
+		}
+
+		$custom_logo_id = get_theme_mod( 'custom_logo' );
+		$image          = wp_get_attachment_image_src( $custom_logo_id, 'full' );
+
+		if ( empty( $image ) ) {
+			return false;
+		}
+
+		return $image[0];
+	}
+}
+
+if ( ! function_exists( 'aioseop_filter_styles' ) ) {
+	function aioseop_filter_styles( $styles ) {
+		$styles[] = 'display';
+		return $styles;
+	}
 }

@@ -4,8 +4,7 @@
  * @summary Binds input elements and counts characters for Title and Description on Post Edit, Post New,
  *          & AIOSEOP General Settings screens.
  *
- * @author Michael Torbert.
- * @author Semper Fi Web Design.
+ * @author All in One SEO Team.
  * @copyright https://semperplugins.com
  * @version 2.9.2
  */

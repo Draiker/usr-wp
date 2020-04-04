@@ -1,8 +1,7 @@
 /**
  * Controls all the styling of the plugin.
  *
- * @author Michael Torbert.
- * @author Semper Fi Web Design.
+ * @author All in One SEO Team.
  * @copyright http://semperplugins.com
  * @package All-in-One-SEO-Pack.
  */
@@ -87,7 +86,7 @@
 
 .aioseop_tabs .aioseop_meta_box_help,
 .aioseop_tabs .aioseop_meta_box_help:active {
-	margin-top: 10px;
+	margin: 15px 0;
 }
 
 .aioseop_tabs #aioseop_opengraph_settings .aioseop_meta_box_help,
@@ -122,7 +121,7 @@
 	border: 1px solid #e1e1e1;
 }
 
-.aioseop input[type="text"], 
+.aioseop input[type="text"],
 .aioseop input[type="url"]  {
 	color: #515151;
 	min-height: 40px;
@@ -144,7 +143,7 @@
 	min-height: 36px;
 }
 
-.aioseop input, 
+.aioseop input,
 .aioseop textarea {
     border-radius: 4px;
     border: 1px solid #8d96a0;
@@ -152,7 +151,7 @@
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif !important;
 }
 
-.aioseop input:focus, 
+.aioseop input:focus,
 .aioseop textarea:focus {
     box-shadow: 0 0 0 1px #007cba;
 }
@@ -263,23 +262,6 @@
 	float: right;
 }
 
-.wincherad {
-	width: 100%;
-	height: 100%;
-	background-size: 100%;
-	background-repeat: no-repeat;
-	margin-bottom: 0;
-	border: none;
-}
-
-#wincher21 {
-	background-image: url(../../modules/images/banner21.jpg);
-}
-
-#wincher22 {
-	background-image: url(../../modules/images/banner22.jpg);
-}
-
 .aioseop_content {
 	min-width: 760px;
 	clear: left;
@@ -385,10 +367,7 @@
 }
 
 .aioseop_sidebar #mc-embedded-subscribe-form {
-	margin: 0 0 10px 0;
-	background: white;
-	padding: 10px 10px;
-	border: 1px solid #DDD;
+	padding: 0px 10px;
 }
 
 #aioseop-about .aioseop_metabox_text ul {
@@ -428,7 +407,7 @@ body.all-in-one-seo_page_all-in-one-seo-pack-pro-aioseop_feature_manager .aioseo
 
 .aioseop_top {
 	margin: 10px 10px 0 0;
-	/*	margin: 10px 477px 0px 0px; */
+	/*  margin: 10px 477px 0px 0px; */
 }
 
 .aioseop_top #aioseop-list {
@@ -441,7 +420,7 @@ body.all-in-one-seo_page_all-in-one-seo-pack-pro-aioseop_feature_manager .aioseo
 
 .aioseop_right_sidebar {
 	float: right;
-	margin-top: 55px;
+	margin-top: 50px;
 }
 
 #aiosp_settings_form .button-primary.hidden {
@@ -527,10 +506,6 @@ div.aioseop_feature {
 	content: "";
 	position: absolute;
 	right: 0;
-}
-
-.aioseop_feature .flag.pro {
-	display: none;
 }
 
 #aioseop_coming_soon .free.flag,
@@ -635,12 +610,12 @@ div.aioseop_feature#aioseop_opengraph .aioseop_featured_image.active {
 	background-image: url(../../modules/images/SocialMeta-Color-Standard.png);
 }
 
-div.aioseop_feature#aioseop_robots .aioseop_featured_image, 
+div.aioseop_feature#aioseop_robots .aioseop_featured_image,
 div.aioseop_feature#aioseop_bad_robots .aioseop_featured_image {
 	background-image: url(../../modules/images/Robots-BW-Standard.png);
 }
 
-div.aioseop_feature#aioseop_robots .aioseop_featured_image.active, 
+div.aioseop_feature#aioseop_robots .aioseop_featured_image.active,
 div.aioseop_feature#aioseop_bad_robots .aioseop_featured_image.active {
 	background-image: url(../../modules/images/Robots-Color-Standard.png);
 }
@@ -737,12 +712,12 @@ div.aioseop_feature#aioseop_coming_soon2 .aioseop_featured_image {
 		background-image: url(../../modules/images/SocialMeta-Color-Retina.png);
 	}
 
-	div.aioseop_feature#aioseop_robots .aioseop_featured_image, 
+	div.aioseop_feature#aioseop_robots .aioseop_featured_image,
 	div.aioseop_feature#aioseop_bad_robots .aioseop_featured_image {
 		background-image: url(../../modules/images/Robots-BW-Retina.png);
 	}
 
-	div.aioseop_feature#aioseop_robots .aioseop_featured_image.active, 
+	div.aioseop_feature#aioseop_robots .aioseop_featured_image.active,
 	div.aioseop_feature#aioseop_bad_robots .aioseop_featured_image.active {
 		background-image: url(../../modules/images/Robots-Color-Retina.png);
 	}
@@ -811,7 +786,7 @@ div.aioseop_feature#aioseop_coming_soon2 .aioseop_featured_image {
 	margin: 0;
 	padding-left: 1px;
 	min-width: 160px;
-	/*	max-width: 900px; */
+	/*  max-width: 900px; */
 }
 
 /*** Sitemap Additional Pages section ***/
@@ -967,7 +942,7 @@ table.aioseop_table td {
 	padding-right: 2%;
 }
 
-table.aioseop_table td, 
+table.aioseop_table td,
 table.aioseop_table th {
 	padding: 3px;
 }
@@ -1047,7 +1022,7 @@ table.aioseop_table th {
 	margin: 1.5em 0.6em 0.3em;
 }
 
-#aiosp_settings_form .aioseop_no_label, 
+#aiosp_settings_form .aioseop_no_label,
 .aioseop_no_label {
 	float: left;
 	width: 92%;
@@ -1263,16 +1238,6 @@ div.aioseop_notice a.aioseop_dismiss_link {
 	padding: 10px;
 }
 
-.aioseop_loading {
-	background-image: url('../../images/activity.gif');
-	display: inline-block;
-	width: 24px;
-	height: 24px;
-	margin: 0;
-	padding: 0;
-	vertical-align: bottom;
-}
-
 .aioseop_tabs.ui-widget-content {
 	background: none !important;
 }
@@ -1387,7 +1352,7 @@ div.sfwd_debug_error {
 	max-height: 420px;
 }
 
-#aioseop_coming_soon, 
+#aioseop_coming_soon,
 #aioseop_coming_soon2 {
 	padding-top: 40px;
 	text-align: center;
@@ -1462,9 +1427,8 @@ div.sfwd_debug_error {
 	margin: 0;
 }
 
-#aioseop_opengraph_settings .aioseop_options {
-	clear: both;
-	margin-top: 35px;
+#aioseop_opengraph_settings_upgrade_wrapper {
+	margin-top: 10px;
 }
 
 /**

@@ -338,13 +338,9 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 						'auto'     => __( 'First Available Image', 'all-in-one-seo-pack' ),
 					),
 				),
-				'fallback'               => array(
-					'name' => __( 'Use Default If No Image Found', 'all-in-one-seo-pack' ),
-					'type' => 'checkbox',
-				),
 				'dimg'                   => array(
 					'name'    => __( 'Default OG:Image', 'all-in-one-seo-pack' ),
-					'default' => AIOSEOP_PLUGIN_IMAGES_URL . 'default-user-image.png',
+					'default' => ( aioseop_get_site_logo_url() ) ? aioseop_get_site_logo_url() : AIOSEOP_PLUGIN_IMAGES_URL . 'default-user-image.png',
 					'type'    => 'image',
 				),
 				'dimgwidth'              => array(
@@ -510,7 +506,7 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 					'name'    => __( 'Facebook Debug', 'all-in-one-seo-pack' ),
 					'type'    => 'html',
 					'save'    => false,
-					'default' => '<a 
+					'default' => '<a
 						id="aioseop_opengraph_settings_facebook_debug"
 						class="button-primary"
 						href=""
@@ -535,6 +531,20 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 				),
 				'facebook_author'        => array(
 					'name' => __( 'Show Facebook Author on Articles', 'all-in-one-seo-pack' ),
+				),
+				'upgrade'                => array(
+					'type'    => 'html',
+					'label'   => 'none',
+					'default' => sprintf(
+						'<a href="%1$s" target="_blank" title="%2$s" class="aioseop-metabox-pro-cta">%3$s</a>',
+						aioseop_get_utm_url( 'metabox-social' ),
+						sprintf(
+							/* translators: %s: "All in One SEO Pack Pro". */
+							__( 'Upgrade to %s', 'all-in-one-seo-pack' ),
+							AIOSEOP_PLUGIN_NAME . '&nbsp;Pro'
+						),
+						__( 'UPGRADE TO PRO VERSION', 'all-in-one-seo-pack' )
+					),
 				),
 			);
 			// load initial options / set defaults.
@@ -561,7 +571,6 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 						'homeimage',
 						'generate_descriptions',
 						'defimg',
-						'fallback',
 						'dimg',
 						'dimgwidth',
 						'dimgheight',
@@ -604,7 +613,12 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 					'prefix'    => 'aioseop_opengraph_',
 				),
 			);
-			$this->layout    = array(
+
+			if ( ! AIOSEOPPRO ) {
+				array_unshift( $this->locations['settings']['options'], 'upgrade' );
+			}
+
+			$this->layout  = array(
 				'home'      => array(
 					'name'      => __( 'Home Page Settings', 'all-in-one-seo-pack' ),
 					'help_link' => 'https://semperplugins.com/documentation/social-meta-module/#use-aioseo-title-and-description',
@@ -613,7 +627,7 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 				'image'     => array(
 					'name'      => __( 'Image Settings', 'all-in-one-seo-pack' ),
 					'help_link' => 'https://semperplugins.com/documentation/social-meta-module/#select-og-image-source',
-					'options'   => array( 'defimg', 'fallback', 'dimg', 'dimgwidth', 'dimgheight', 'meta_key' ),
+					'options'   => array( 'defimg', 'dimg', 'dimgwidth', 'dimgheight', 'meta_key' ),
 				),
 				'facebook'  => array(
 					'name'      => __( 'Facebook Settings', 'all-in-one-seo-pack' ),
@@ -647,7 +661,7 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 					'options'   => array( 'scan_header' ),
 				),
 			);
-			$other_options   = array();
+			$other_options = array();
 			foreach ( $this->layout as $k => $v ) {
 				$other_options = array_merge( $other_options, $v['options'] );
 			}
@@ -783,7 +797,7 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 							}
 						}
 						$default_fb_type = $this->options[ "aiosp_opengraph_{$current_post_type}_fb_object_type" ];
-						// https://github.com/semperfiwebdesign/all-in-one-seo-pack/issues/1013
+						// https://github.com/awesomemotive/all-in-one-seo-pack/issues/1013
 						// if 'blog' is the selected type but because it is no longer a schema type, we use 'website' instead.
 						if ( 'blog' === $default_fb_type ) {
 							$default_fb_type = 'website';
@@ -899,7 +913,7 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 			}
 			$options = wp_parse_args( $options, $opts );
 
-			// @issue #1013 ( https://github.com/semperfiwebdesign/all-in-one-seo-pack/issues/1013 ).
+			// @issue #1013 ( https://github.com/awesomemotive/all-in-one-seo-pack/issues/1013 ).
 			$post_types = $this->get_post_type_titles();
 			foreach ( $post_types as $slug => $name ) {
 				$field = 'aiosp_opengraph_' . $slug . '_fb_object_type';
@@ -1147,8 +1161,8 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 				$description = $metabox['aioseop_opengraph_settings_desc'];
 
 				// Let's make a note of manually provided descriptions/titles as they might need special handling.
-				// @issue #808 ( https://github.com/semperfiwebdesign/all-in-one-seo-pack/issues/808 ).
-				// @issue #2296 ( https://github.com/semperfiwebdesign/all-in-one-seo-pack/issues/2296 ).
+				// @issue #808 ( https://github.com/awesomemotive/all-in-one-seo-pack/issues/808 ).
+				// @issue #2296 ( https://github.com/awesomemotive/all-in-one-seo-pack/issues/2296 ).
 				$title_from_main_settings = trim( strip_tags( get_post_meta( $post->ID, '_aioseop_title', true ) ) );
 				$desc_from_main_settings  = trim( strip_tags( get_post_meta( $post->ID, '_aioseop_description', true ) ) );
 				if ( empty( $title ) && empty( $title_from_main_settings ) ) {
@@ -1244,7 +1258,7 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 					$description = get_queried_object()->description;
 				}
 				if ( empty( $type ) ) {
-					// Pro Issue #321 ( https://github.com/semperfiwebdesign/aioseop-pro/issues/321 ).
+					// Pro Issue #321 ( https://github.com/awesomemotive/aioseop-pro/issues/321 ).
 					if ( AIOSEOPPRO && ( is_category() || is_tag() || is_tax() ) ) {
 						$og_options        = $aioseop_options['modules'][ $this->prefix . 'options' ];
 						$current_post_type = get_post_type();
@@ -1336,6 +1350,10 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 			if ( empty( $thumbnail ) ) {
 				if ( empty( $this->options['aiosp_opengraph_defimg'] ) ) {
 					$thumbnail = $this->options['aiosp_opengraph_dimg'];
+					if ( aioseop_get_site_logo_url() &&
+						( AIOSEOP_PLUGIN_IMAGES_URL . 'default-user-image.png' === $thumbnail ) || empty( $thumbnail ) ) {
+						$thumbnail = aioseop_get_site_logo_url();
+					}
 				} else {
 					$img_type = $this->options['aiosp_opengraph_defimg'];
 					if ( ! empty( $post ) ) {
@@ -1382,8 +1400,14 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 				}
 			}
 
-			if ( empty( $thumbnail ) && ! empty( $this->options['aiosp_opengraph_fallback'] ) ) {
+			if ( empty( $thumbnail ) ) {
 				$thumbnail = $this->options['aiosp_opengraph_dimg'];
+
+				if ( aioseop_get_site_logo_url() &&
+					( AIOSEOP_PLUGIN_IMAGES_URL . 'default-user-image.png' === $thumbnail ) || empty( $thumbnail ) ) {
+					$thumbnail = aioseop_get_site_logo_url();
+				}
+
 				if ( ! empty( $post ) ) {
 					/**
 					 * Customize the default image per post/post_type.
@@ -1506,8 +1530,8 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 				),
 			);
 
-			// Issue #1848 ( https://github.com/semperfiwebdesign/all-in-one-seo-pack/issues/1848 ).
-			// Issue #2867 ( https://github.com/semperfiwebdesign/all-in-one-seo-pack/issues/2867 ).
+			// Issue #1848 ( https://github.com/awesomemotive/all-in-one-seo-pack/issues/1848 ).
+			// Issue #2867 ( https://github.com/awesomemotive/all-in-one-seo-pack/issues/2867 ).
 			if ( is_ssl() ) {
 				$meta['facebook'] += array( 'og:image:secure_url' => $thumbnail );
 				$meta['facebook'] += array( 'og:video:secure_url' => $video );
@@ -1590,7 +1614,7 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 		function handle_meta_tag( $value, $network, $meta_tag, $extra_params ) {
 			switch ( $meta_tag ) {
 				case 'type':
-					// @issue 1013 ( https://github.com/semperfiwebdesign/all-in-one-seo-pack/issues/1013 ).
+					// @issue 1013 ( https://github.com/awesomemotive/all-in-one-seo-pack/issues/1013 ).
 					if ( 'blog' === $value ) {
 						$value = 'website';
 					}
@@ -1609,8 +1633,8 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 			 *
 			 * @since 3.0
 			 *
-			 * @issue https://github.com/semperfiwebdesign/all-in-one-seo-pack/issues/808
-			 * @issue https://github.com/semperfiwebdesign/all-in-one-seo-pack/issues/2296
+			 * @issue https://github.com/awesomemotive/all-in-one-seo-pack/issues/808
+			 * @issue https://github.com/awesomemotive/all-in-one-seo-pack/issues/2296
 			 * @link https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/markup.html
 			 *
 			 * @param bool The value that is proposed to be shown in the tag.
@@ -1625,11 +1649,11 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 			if ( isset( $extra_params['auto_generate_desc'] ) && $extra_params['auto_generate_desc'] ) {
 				switch ( $meta_tag ) {
 					case 'twitter:title':
-						$value = trim( $this->substr( $value, 0, 70 ) );
+						$value = trim( AIOSEOP_PHP_Functions::substr( $value, 0, 70 ) );
 						break;
 					case 'og:description':
 					case 'twitter:description':
-						$value = trim( $this->substr( $value, 0, 200 ) );
+						$value = trim( AIOSEOP_PHP_Functions::substr( $value, 0, 200 ) );
 						break;
 				}
 			}
@@ -1896,6 +1920,14 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 						AIOSEOP_VERSION,
 						true
 					);
+
+					wp_enqueue_script(
+						'aioseop-opengraph-script',
+						AIOSEOP_PLUGIN_URL . 'js/modules/aioseop_opengraph.js',
+						array(),
+						AIOSEOP_VERSION
+					);
+
 					break;
 				default:
 					wp_enqueue_script(
@@ -1912,7 +1944,6 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
 						AIOSEOP_VERSION
 					);
 
-					
 					wp_enqueue_script(
 						'aioseop-admin-functions',
 						AIOSEOP_PLUGIN_URL . 'js/admin/aioseop-admin-functions.js',

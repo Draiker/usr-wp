@@ -62,6 +62,7 @@ class AIOSEOP_Helper {
 				$this->help_text = $this->help_text_performance();
 				break;
 			case 'All_in_One_SEO_Pack_Sitemap':
+			case 'All_in_One_SEO_Pack_Sitemap_Pro':
 				$this->help_text = $this->help_text_sitemap();
 				break;
 			case 'All_in_One_SEO_Pack_Opengraph':
@@ -78,6 +79,9 @@ class AIOSEOP_Helper {
 				break;
 			case 'All_in_One_SEO_Pack_Bad_Robots':
 				$this->help_text = $this->help_text_bad_robots();
+				break;
+			case 'All_in_One_SEO_Pack_Image_Seo':
+				$this->help_text = $this->help_text_image_seo();
 				break;
 		}
 
@@ -102,16 +106,6 @@ class AIOSEOP_Helper {
 	 * @return array
 	 */
 	private function help_text_general() {
-		/*
-		 * Consider changing the construction of the macros.
-		 *
-		 * The name of the macro should NOT be inside _e() or __() because it does not make sense as it
-		 * won't change with the language.
-		 *
-		 * Moreover, it will confuse WPCS and it will try to replace %c (as in %category%) to %$1c.
-		 * Placeholder %s (%something) has been bug fixed.
-		 * @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/698
-		 */
 		// phpcs:disable WordPress.WP.I18n.MissingTranslatorsComment
 		// phpcs:disable WordPress.WP.I18n.UnorderedPlaceholdersText
 		$rtn_help_text = array(
@@ -461,6 +455,23 @@ class AIOSEOP_Helper {
 			'aiosp_use_tags_as_keywords'        => __( 'Check this if you want your tags for a given post used as the Meta Keywords for this post (in addition to any keywords you specify on the Edit Post screen).', 'all-in-one-seo-pack' ),
 			'aiosp_dynamic_postspage_keywords'  => __( 'Check this if you want your keywords on your Posts page (set in WordPress under Settings, Reading, Front Page Displays) and your archive pages to be dynamically generated from the keywords of the posts showing on that page.  If unchecked, it will use the keywords set in the edit page screen for the posts page.', 'all-in-one-seo-pack' ),
 
+			'aiosp_license_key'                 => sprintf(
+				'%s</br></br>%s</br>',
+				sprintf(
+					esc_html__( 'To unlock more features consider %s.', 'all-in-one-seo-pack' ),
+					sprintf(
+						'<a href="%1$s" title="%2$s">%3$s</a>',
+						aioseop_get_utm_url( 'license-key-help-text' ),
+						sprintf( esc_html__( 'Upgrade to %s', 'all-in-one-seo-pack' ), AIOSEOP_PLUGIN_NAME . '&nbsp;Pro' ),
+						esc_html__( 'upgrading to PRO', 'all-in-one-seo-pack' )
+					)
+				),
+				sprintf(
+					esc_html__( 'As a valued %1$s user you receive %2$s, automatically applied at checkout!', 'all-in-one-seo-pack' ),
+					AIOSEOP_PLUGIN_NAME,
+					sprintf( '<span class="aioseop-upsell-discount-amount">%s</span>', esc_html__( '30% off', 'all-in-one-seo-pack' ) )
+				)
+			),
 		);
 
 		// phpcs:disable WordPress.WP.I18n.MissingTranslatorsComment
@@ -670,11 +681,7 @@ class AIOSEOP_Helper {
 			'aiosp_performance_force_rewrites' => 'https://semperplugins.com/documentation/performance-settings/#force-rewrites',
 		);
 
-		foreach ( $help_doc_link as $k1_slug => $v1_url ) {
-			$rtn_help_text[ $k1_slug ] .= '<br /><br /><a href="' . $v1_url . '" target="_blank">' . __( 'Click here for documentation on this setting.', 'all-in-one-seo-pack' ) . '</a>';
-		}
-
-		return $rtn_help_text;
+		return $this->merge_text_with_links( $rtn_help_text, $help_doc_link );
 	}
 
 	/**
@@ -800,11 +807,7 @@ class AIOSEOP_Helper {
 		}
 		*/
 
-		foreach ( $help_doc_link as $k1_slug => $v1_url ) {
-			$rtn_help_text[ $k1_slug ] .= '<br /><br /><a href="' . $v1_url . '" target="_blank">' . __( 'Click here for documentation on this setting.', 'all-in-one-seo-pack' ) . '</a>';
-		}
-
-		return $rtn_help_text;
+		return $this->merge_text_with_links( $rtn_help_text, $help_doc_link );
 	}
 
 	/**
@@ -835,7 +838,7 @@ class AIOSEOP_Helper {
 			'aiosp_opengraph_meta_key'                     => __( 'Enter the name of a custom field (or multiple field names separated by commas) to use that field to specify the Open Graph image on Pages or Posts.', 'all-in-one-seo-pack' ),
 
 			// Facebook Settings.
-			'aiosp_opengraph_key'                          => __( 'Enter your Facebook Admin ID here. You can enter multiple IDs separated by a comma. You can look up your Facebook ID using this tool http://findmyfbid.com/', 'all-in-one-seo-pack' ),
+			'aiosp_opengraph_key'                          => __( 'Enter your Facebook Admin ID here. You can enter multiple IDs separated by a comma.', 'all-in-one-seo-pack' ),
 			'aiosp_opengraph_appid'                        => __( 'Enter your Facebook App ID here. Information about how to get your Facebook App ID can be found at https://developers.facebook.com/docs/apps/register', 'all-in-one-seo-pack' ),
 			'aiosp_opengraph_gen_tags'                     => __( 'Automatically generate article tags for Facebook type article when not provided.', 'all-in-one-seo-pack' ),
 			'aiosp_opengraph_gen_keywords'                 => __( 'Use keywords in generated article tags.', 'all-in-one-seo-pack' ),
@@ -943,11 +946,7 @@ class AIOSEOP_Helper {
 			'aioseop_opengraph_settings_customimg_twitter' => 'https://semperplugins.com/documentation/social-meta-settings-individual-pagepost-settings/#custom-twitter-image',
 		);
 
-		foreach ( $help_doc_link as $k1_slug => $v1_url ) {
-			$rtn_help_text[ $k1_slug ] .= '<br /><br /><a href="' . $v1_url . '" target="_blank">' . __( 'Click here for documentation on this setting.', 'all-in-one-seo-pack' ) . '</a>';
-		}
-
-		return $rtn_help_text;
+		return $this->merge_text_with_links( $rtn_help_text, $help_doc_link );
 	}
 
 	/**
@@ -1009,11 +1008,7 @@ class AIOSEOP_Helper {
 			'aiosp_importer_exporter_export_post_types' => 'https://semperplugins.com/documentation/importer-exporter-module/',
 		);
 
-		foreach ( $help_doc_link as $k1_slug => $v1_url ) {
-			$rtn_help_text[ $k1_slug ] .= '<br /><br /><a href="' . $v1_url . '" target="_blank">' . __( 'Click here for documentation on this setting.', 'all-in-one-seo-pack' ) . '</a>';
-		}
-
-		return $rtn_help_text;
+		return $this->merge_text_with_links( $rtn_help_text, $help_doc_link );
 	}
 
 	/**
@@ -1038,6 +1033,120 @@ class AIOSEOP_Helper {
 	}
 
 	/**
+	 * Returns the tooltip help text for the Image SEO module screen.
+	 *
+	 * @ignore
+	 * @since   3.4.0
+	 *
+	 * @return  array
+	 */
+	private function help_text_image_seo() {
+		$rtn_help_text = array(
+			'aiosp_image_seo_title_format'     =>
+			__( 'This controls the format of the title attribute of your images.', 'all-in-one-seo-pack' ) . '<br />' .
+			__( 'The following macros are supported:', 'all-in-one-seo-pack' ) .
+			'<dl>' .
+				'<dt>%image_title%</dt>' .
+				'<dd>' . __( 'Your image title', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%site_title%</dt>' .
+				'<dd>' . __( 'Your site title', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%site_description%</dt>' .
+				'<dd>' . __( 'Your site description', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%image_seo_title%</dt>' .
+				'<dd>' . __( 'Your image SEO title. This is the title you enter in our metabox', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%image_seo_description%</dt>' .
+				'<dd>' . __( 'Your image SEO description. This is the meta description you enter in our metabox', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%post_seo_title%</dt>' .
+				'<dd>' . __( 'The SEO title set for the post or page', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%post_seo_description%</dt>' .
+				'<dd>' . __( 'The SEO description set for the post or page', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%alt_tag%</dt>' .
+				'<dd>' . __( "Your image's alt tag attribute", 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%post_title%</dt>' .
+				'<dd>' . __( 'The original title of the post or page', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%category_title%</dt>' .
+				'<dd>' . __( 'The title of the category or taxonomy', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%post_date%</dt>' .
+				'<dd>' . sprintf(
+					__( 'The %1$s when the %2$s was published (localized)', 'all-in-one-seo-pack' ),
+					__( 'date', 'all-in-one-seo-pack' ),
+					__( 'image', 'all-in-one-seo-pack' )
+				) . '</dd>' .
+				'<dt>%post_year%</dt>' .
+				'<dd>' . sprintf(
+					__( 'The %1$s when the %2$s was published (localized)', 'all-in-one-seo-pack' ),
+					__( 'year', 'all-in-one-seo-pack' ),
+					__( 'image', 'all-in-one-seo-pack' )
+				) . '</dd>' .
+				'<dt>%post_month%</dt>' .
+				'<dd>' . sprintf(
+					__( 'The %1$s when the %2$s was published (localized)', 'all-in-one-seo-pack' ),
+					__( 'month', 'all-in-one-seo-pack' ),
+					__( 'image', 'all-in-one-seo-pack' )
+				) . '</dd>' .
+				'<dt>%tax_product_cat%</dt>' .
+				'<dd>' . __( 'The title of the first WooCommerce Product Category the Product is assigned to', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%tax_product_tag%</dt>' .
+				'<dd>' . __( 'The title of the first WooCommerce Product Tag the Product is assigned to', 'all-in-one-seo-pack' ) . '</dd>' .
+			'</dl>',
+			'aiosp_image_seo_title_strip_punc' => __( "Enable this setting to strip punctuation characters for your images' title attribute.", 'all-in-one-seo-pack' ),
+			'aiosp_image_seo_alt_format'       =>
+			__( 'This controls the format of the alt tag attribute of your images.', 'all-in-one-seo-pack' ) . '<br />' .
+			__( 'The following macros are supported:', 'all-in-one-seo-pack' ) .
+			'<dl>' .
+				'<dt>%image_title%</dt>' .
+				'<dd>' . __( 'Your image title', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%site_title%</dt>' .
+				'<dd>' . __( 'Your site title', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%site_description%</dt>' .
+				'<dd>' . __( 'Your site description', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%image_seo_title%</dt>' .
+				'<dd>' . __( 'Your image SEO title. This is the title you enter in our metabox', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%image_seo_description%</dt>' .
+				'<dd>' . __( 'Your image SEO description. This is the meta description you enter in our metabox', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%post_seo_title%</dt>' .
+				'<dd>' . __( 'The SEO title set for the post or page', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%post_seo_description%</dt>' .
+				'<dd>' . __( 'The SEO description set for the post or page', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%alt_tag%</dt>' .
+				'<dd>' . __( "Your image's alt tag attribute", 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%post_title%</dt>' .
+				'<dd>' . __( 'The original title of the post or page', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%category_title%</dt>' .
+				'<dd>' . __( 'The title of the category or taxonomy', 'all-in-one-seo-pack' ) . '</dd>' .
+				'<dt>%post_date%</dt>' .
+				'<dd>' . sprintf(
+					__( 'The %1$s when the %2$s was published (localized)', 'all-in-one-seo-pack' ),
+					__( 'date', 'all-in-one-seo-pack' ),
+					__( 'image', 'all-in-one-seo-pack' )
+				) . '</dd>' .
+				'<dt>%post_year%</dt>' .
+				'<dd>' . sprintf(
+					__( 'The %1$s when the %2$s was published (localized)', 'all-in-one-seo-pack' ),
+					__( 'year', 'all-in-one-seo-pack' ),
+					__( 'image', 'all-in-one-seo-pack' )
+				) . '</dd>' .
+				'<dt>%post_month%</dt>' .
+				'<dd>' . sprintf(
+					__( 'The %1$s when the %2$s was published (localized)', 'all-in-one-seo-pack' ),
+					__( 'month', 'all-in-one-seo-pack' ),
+					__( 'image', 'all-in-one-seo-pack' )
+				) . '</dd>' .
+			'</dl>',
+			'aiosp_image_seo_alt_strip_punc'   => __( "Enable this setting to strip punctuation characters for your images' alt tag attribute.", 'all-in-one-seo-pack' ),
+		);
+
+		$help_doc_link = array(
+			'aiosp_image_seo_title_format'     => 'https://semperplugins.com/documentation/image-seo-module/#title-attribute-format',
+			'aiosp_image_seo_title_strip_punc' => 'https://semperplugins.com/documentation/image-seo-module/#strip-punctuation-for-title-attributes',
+			'aiosp_image_seo_alt_format'       => 'https://semperplugins.com/documentation/image-seo-module/#alt-tag-attribute-format',
+			'aiosp_image_seo_alt_strip_punc'   => 'https://semperplugins.com/documentation/image-seo-module/#strip-punctuation-for-alt-tag-attributes',
+		);
+
+		return $this->merge_text_with_links( $rtn_help_text, $help_doc_link );
+	}
+
+	/**
 	 * Help Text Post Meta (Core Module)
 	 *
 	 * @ignore
@@ -1058,6 +1167,8 @@ class AIOSEOP_Helper {
 			'aiosp_noindex'           => __( 'Check this box to ask search engines not to index this page.', 'all-in-one-seo-pack' ),
 			'aiosp_nofollow'          => __( 'Check this box to ask search engines not to follow links from this page.', 'all-in-one-seo-pack' ),
 			'aiosp_sitemap_exclude'   => __( 'Don\'t display this page in the sitemap.', 'all-in-one-seo-pack' ),
+			'aiosp_sitemap_priority'  => __( 'Override the default sitemap priority for this post.', 'all-in-one-seo-pack' ),
+			'aiosp_sitemap_frequency' => __( 'Override the default sitemap frequency for this post.', 'all-in-one-seo-pack' ),
 			'aiosp_disable'           => __( 'Disable SEO on this page.', 'all-in-one-seo-pack' ),
 			'aiosp_disable_analytics' => __( 'Disable Google Analytics on this page.', 'all-in-one-seo-pack' ),
 		);
@@ -1071,12 +1182,24 @@ class AIOSEOP_Helper {
 			'aiosp_noindex'           => 'https://semperplugins.com/documentation/post-settings/#robots-meta-noindex',
 			'aiosp_nofollow'          => 'https://semperplugins.com/documentation/post-settings/#robots-meta-nofollow',
 			'aiosp_sitemap_exclude'   => 'https://semperplugins.com/documentation/post-settings/#exclude-from-sitemap',
+			'aiosp_sitemap_priority'  => 'https://semperplugins.com/documentation/post-settings/#sitemap-priority',
+			'aiosp_sitemap_frequency' => 'https://semperplugins.com/documentation/post-settings/#sitemap-frequency',
 			'aiosp_disable'           => 'https://semperplugins.com/documentation/post-settings/#disable-on-this-post',
 			'aiosp_disable_analytics' => 'https://semperplugins.com/documentation/post-settings/#disable-google-analytics',
 		);
 
 		foreach ( $help_doc_link as $k1_slug => $v1_url ) {
-			$rtn_help_text[ $k1_slug ] .= '<br /><br /><a href="' . $v1_url . '" target="_blank">' . __( 'Click here for documentation on this setting.', 'all-in-one-seo-pack' ) . '</a>';
+			$link_text = __( 'Click here for documentation on this setting.', 'all-in-one-seo-pack' );
+			$link_url  = $v1_url;
+
+			if ( ! AIOSEOPPRO &&
+				( 'aiosp_sitemap_priority' === $k1_slug || 'aiosp_sitemap_frequency' === $k1_slug )
+			) {
+				$link_text = sprintf( __( 'Upgrade to %s to unlock this feature.', 'all-in-one-seo-pack' ), AIOSEOP_PLUGIN_NAME . '&nbsp;Pro' );
+				$link_url  = "https://semperplugins.com/all-in-one-seo-pack-pro-version/?utm_source=WordPress&utm_campaign=liteplugin&utm_medium=$k1_slug";
+			}
+
+			$rtn_help_text[ $k1_slug ] .= '<br /><br /><a href="' . $link_url . '" target="_blank">' . $link_text . '</a>';
 		}
 
 		return $rtn_help_text;
@@ -1099,5 +1222,23 @@ class AIOSEOP_Helper {
 			return esc_html( $this->help_text[ $slug ] );
 		}
 		return 'DEV: Missing Help Text: ' . $slug;
+	}
+
+	/**
+	 * Returns the tooltip help text with their respective documentation links.
+	 *
+	 * @since   3.4.0
+	 *
+	 * @param   array   $doc_text           The tooltip strings.
+	 * @param   array   $doc_links          The links to the docs on our website.
+	 *
+	 * @return  array   $tooltip_content    The tooltip strings paired with their respective documentation links.
+	 */
+	private function merge_text_with_links( $doc_text, $doc_links ) {
+
+		foreach ( $doc_links as $setting_slug => $url ) {
+			$doc_text[ $setting_slug ] .= sprintf( "<br /><br /><a href='%s' target='_blank'>%s</a>", $url, __( 'Click here for documentation on this setting.', 'all-in-one-seo-pack' ) );
+		}
+		return $doc_text;
 	}
 }

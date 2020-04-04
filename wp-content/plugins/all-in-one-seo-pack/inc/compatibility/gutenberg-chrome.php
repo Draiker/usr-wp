@@ -13,7 +13,7 @@ aioseop_chrome_fix_overlapping_metabox();
  * Fixes a CSS compatibility issue between Gutenberg and Chrome v77 that affects meta boxes.
  *
  * @see https://github.com/WordPress/gutenberg/issues/17406
- * @link https://github.com/semperfiwebdesign/all-in-one-seo-pack/issues/2914
+ * @link https://github.com/awesomemotive/all-in-one-seo-pack/issues/2914
  *
  * @since 3.2.8
  *
@@ -36,7 +36,7 @@ function aioseop_chrome_fix_overlapping_metabox() {
  * Change height of a specific Gutenberg CSS class.
  *
  * @see https://github.com/WordPress/gutenberg/issues/17406
- * @link https://github.com/semperfiwebdesign/all-in-one-seo-pack/issues/2914
+ * @link https://github.com/awesomemotive/all-in-one-seo-pack/issues/2914
  *
  * @since 3.2.8
  *

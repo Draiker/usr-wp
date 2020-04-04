@@ -399,13 +399,13 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				/* translators: This is a setting where users can indicate which post types they want to use All in One SEO Pack with. */
 				'name'    => __( 'SEO on only these Content Types', 'all-in-one-seo-pack' ),
 				'type'    => 'multicheckbox',
-				'default' => array( 'post', 'page' ),
+				'default' => array( 'post', 'page', 'product' ),
 			),
 			'taxactive'                   => array(
 				/* translators: This is a setting where users can indicate which taxonomies they want to use All in One SEO Pack with. */
 				'name'    => __( 'SEO on only these taxonomies', 'all-in-one-seo-pack' ),
 				'type'    => 'multicheckbox',
-				'default' => array( 'category', 'post_tag' ),
+				'default' => array( 'category', 'post_tag', 'product_cat', 'product_tag' ),
 			),
 			'cpostnoindex'                => array(
 				/* translators: This is a setting where users can indicate which post types they want to NOINDEX by default. NOINDEX is a value of the HTML robots meta tag that asks search engines not to index the page. */
@@ -516,7 +516,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				),
 			),
 			'ga_anonymize_ip'             => array(
-				/* translators: This is a setting which tells Google Analytics not to track and store the IP addresses of website visitors.	This is required to be compliant with the GDPR for example. */
+				/* translators: This is a setting which tells Google Analytics not to track and store the IP addresses of website visitors. This is required to be compliant with the GDPR for example. */
 				'name'     => __( 'Anonymize IP Addresses', 'all-in-one-seo-pack' ),
 				'type'     => 'checkbox',
 				'condshow' => array(
@@ -867,7 +867,6 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 		);
 
 		if ( ! AIOSEOPPRO ) {
-			unset( $this->default_options['license_key'] );
 			unset( $this->default_options['taxactive'] );
 		}
 
@@ -886,7 +885,6 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				'options'         => array(
 					'edit',
 					'nonce-aioseop-edit',
-					AIOSEOPPRO ? 'support' : 'upgrade',
 					'snippet',
 					'title',
 					'description',
@@ -895,6 +893,8 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 					'noindex',
 					'nofollow',
 					'sitemap_exclude',
+					'sitemap_priority',
+					'sitemap_frequency',
 					'disable',
 					'disable_analytics',
 				),
@@ -914,22 +914,16 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 					'upgrade'            => array(
 						'type'    => 'html',
 						'label'   => 'none',
-						'default' => aiosp_common::get_upgrade_hyperlink(
-							'meta',
+						'default' => sprintf(
+							'<a href="%1$s" target="_blank" title="%2$s" class="aioseop-metabox-pro-cta">%3$s</a>',
+							aioseop_get_utm_url( 'metabox-main' ),
 							sprintf(
-								'%1$s %2$s Pro',
-								/* translators: The complete string is as follows: "Upgrade to All in One SEO Pack Pro". */
-								__( 'Upgrade to', 'all-in-one-seo-pack' ),
-								AIOSEOP_PLUGIN_NAME
+								/* translators: %s: "All in One SEO Pack Pro". */
+								__( 'Upgrade to %s', 'all-in-one-seo-pack' ),
+								AIOSEOP_PLUGIN_NAME . '&nbsp;Pro'
 							),
-							__( 'UPGRADE TO PRO VERSION', 'all-in-one-seo-pack' ),
-							'_blank'
+							__( 'UPGRADE TO PRO VERSION', 'all-in-one-seo-pack' )
 						),
-					),
-					'support'            => array(
-						'type'    => 'html',
-						'label'   => 'none',
-						'default' => '<a target="_blank" href="https://semperplugins.com/support/">' . __( 'Support Forum', 'all-in-one-seo-pack' ) . '</a>',
 					),
 					'snippet'            => array(
 						/* translators: The preview snippet shows how the page will look like in the search results (title, meta description and permalink). */
@@ -966,16 +960,83 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 						/* translators: This is a setting that allows users to add the NOINDEX robots meta tag value to the current post/page. */
 						'name'    => __( 'NOINDEX this page/post', 'all-in-one-seo-pack' ),
 						'default' => '',
+
 					),
 					'nofollow'           => array(
 						/* translators: This is a setting that allows users to add the NOFOLLOW robots meta tag value to the current post/page. */
 						'name'    => __( 'NOFOLLOW this page/post', 'all-in-one-seo-pack' ),
 						'default' => '',
 					),
-					/* translators: This is a setting that allows users to exclude the current post/page from the sitemap. */
-					'sitemap_exclude'    => array( 'name' => __( 'Exclude From Sitemap', 'all-in-one-seo-pack' ) ),
+					'sitemap_exclude'    => array(
+						'name'     => __( 'Exclude From Sitemap', 'all-in-one-seo-pack' ),
+						'condshow' => array(
+							'aiosp_noindex' => array(
+								'lhs' => 'aiosp_noindex',
+								'op'  => '!=',
+								'rhs' => 'on',
+							),
+						),
+					),
+					'sitemap_priority'   => array(
+						/* translators: This is a setting that allows users to override the global sitemap priority value for a given post/term. */
+						'name'            => __( 'Sitemap Priority', 'all-in-one-seo-pack' ),
+						'type'            => 'select',
+						'condshow'        => array(
+							'aiosp_noindex'         => array(
+								'lhs' => 'aiosp_noindex',
+								'op'  => '!=',
+								'rhs' => 'on',
+							),
+							'aiosp_sitemap_exclude' => array(
+								'lhs' => 'aiosp_sitemap_exclude',
+								'op'  => '!=',
+								'rhs' => 'on',
+							),
+						),
+						'initial_options' => array(
+							''    => __( 'Do Not Override', 'all-in-one-seo-pack' ),
+							'0.1' => '10%',
+							'0.2' => '20%',
+							'0.3' => '30%',
+							'0.4' => '40%',
+							'0.5' => '50%',
+							'0.6' => '60%',
+							'0.7' => '70%',
+							'0.8' => '80%',
+							'0.9' => '90%',
+							'1.0' => '100%',
+						),
+					),
+					'sitemap_frequency'  => array(
+						/* translators: This is a setting that allows users to override the global sitemap frequency value for a given post/term. */
+						'name'            => __( 'Sitemap Frequency', 'all-in-one-seo-pack' ),
+						'type'            => 'select',
+						'condshow'        => array(
+							'aiosp_noindex'         => array(
+								'lhs' => 'aiosp_noindex',
+								'op'  => '!=',
+								'rhs' => 'on',
+							),
+							'aiosp_sitemap_exclude' => array(
+								'lhs' => 'aiosp_sitemap_exclude',
+								'op'  => '!=',
+								'rhs' => 'on',
+							),
+						),
+						'initial_options' => array(
+							''        => __( 'Do Not Override', 'all-in-one-seo-pack' ),
+							'always'  => __( 'Always', 'all-in-one-seo-pack' ),
+							'hourly'  => __( 'Hourly', 'all-in-one-seo-pack' ),
+							'daily'   => __( 'Daily', 'all-in-one-seo-pack' ),
+							'weekly'  => __( 'Weekly', 'all-in-one-seo-pack' ),
+							'monthly' => __( 'Monthly', 'all-in-one-seo-pack' ),
+							'yearly'  => __( 'Yearly', 'all-in-one-seo-pack' ),
+							'never'   => __( 'Never', 'all-in-one-seo-pack' ),
+						),
+					),
 					/* translators: This is a setting that allows users to disable All in One SEO Pack for the current post/page. */
 					'disable'            => array( 'name' => __( 'Disable on this page/post', 'all-in-one-seo-pack' ) ),
+					/* translators: This is a setting that allows users to exclude the current post/page from the sitemap. */
 					'disable_analytics'  => array(
 						/* translators: This is a setting that allows users to disable Google Analytics tracking for the current post/page. */
 							'name' => __( 'Disable Google Analytics', 'all-in-one-seo-pack' ),
@@ -986,6 +1047,12 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				'display'         => ! empty( $aioseop_options['aiosp_cpostactive'] ) ? array( $aioseop_options['aiosp_cpostactive'] ) : array( '___null___' ),
 			),
 		);
+
+		if ( ! AIOSEOPPRO ) {
+			array_unshift( $this->locations['aiosp']['options'], 'upgrade' );
+			$this->locations['aiosp']['default_options']['sitemap_priority']['disabled']  = 'disabled';
+			$this->locations['aiosp']['default_options']['sitemap_frequency']['disabled'] = 'disabled';
+		}
 
 		$this->layout = array(
 			'default'   => array(
@@ -1167,11 +1234,12 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 
 		if ( is_admin() ) {
 			add_action( 'aioseop_global_settings_header', array( $this, 'display_right_sidebar' ) );
-			add_action( 'aioseop_global_settings_footer', array( $this, 'display_settings_footer' ) );
 			add_action( 'output_option', array( $this, 'custom_output_option' ), 10, 2 );
 			add_action( 'admin_init', array( $this, 'visibility_warning' ) );
+			add_action( 'admin_init', array( $this, 'review_plugin_cta' ) );
 			add_action( 'admin_init', array( $this, 'woo_upgrade_notice' ) );
-
+			add_action( 'admin_init', array( $this, 'check_php_version' ) );
+			add_action( 'admin_init', array( 'AIOSEOP_Education', 'register_conflicting_plugin_notice' ) );
 		}
 		if ( AIOSEOPPRO ) {
 			add_action( 'split_shared_term', array( $this, 'split_shared_term' ), 10, 4 );
@@ -1214,13 +1282,13 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 		$w                         = $info['w'];
 		$p                         = $info['p'];
 
-		if ( $this->strlen( $title ) > 70 ) {
+		if ( AIOSEOP_PHP_Functions::strlen( $title ) > 70 ) {
 			$title = $this->trim_excerpt_without_filters(
 				$this->html_entity_decode( $title ),
 				70
 			) . '...';
 		}
-		if ( $this->strlen( $description ) > 156 ) {
+		if ( AIOSEOP_PHP_Functions::strlen( $description ) > 156 ) {
 			$description = $this->trim_excerpt_without_filters(
 				$this->html_entity_decode( $description ),
 				156
@@ -1619,6 +1687,8 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				'disable_analytics',
 				'noindex',
 				'nofollow',
+				'sitemap_priority',
+				'sitemap_frequency',
 			);
 			if ( ! ( ! empty( $this->options['aiosp_can'] ) ) ) {
 				unset( $optlist['custom_link'] );
@@ -2131,7 +2201,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			$search = esc_attr( stripslashes( $s ) );
 			$title  = $search;
 		} elseif ( ( is_tax() || is_category() ) && ! is_feed() ) {
-			$category_name = $this->ucwords( $this->internationalize( single_cat_title( '', false ) ) );
+			$category_name = AIOSEOP_PHP_Functions::ucwords( $this->internationalize( single_cat_title( '', false ) ) );
 			$title         = $category_name;
 		} elseif ( is_page() ) {
 			$title = $this->internationalize( single_post_title( '', false ) );
@@ -2207,7 +2277,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 		$request_a   = explode( ' ', $request );
 		$request_new = array();
 		foreach ( $request_a as $token ) {
-			$request_new[] = $this->ucwords( trim( $token ) );
+			$request_new[] = AIOSEOP_PHP_Functions::ucwords( trim( $token ) );
 		}
 		$request = implode( ' ', $request_new );
 
@@ -2309,10 +2379,10 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			$new_title = str_replace( "%{$type}_author_nicename%", $authordata->user_nicename, $new_title );
 		}
 		if ( false !== strpos( $new_title, "%{$type}_author_firstname%", 0 ) ) {
-			$new_title = str_replace( "%{$type}_author_firstname%", $this->ucwords( $authordata->first_name ), $new_title );
+			$new_title = str_replace( "%{$type}_author_firstname%", AIOSEOP_PHP_Functions::ucwords( $authordata->first_name ), $new_title );
 		}
 		if ( false !== strpos( $new_title, "%{$type}_author_lastname%", 0 ) ) {
-			$new_title = str_replace( "%{$type}_author_lastname%", $this->ucwords( $authordata->last_name ), $new_title );
+			$new_title = str_replace( "%{$type}_author_lastname%", AIOSEOP_PHP_Functions::ucwords( $authordata->last_name ), $new_title );
 		}
 		if ( false !== strpos( $new_title, '%current_date%', 0 ) ) {
 			$new_title = str_replace( '%current_date%', aioseop_formatted_date(), $new_title );
@@ -2990,7 +3060,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			$max = $this->maximum_description_length;
 		}
 		$max_orig = $max;
-		$len      = $this->strlen( $text2 );
+		$len      = AIOSEOP_PHP_Functions::strlen( $text2 );
 		if ( $max < $len ) {
 			if ( function_exists( 'mb_strrpos' ) ) {
 				$pos = mb_strrpos( $text2, ' ', - ( $len - $max ), 'UTF-8' );
@@ -3013,7 +3083,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				$max = $max_orig;
 			}
 		}
-		$text = $this->substr( $text, 0, $max );
+		$text = AIOSEOP_PHP_Functions::substr( $text, 0, $max );
 
 		return trim( $text );
 	}
@@ -3045,15 +3115,15 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 
 		if ( get_query_var( 'm' ) ) {
 			$m = preg_replace( '/[^0-9]/', '', get_query_var( 'm' ) );
-			switch ( $this->strlen( $m ) ) {
+			switch ( AIOSEOP_PHP_Functions::strlen( $m ) ) {
 				case 4:
 					$link = get_year_link( $m );
 					break;
 				case 6:
-					$link = get_month_link( $this->substr( $m, 0, 4 ), $this->substr( $m, 4, 2 ) );
+					$link = get_month_link( AIOSEOP_PHP_Functions::substr( $m, 0, 4 ), AIOSEOP_PHP_Functions::substr( $m, 4, 2 ) );
 					break;
 				case 8:
-					$link = get_day_link( $this->substr( $m, 0, 4 ), $this->substr( $m, 4, 2 ), $this->substr( $m, 6, 2 ) );
+					$link = get_day_link( AIOSEOP_PHP_Functions::substr( $m, 0, 4 ), AIOSEOP_PHP_Functions::substr( $m, 4, 2 ), AIOSEOP_PHP_Functions::substr( $m, 6, 2 ) );
 					break;
 				default:
 					return false;
@@ -3354,7 +3424,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 		}
 		if ( ! empty( $keywords ) ) {
 			foreach ( $keywords as $word ) {
-				$small_keywords[] = trim( $this->strtolower( $word ) );
+				$small_keywords[] = trim( AIOSEOP_PHP_Functions::strtolower( $word ) );
 			}
 		}
 
@@ -3404,6 +3474,8 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			'disable_analytics',
 			'noindex',
 			'nofollow',
+			'sitemap_priority',
+			'sitemap_frequency',
 		);
 		foreach ( $optlist as $f ) {
 			$meta = get_term_meta( $term_id, '_aioseop_' . $f, true );
@@ -3465,7 +3537,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 					?>
 				});
 			}
-			<?php	} ?>
+			<?php } ?>
 		</script>
 		<?php
 	}
@@ -3677,11 +3749,12 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			case 'post.php':
 			case 'post-new.php':
 				$title_format       = $this->get_preview_snippet_title();
-				$extra_title_length = strlen( preg_replace( '/<span.*\/span>/', '', $title_format ) );
+				$extra_title_length = strlen( preg_replace( '/<span.*\/span>/', '', html_entity_decode( $title_format, ENT_QUOTES ) ) );
 
 				$snippet_preview_data = array(
 					'autogenerateDescriptions' => $aioseop_options['aiosp_generate_descriptions'],
 					'skipExcerpt'              => $aioseop_options['aiosp_skip_excerpt'],
+					'dontTruncateDescriptions' => $aioseop_options['aiosp_dont_truncate_descriptions'],
 				);
 
 				$count_chars_data['extraTitleLength']         = $extra_title_length;
@@ -3695,11 +3768,16 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				);
 				wp_localize_script( 'aioseop-preview-snippet', 'aioseop_preview_snippet', $snippet_preview_data );
 
+				/*
+				 * @see XRegExp
+				 * @link http://xregexp.com/
+				 * @link https://github.com/slevithan/xregexp
+				 */
 				wp_enqueue_script(
 					'xregexp',
-					'https://cdn.jsdelivr.net/npm/xregexp@3.2.0',
+					AIOSEOP_PLUGIN_URL . 'js/admin/xregexp-v3.2.0/xregexp-all.min.js',
 					array(),
-					'3.2.0'
+					AIOSEOP_VERSION
 				);
 				// No break required.
 			case 'toplevel_page_' . AIOSEOP_PLUGIN_DIRNAME . '/aioseop_class':
@@ -3867,6 +3945,8 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			}
 
 			if ( ! is_object( $aioseop_sitemap ) ) {
+				unset( $settings['aiosp_sitemap_priority'] );
+				unset( $settings['aiosp_sitemap_frequency'] );
 				unset( $settings['aiosp_sitemap_exclude'] );
 			}
 
@@ -4084,8 +4164,8 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 		$title             = trim( strip_tags( $title ) );
 		$title_tag_start   = '<title';
 		$title_tag_end     = '</title';
-		$start             = $this->strpos( $content, $title_tag_start, 0 );
-		$end               = $this->strpos( $content, $title_tag_end, 0 );
+		$start             = AIOSEOP_PHP_Functions::strpos( $content, $title_tag_start, 0 );
+		$end               = AIOSEOP_PHP_Functions::strpos( $content, $title_tag_end, 0 );
 		$this->title_start = $start;
 		$this->title_end   = $end;
 		$this->orig_title  = $title;
@@ -4213,6 +4293,47 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 	}
 
 	/**
+	 * Check the current PHP version and display a notice if on unsupported PHP.
+	 *
+	 * @since 3.4.0
+	 */
+	function check_php_version() {
+
+		// Display for PHP below 5.6
+		if ( version_compare( PHP_VERSION, '5.4', '>=' ) ) {
+			return;
+		}
+
+		// Display for admins only.
+		if ( ! is_super_admin() ) {
+			return;
+		}
+
+		// Display on Dashboard page only.
+		if ( isset( $GLOBALS['pagenow'] ) && 'index.php' !== $GLOBALS['pagenow'] ) {
+			return;
+		}
+
+		global $aioseop_notices;
+		$aioseop_notices->reset_notice( 'check_php_version' );
+		$aioseop_notices->activate_notice( 'check_php_version' );
+	}
+
+	/**
+	 * Review CTA
+	 *
+	 * Asks user if they are enjoying the plugin and subsequently points them to a different URL for a review.
+	 *
+	 * @since 3.4
+	 *
+	 * @see `self::constructor()` with 'all_admin_notices' Filter Hook
+	 */
+	function review_plugin_cta() {
+		global $aioseop_notices;
+		$aioseop_notices->activate_notice( 'review_plugin_cta' );
+	}
+
+	/**
 	 * WooCommerce Upgrade Notice
 	 *
 	 * @since ?
@@ -4288,7 +4409,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 		global $aioseop_options;
 
 		// Handle the description format.
-		if ( isset( $description ) && false !== $description && ( $this->strlen( $description ) > $this->minimum_description_length ) && ! ( is_front_page() && is_paged() ) ) {
+		if ( isset( $description ) && false !== $description && ( AIOSEOP_PHP_Functions::strlen( $description ) > $this->minimum_description_length ) && ! ( is_front_page() && is_paged() ) ) {
 			$description = $this->trim_description( $description );
 			if ( ! isset( $meta_string ) ) {
 				$meta_string = '';
@@ -4382,10 +4503,10 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 		if ( ! $this->is_page_included() ) {
 
 			$aioseop_robots_meta = new AIOSEOP_Robots_Meta();
-			$robots_meta         = $aioseop_robots_meta->get_robots_meta();
+			$robots_meta         = $aioseop_robots_meta->get_robots_meta_tag();
 
 			if ( ! empty( $robots_meta ) ) {
-				echo sprintf( '<meta name="robots" content="%s"', esc_attr( $robots_meta ) ) . " />\n";
+				echo $robots_meta;
 			}
 
 			if ( ! empty( $old_wp_query ) ) {
@@ -4433,8 +4554,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 		// Logging - rewrite handler check for output buffering.
 		$this->check_rewrite_handler();
 
-		/* translators: The complete string is: "All in One SEO Pack by Michael Torbert of Semper Fi Web Design". The placeholders shouldn't be altered; only the words "by" and "of" should be translated. */
-		printf( "\n<!-- " . __( '%1$s by %2$s of %3$s', 'all-in-one-seo-pack' ), AIOSEOP_PLUGIN_NAME . ' ' . $this->version, 'Michael Torbert', 'Semper Fi Web Design' );
+		printf( "\n<!-- " . AIOSEOP_PLUGIN_NAME . ' ' . $this->version );
 
 		if ( $this->ob_start_detected ) {
 			echo 'ob_start_detected ';
@@ -4448,7 +4568,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 		$save_posts = $posts;
 
 		// This outputs robots meta tags and custom canonical URl on WooCommerce product archive page.
-		// See Github issue https://github.com/semperfiwebdesign/all-in-one-seo-pack/issues/755.
+		// See Github issue https://github.com/awesomemotive/all-in-one-seo-pack/issues/755.
 		if ( function_exists( 'wc_get_page_id' ) && is_post_type_archive( 'product' ) ) {
 			$post_id = wc_get_page_id( 'shop' );
 			if ( $post_id ) {
@@ -4503,7 +4623,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 		}
 
 		$aioseop_robots_meta = new AIOSEOP_Robots_Meta();
-		$robots_meta         = $aioseop_robots_meta->get_robots_meta();
+		$robots_meta         = $aioseop_robots_meta->get_robots_meta_tag();
 
 		if ( ! empty( $robots_meta ) ) {
 			$meta_string .= $robots_meta;
@@ -4653,7 +4773,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			}
 			if (
 					sizeof( $active_handlers ) > 0 &&
-					$this->strtolower( $active_handlers[ sizeof( $active_handlers ) - 1 ] ) == $this->strtolower( 'All_in_One_SEO_Pack::output_callback_for_title' )
+					AIOSEOP_PHP_Functions::strtolower( $active_handlers[ sizeof( $active_handlers ) - 1 ] ) == AIOSEOP_PHP_Functions::strtolower( 'All_in_One_SEO_Pack::output_callback_for_title' )
 			) {
 				ob_end_flush();
 			} else {
@@ -4933,27 +5053,35 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 	}
 
 	/**
-	 * Save Post Data
+	 * Saves the data of our metabox settings for a post.
 	 *
-	 * @since ?
+	 * @since   ?
+	 * @since   3.4.0   Added support for priority/frequency + minor refactoring.
 	 *
-	 * @param $id
-	 * @return bool
+	 * @param   int     $id     The ID of the post.
+	 * @return  bool            Returns false if there is no POST data.
 	 */
 	function save_post_data( $id ) {
 		$awmp_edit = null;
 		$nonce     = null;
+
 		if ( empty( $_POST ) ) {
 			return false;
 		}
+
 		if ( isset( $_POST['aiosp_edit'] ) ) {
 			$awmp_edit = $_POST['aiosp_edit'];
 		}
+
 		if ( isset( $_POST['nonce-aioseop-edit'] ) ) {
 			$nonce = $_POST['nonce-aioseop-edit'];
 		}
 
 		if ( isset( $awmp_edit ) && ! empty( $awmp_edit ) && wp_verify_nonce( $nonce, 'edit-aioseop-nonce' ) ) {
+
+			if ( empty( $this->options['aiosp_can'] ) ) {
+				unset( $optlist['custom_link'] );
+			}
 
 			$optlist = array(
 				'keywords',
@@ -4965,50 +5093,28 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				'disable_analytics',
 				'noindex',
 				'nofollow',
+				'sitemap_priority',
+				'sitemap_frequency',
 			);
-			if ( ! ( ! empty( $this->options['aiosp_can'] ) ) ) {
-				unset( $optlist['custom_link'] );
+
+			if ( ! AIOSEOPPRO ) {
+				$optlist = array_diff( $optlist, array( 'sitemap_priority', 'sitemap_frequency' ) );
 			}
-			foreach ( $optlist as $f ) {
-				$field = "aiosp_$f";
+
+			foreach ( $optlist as $field_name ) {
+				$field = "aiosp_$field_name";
 				if ( isset( $_POST[ $field ] ) ) {
 					$$field = $_POST[ $field ];
 				}
+
+				delete_post_meta( $id, "_aioseop_{$field_name}" );
 			}
 
-			$optlist = array(
-				'keywords',
-				'description',
-				'title',
-				'custom_link',
-				'noindex',
-				'nofollow',
-			);
-			if ( ! ( ! empty( $this->options['aiosp_can'] ) ) ) {
-				unset( $optlist['custom_link'] );
-			}
-			foreach ( $optlist as $f ) {
-				delete_post_meta( $id, "_aioseop_{$f}" );
-			}
-
-				delete_post_meta( $id, '_aioseop_sitemap_exclude' );
-				delete_post_meta( $id, '_aioseop_disable' );
-				delete_post_meta( $id, '_aioseop_disable_analytics' );
-
-			foreach ( $optlist as $f ) {
-				$var   = "aiosp_$f";
-				$field = "_aioseop_$f";
+			foreach ( $optlist as $field_name ) {
+				$var   = "aiosp_$field_name";
+				$field = "_aioseop_$field_name";
 				if ( isset( $$var ) && ! empty( $$var ) ) {
 					add_post_meta( $id, $field, $$var );
-				}
-			}
-			if ( isset( $aiosp_sitemap_exclude ) && ! empty( $aiosp_sitemap_exclude ) ) {
-				add_post_meta( $id, '_aioseop_sitemap_exclude', $aiosp_sitemap_exclude );
-			}
-			if ( isset( $aiosp_disable ) && ! empty( $aiosp_disable ) ) {
-				add_post_meta( $id, '_aioseop_disable', $aiosp_disable );
-				if ( isset( $aiosp_disable_analytics ) && ! empty( $aiosp_disable_analytics ) ) {
-					add_post_meta( $id, '_aioseop_disable_analytics', $aiosp_disable_analytics );
 				}
 			}
 		}
@@ -5109,28 +5215,31 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			$wp_admin_bar->add_menu(
 				array(
 					'id'    => AIOSEOP_PLUGIN_DIRNAME,
-					'title' => __( 'SEO', 'all-in-one-seo-pack' ),
-					'href'  => $url,
+					'title' => '<span class="ab-icon aioseop-admin-bar-logo"></span>' . __( 'SEO', 'all-in-one-seo-pack' ),
 				)
 			);
 
-			if ( current_user_can( 'update_plugins' ) && ! AIOSEOPPRO ) {
+			if ( ! is_admin() ) {
 				$wp_admin_bar->add_menu(
 					array(
+						'id'     => 'aioseop-settings',
 						'parent' => AIOSEOP_PLUGIN_DIRNAME,
-						/* translators: This is a CTA action link to upgrade to the premium version of the plugin. */
-						'title'  => __( 'Upgrade To Pro', 'all-in-one-seo-pack' ),
-						'id'     => 'aioseop-pro-upgrade',
-						'href'   => 'https://semperplugins.com/plugins/all-in-one-seo-pack-pro-version/?loc=menu',
-						'meta'   => array( 'target' => '_blank' ),
+						'title'  => __( 'SEO Settings', 'all-in-one-seo-pack' ),
 					)
 				);
-				// phpcs:ignore Squiz.Commenting.InlineComment.InvalidEndChar
-				// add_action( 'admin_bar_menu', array( $this, 'admin_bar_upgrade_menu' ), 1101 );
 			}
 
+			$wp_admin_bar->add_menu(
+				array(
+					'id'     => 'aioseop-settings-general',
+					'parent' => is_admin() ? AIOSEOP_PLUGIN_DIRNAME : 'aioseop-settings',
+					'title'  => __( 'General Settings', 'all-in-one-seo-pack' ),
+					'href'   => $url,
+				)
+			);
+
 			$aioseop_admin_menu = 1;
-			if ( ! is_admin() && ! empty( $post ) ) {
+			if ( ! empty( $post ) ) {
 
 				$blog_page = aiosp_common::get_blog_page( $post );
 				if ( ! empty( $blog_page ) ) {
@@ -5180,6 +5289,20 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 					}
 				}
 			}
+
+			if ( current_user_can( 'update_plugins' ) && ! AIOSEOPPRO ) {
+				$href = aioseop_get_utm_url( 'admin-bar' );
+
+				$wp_admin_bar->add_menu(
+					array(
+						'parent' => AIOSEOP_PLUGIN_DIRNAME,
+						'title'  => __( 'Upgrade to Pro', 'all-in-one-seo-pack' ),
+						'id'     => 'aioseop-pro-upgrade',
+						'href'   => $href,
+						'meta'   => array( 'target' => '_blank' ),
+					)
+				);
+			}
 		}
 	}
 
@@ -5195,13 +5318,14 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 	}
 
 	/**
-	 * Display Category Metaboxes
+	 * Displays our metabox for taxonomy terms.
 	 *
-	 * @since ?
+	 * @since   ?
+	 * @since   3.4.0   Renamed function to better reflect purpose.
 	 *
-	 * @param $tax
+	 * @param   $tax    The taxonomy object.
 	 */
-	function display_category_metaboxes( $tax ) {
+	function display_term_metabox( $tax ) {
 		$screen = 'edit-' . $tax->taxonomy;
 		?>
 		<div id="poststuff">
@@ -5211,80 +5335,70 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 	}
 
 	/**
-	 * Save Category Metaboxes
+	 * Saves the data of our metabox settings for a taxonomy term.
 	 *
-	 * @since ?
+	 * @since   ?
+	 * @since   3.4.0   Added support for priority/frequency + minor refactoring. Renamed function to better reflect purpose.
 	 *
-	 * @param $id
+	 * @param   int     $id     The ID of the taxonomy term.
+	 * @return  bool            Returns false if there is no POST data.
 	 */
-	function save_category_metaboxes( $id ) {
+	function save_term_data( $id ) {
 		$awmp_edit = null;
 		$nonce     = null;
+
 		if ( isset( $_POST['aiosp_edit'] ) ) {
 			$awmp_edit = $_POST['aiosp_edit'];
 		}
+
 		if ( isset( $_POST['nonce-aioseop-edit'] ) ) {
 			$nonce = $_POST['nonce-aioseop-edit'];
 		}
 
 		if ( isset( $awmp_edit ) && ! empty( $awmp_edit ) && wp_verify_nonce( $nonce, 'edit-aioseop-nonce' ) ) {
+
+			if ( empty( $this->options['aiosp_can'] ) ) {
+				unset( $optlist['custom_link'] );
+			}
+
 			$optlist = array(
 				'keywords',
 				'description',
 				'title',
 				'custom_link',
-				'sitemap_exclude',
 				'disable',
 				'disable_analytics',
 				'noindex',
 				'nofollow',
+				'sitemap_exclude',
+				'sitemap_priority',
+				'sitemap_frequency',
 			);
-			foreach ( $optlist as $f ) {
-				$field = "aiosp_$f";
+
+			if ( ! AIOSEOPPRO ) {
+				$optlist = array_diff( $optlist, array( 'sitemap_priority', 'sitemap_frequency' ) );
+			}
+
+			foreach ( $optlist as $field_name ) {
+				$field = "aiosp_$field_name";
 				if ( isset( $_POST[ $field ] ) ) {
 					$$field = $_POST[ $field ];
 				}
+
+				delete_term_meta( $id, "_aioseop_{$field_name}" );
 			}
 
-			$optlist = array(
-				'keywords',
-				'description',
-				'title',
-				'custom_link',
-				'noindex',
-				'nofollow',
-			);
-			if ( ! ( ! empty( $this->options['aiosp_can'] ) ) ) {
-				unset( $optlist['custom_link'] );
-			}
-			foreach ( $optlist as $f ) {
-				delete_term_meta( $id, "_aioseop_{$f}" );
-			}
+			foreach ( $optlist as $field_name ) {
+				$var   = "aiosp_$field_name";
+				$field = "_aioseop_$field_name";
 
-			if ( current_user_can( 'activate_plugins' ) ) {
-				delete_term_meta( $id, '_aioseop_sitemap_exclude' );
-				delete_term_meta( $id, '_aioseop_disable' );
-				delete_term_meta( $id, '_aioseop_disable_analytics' );
-			}
-
-			foreach ( $optlist as $f ) {
-				$var   = "aiosp_$f";
-				$field = "_aioseop_$f";
 				if ( isset( $$var ) && ! empty( $$var ) ) {
 					add_term_meta( $id, $field, $$var );
 				}
 			}
-			if ( isset( $aiosp_sitemap_exclude ) && ! empty( $aiosp_sitemap_exclude ) && current_user_can( 'activate_plugins' ) ) {
-				add_term_meta( $id, '_aioseop_sitemap_exclude', $aiosp_sitemap_exclude );
-			}
-			if ( isset( $aiosp_disable ) && ! empty( $aiosp_disable ) && current_user_can( 'activate_plugins' ) ) {
-				add_term_meta( $id, '_aioseop_disable', $aiosp_disable );
-				if ( isset( $aiosp_disable_analytics ) && ! empty( $aiosp_disable_analytics ) ) {
-					add_term_meta( $id, '_aioseop_disable_analytics', $aiosp_disable_analytics );
-				}
-			}
 		}
 	}
+
 
 	/**
 	 * Admin Menu
@@ -5304,18 +5418,6 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 		}
 
 		$this->update_options();
-
-		/*
-		For now we're removing admin pointers.
-		$this->add_admin_pointers();
-		if ( ! empty( $this->pointers ) ) {
-			foreach ( $this->pointers as $k => $p ) {
-				if ( ! empty( $p['pointer_scope'] ) && ( $p['pointer_scope'] == 'global' ) ) {
-					unset( $this->pointers[ $k ] );
-				}
-			}
-		}
-		*/
 
 		if ( isset( $_POST ) && isset( $_POST['module'] ) && isset( $_POST['nonce-aioseop'] ) && ( 'All_in_One_SEO_Pack' == $_POST['module'] ) && wp_verify_nonce( $_POST['nonce-aioseop'], 'aioseop-nonce' ) ) {
 			if ( isset( $_POST['Submit'] ) && AIOSEOPPRO ) {
@@ -5360,8 +5462,8 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			if ( ! empty( $this->options['aiosp_taxactive'] ) ) {
 				foreach ( $this->options['aiosp_taxactive'] as $tax ) {
 					$this->locations['aiosp']['display'][] = 'edit-' . $tax;
-					add_action( "{$tax}_edit_form", array( $this, 'display_category_metaboxes' ) );
-					add_action( "edited_{$tax}", array( $this, 'save_category_metaboxes' ) );
+					add_action( "{$tax}_edit_form", array( $this, 'display_term_metabox' ) );
+					add_action( "edited_{$tax}", array( $this, 'save_term_data' ) );
 				}
 			}
 		} else {
@@ -5381,27 +5483,10 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 			aioseop_get_menu_icon()
 		);
 
-		add_meta_box(
-			'aioseop-list',
-			__( 'Join Our Mailing List', 'all-in-one-seo-pack' ),
-			array( 'aiosp_metaboxes', 'display_extra_metaboxes' ),
-			'aioseop_metaboxes',
-			'normal',
-			'core'
-		);
-		if ( AIOSEOPPRO ) {
+		if ( ! AIOSEOPPRO ) {
 			add_meta_box(
 				'aioseop-about',
-				__( 'About', 'all-in-one-seo-pack' ),
-				array( 'aiosp_metaboxes', 'display_extra_metaboxes' ),
-				'aioseop_metaboxes',
-				'side',
-				'core'
-			);
-		} else {
-			add_meta_box(
-				'aioseop-about',
-				__( 'About', 'all-in-one-seo-pack' ) . "<span class='Taha' style='float:right;'>" . __( 'Version', 'all-in-one-seo-pack' ) . ' <b>' . AIOSEOP_VERSION . '</b></span>',
+				AIOSEOP_PLUGIN_NAME . '&nbsp;Pro',
 				array( 'aiosp_metaboxes', 'display_extra_metaboxes' ),
 				'aioseop_metaboxes',
 				'side',
@@ -5410,7 +5495,15 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 		}
 		add_meta_box(
 			'aioseop-support',
-			__( 'Support', 'all-in-one-seo-pack' ) . " <span  class='Taha' style='float:right;'>" . __( 'Version', 'all-in-one-seo-pack' ) . ' <b>' . AIOSEOP_VERSION . '</b></span>',
+			__( 'Support', 'all-in-one-seo-pack' ),
+			array( 'aiosp_metaboxes', 'display_extra_metaboxes' ),
+			'aioseop_metaboxes',
+			'side',
+			'core'
+		);
+		add_meta_box(
+			'aioseop-list',
+			__( 'Join Our Mailing List', 'all-in-one-seo-pack' ),
 			array( 'aiosp_metaboxes', 'display_extra_metaboxes' ),
 			'aioseop_metaboxes',
 			'side',
@@ -5441,9 +5534,6 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 							$title = $this->plugin_name . ' - ' . $title;
 						}
 						if ( $tab_num <= 1 ) {
-							if ( ! empty( $m[0]['callback_args']['help_link'] ) ) {
-								$title .= "<a class='aioseop_help_text_link aioseop_meta_box_help' target='_blank' href='" . $m[0]['callback_args']['help_link'] . "'><span>" . __( 'Help', 'all-in-one-seo-pack' ) . '</span></a>';
-							}
 							add_meta_box( $m[0]['id'], $title, $m[0]['callback'], $m[0]['post_type'], $m[0]['context'], $m[0]['priority'], $m[0]['callback_args'] );
 						} elseif ( $tab_num > 1 ) {
 							add_meta_box(
@@ -5494,12 +5584,6 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 		}
 
 		return $order;
-	}
-
-	function display_settings_header() {
-	}
-
-	function display_settings_footer() {
 	}
 
 	/**
@@ -5639,7 +5723,7 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 				<FORM action='' method='post' name='aioseop-migrate-options'>
 					<input type='hidden' name='nonce-aioseop-migrate-options' value='" . wp_create_nonce( 'aioseop-migrate-nonce-options' ) . "' />
 					<input type='submit' name='aioseop_migrate_options' class='button-primary' value='Update Database Options'>
-		 		</FORM>
+				</FORM>
 			</p></div>";
 			aioseop_output_dismissable_notice( $msg, '', 'error' );
 		}
@@ -5667,17 +5751,6 @@ class All_in_One_SEO_Pack extends All_in_One_SEO_Pack_Module {
 					});
 					//]]>
 				</script>
-				<?php if ( ! AIOSEOPPRO ) { ?>
-					<div class="aioseop_advert aioseop_nopad_all">
-						<?php $adid = mt_rand( 21, 22 ); ?>
-							<a
-								href="https://www.wincher.com/?referer=all-in-one-seo-pack&adreferer=banner<?php echo $adid; ?>"
-								target="_blank" aria-label="<?php _e( 'Banner advert for free Wincher rank checker plugin', 'all-in-one-seo-pack' ); ?>">
-								<div class=wincherad id=wincher<?php echo $adid; ?>>
-								</div>
-							</a>
-					</div>
-				<?php } ?>
 			</div>
 		</div>
 		<?php

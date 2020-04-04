@@ -255,7 +255,20 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Module_Manager' ) ) {
 				}
 			}
 			if ( $mod_enable ) {
-				return $this->do_load_module( $mod );
+				if ( AIOSEOPPRO ) {
+					return $this->do_load_module( $mod );
+				}
+
+				// Don't load Pro modules if Pro was previously installed.
+				switch ( $mod ) {
+					case 'video_sitemap': // phpcs:ignore PSR2.ControlStructures.SwitchDeclaration
+					case 'image_seo': { // phpcs:ignore PSR2.ControlStructures.SwitchDeclaration
+						break;
+					}
+					default: { // phpcs:ignore PSR2.ControlStructures.SwitchDeclaration
+						return $this->do_load_module( $mod );
+					}
+				}
 			}
 
 			return false;
