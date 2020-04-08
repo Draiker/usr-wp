@@ -1,0 +1,38 @@
+
+.#{$theme-prefix}searchbar {
+	$size: 46px;
+	position: fixed;
+	width: 100%;
+	width: 100vw;
+	height: $size + 8px;
+	overflow: hidden;
+	transform: translateX(100%);
+	z-index: 500;
+	top: 0;
+	left: 0;
+	transition-duration: 0.3s;
+	transition-timing-function: cubic-bezier(0.1,0,0.3,1);
+	line-height: $size;
+	padding: 4px 16px;
+	form {
+		margin: 0;
+		padding: 0;
+		height: $size + 8px;
+		width: 80%;
+		width: calc(100% - #{$size} );
+		float: left;
+		input {
+			width: 100%;
+			height: $size;
+			line-height: $size;
+			font-size: 1.4rem;
+			padding-right: 10px;
+			border: none;
+			background: transparent;
+			color: inherit;
+		}
+	}
+	&.open {
+		transform: translateX(0%);
+	}
+}

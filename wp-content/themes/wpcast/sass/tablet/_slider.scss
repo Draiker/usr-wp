@@ -1,0 +1,54 @@
+// slider tablet
+.#{$theme-prefix}slider {
+	&__item {
+		padding-top: 52%; // change in tablet and desktop 
+	}
+	&__c {
+		padding-top: 0; // change in tablet and desktop
+		.#{$theme-prefix}container {
+			// mobile only:
+			height: auto;// change in tablet and desktop
+			overflow: hidden;// change in tablet and desktop
+			bottom: auto;// change in tablet and desktop
+			position: absolute;// change in tablet and desktop
+			width: 70%;// change in tablet and desktop
+			max-width: 750px;
+			padding:  50px 40px 60px 50px;// change in tablet and desktop
+			> h6, > h2, > p {
+				width: 100%;
+			}
+		}
+		p {
+			display: block; // Show in desktop // change in tablet and desktop
+		
+		}
+		span + .#{$theme-prefix}dot, .#{$theme-prefix}meta  {
+			display: inline-block;
+		}
+	}
+	&__t {
+		border-width: 6px;
+		a {
+			display: inline-block;
+			transform: translateY( 0);
+		}
+	}
+	// Interactions
+	$play_size: 100px;
+	&__ac {
+		height: 100%;
+		width: 30%;
+		top: 0;
+		left: 70%;
+		margin: 0;
+		z-index: 200;
+	}
+	&__ab { // action button
+		top: 50%;
+		margin-top: -($play_size / 2);
+		width: $play_size;// change in tablet and desktop
+		height: $play_size;// change in tablet and desktop
+		line-height: #{$play_size - 6px};// change in tablet and desktop
+	}
+}
+

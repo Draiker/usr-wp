@@ -1,0 +1,23 @@
+.#{$theme-prefix}single {
+	.#{$theme-prefix}entrycontent {
+		&__footer {
+			overflow: hidden;
+			display: flex;
+		}
+		&__share, &__rating {
+			clear: none;
+			padding-top: 20px;
+			width: auto;
+			
+		}
+		&__share {
+			flex-grow: 1;
+		}
+		&__rating {
+			float: left;
+		}
+		.ttg-reaktions-btn.ttg-Ratings-Feedback {
+			padding-left: 0;
+		}
+	}
+}

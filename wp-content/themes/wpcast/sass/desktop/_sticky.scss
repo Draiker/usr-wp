@@ -1,0 +1,14 @@
+.#{$theme-prefix}sticky {
+	&__content {
+		width: 100%;
+	}
+	
+}
+.#{$theme-prefix}stickme.#{$theme-prefix}sticky {
+	.#{$theme-prefix}sticky__content {
+		position: fixed;
+		width: 100%;
+		top: 0;
+		left: 0;
+	}
+}

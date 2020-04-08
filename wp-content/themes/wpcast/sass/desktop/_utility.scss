@@ -1,0 +1,40 @@
+.#{$theme-prefix}pad {
+	padding: 40px;
+}
+
+.#{$theme-prefix}section {
+	padding: 120px 0
+}
+.#{$theme-prefix}vc_section {
+	margin-top: 120px;
+	margin-bottom: 90px;
+}
+
+/*  Spacers ==========================================================================*/
+
+.#{$theme-prefix}spacer-l {
+	padding-top: 120px;
+}
+.#{$theme-prefix}spacer-m {
+	padding-top: 70px;
+}
+.#{$theme-prefix}spacer-s {
+	padding-top: 45px;
+}
+.#{$theme-prefix}spacer-xs {
+	padding-top: 16px;
+}
+.#{$theme-prefix}bgimg {
+	// Parallax
+	&__parallax {
+		img {
+
+			position: fixed;
+			height: auto;
+			min-height:120vh;
+			width: 100%;
+			transition: top 0.1s ease;
+			transform: translate3d(-0.000001);
+		}
+	}
+}

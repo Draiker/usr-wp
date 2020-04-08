@@ -1,0 +1,47 @@
+.#{$theme-prefix}breadcrumb {
+	$fontsize: 13px;
+	margin: 5px 0 0 0;
+	padding: 0;
+	position: relative;
+	line-height: $fontsize + 3px;
+	display: block;
+	clear: both;
+	text-align: right;
+	overflow:hidden;
+	opacity: 1;
+	transition: opacity 0.3s;
+
+	li {
+		line-height: $fontsize;
+		display: inline-block;
+		font-size: $fontsize;
+		padding: 0;
+		font-size: $fontsize;
+		float: none;
+		i {
+			opacity: .6;
+			font-size: 1em;
+			vertical-align: middle;
+		}
+		a, span {
+			color: inherit;
+			opacity: .95;
+			padding: 0;
+			font-size: $fontsize;
+			padding: 0 4px;
+
+		}
+		a:hover {
+			opacity: 1;
+			text-decoration: underline;
+		}
+		span {
+			opacity: .7;
+		}
+		&:first-child {
+			a, span {
+				padding-left: 0;
+			}
+		}
+	}
+}

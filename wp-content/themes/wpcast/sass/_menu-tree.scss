@@ -1,0 +1,84 @@
+.#{$theme-prefix}menu-tree {
+	margin: 0;
+	padding: 0;
+	line-height: 1.2em;
+	li {
+		list-style-type: none;
+		padding: 0;
+		position: relative;
+		border-top: 1px solid rgba(100,100,100,0.1);
+		a {
+			padding: 0.2em 1em;
+			display: inline-block;
+			vertical-align: middle;
+			transition: opacity 0.3s;
+			opacity: 1;
+			i {
+				vertical-align: middle;
+			}
+			
+		}
+		> a {
+			min-height: 40px;
+    		line-height: 40px;
+		}
+		ul {
+			margin: 0;
+			max-height: 0;
+			overflow: hidden;
+			transition: height 0.2s;
+			transform: scaleY(0), translateX(-100%);    
+    		transform-origin: top;
+    		transition: transform 0.4s ease,max-height 0.4s ease-out;
+    		will-change: transform, max-height;
+			li {
+				a {
+					padding-left: 14px;
+					&::before {
+						display: inline-block;
+						content: " ";
+						width: 10px;
+						height: 1px;
+						background: #000;
+						vertical-align: middle;
+						margin-right: 10px;
+					}
+				}
+				ul li {
+					a {
+						padding-left: 38px;
+					}
+				}
+			}
+			
+		}
+		&.#{$theme-prefix}open {
+			> .#{$theme-prefix}openthis i {
+				transform: rotate(180deg);
+			}
+			> ul {
+				transform: scaleY(1);
+				max-height: 2900px;
+				transition: max-height 0.35s ease-in;
+			}
+		}
+	}
+
+	.#{$theme-prefix}openthis {
+		padding: 0.2em;
+		width: 50px;
+		text-align: center;
+		float: right;
+		&::before {
+			display: none;
+		}
+		i {
+			vertical-align: middle;
+			transform: translateY(0px);
+			transition: transform 0.15s ease;
+		}
+		
+	}
+}
+
+

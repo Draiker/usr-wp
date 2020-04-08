@@ -1,0 +1,94 @@
+.#{$theme-prefix}body {
+	.mejs-container {
+		border: 1px solid;
+		border-right: none;
+		border-left: none;
+		padding: 1rem 0;
+
+	}
+
+	&.single .mejs-container .mejs-controls {
+	    padding-right: 30px !important;
+	    padding-left: 30px !important;
+	}
+	.podcast_meta {
+		text-align: center;
+		font-size: 13px;
+		margin-bottom: 30px;
+	}
+
+	.mejs-play > button, .mejs-replay > button, .mejs-pause > button, .mejs-mute > button, .mejs-unmute > button {
+		background: none;
+		    
+		&::after {
+			background: none;
+			font-family: 'Material Icons';
+			font-weight: normal;
+			font-style: normal;
+			font-size: 24px;
+			line-height: 0.8;
+			letter-spacing: normal;
+			text-transform: none;
+			display: inline;
+			white-space: nowrap;
+			word-wrap: normal;
+			direction: ltr;
+			vertical-align: text-top;
+			-webkit-font-feature-settings: 'liga';
+			-webkit-font-smoothing: antialiased;
+			content: "play_arrow";
+			width: 26px;
+			height: 26px;
+		}
+		&::after {
+			vertical-align: text-top;
+		}
+	}
+	.mejs-button>button {
+		width: 22px;
+		height: 40px;
+		padding: 0;
+		opacity: 1;
+		margin: 0;
+	}
+	.mejs-mute > button::after {
+		content: "volume_up";
+	}
+	.mejs-unmute > button::after {
+		content: "volume_off";
+	}
+	.mejs-pause > button::after {
+		content: "pause";
+	}
+		
+
+	/* Playlist */
+	.wp-playlist {
+		border: none;
+		margin: 2.4rem 0;
+		padding: 0;
+		.wp-playlist-item {
+			padding: 0.7rem 0;
+			&-length {
+				font-size: 12px;
+    			line-height: 3.3em;
+			}
+		}
+	}
+
+	// Single tempaltes have larger player
+	// ==================================================
+
+	&.single {
+		/* Audio */
+		.mejs-container:not(.mejs-video) {
+			height: 160px !important;
+		}
+		.mejs-controls {
+			height: auto !important;
+			padding: 0 0 61px 0 !important;
+		}
+
+
+	}
+}

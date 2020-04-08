@@ -1,0 +1,290 @@
+/*
+
+[Table of Contents]
+
+1. breakpoints
+2. normalize
+3. utility
+4. WordPress styling
+5. typography
+6. buttons
+7. menubar
+8. menubar
+9. Overlay bar 
+10. searchbar 
+11. Menu tree
+12. footer
+13. social
+14. page header
+15. heading and captions decoration
+16. meta
+17. post
+18. actions
+19. caption
+20. itemmetas
+21. categories
+22. grid
+23. pagination
+24. searchform
+25. gutenberg
+26. single
+27. comments
+28. notfound404
+29. forms
+30. breadcrumb
+31. series cards
+32. widgets
+33. widgets
+34. author
+35. category cards
+36. category cards
+37. gallery
+38. Give donation form styling
+39. Page Builder - Visual Composer styling
+40. colors LAST
+41. Tablet
+42. Tablet horizontal
+43. Desktop
+
+*/
+
+
+
+@charset "UTF-8";
+
+
+
+$theme-prefix: "wpcast-";
+$themevariable-max-container-size: 1760px;
+$themevariable-border-radius: 4px;
+$themevariable-border-radius-s: 2px;
+
+
+
+/**================================================================
+ * Global Styles
+ ================================================================*/
+
+/*************** 1. breakpoints ***************/
+@import "breakpoints";
+
+/*************** 2. normalize ***************/
+@import "normalize";
+
+/*************** 3. utility ***************/
+@import "utility";
+
+/*************** 4. WordPress styling ***************/
+@import "wordpress/typo";
+@import "wordpress/mediaelement";
+@import "wordpress/gallery";
+
+/*************** 5. typography ***************/
+@import "typography";
+
+/*************** 6. buttons ***************/
+@import "buttons";
+
+/*************** 7. menubar ***************/
+@import "menubar";
+
+/*************** 8. menubar ***************/
+@import "secondaryhead";
+
+/*************** 9. Overlay bar  ***************/
+@import "overlay";
+
+/*************** 10. searchbar  ***************/
+@import "searchbar";
+
+/*************** 11. Menu tree ***************/
+@import "menu-tree";
+
+/*************** 12. footer ***************/
+@import "footer";
+
+/*************** 13. social ***************/
+@import "social";
+
+/*************** 14. page header ***************/
+@import "pageheader";
+
+/*************** 15. heading and captions decoration ***************/
+@import "decor";
+
+/*************** 16. meta ***************/
+@import "meta";
+
+/*************** 17. post ***************/
+@import "post";
+
+/*************** 18. actions ***************/
+@import "actions";
+
+/*************** 19. caption ***************/
+@import "caption";
+
+/*************** 20. itemmetas ***************/
+@import "itemmetas";
+
+/*************** 21. categories ***************/
+@import "categories";
+
+/*************** 22. grid ***************/
+@import "grid";
+
+/*************** 23. pagination ***************/
+@import "pagination";
+
+/*************** 24. searchform ***************/
+@import "searchform";
+
+/*************** 25. gutenberg ***************/
+@import "gutenberg";
+
+/*************** 26. single ***************/
+@import "single";
+
+/*************** 28. notfound404 ***************/
+@import "notfound404";
+
+/*************** 29. forms ***************/
+@import "forms";
+
+/*************** 27. comments ***************/
+@import "comments";
+
+/*************** 30. breadcrumb ***************/
+@import "breadcrumb";
+
+/*************** 31. series cards ***************/
+@import "series-card";
+
+/*************** 32. widgets ***************/
+@import "sidebar";
+
+/*************** 33. widgets ***************/
+@import "widgets";
+
+/*************** 34. author ***************/
+@import "authorbox";
+
+/*************** 35. category cards ***************/
+@import "cat-card";
+
+/*************** 36. category cards ***************/
+@import "slider";
+
+/*************** 37. gallery ***************/
+@import "gallery";
+
+/*************** 38. Give donation form styling ***************/
+@import "give-donation";
+
+/*************** 39. Page Builder - Visual Composer styling ***************/
+@import "vc";
+
+/*************** 40. Download Box ***************/
+@import "dlbox";
+
+/*************** 41. colors LAST ***************/
+@import "colors";
+
+
+/*************** 41. Tablet ***************/
+
+/**================================================================
+ * Tablet Styles
+ ================================================================*/
+
+// vertical
+@media #{$small-and-up} { 
+
+	$gutter-width: 20px;
+
+	.#{$theme-prefix}container {
+		width: 100%;
+   	 	max-width: 740px;
+	}
+	@import "tablet/typography";
+	@import "tablet/buttons";
+	@import "tablet/caption";
+	@import "tablet/utility";
+	@import "tablet/grid";
+	@import "tablet/pagination";
+	@import "tablet/post";
+	@import "tablet/single";
+	@import "tablet/comments";
+	@import "tablet/forms";
+	@import "tablet/menubar";
+	@import "tablet/secondaryhead";
+	@import "tablet/pageheader";
+	@import "tablet/searchbar";
+	@import "tablet/series-card";
+	@import "tablet/gutenberg";
+	@import "tablet/cat-card";
+	@import "tablet/slider";
+}
+/*************** 42. Tablet horizontal ***************/
+@media #{$medium-and-up} {
+	@import "tablet/typography";
+	.#{$theme-prefix}container {
+		width: 100%;
+   	 	max-width: 960px;
+	}
+}
+
+/*************** 43. Desktop ***************/
+
+/**================================================================
+ * Desktop Styles
+ ================================================================*/
+@media #{$large-and-up} {
+	$gutter-width: 30px;
+	@import "desktop/typography";
+	@import "desktop/buttons";
+	@import "desktop/caption";
+	@import "desktop/utility";
+	@import "desktop/grid";
+	@import "desktop/actions";
+	@import "desktop/post";
+	@import "desktop/menubar";
+	@import "desktop/secondaryhead";
+	@import "desktop/pageheader";
+	@import "desktop/searchbar";
+	@import "desktop/gutenberg";
+	@import "desktop/comments";
+	@import "desktop/series-card";
+	@import "desktop/authorbox";
+	@import "desktop/sidebar";
+	@import "desktop/cat-card";
+	@import "desktop/sticky";
+	@import "desktop/overlay";
+	@import "desktop/slider";
+}
+
+@media #{$xl-and-up} {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

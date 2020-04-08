@@ -1,0 +1,36 @@
+
+.#{$theme-prefix}searchbar {
+	$size: 78px;
+	position: absolute;//position: fixed;
+	height: $size;
+	transform: translateX(100%);
+	line-height: $size;
+	&__cont {
+		max-width: $themevariable-max-container-size;
+		padding: 0;
+		margin: 0 auto;
+	}
+	form {
+		height: $size ;
+		float: left;
+		input {
+			height: $size;
+			line-height: $size;
+			font-size: 1.8rem;
+			padding-right: 20px;
+			padding-left: 0;
+			width: calc(100% - 200px );
+			vertical-align: middle;
+			float: left;
+		}
+	}
+
+	&.open {
+		top: 0;
+		position: absolute;
+		transform: translateX(0%);
+		max-width: 100%;
+		padding: 0 20px;
+	}
+	
+}

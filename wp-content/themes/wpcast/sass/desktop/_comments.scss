@@ -1,0 +1,57 @@
+
+
+.#{$theme-prefix}comment {
+	$padding: 32px;
+	$content-padding: 75px; // padding left
+	padding: 40px $padding;
+	&__closed {
+		padding: $padding ;
+	}
+	.#{$theme-prefix}avatar {
+		$size: 56px;
+		width: $size;
+		height: $size;
+		left: $padding;
+		top:  42px;
+		padding: 5px;
+	}
+	&__c {
+		padding-left: $content-padding;
+		margin-top: 0;
+		p:first-child {
+		     margin-top: 0.2em; 
+		}
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+	&__rlink {
+		top: 40px;
+		right: $padding;
+		opacity: 0;
+		transition: opacity 0.4s;
+	}
+
+	&__auth {
+		padding-left: $content-padding;
+		padding-top: 0.3em;
+	}
+	&:hover {
+		.#{$theme-prefix}comment__rlink {
+			opacity: 1;
+			display: block;
+		}
+	}
+}
+
+.#{$theme-prefix}pingback {
+	.#{$theme-prefix}comment {
+		&__c {
+
+			margin-top: 24px;
+		}
+	}
+
+}
+
+

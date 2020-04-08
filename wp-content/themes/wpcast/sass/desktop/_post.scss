@@ -1,0 +1,145 @@
+// This is the post item in the archives
+.#{$theme-prefix}post {
+	$padding-header: 30px; // desktop 30
+	$padding-content: 30px; // desktop 40
+	margin-bottom: 45px;
+	&__content {
+		padding: $padding-content;
+	}
+	&__header {
+		.#{$theme-prefix}cats {
+			bottom: $padding-header;
+			left: $padding-header;
+		}
+	}
+	&__headercont {
+		padding: $padding-header;
+	}
+
+
+	/**
+	 * vertical layout
+	 */
+	&__ver {
+		.#{$theme-prefix}post {
+			&__content {
+				padding: $padding-header;
+				min-height: 160px; 
+			}
+		}
+	}
+
+	/**
+	 * Desktop titles hover
+	 */
+	&__title {
+		padding-left: 12px;
+		a {
+			&:hover {
+				background-size: 100% 0.6em;
+			    -webkit-background-size: 100% 0.6em;
+			    -moz-background-size: 100% 0.6em;
+			    color: inherit;
+			}
+		}
+	}
+
+
+	/**
+	 * wide layout
+	 */
+	&__wide {
+		.#{$theme-prefix}post {
+			&__header {
+				padding-top: 31%;
+			}
+			&__header, &__content {
+				width: 31%;
+				float: left;
+			}
+			&__content {
+				width: 69%;
+			}
+			&__ex {
+				max-height: 400px;
+			}
+		}
+		&__content, &.sticky .#{$theme-prefix}post__content{
+			padding: $padding-content;
+		}
+	}
+	/**
+	 * Hero
+	 */
+	&__hero {
+		$padding-header: 50px;
+		max-width: $themevariable-max-container-size;
+		max-height: 560px;
+		&__caption {
+			padding: $padding-header;
+		}
+		.#{$theme-prefix}post {
+			&__headercont {
+				padding: $padding-header;
+			}
+
+			&__header {
+				padding-top: 48%;
+				// categories
+				.#{$theme-prefix}cats {
+					right: 0;
+				}
+				// author and date
+				.#{$theme-prefix}meta {
+				}
+			}
+			&__title {
+				max-width: 65%;
+			}
+		}
+		
+	}
+	/**
+	 * Card
+	 */
+	&__card {
+		margin-bottom: 30px;
+	}
+	/**
+	 * List
+	 */
+	&__inline {
+		margin-bottom: 22px;
+		.#{$theme-prefix}thumb {
+			overflow: hidden;
+			img {
+				transform: scale(1);
+				transition: transform .3s;
+				filter: brightness(100%);
+				transition: filter .3s, transform 2.3s ease;
+			}
+			&:hover {
+				img {
+					filter: brightness(120%);
+					transform: scale(1.1);
+				}
+			}
+		}
+	}
+
+
+	.#{$theme-prefix}readm {
+		a {
+			i {
+				transform: translateX(0);
+				transition: transform .2s;
+			}
+			&:hover {
+				i {
+					transform: translateX(10px);
+				}
+			}
+		}
+	}
+	
+}

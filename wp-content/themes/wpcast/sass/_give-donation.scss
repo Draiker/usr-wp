@@ -1,0 +1,46 @@
+
+/* Give donation plugin */
+.give-form-wrap {
+	padding: 1rem;
+	.give-form-title, .give-goal-progress .income {
+		color: inherit;
+	}
+}
+form[id*=give-form] {
+	.give-donation-amount #give-amount,.give-donation-amount #give-amount-text,
+	#give-final-total-wrap .give-final-total-amount {
+		color: #000;
+	}
+	.give-tooltip {
+		color: inherit;
+	}
+	.dashicons-give:before, [class*=" give-icon-"], [class^=give-icon-] {
+		top: 0;
+	}
+	input[type="button"] {
+		    background: #EDEDED;
+	    border: 1px solid #ccc;
+	    color: #333;
+	    padding: 8px 10px;
+	    cursor: pointer;
+	    line-height: 1.2em;
+	    font-size: 1em;
+	    text-transform: uppercase;
+	}
+	.give-btn {
+		border: none;
+		color: #fff;
+	}
+	
+}
+.give-modal .mfp-content {
+	color: #000;
+	ol, ul {
+		margin-left: 1.4rem;
+	}
+}
+
+.give-btn {
+	@extend .#{$theme-prefix}btn;
+	@extend .#{$theme-prefix}btn-primary;
+}

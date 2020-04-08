@@ -1,0 +1,36 @@
+.#{$theme-prefix}footer {
+	text-align: center;
+	position: relative;
+	&__content {
+		z-index: 2;
+		position: relative;
+	}
+	&__logo {
+		h4 {
+			margin: 0;
+		}
+	}
+	&__section {
+		position: relative;
+	}
+	.#{$theme-prefix}social {
+		padding: 30px 24px 0 24px;
+	}
+	.#{$theme-prefix}menubar {
+		margin: 0;
+		padding: 30px 24px 0 24px;
+		a {
+			color: inherit;
+		}
+	}
+	&__copy {
+		padding: 24px;
+		border-bottom: 6px solid;
+		p {
+			margin: 0;
+			text-rendering: geometricPrecision;
+			opacity: .7;
+			font-size: 15px;
+		}
+	}
+}

@@ -1,0 +1,30 @@
+
+.edit-post-visual-editor {
+	
+
+	.editor-rich-text__tinymce.mce-content-body{
+	  	font-family: 'Karla', sans-serif;
+	  	font-weight: 400;
+	  }
+
+	.editor-rich-text__tinymce.mce-content-body strong{
+		font-family: 'Karla', sans-serif;
+	  	font-weight: 700;
+	}
+	.editor-post-title__block .editor-post-title__input,
+	.wp-block-heading h1.editor-rich-text__tinymce, 
+	.wp-block-heading h2.editor-rich-text__tinymce, 
+	.wp-block-heading h3.editor-rich-text__tinymce,
+	.wp-block-heading h4.editor-rich-text__tinymce {
+	  font-family: 'Kubrik', serif;
+	  text-rendering: GeometricPrecision;
+	  text-transform: capitalize;
+	  letter-spacing: -0.035em;
+	  font-weight: 700;
+	}
+	.editor-block-list__block, .editor-block-list__block p {
+		line-height: 1.54em;
+		font-size: 18px;
+	}
+}
+

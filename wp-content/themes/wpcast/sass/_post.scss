@@ -1,0 +1,308 @@
+// This is the post item in the archives
+.#{$theme-prefix}post {
+	$padding-header: 20px; // desktop 30
+	$padding-content: 20px; // desktop 40
+	margin-bottom: 32px;
+	border-radius: 5px;
+	&.sticky {
+		box-shadow: 0 0 15px 3px rgba(0,0,0,0.4);
+	}
+	
+	&__content {
+		padding: $padding-content;
+	}
+	&__title {
+		margin-top: 0;
+		border-left: 4px solid;
+		padding-left: 8px;
+		a {
+	        text-decoration: none;
+		    background-size: 0% 0.6em;
+		    -webkit-background-size: 0% 0.6em;
+		    -moz-background-size: 0% 0.6em;
+		    background-repeat: no-repeat;
+		    background-position: 0% 90%;
+		    padding-right: 0.3em;
+		    transition: all 0.3s cubic-bezier(0.16, 0.68, 0.49, 0.99) !important;
+			background-image: linear-gradient(to right, rgba(169, 196, 211, 0.3) 100%, #fff 100%);
+		}
+	}
+	&__header {
+		padding-top: 100%;
+		display: block;
+		position: relative;
+		overflow: hidden;
+		.#{$theme-prefix}cats {
+			max-width: 50%;
+			float: left;
+			position: absolute;
+			bottom: $padding-header;
+			left: $padding-header;
+			margin: 0;
+		}
+		.#{$theme-prefix}itemmetas {
+			width: 48%;
+			overflow: hidden;
+			float: right;
+			text-align: right;
+		}
+	}
+	&__thumb {
+		display: block;
+	}
+	&__headercont {
+		position: absolute;
+		z-index: 10;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: $padding-header;
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0.15+36,0.15+81,0.65+100 */
+		background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 36%, rgba(0,0,0,0.15) 81%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.15) 36%,rgba(0,0,0,0.15) 81%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.15) 36%,rgba(0,0,0,0.15) 81%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+	}
+	&__sticky {
+		position: absolute;
+		top: -6px;
+    	right: -46px;
+		background: red;
+		z-index: 12;
+		width: 120px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		transform: rotate(45deg);
+		i {
+			vertical-align: middle;
+		}
+	}
+	.#{$theme-prefix}caption {
+		margin-top: 2px;
+		max-width: 52%;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		word-break: break-all;
+		float: left;
+		font-size: 13px;
+	}
+	.#{$theme-prefix}cats {
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		word-break: break-all;
+		overflow: hidden;
+	}
+	
+	/**
+	 * Standard default layout
+	 */
+	&__std {
+		.#{$theme-prefix}post {
+			&__header {
+				padding-top: 0;
+				min-height: 160px;
+			}
+		}
+	}
+	/**
+	 * vertical layout
+	 */
+	&__vertical {
+		.#{$theme-prefix}post {
+			&__header {
+				padding-top: 100%;
+			}
+			&__thumb {
+				position: absolute;
+			}
+		}
+	}
+	/**
+	 * horizontal layout
+	 */
+	&__hor {
+		.#{$theme-prefix}post {
+			&__header {
+				padding-top: 100%;
+			}
+			&__thumb {
+				position: absolute;
+			}
+		}
+	}
+	/**
+	 * wide layout
+	 */
+	&__wide {
+		.#{$theme-prefix}post {
+			&__content {
+				padding: $padding-content 0;
+			}
+			&__ex {
+				margin-bottom: 16px;
+				margin-top: 16px;
+			}
+		}
+		&.sticky {
+			.#{$theme-prefix}post__content {
+				padding: $padding-content
+			}
+		}
+	}
+	/**
+	 * Hero
+	 */
+	&__hero {
+		background-color: #101010;
+		&__caption {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			padding: $padding-header;
+			width: 100%;
+		}
+		.#{$theme-prefix}post {
+			&__header {
+				.#{$theme-prefix}cats {
+					display: none;
+				}
+				.#{$theme-prefix}itemmetas {
+					width: 50%;
+					overflow: hidden;
+					float: right;
+					text-align: right;
+				}
+				.#{$theme-prefix}meta {
+					max-width: 60%;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					opacity: .8;
+					margin: 0 0 1rem 0;
+				}
+			}
+			&__title {
+				padding-right: $padding-header;
+				margin-bottom: 1rem;
+			}
+		}
+	}
+	/**
+	 * Card
+	 */
+	&__card {
+		padding-top: 100%;
+		position: relative;
+		&__cap {
+			position: absolute;
+			bottom: 16px;
+			padding: 0 $padding-header $padding-header 0;
+			h4, a {
+				color: inherit;
+			}
+		}
+	}
+	/**
+	 * List
+	 */
+	&__inline {
+		margin-bottom: 20px;
+		&::after {
+			border-bottom: 1px solid;
+			content: " ";
+			margin: 1rem 0 0.3rem 0;
+			width: 100%;
+			display: block;
+			clear: both;
+			opacity: .1;
+		}
+		&:last-child {
+			after {
+				display: none;
+			}
+		}
+		.#{$theme-prefix}thumb {
+			display: inline-block;
+			float: left;
+			width: 70px;
+			height: 70px;
+			margin-right: 20px;
+			border-radius: $themevariable-border-radius-s;
+			box-shadow: 0 0 15px 0px rgba(0,0,0,0.03);
+			overflow: hidden;
+			display: block;
+			line-height: 0;
+			position: relative;
+			z-index: 2;
+			display: block;
+			img {
+				display: block;
+				position: absolute;
+				height: 100%;
+				left: 0;
+				top: 0;
+				width: 100%;
+			}
+
+		}
+		h6 {
+			margin-bottom: 0.4em;
+			// font-size: 18px;
+			margin-bottom: 2px;
+		}
+		p {
+			// text-transform: uppercase;
+			font-size: 13px;
+			span:first-child {
+				&::after {
+					display: inline-block;
+					content: "-";
+					margin-left: 10px;
+				}
+			}
+		}
+		i {
+			opacity: .6;
+			display: none;
+		}
+		.#{$theme-prefix}meta {
+			margin-top: 0;
+		}
+	}
+
+
+	.#{$theme-prefix}meta {
+		font-size: 13px;
+		margin: 20px 0 20px 0;
+
+		.#{$theme-prefix}p {
+			&-author {
+				padding: 3px 12px;
+				background: rgba(150,150,150,.2);
+				border-radius: 4px;
+			}
+			&-date {
+				white-space: nowrap;
+			}
+		}
+	}
+}
+
+
+
+
+
+/**
+ * Spacial cases
+ */
+
+.#{$theme-prefix}relatedpost-section {
+	.#{$theme-prefix}post {
+		margin-bottom: 0;
+	}
+}
+
+
+

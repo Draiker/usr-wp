@@ -1,0 +1,50 @@
+
+.#{$theme-prefix}capfont {
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+.#{$theme-prefix}caption {
+	
+	position: relative;
+	padding-bottom: 0.5em;
+	a {
+		color: inherit;
+	}
+	&::after {
+		display: inline-block;
+		content: " ";
+		margin: 0;
+		padding: 0;
+		height: 6px;
+		width: 30px;
+		border-bottom: 2px solid;
+		position: absolute;
+		bottom: -2px;
+		left: 0;
+	}
+	&__s, &__xs {
+		border-bottom: 1px solid rgba(100,100,100,.2);
+		margin-bottom: 1.6em;
+		font-size: 13px;
+		@extend .#{$theme-prefix}capfont;
+	}
+	&__l::after {
+		border-width: 5px;
+		width: 40px;
+	}
+	&__xl::after {
+		border-width: 5px;
+		width: 50px;
+		
+	}
+	// center
+	&__c {
+		border: none;
+		text-align: center;
+		&::after {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+
+}

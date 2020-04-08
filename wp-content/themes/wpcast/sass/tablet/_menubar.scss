@@ -1,0 +1,63 @@
+$menusize: 70px;
+$menupadding: 8px;
+.#{$theme-prefix}menu {
+	min-height: $menusize + $menupadding;
+	line-height: $menusize;
+	position: relative;
+	padding: 0;
+	width: 100%;
+	&__cont {
+		margin: 0 auto;
+		padding: #{$menupadding / 2} 16px;
+	}
+	&__logo {
+		line-height: $menusize;
+		height: $menusize;
+		img {
+			max-height: $menusize;
+		}
+	}
+}
+.#{$theme-prefix}logolink {
+    height: $menusize;
+    display: block;
+    line-height: 65px;
+}
+.#{$theme-prefix}logo_header {
+	display: inline-block;
+    vertical-align: middle;
+    display: inline;
+}
+.#{$theme-prefix}logo_header_mob {
+	display: none;	
+}
+.#{$theme-prefix}menubar {
+	/* Already defined all in default css */
+	&__secondary {
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+		li {
+			padding-left: 0;
+			a {
+				border-right: 1px solid rgba(100,100,100,.8);
+				line-height: 13px;
+				height-height: 13px;
+				padding-right: 16px;
+				font-size: 13px;
+				opacity: .65;
+				&:hover {
+					opacity: 1;
+				}
+			}
+			&::before {
+				display: none;
+			}
+			&:last-child {
+				a {
+					border: none;
+				}
+			}
+		}
+	}
+}

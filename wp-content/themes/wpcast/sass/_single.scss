@@ -1,0 +1,14 @@
+.#{$theme-prefix}single {
+	.#{$theme-prefix}entrycontent {
+		&__footer {
+			overflow: hidden;
+		}
+		&__share, &__rating {
+			clear: both;
+			padding-top: 20px;
+		}
+		.ttg-reaktions-btn.ttg-Ratings-Feedback {
+			padding-left: 0;
+		}
+	}
+}

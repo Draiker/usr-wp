@@ -1,0 +1,13 @@
+/**!
+*
+* If customizer is not active
+* 
+**/
+body, html { font-family: Karla, Helvetica, Arial, sans-serif; font-weight: 400; font-style: normal; letter-spacing: -0.02em; text-rendering: optimizeLegibility; }
+
+strong { font-family: Karla, Helvetica, Arial, sans-serif; font-weight: 700; font-style: normal; letter-spacing: -0.02em; text-rendering: optimizeLegibility; }
+
+h1, h2, h3, h4, h5, h6 { font-family: Rubik, Helvetica, Arial, sans-serif; font-weight: 500; font-style: normal; letter-spacing: -0.04em; text-transform: none; text-rendering: geometricPrecision; }
+
+.wpcast-btn, .wpcast-itemmetas, .wpcast-menu, .wpcast-secondaryhead, .wpcast-cats, .wpcast-menu-tree, button, input[type="button"], input[type="submit"], .button { font-family: Rubik, Helvetica, Arial, sans-serif; font-weight: 500; font-style: normal; letter-spacing: 0.08em; text-transform: uppercase; text-rendering: geometricPrecision; }
+/*# sourceMappingURL=wpcast-typography.css.map */

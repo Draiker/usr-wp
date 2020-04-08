@@ -1,0 +1,12 @@
+.#{$theme-prefix}secondaryhead {
+	&__cont {
+		padding: 0 27px;	
+	}
+	.#{$theme-prefix}social {
+		a {
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+}

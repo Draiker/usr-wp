@@ -1,0 +1,51 @@
+.#{$theme-prefix}pagebuilder-mw {
+	max-width: 100%;
+	overflow: hidden;
+}
+.#{$theme-prefix}vc-row-container {
+	&::after, &::before {
+		content: " ";
+		display: block;
+		width: 100%;
+		clear: both;
+		height: 0px;
+	}
+	display: block;
+	width: 100%;
+	clear: both;
+	position: relative;
+	.vc_row {
+		position: relative;
+    	z-index: 2;
+	}
+}
+
+.#{$theme-prefix}negative {
+	color: #fff !important;
+	h1, h2, h3, h4, h5, h6 {
+		color: #ffffff;
+	}
+}
+.vc_row-o-full-height {
+	min-height: 100%;
+	min-height: 100vh;
+}
+.vc_col-has-fill>.vc_column-inner, .vc_row-has-fill+.vc_row-full-width+.vc_row>.vc_column_container>.vc_column-inner, .vc_row-has-fill+.vc_row>.vc_column_container>.vc_column-inner, .vc_row-has-fill+.vc_vc_row>.vc_row>.vc_vc_column>.vc_column_container>.vc_column-inner, .vc_row-has-fill+.vc_vc_row_inner>.vc_row>.vc_vc_column_inner>.vc_column_container>.vc_column-inner, .vc_row-has-fill>.vc_column_container>.vc_column-inner, .vc_row-has-fill>.vc_row>.vc_vc_column>.vc_column_container>.vc_column-inner, .vc_row-has-fill>.vc_vc_column_inner>.vc_column_container>.vc_column-inner, .vc_section.vc_section-has-fill, .vc_section.vc_section-has-fill+.vc_row-full-width+.vc_section, .vc_section.vc_section-has-fill+.vc_section {
+	padding-top: 0;
+}
+.vc_parallax .vc_parallax-inner {
+	transition: top 0.15s;
+	will-change: top;
+	transform: translateX(0);
+}
+.vc_video-bg-container > .vc_column-inner { position: relative; z-index:10; }
+.#{$theme-prefix}container .#{$theme-prefix}slickslider-outercontainer {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+.#{$theme-prefix}body {
+	.vc_row-o-full-height  {
+		min-height: 100vh !important/*  fixing page builder bug from 5.6 version */; 
+	}
+}

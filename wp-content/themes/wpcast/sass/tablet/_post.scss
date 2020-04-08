@@ -1,0 +1,214 @@
+// This is the post item in the archives
+.#{$theme-prefix}post {
+	$padding-header: 22px; // desktop 30
+	$padding-content: 30px; // desktop 40
+	margin-bottom: 35px;
+	
+	&__content {
+		padding: $padding-content;
+	}
+	
+	&__header {
+		.#{$theme-prefix}cats {
+			
+			bottom: $padding-header;
+			left: $padding-header;
+		}
+		
+	}
+	&__thumb {
+		display: block;
+	}
+	&__headercont {
+
+		padding: $padding-header;
+		
+	}
+
+	/**
+	 * Standard post
+	 */
+	&__std {
+		max-width: 768px;
+		margin-right: auto;
+    margin-left: auto;
+	}
+	
+	/**
+	 * horizontal layout
+	 */
+	&__hor{
+		overflow: hidden;
+		max-width: 768px;
+		margin-right: auto;
+    	margin-left: auto;
+		&::after {
+			width: 100%;
+			display: table;
+			clear: block;
+		}
+		.#{$theme-prefix}post {
+			&__header {
+				padding-top: 50%;
+			}
+			&__header, &__content {
+				width: 50%;
+				float: left;
+			}
+			&__content {
+				padding-top: 33px;
+				max-height: 100%;
+				overflow: hidden;
+			}
+			&__ex {
+				margin-bottom: 30px;
+				p {
+					text-overflow: ellipsis;
+				    overflow: hidden;
+				    display: -webkit-box;
+				    -webkit-line-clamp: 1;
+				    max-height: 1.5em;
+				    /* autoprefixer: ignore next */
+				    -webkit-box-orient: vertical;
+
+				    /*! autoprefixer: off */
+					-webkit-box-orient: vertical;
+					/*! autoprefixer: on */
+					/* autoprefixer: on */
+					 -webkit-line-clamp: 4;
+	    			max-height: 5.9em;
+				}
+			}
+		}
+	}
+
+
+	/**
+	 * vertical layout
+	 */
+	&__ver {
+		.#{$theme-prefix}post {
+			&__content {
+				padding: $padding-header;
+				min-height: 132px;
+				.#{$theme-prefix}meta {
+					margin-bottom: 0;
+				}
+			}
+
+
+		}
+	}
+
+	/**
+	 * wide layout
+	 */
+	&__wide {
+		overflow: hidden;
+		&::after {
+			width: 100%;
+			display: table;
+			clear: block;
+		}
+		.#{$theme-prefix}post {
+			&__header {
+				padding-top: 40%;
+			}
+			&__header, &__content {
+				width: 40%;
+				float: left;
+			}
+			&__content {
+				width: 60%;
+				padding: $padding-content;
+				
+
+			}
+			&__ex {
+				max-height: 4.5em;
+			    text-overflow: ellipsis;
+			    overflow: hidden;
+			    display: -webkit-box;
+			    -webkit-line-clamp: 4;
+			    -webkit-box-orient: vertical;
+			    margin-bottom: 25px;
+			    p {
+					text-overflow: ellipsis;
+				    overflow: hidden;
+				    display: -webkit-box;
+				    -webkit-line-clamp: 1;
+				    max-height: 1.5em;
+				    /* autoprefixer: ignore next */
+				    -webkit-box-orient: vertical;
+
+				    /*! autoprefixer: off */
+					-webkit-box-orient: vertical;
+					/*! autoprefixer: on */
+					/* autoprefixer: on */
+					 -webkit-line-clamp: 5;
+	    			max-height: 7.4em;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Hero
+	 */
+	&__hero {
+		&__caption {
+
+			padding: $padding-header;
+		}
+		.#{$theme-prefix}post {
+			&__header {
+				padding-top: 50%;
+				
+				.#{$theme-prefix}itemmetas {
+					width: 50%;
+
+				}
+				// categories
+				.#{$theme-prefix}cats {
+					max-width: 50%;
+					display: inline-block;
+					position: initial;
+					float: right;
+					left: auto;
+					position: relative;
+					right: $padding-header;
+					bottom: 0;
+				}
+				// author and date
+				.#{$theme-prefix}meta {
+					max-width: 60%;
+					bottom: 0;
+					
+					margin: 0;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+
+					// tablet only
+					max-width: 40%;
+					left: 0;
+					float: left;
+				}
+			}
+			&__title {
+				padding-right: $padding-header;
+				max-width: 80%;
+			}
+		}
+		
+	}
+	/**
+	 * List
+	 */
+	&__inline {
+		margin-bottom: 22px;
+		.#{$theme-prefix}meta {
+			margin-top: 7px;
+		}
+	}
+}

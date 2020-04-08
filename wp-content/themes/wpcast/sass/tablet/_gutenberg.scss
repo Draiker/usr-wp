@@ -1,0 +1,103 @@
+.#{$theme-prefix}entrycontent {
+
+
+	p.has-drop-cap{
+		
+		&:first-letter {
+		    font-size: 100px;
+		    float: left;
+		    line-height: 65px;
+		    padding: 4px 0px 0 0;
+		    text-align: center;
+		    margin-left: -0.08em;
+		}
+
+		&.has-medium-font-size {
+			font-size: 1rem;
+		}
+	}
+
+
+	blockquote, .wp-block-quote {
+		$size: 50px;
+		margin: 70px auto;
+		padding: 50px 30px 40px 30px;
+		&::before {
+		    width: $size;
+		    height: $size;
+		    font-size: $size * .8;
+		    line-height: $size;
+		    margin: -#{$size / 2} 0 0 -#{$size / 2};
+		}
+	}
+	.wp-block-pullquote {
+		padding-top: 90px;
+		padding-bottom: 50px;
+		blockquote {
+			margin: 20px auto 10px auto;
+		}
+	}
+	.wp-block-pullquote {
+		
+		&.alignright {
+			padding: 3rem 0 3rem 1.8rem;
+			max-width: 30%;
+		}
+		&.alignleft {
+			padding: 3rem 1.4rem 1.8rem 0;
+			max-width: 30%;
+		}
+	}
+	
+	
+	& > .wp-block-separator {
+		max-width: 400px;
+	}
+
+	
+
+	& > .wp-block-gallery:not( .alignwide ):not( .alignfull ):not( .alignnone ) {
+		margin-left: -5px;
+		margin-right: -5px;
+	}
+
+
+	.wp-block-cover-image.aligncenter, .wp-block-cover-image.alignleft, .wp-block-cover-image.alignright, .wp-block-cover.aligncenter, .wp-block-cover.alignleft, .wp-block-cover.alignright,
+	.wp-block-cover-image.alignleft, .wp-block-cover-image.alignright, .wp-block-cover.alignleft, .wp-block-cover.alignright {
+	    max-width: 305px !important;
+	    width: 100%;
+	    display: none;
+	}
+
+	.editor-block-list__block[data-type="core/embed"][data-align=left] .editor-block-list__block-edit, .editor-block-list__block[data-type="core/embed"][data-align=right] .editor-block-list__block-edit, .wp-block-cover-image.alignleft, .wp-block-cover-image.alignright, .wp-block-embed.alignleft, .wp-block-embed.alignright, [data-align=left] .wp-block-cover-image, [data-align=right] .wp-block-cover-image {
+		    max-width: 305px !important;
+	    width: 100%;
+	    font-size: 1rem;
+	}
+}
+
+	
+.#{$theme-prefix}single {
+	/**
+	 * Full width post
+	 */
+	&__nosidebar {
+		.#{$theme-prefix}entrycontent {
+			& > *:not( .alignwide ):not( .alignleft ):not( .alignright ):not( .alignfull ):not( blockquote ):not( hr ), .#{$theme-prefix}single__postfooter {
+				margin-left: auto;
+				margin-right: auto;
+				max-width: 910px;
+				padding-left: 70px;
+				padding-right: 70px;
+			}
+		}
+
+		.#{$theme-prefix}comments-section, .#{$theme-prefix}author-section, .#{$theme-prefix}previouspost-section, .#{$theme-prefix}relatedpost-section {
+			margin-left: auto;
+			margin-right: auto;
+			max-width: 910px;
+			padding-left: 24px;
+			padding-right: 24px;
+		}
+	}
+}

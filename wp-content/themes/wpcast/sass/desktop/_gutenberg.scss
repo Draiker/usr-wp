@@ -1,0 +1,91 @@
+.#{$theme-prefix}entrycontent {
+	blockquote, .wp-block-quote{
+		// display: none;
+		margin: 120px auto 90px auto;
+		padding: 80px 50px 60px 50px;
+		cite, footer {
+			position: absolute;
+			bottom: 50px;
+			right: 70px;
+			
+		}
+		&::before {
+			$size: 70px;
+		    width: $size;
+		    height: $size;
+		    font-size: $size * .8;
+		    line-height: $size;
+		    margin: -#{$size / 2} 0 0 -#{$size / 2};
+		}
+	}	
+	> pre {
+		padding: 40px;
+	}
+	.wp-block-pullquote.aligncenter blockquote,
+	.wp-block-pullquote.alignwide blockquote,
+	.wp-block-pullquote.alignfull blockquote {
+		margin-top: 70px;
+	}
+	
+	/*& > *,  .#{$theme-prefix}single__postfooter{
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 910px;
+		padding-left: 70px;
+		padding-right: 70px;
+	}*/
+	
+	
+	.#{$theme-prefix}comments-section, .#{$theme-prefix}author-section, .#{$theme-prefix}previouspost-section, .#{$theme-prefix}relatedpost-section {
+		padding-left: 70px;
+		padding-right: 70px;
+	}
+}
+
+
+
+	
+.#{$theme-prefix}single {
+	/**
+	 * No sidebar post
+	 */
+	&__nosidebar {
+		.#{$theme-prefix}entrycontent {
+			& > *:not( .alignwide ):not( .alignleft ):not( .alignright ):not( .alignfull ):not( blockquote ):not( hr ), .#{$theme-prefix}single__postfooter {
+				margin-left: auto;
+				margin-right: auto;
+				max-width: 910px;
+				padding-left: 70px;
+				padding-right: 70px;
+			}
+		}
+
+		.#{$theme-prefix}comments-section, .#{$theme-prefix}author-section, .#{$theme-prefix}previouspost-section, .#{$theme-prefix}relatedpost-section {
+			padding-left: 70px;
+			padding-right: 70px;
+		}
+	}
+	/**
+	 * Full width post
+	 */
+	&__fullwidth {
+		.#{$theme-prefix}entrycontent {
+			& > *:not( .alignwide ):not( .alignfull ):not( .alignleft ):not( .alignright ):not( blockquote ):not( hr ):not(.#{$theme-prefix}container), .#{$theme-prefix}single__postfooter {
+				margin-left: auto;
+				margin-right: auto;
+				max-width: 9999px;
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	
+
+		.#{$theme-prefix}comments-section, .#{$theme-prefix}author-section, .#{$theme-prefix}previouspost-section, .#{$theme-prefix}relatedpost-section {
+			margin-left: auto;
+			margin-right: auto;
+			max-width: 910px;
+			padding-left: 70px;
+			padding-right: 70px;
+		}
+	}
+}

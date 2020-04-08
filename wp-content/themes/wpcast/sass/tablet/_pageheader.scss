@@ -1,0 +1,12 @@
+.#{$theme-prefix}pageheader {
+	&__contents {
+		padding: 130px 0;
+	}
+	&__breadcrumb {
+		display: block;
+	}
+	&__search {
+		max-width: 400px;
+		margin: 0 auto;
+	}
+}

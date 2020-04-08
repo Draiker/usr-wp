@@ -1,0 +1,36 @@
+// This is the post item in the archives
+.#{$theme-prefix}scard {
+	$padding-header: 30px; // desktop 30
+	margin-bottom: 32px;
+	padding-top: 134%;
+	.#{$theme-prefix}feedlink {
+		display: inline-block;
+	}
+	&__t {
+		margin-bottom: 24px;
+		.#{$theme-prefix}caption {
+			font-size: 13px;
+			line-height: 1;
+			margin: 0;
+			padding: 0;
+			display: block;
+			opacity: .7;
+
+		}
+		a {
+			transform: translateY(5px);
+			line-height: 1.1em;
+		}
+	}
+	&__des {
+		display: block;
+
+	}
+	&__con {
+		padding: 37px $padding-header ($padding-header + 124px) $padding-header;
+	}
+	&__foot {
+		padding: 0 $padding-header $padding-header $padding-header;
+	}
+
+}

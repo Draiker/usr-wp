@@ -1,0 +1,85 @@
+// slider tablet
+.#{$theme-prefix}slider {
+	&__item {
+		padding-top: 43%; // change in tablet and desktop 
+	}
+	&__c {
+		padding: 0 10px; // change in tablet and desktop
+	
+		background: linear-gradient(to right, rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.65) 60%, rgba(0,0,0,0.15) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9000000', endColorstr='#33000000',GradientType=1 ); /* IE6-9 */
+
+		.#{$theme-prefix}container {
+			position: relative;// change in tablet and desktop
+			width: 1170px;// change in tablet and desktop
+			max-width: 1170px;
+			padding-right: 500px;
+			padding-left: 0;
+			&::before, &::after {
+				content: " ";
+				width: 100%;
+				height: 20px;
+				border: 1px solid;
+				border-right: 0;
+				border-bottom: 0;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 760px;
+				opacity: .3;
+			}
+			&::after {
+				top: auto;
+				bottom: 0;
+				border-bottom: 1px solid;
+				border-top: 0;
+			}
+		}
+		p {
+			font-size: 18px;
+			opacity: .85;
+		}
+		h6 {
+			margin-bottom: 30px;
+		}
+	
+	}
+	&__ac {
+		width: 30%;
+		max-width: 30%;
+		left: 60%;
+		position: absolute;
+		margin: 0 auto;
+		top: 0;
+		text-align: center;
+	}
+	&__ab {
+		$play_size: 110px;
+		border-width: 4px;
+		margin-top: -($play_size / 2);
+		width: $play_size;// change in tablet and desktop
+		height: $play_size;// change in tablet and desktop
+		line-height: #{$play_size - 6px};// change in tablet and desktop
+		&::after {
+			display: block;
+			content: " ";
+			position: absolute;
+			width: 120%;
+			height: 120%;
+			border-radius: 50%;
+			border: 22px solid;
+			top: -10%;
+			left: -10%;
+			box-sizing: border-box;
+			opacity: 0;
+			transition: opacity 0.2s linear, border-width 0.3s linear;
+		}
+		&:hover {
+			&::after {
+				border-width: 10px;
+				opacity: .5;
+			}
+		}
+	}
+}
+

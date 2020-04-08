@@ -1,0 +1,48 @@
+.#{$theme-prefix}btn {
+	$size: 36px;
+	$border: 1px;
+	padding: 0 20px;
+	height: $size;// desktop
+	line-height: #{$size - ($border * 2)};// desktop
+	border-radius: #{$size / 2};// desktop
+	min-width: $size;// desktop
+	font-size: 13px;
+	transition: background-color 0.2s linear;
+	&__r {
+		width: $size;
+		padding: 0;
+	}
+	i {
+		line-height: $size;
+	}
+	&.#{$theme-prefix}icon-l {
+		padding: 0 20px 0 15px;
+		i {
+    		line-height: $size;
+    		margin-right: 8px;
+		}
+	}
+	&.#{$theme-prefix}icon-r {
+		padding: 0 15px 0 20px;
+		i {
+    		line-height: $size;
+    		margin-left: 8px;
+		}
+	}
+	// Primary color button
+	&-primary {
+		line-height: #{$size};// desktop
+	}
+	// Plain text button
+	&__txt {
+		line-height: #{$size};// desktop
+	}
+	&__sq {
+		border-radius: 4px;
+	}
+	&__l {
+		$sizel: 50px;
+		height: $sizel;
+		line-height: $sizel;
+	}
+}

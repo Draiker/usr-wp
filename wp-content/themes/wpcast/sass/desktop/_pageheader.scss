@@ -1,0 +1,88 @@
+.#{$theme-prefix}pageheader {
+	&__contents {
+		padding: 160px 0;
+		text-rendering: geometricPrecision;
+	}
+	.#{$theme-prefix}meta {
+		margin-top: 20px;
+	}
+	.#{$theme-prefix}decor {
+		margin-top: 26px;
+	}
+	.#{$theme-prefix}bgimg {
+		img {
+			// max-height: 100%; // desktop 100%
+		}
+	}
+
+	.#{$theme-prefix}p-author {
+		position: relative;
+		padding-right: 22px;
+		&::after {
+			content: " ";
+			display: inline-block;
+			width: 10px;
+			height: 1px;
+			border-top: 1px solid,;
+			margin-left: 10px;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			line-height: inherit;
+		}
+	}
+	
+	.#{$theme-prefix}actions {
+		height: 110px;
+		&__cont{
+			background: transparent;
+			width: 100%;
+			height: auto;
+			transition: none;
+			position: relative;
+			&:hover {
+				position: relative;
+			}
+		}
+		.#{$theme-prefix}a0 {
+			width: 110px;
+			height: 110px;
+			line-height: 102px;
+			border-width: 5px;
+			i {
+				font-size: 64px;
+			}
+		}
+		.#{$theme-prefix}a1, .#{$theme-prefix}a2 {
+			top: 50%;
+			margin-top: -14px;
+		}
+		.#{$theme-prefix}a1 {
+			margin-left: -120px;
+		}
+		.#{$theme-prefix}a2 {
+			margin-left: 95px;
+		}
+	}
+	&__breadcrumb {
+		top: 0;
+    	padding: 27px 0;
+    	width: 100%;
+    	height: 80px;
+		.#{$theme-prefix}breadcrumb {
+			padding: 0 27px;
+			text-align: right;
+			max-width: 1760px;
+    		margin: 0 auto;
+	    }
+    }
+
+    &__nav-post a{
+		&:hover {
+			.#{$theme-prefix}tit {
+				max-width:450px;
+			}
+		}
+	}
+
+}

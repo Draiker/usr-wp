@@ -1,0 +1,125 @@
+// This is the post item in the archives
+.#{$theme-prefix}scard {
+	$padding-header: 16px; // desktop 30
+	@extend .#{$theme-prefix}card;
+	margin-bottom: 32px;
+	padding-top: 134%;
+	position: relative;
+
+	&__t {
+		margin-top: 0;
+		border-left: 5px solid;
+		padding-left: 12px;
+
+		.#{$theme-prefix}caption {
+			font-size: 13px;
+			line-height: 1;
+			margin: 0 0 4px 0;
+			padding: 0;
+			display: none;
+
+			&::after {
+				display: none;	
+			}
+		}
+		h4 {
+			display: block;
+			margin: 0 0 20px 0;
+			padding: 0;
+		}
+	}
+	&__des {
+		display: none;
+		text-rendering: geometricPrecision;
+	}
+	.#{$theme-prefix}feedlink {
+		display: none;
+	}
+	&__con {
+		position: absolute;
+		overflow: hidden;
+		z-index: 10;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: $padding-header $padding-header ($padding-header + 124px) $padding-header;
+		overflow: hidden;
+		display: block;
+		background-color: rgba(0,0,0,0.2);
+	}
+	&__foot {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		z-index: 20;
+		padding: 0 $padding-header $padding-header $padding-header;
+	}
+	.#{$theme-prefix}bgimg {
+		position: absolute;
+		overflow: hidden;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		&::after {
+			content: " ";
+			position: absolute;
+			overflow: hidden;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0.4+20,0.15+36,0.15+81,0.78+100 */
+			background: -moz-linear-gradient(top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 20%, rgba(0,0,0,0.15) 46%, rgba(0,0,0,0.15) 81%, rgba(0,0,0,0.78) 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top, rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.6) 20%,rgba(0,0,0,0.15) 46%,rgba(0,0,0,0.15) 81%,rgba(0,0,0,0.78) 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.6) 20%,rgba(0,0,0,0.15) 46%,rgba(0,0,0,0.15) 81%,rgba(0,0,0,0.78) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#c7000000',GradientType=0 ); /* IE6-9 */
+		}
+	}
+	.#{$theme-prefix}episodes {
+		display: none;
+		@extend .#{$theme-prefix}small;
+	}
+}
+
+// Small cards
+.#{$theme-prefix}scard-s {
+	display: block;
+	position: relative;
+	padding-top: 134%;
+	color: #fff;
+	background: #111;
+	margin-bottom: 20%;
+	&__c {
+		position: absolute;
+		z-index: 2;
+		width: 100%;
+		bottom: 0;
+		padding: 12px;
+		
+		background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 51%, rgba(0, 0, 0, 0) 57%, rgba(0, 0, 0, 0.65) 100%);
+    	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
+	}
+	h6 {
+		color: inherit;
+		margin-bottom: 5px;
+		font-size: 15px;
+	}
+	p {
+		font-size: 11px;
+		margin-top: 0;
+		opacity: .65;
+	}
+	img {
+		position: absolute;
+		top: 0;
+		z-index: 1;
+		left: 0;
+		width: 100%;
+		opacity: .9;
+	}
+}

@@ -1,0 +1,17 @@
+.#{$theme-prefix}meta {
+	opacity: .75;
+	i {
+		opacity: .85;
+		font-size: 1.2em;
+		display: inline-flex;
+		vertical-align: text-top;
+		vertical-align: middle;// text-bottom;
+	}
+	a {
+		color: inherit;
+	}
+	.#{$theme-prefix}p-date {
+		margin-left: 8px;
+	}
+	
+}

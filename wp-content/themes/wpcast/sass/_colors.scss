@@ -1,0 +1,137 @@
+$background: #f9f9f9;
+$paper: #fff;
+$ink: #777777;
+$titles: #343434;
+$accent:  #00a8c6;
+$accent-hover:  #00d7df;
+$primary: #111618;
+$primary-light: #353535;
+$primary-text: #fff;
+$accent-text: #fff;
+
+body, blockquote::before {
+	background-color: $background;
+	color: $ink;
+}
+.#{$theme-prefix}comments-section .comment-respond {
+	background-color: $background;
+}
+a {
+	color: $accent;
+}
+a:hover {
+	color: $accent-hover;
+}
+.wp-block-separator {
+	border-color: rgba($ink, 0.66);
+}
+.#{$theme-prefix}entrycontent p.has-drop-cap,
+.wpcast-entrycontent blockquote, .wpcast-entrycontent .wp-block-quote,
+blockquote, blockquote::before,
+.wpcast-single .wpcast-entrycontent .wp-block-quote,
+.#{$theme-prefix}btn {
+	border-color: rgba($ink, 0.2);
+}
+h1, h2, h3, h4, h5, h6 {
+	color: $titles;
+}
+
+.#{$theme-prefix}caption__s,
+.#{$theme-prefix}caption__xs {
+	color: rgba($ink, 0.65);
+}
+.#{$theme-prefix}primary-light .#{$theme-prefix}caption {
+	color: rgba($primary-text, 0.7);
+}
+.#{$theme-prefix}paper, .#{$theme-prefix}menubar ul, blockquote::before {
+	background-color: $paper;
+}
+.#{$theme-prefix}primary {
+	background-color: $primary;
+	color: $primary-text;
+	.#{$theme-prefix}btn {
+		border-color: rgba($primary-text, 0.2);
+	}
+	h1, h2, h3, h4, h5, h6 {
+		color: $primary-text;
+	}
+}
+
+.#{$theme-prefix}primary-light {
+	background-color: $primary-light;
+	color: $primary-text;
+	
+	h1, h2, h3, h4, h5, h6 {
+		color: $primary-text;
+	}
+}
+
+.#{$theme-prefix}primary-light .#{$theme-prefix}caption__s, 
+.#{$theme-prefix}primary-light .#{$theme-prefix}btn {
+	border-color: rgba($primary-text, 0.2);
+}
+
+[class*="-catid-"]::before,
+.ttg-reaktions-accent, // to set our plugin accent color
+.#{$theme-prefix}accent,
+.#{$theme-prefix}btn-primary,
+.#{$theme-prefix}scard:hover .#{$theme-prefix}btn__ghost, 
+.#{$theme-prefix}menubar li::before  {
+	background-color: $accent;
+	color: $accent-text;
+}
+
+
+.#{$theme-prefix}btn__white {
+	background-color: #fff;
+	color: $accent;
+}
+.#{$theme-prefix}btn__neg {
+	border-color: #fff !important;
+}
+
+
+/**
+ * Borders
+ */
+.wpcast-form-wrapper input[type="text"]:focus, .wpcast-form-wrapper input[type="email"]:focus, .wpcast-form-wrapper input[type="password"]:focus, .wpcast-form-wrapper textarea:focus,
+.#{$theme-prefix}menu-horizontal .#{$theme-prefix}menubar > li ul,
+.#{$theme-prefix}footer__copy,
+.#{$theme-prefix}decor,
+.#{$theme-prefix}caption::after,
+.#{$theme-prefix}post__title,
+.#{$theme-prefix}scard__t {
+	border-color: $accent;
+}
+
+
+/**
+ * Gradient for overlays
+ */
+.#{$theme-prefix}grad-layer {
+background: $accent; /* Old browsers */
+background: -moz-linear-gradient(45deg, $accent 0%, $accent-hover 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(45deg, $accent 0%, $accent-hover 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(45deg, $accent 0%, $accent-hover 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$accent}', endColorstr='#{$accent-hover}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+
+
+/**================================================================
+ * Desktop Styles
+ ================================================================*/
+@media #{$large-and-up} {
+
+	.#{$theme-prefix}btn, .#{$theme-prefix}post__title a, .wpcast-menu-horizontal .wpcast-menubar > li ul li a {
+	  	background-image: linear-gradient(to right, rgba(  $accent-hover , 0.5) 100%, #fff 100%); //$accent-hover
+	}
+	.#{$theme-prefix}btn {
+		background-image: linear-gradient(to right, $accent-hover 100%, #fff 100%); //$accent-hover
+	}
+	.#{$theme-prefix}btn:hover {
+		border-color: $accent-hover; //$accent-text
+		color: $accent-text; //$accent-text
+	}
+	
+}

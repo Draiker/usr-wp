@@ -1,0 +1,10 @@
+.#{$theme-prefix}cat-card {
+	margin-bottom: $gutter-width;
+	a {
+		padding: 14px 17px;// desktop 20px 23px;
+	}
+	hr {
+		top: 17px;
+		right: 17px; // desktop 20px
+	}
+}

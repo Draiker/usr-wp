@@ -1,0 +1,24 @@
+.#{$theme-prefix}pad {
+	padding: 32px;
+}
+.#{$theme-prefix}section {
+	padding: 70px 0
+}
+.#{$theme-prefix}vc_section {
+	margin-top: 70px;
+	margin-bottom: 50px;
+}
+/*  Spacers ==========================================================================*/
+
+.#{$theme-prefix}spacer-l {
+	padding-top: 90px;
+}
+.#{$theme-prefix}spacer-m {
+	padding-top: 50px;
+}
+.#{$theme-prefix}spacer-s {
+	padding-top: 30px;
+}
+.#{$theme-prefix}spacer-xs {
+	padding-top: 20px;
+}

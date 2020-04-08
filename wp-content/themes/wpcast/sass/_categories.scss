@@ -1,0 +1,32 @@
+.#{$theme-prefix}cats {
+	@extend .#{$theme-prefix}capfont;
+	font-size: 12px;
+	a {
+		color: inherit;
+		margin-right: 10px;
+		&::before {
+			display: inline-flex;
+			content: " ";
+			width: 4px;
+			height: 4px;
+			border-radius: 50%;
+			// background: #fff;
+			margin-right: 8px;
+			vertical-align: middle;
+			margin-top: -2px;
+			
+		}
+	}
+}
+
+.#{$theme-prefix}tags {
+	@extend .#{$theme-prefix}capfont;
+	font-size: 12px;
+	a {
+		color: inherit;
+		opacity: 0.5;
+		&:hover {
+			opacity: 1;
+		}
+	}
+}

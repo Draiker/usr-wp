@@ -1,0 +1,17 @@
+@charset "UTF-8";
+$theme-prefix: "wpcast-";
+
+@import "welcome-page";
+
+
+.#{$theme-prefix}notice {
+	&__form {
+		position: relative;
+		.button {
+			position: absolute;
+			right: 0;
+			top: 8px;
+		}
+	}
+
+}

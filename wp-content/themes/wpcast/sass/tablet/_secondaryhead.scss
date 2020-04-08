@@ -1,0 +1,20 @@
+.#{$theme-prefix}secondaryhead {
+	$menusize: 50px;
+	display: block;
+	&__cont {
+		max-width: $themevariable-max-container-size;
+		margin: 0 auto;
+		min-height: $menusize ;
+		line-height: $menusize;
+		padding: 0 16px;	
+	}
+	.#{$theme-prefix}social {
+		a {
+			color: inherit;
+			font-size: 15px;
+			padding: 0 4px;
+			margin-left: 5px;
+			opacity: .8;
+		}
+	}
+}

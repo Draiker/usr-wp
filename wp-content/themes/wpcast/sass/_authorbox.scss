@@ -1,0 +1,109 @@
+.#{$theme-prefix}authorbox {
+	@extend .#{$theme-prefix}paper;
+	@extend .#{$theme-prefix}card;
+	padding: 0;
+	text-align: center;
+	position: relative;
+	&__img {
+		$size: 88px;
+		text-align: center;
+		width: $size;
+		height: $size;
+		float: none;
+		display: inline-block;
+		margin: 0 0 0 0;
+		border-radius: 50%;
+		border: 1px solid rgba(100,100,100,0.2);
+		padding: 5px;
+		position: relative;
+		background-color: inherit;
+		img {
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+		}
+	}
+	.#{$theme-prefix}bgimg {
+		filter: blur(3px) brightness(40%);
+		transform: scale(1.5);
+		top: -20%;
+	}
+	h6 {
+
+	}
+	h4 {
+		margin: 24px 0 0 0;
+	}
+	p {
+		margin: 1em 0 0 0;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 380px;
+	}
+
+	&__cn {
+		position: relative;
+		z-index: 2;
+		overflow: hidden;
+		padding: 50px;
+		height: 100%;
+		&::after, &::before {
+			display: block;
+			position: absolute;
+			content: " ";
+			width: 200%;
+			height: 200%;
+			background: #fff;
+			left: 0;
+			top: 0;
+			border-radius: 50%;
+			left: -50%;
+			top: 26%;
+			z-index: -1;
+			opacity: 1;
+		}
+		&::before {
+			top: 24%;
+			opacity: .6;
+		}
+	}
+
+	&__card {
+		margin-bottom: 1.4rem;
+		padding: 30px 10px;
+		position: relative;
+		overflow: hidden;
+		> * {
+			position: relative;
+			z-index: 2;
+		}
+		h6 {
+			margin: 24px 0 0 0;
+		}
+		p {
+			margin: 10px 0 0 0;
+			line-height: 1em;
+		}
+		&__bg {
+			position: absolute;
+			z-index: 0;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 75px;
+			overflow: hidden;
+			background: black;
+			img {
+				width: 120%;
+				height: 120%;
+				left: 0;
+				top: 0;
+				filter: blur(2px);
+				position: absolute;
+				opacity: .5;
+				object-fit: cover;
+			}
+		}
+	}
+
+}

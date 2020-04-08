@@ -1,0 +1,60 @@
+.#{$theme-prefix}comments-section {
+	.comment-respond {
+		padding:36px;
+	}
+	> h5 {
+		margin-bottom: 30px;
+	}
+}
+
+.#{$theme-prefix}comment {
+	$padding: 32px;
+	$content-padding: 85px; // padding left
+	padding: #{$padding * 1.5} $padding $padding $padding ;
+
+	&__metas {
+		display: inline;
+   		margin-top: 0;
+   	}
+	&__closed {
+		padding: $padding ;
+	}
+	.#{$theme-prefix}avatar, &__icon {
+		$size: 56px;
+		width: $size;
+		height: $size;
+		left: $padding;
+		top:  #{$padding * 1.5};
+		padding: 4px;
+	}
+	// pingback icon
+	&__icon {
+		i {
+			font-size: 30px;
+			line-height: 46px;
+		}
+	}
+	&__c {
+		padding-left: $content-padding;
+	}
+	&__rlink {
+		top:  #{$padding * 1.5};
+		right: $padding;
+	}
+	&__auth {
+		padding-left: $content-padding;
+		
+	}
+	&__item .comment-respond {
+			margin-top: 0;
+		}
+}
+.#{$theme-prefix}pingback {
+	min-height: 140px;
+	.#{$theme-prefix}comment {
+		&__c {
+			margin-top: 18px;
+		}
+	}
+
+}

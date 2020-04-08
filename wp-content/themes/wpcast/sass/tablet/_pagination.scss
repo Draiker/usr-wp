@@ -1,0 +1,12 @@
+.#{$theme-prefix}pagination {
+	
+	padding: 0px 0;
+	text-align: center;
+	.page-numbers {
+		width: auto;
+		display: inline-block;
+	}
+	.#{$theme-prefix}num, .dots {
+		display: inline-block;
+	}
+}

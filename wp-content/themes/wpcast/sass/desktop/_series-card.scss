@@ -1,0 +1,113 @@
+// This is the post item in the archives
+.#{$theme-prefix}scard {
+	$padding-header: 30px; // desktop 30
+	&__des {
+		position: relative;
+		height: 100%;
+		width: 100%;
+	}
+	.#{$theme-prefix}intro {
+		display: block;
+		opacity: 1;
+		transform: translateY(0px);
+	}
+	.#{$theme-prefix}episodes {
+		display: block;
+		opacity: 0 !important;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		transform: translateY(15px);
+		width: 100%;
+		.#{$theme-prefix}caption {
+			margin-top: 0;
+			margin-bottom: 20px;
+			font-size: 13px;
+		}
+		a {
+			color: inherit;
+		}
+		&__r { // row
+			
+			padding-right: $padding-header;
+			margin: 5px 0;
+			line-height: 27px;
+			clear: both;
+			height: 27px;
+		}
+		p {
+			clear: both;
+			margin-top: 20px;
+		}
+		&__l {
+			max-width: calc( 100% - 30px);
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			line-height: 20px;
+			height: 20px;
+			float: left;
+		}
+		&__p { // play
+			vertical-align: middle;
+			line-height: inherit;
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			text-align: center;
+			position: relative;
+			margin-right: 10px;
+			line-height:20px;
+			box-sizing: border-box;
+			float: left;
+			/**
+			 * QTM Player styling
+			 */
+			.qtmplayer-donut .qtmplayer-play-btn {
+				position: absolute;
+				left: 0;
+			}
+			&::after {
+				display: block;
+				content: " ";
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				border: 2px solid;
+				opacity: .3;
+			}
+			i {
+				position: absolute;
+				left: 0;
+				top: 0;
+				font-size: 16px;
+				width: 20px;
+				height: 20px;
+				border: 2px solid transparent;
+			}
+		}
+	}
+	.#{$theme-prefix}intro, .#{$theme-prefix}episodes {
+		transition: transform 0.4s ease, opacity 0.3s linear;
+	}
+	.#{$theme-prefix}scard__con {
+		transition: background 0.3s linear;
+	}
+	&:hover {
+		.#{$theme-prefix}scard__con {
+			background-color: rgba(0, 0, 0, 0.6);
+		}
+		.#{$theme-prefix}intro {
+			opacity: 0;
+			transform: translateY(-15px);
+		}
+		.#{$theme-prefix}episodes {
+			opacity: 1 !important;
+			transform: translateY(0px);
+		}
+		
+	}
+}

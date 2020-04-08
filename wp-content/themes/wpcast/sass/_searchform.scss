@@ -1,0 +1,31 @@
+.#{$theme-prefix}searchform {
+	position: relative;
+	margin: 30px 0 0 0;
+	input[type="text"] {
+		border-radius: 3px;
+		box-shadow: 0 0 8px rgba(0,0,0,0.05);
+		&:focus {
+			box-shadow: 0 0 14px rgba(0,0,0,0.2);
+		}
+	}
+	.#{$theme-prefix}btn {
+		position: absolute;
+		top: 0;
+		right: 0;
+		background: transparent;
+		padding-right: 8px;
+		color: #818181;
+		font-size: 18px;
+		height: 50px;
+		line-height: 45px;
+		i {
+			display: inline;
+			height: 50px;
+			line-height: 45px;
+		}
+		&:hover {
+			color: inherit;
+			opacity: .6;
+		}
+	}
+}

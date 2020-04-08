@@ -1,0 +1,86 @@
+.#{$theme-prefix}btn {
+	$size: 34px;
+	$border: 1px;
+	padding: 0 $size / 2;
+	text-transform: uppercase;
+	height: $size;// desktop
+	line-height: #{$size - ($border * 2)};// desktop
+	border-radius: #{$size / 2};// desktop
+	text-align: center;
+	min-width: $size;// desktop
+	display: inline-block;
+	vertical-align: middle;
+	border: $border solid;// desktop
+	color: inherit;
+	font-size: 12px;
+	cursor: pointer;
+	text-rendering: geometricPrecision;
+	// for animation
+	background-size: 0% 102%;
+    background-repeat: no-repeat;
+    background-position: -2px 101%;
+    transition: all 0.3s cubic-bezier(0.16, 0.68, 0.49, 0.99) !important;
+	background-image: linear-gradient(to right, rgba(169, 196, 211, 0.3) 100%, #fff 100%);
+
+	&__r {
+		padding: 0;
+		width: $size;
+	}
+
+	
+	i {
+		line-height: $size;
+		display: inline-block;
+		vertical-align: baseline;
+		position: relative;
+		margin: -1px 0 0 0;
+		font-size: 1.5em;
+		display: -webkit-inline-flex;
+		display: -ms-inline-flexbox;
+		display: inline-flex;
+		display: -webkit-inline-flex;
+		vertical-align: bottom;
+		
+	}
+	&.#{$theme-prefix}icon-l {
+		padding: 0 $size / 2 0 $size / 2.5;
+		i {
+			float: left;
+    		line-height: $size;
+    		margin-right: 4px;
+		}
+	}
+	&.#{$theme-prefix}icon-r {
+		padding: 0 $size / 2.5 0 $size / 2;
+		i {
+			float: right;
+    		line-height: $size;
+    		margin-left: 4px;
+		}
+	}
+	// Primary color button
+	&-primary {
+		border: none;
+		line-height: #{$size};// desktop
+	}
+	// Plain text button
+	&__txt {
+		
+		border: none;
+		line-height: #{$size};// desktop
+	}
+	&__full {
+		width: 100%;
+	}
+	&__neg {
+		border-color: #fff;
+	}
+	&__sq {
+		border-radius: 4px;
+	}
+	&__l {
+		$sizel: 50px;
+		height: $sizel;
+		line-height: $sizel;
+	}
+}

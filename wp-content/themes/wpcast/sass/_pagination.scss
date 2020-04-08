@@ -1,0 +1,23 @@
+.#{$theme-prefix}wp-pagination {
+	display: block;
+    text-align: center;
+}
+.#{$theme-prefix}pagination {
+	text-align: center;
+	overflow: hidden;
+    display: inline-block;
+    width: 100%;
+    margin: 16px auto;
+	.page-numbers {
+		width: 50%;
+		padding: 0 4px;
+		display: inline-block;
+		float: left;
+		> span {
+			width: 100%;
+		}
+	}
+	.#{$theme-prefix}num, .dots {
+		display: none;
+	}
+}
