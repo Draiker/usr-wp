@@ -1,0 +1,458 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: "
+"WpCast Gutenberg "
+"Blocks\n"
+"POT-Creation-Date: "
+"2019-01-22 11:46+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Your "
+"Name <you@example.com>\n"
+"Language-Team: "
+"QantumThemes\n"
+"Report-Msgid-Bugs-To: "
+"Translator Name "
+"<translations@example."
+"com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/"
+"plain; charset=UTF-8\n"
+"Content-Transfer-"
+"Encoding: 8bit\n"
+"Plural-Forms: "
+"nplurals=2; plural=n != "
+"1;\n"
+"X-Textdomain-Support: "
+"yesX-Generator: Poedit "
+"1.6.4\n"
+"X-Poedit-SourceCharset: "
+"UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;esc_html_e;"
+"esc_html_x:1,2c;"
+"esc_html__;esc_attr_e;"
+"esc_attr_x:1,2c;"
+"esc_attr__;_ex:1,2c;"
+"_nx:4c,1,2;"
+"_nx_noop:4c,1,2;_x:1,2c;"
+"_n:1,2;_n_noop:1,2;"
+"__ngettext:1,2;"
+"__ngettext_noop:1,2;_c,"
+"_nc:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"Language: en_US\n"
+"X-Generator: Poedit "
+"1.8.9\n"
+"X-Poedit-"
+"SearchPath-0: .\n"
+
+#: blocks/authors-small-backup/block/block.js:38
+#: blocks/authors-small-backup2/block/block.js:41
+#: blocks/authors-small/block/block.js:29
+msgid "Authors small"
+msgstr ""
+
+#: blocks/authors-small-backup2/block/block.js:107
+#: blocks/authors-small-backup2/block/block.js:137
+msgid "Apply Styles"
+msgstr ""
+
+#: blocks/authors-small/block/block.js:82
+msgid "Authors Grid Small"
+msgstr ""
+
+#: blocks/authors-small/block/block.js:87
+#: blocks/category-grid/block/block.js:116
+#: blocks/featured-author/block/block.js:75
+#: blocks/post-cards/block/block.js:99
+#: blocks/post-grid/block/block.js:99
+#: blocks/post-hero/block/block.js:224
+#: blocks/post-list-horizontal/block/block.js:99
+#: blocks/post-list/block/block.js:99
+#: blocks/post-slider/block/block.js:99
+#: blocks/series-grid-small/block/block.js:131
+#: blocks/series-grid/block/block.js:128
+msgid ""
+"Check block parameters "
+"to customize"
+msgstr ""
+
+#: blocks/authors-small/block/block.js:92
+msgid "Item amount:"
+msgstr ""
+
+#: blocks/authors-small/block/block.js:102
+msgid ""
+"Parameters for the "
+"Authors Grid Small"
+msgstr ""
+
+#: blocks/authors-small/block/block.js:107
+msgid "Order by name"
+msgstr ""
+
+#: blocks/authors-small/block/block.js:115
+msgid "Number of items"
+msgstr ""
+
+#: blocks/button/block/block.js:30
+msgid "Button"
+msgstr ""
+
+#: blocks/button/block/block.js:117
+msgid "Text"
+msgstr ""
+
+#: blocks/button/block/block.js:129
+msgid "Button parameters"
+msgstr ""
+
+#: blocks/button/block/block.js:134
+msgid "Button text"
+msgstr ""
+
+#: blocks/button/block/block.js:142
+msgid "Button link"
+msgstr ""
+
+#: blocks/button/block/block.js:150
+msgid "Target"
+msgstr ""
+
+#: blocks/button/block/block.js:158
+msgid "Accent colors"
+msgstr ""
+
+#: blocks/button/block/block.js:166
+msgid "Alignment"
+msgstr ""
+
+#: blocks/caption/block/block.js:32
+msgid "Caption"
+msgstr ""
+
+#: blocks/caption/block/block.js:38
+msgid "Caption Here"
+msgstr ""
+
+#: blocks/caption/block/block.js:95
+msgid "Size"
+msgstr ""
+
+#: blocks/caption/block/block.js:158
+msgid "Caption parameters"
+msgstr ""
+
+#: blocks/caption/block/block.js:163
+msgid "Caption title"
+msgstr ""
+
+#: blocks/caption/block/block.js:171
+msgid "Extra CSS classes"
+msgstr ""
+
+#: blocks/caption/block/block.js:180
+msgid "Center"
+msgstr ""
+
+#: blocks/category-grid/block/block.js:23
+msgid "Category grid"
+msgstr ""
+
+#: blocks/category-grid/block/block.js:111
+msgid "Category Grid"
+msgstr ""
+
+#: blocks/category-grid/block/block.js:126
+msgid ""
+"Category Grid Parameters"
+msgstr ""
+
+#: blocks/category-grid/block/block.js:131
+msgid ""
+"Hide empty categories"
+msgstr ""
+
+#: blocks/category-grid/block/block.js:139
+msgid ""
+"Only parent categories "
+"(ignore Child Of)"
+msgstr ""
+
+#: blocks/category-grid/block/block.js:147
+msgid "Posts count label"
+msgstr ""
+
+#: blocks/category-grid/block/block.js:150
+msgid "Episodes"
+msgstr ""
+
+#: blocks/category-grid/block/block.js:156
+#: blocks/series-grid-small/block/block.js:164
+#: blocks/series-grid/block/block.js:161
+msgid ""
+"Include only following "
+"ID"
+msgstr ""
+
+#: blocks/category-grid/block/block.js:164
+#: blocks/series-grid-small/block/block.js:172
+#: blocks/series-grid/block/block.js:169
+msgid ""
+"Exclude only following "
+"ID"
+msgstr ""
+
+#: blocks/category-grid/block/block.js:172
+#: blocks/series-grid-small/block/block.js:180
+#: blocks/series-grid/block/block.js:177
+msgid ""
+"Only child of these IDs"
+msgstr ""
+
+#: blocks/featured-author/block/block.js:29
+#: blocks/featured-author/block/block.js:70
+msgid "Featured author"
+msgstr ""
+
+#: blocks/featured-author/block/block.js:85
+msgid "Author ID"
+msgstr ""
+
+#: blocks/heropost/block/block.js:38
+msgid "Hero Post"
+msgstr ""
+
+#: blocks/post-cards/block/block.js:23
+#: blocks/post-cards/block/block.js:94
+msgid "Post cards"
+msgstr ""
+
+#: blocks/post-cards/block/block.js:109
+#: blocks/post-grid/block/block.js:109
+#: blocks/post-hero/block/block.js:234
+#: blocks/post-list-horizontal/block/block.js:109
+#: blocks/post-list/block/block.js:109
+#: blocks/post-slider/block/block.js:109
+msgid ""
+"Offset (posts to skip)"
+msgstr ""
+
+#: blocks/post-cards/block/block.js:119
+#: blocks/post-grid/block/block.js:119
+#: blocks/post-hero/block/block.js:244
+#: blocks/post-list-horizontal/block/block.js:119
+#: blocks/post-list/block/block.js:119
+#: blocks/post-slider/block/block.js:119
+msgid ""
+"Taxonomy filter "
+"[Example category:"
+"trending, post_tag:"
+"video]"
+msgstr ""
+
+#: blocks/post-cards/block/block.js:129
+#: blocks/post-grid/block/block.js:129
+#: blocks/post-hero/block/block.js:254
+#: blocks/post-list-horizontal/block/block.js:129
+#: blocks/post-list/block/block.js:129
+#: blocks/post-slider/block/block.js:129
+msgid "Items amount"
+msgstr ""
+
+#: blocks/post-cards/block/block.js:140
+#: blocks/post-grid/block/block.js:140
+#: blocks/post-hero/block/block.js:265
+#: blocks/post-list-horizontal/block/block.js:140
+#: blocks/post-list/block/block.js:140
+#: blocks/post-slider/block/block.js:140
+msgid ""
+"Specific posts by ID"
+msgstr ""
+
+#: blocks/post-cards/block/block.js:150
+#: blocks/post-grid/block/block.js:150
+#: blocks/post-hero/block/block.js:275
+#: blocks/post-list-horizontal/block/block.js:150
+#: blocks/post-list/block/block.js:150
+#: blocks/post-slider/block/block.js:150
+msgid "Post type"
+msgstr ""
+
+#: blocks/post-cards/block/block.js:162
+#: blocks/post-cards/block/block.js:172
+#: blocks/post-grid/block/block.js:162
+#: blocks/post-grid/block/block.js:172
+#: blocks/post-hero/block/block.js:287
+#: blocks/post-hero/block/block.js:297
+#: blocks/post-list-horizontal/block/block.js:162
+#: blocks/post-list-horizontal/block/block.js:172
+#: blocks/post-list/block/block.js:162
+#: blocks/post-list/block/block.js:172
+#: blocks/post-slider/block/block.js:162
+#: blocks/post-slider/block/block.js:172
+msgid "Order by"
+msgstr ""
+
+#: blocks/post-cards/block/block.js:182
+#: blocks/post-grid/block/block.js:182
+#: blocks/post-hero/block/block.js:307
+#: blocks/post-list-horizontal/block/block.js:182
+#: blocks/post-list/block/block.js:182
+#: blocks/post-slider/block/block.js:182
+msgid "Meta key"
+msgstr ""
+
+#: blocks/post-cards/block/block.js:192
+#: blocks/post-grid/block/block.js:192
+#: blocks/post-hero/block/block.js:317
+#: blocks/post-list-horizontal/block/block.js:192
+#: blocks/post-list/block/block.js:192
+#: blocks/post-slider/block/block.js:192
+msgid ""
+"Exclude (id list to "
+"exclude)"
+msgstr ""
+
+#: blocks/post-cards/block/block.js:202
+#: blocks/post-grid/block/block.js:202
+#: blocks/post-hero/block/block.js:327
+#: blocks/post-list-horizontal/block/block.js:202
+#: blocks/post-list/block/block.js:202
+#: blocks/post-slider/block/block.js:202
+msgid ""
+"Custom Query [Example "
+"year=2012]"
+msgstr ""
+
+#: blocks/post-grid/block/block.js:23
+#: blocks/post-grid/block/block.js:94
+msgid "Post grid"
+msgstr ""
+
+#: blocks/post-hero/block/block.js:23
+msgid "Post Hero"
+msgstr ""
+
+#: blocks/post-hero/block/block.js:219
+msgid "Post hero"
+msgstr ""
+
+#: blocks/post-list-horizontal/block/block.js:23
+msgid ""
+"Post list horizontal"
+msgstr ""
+
+#: blocks/post-list-horizontal/block/block.js:94
+msgid ""
+"Post list horizontal "
+"design"
+msgstr ""
+
+#: blocks/post-list/block/block.js:23
+msgid "Post list"
+msgstr ""
+
+#: blocks/post-list/block/block.js:94
+msgid "Post List"
+msgstr ""
+
+#: blocks/post-slider/block/block.js:23
+#: blocks/post-slider/block/block.js:94
+msgid "Post slider"
+msgstr ""
+
+#: blocks/qtblock/block-min.js:27
+#: blocks/qtblock/block.js:27
+msgid "My qtblock block"
+msgstr ""
+
+#: blocks/qtblock/block-min.js:55
+#: blocks/qtblock/block.js:55
+msgid ""
+"Hello from the editor!"
+msgstr ""
+
+#: blocks/qtblock/block-min.js:70
+#: blocks/qtblock/block.js:70
+msgid ""
+"Hello from the saved "
+"content!"
+msgstr ""
+
+#: blocks/series-grid-small/block/block.js:23
+#: blocks/series-grid-small/block/block.js:126
+msgid "Series grid small"
+msgstr ""
+
+#: blocks/series-grid-small/block/block.js:98
+#: blocks/series-grid/block/block.js:97
+msgid "Columns"
+msgstr ""
+
+#: blocks/series-grid-small/block/block.js:141
+#: blocks/series-grid/block/block.js:138
+msgid ""
+"Series grid parameters"
+msgstr ""
+
+#: blocks/series-grid-small/block/block.js:147
+#: blocks/series-grid/block/block.js:144
+msgid "Hide empty series"
+msgstr ""
+
+#: blocks/series-grid-small/block/block.js:155
+#: blocks/series-grid/block/block.js:152
+msgid ""
+"Only parent series "
+"(ignore Child Of)"
+msgstr ""
+
+#: blocks/series-grid/block/block.js:23
+msgid "Series grid"
+msgstr ""
+
+#: blocks/series-grid/block/block.js:123
+msgid "Series Grid"
+msgstr ""
+
+#: blocks/authors-small-backup/index.php:50
+#: blocks/authors-small-backup/index.php:55
+#: blocks/authors-small-backup2/index.php:50
+#: blocks/authors-small-backup2/index.php:55
+#: blocks/authors-small/index.php:47
+#: blocks/authors-small/index.php:52
+#: blocks/button/index.php:56
+#: blocks/button/index.php:61
+#: blocks/caption/index.php:53
+#: blocks/caption/index.php:58
+#: blocks/category-grid/index.php:59
+#: blocks/category-grid/index.php:64
+#: blocks/featured-author/index.php:41
+#: blocks/featured-author/index.php:46
+#: blocks/post-cards/index.php:77
+#: blocks/post-cards/index.php:82
+#: blocks/post-grid/index.php:77
+#: blocks/post-grid/index.php:82
+#: blocks/post-hero/index.php:57
+#: blocks/post-hero/index.php:62
+#: blocks/post-list-horizontal/index.php:78
+#: blocks/post-list-horizontal/index.php:83
+#: blocks/post-list/index.php:78
+#: blocks/post-list/index.php:83
+#: blocks/post-slider/index.php:79
+#: blocks/post-slider/index.php:88
+#: blocks/series-grid-small/index.php:55
+#: blocks/series-grid-small/index.php:60
+#: blocks/series-grid/index.php:56
+#: blocks/series-grid/index.php:65
+msgid ""
+"Sorry, this block "
+"doesn't work with your "
+"theme"
+msgstr ""
+
+#: wpcast-blocks.php:19
+msgid "Wpcast Blocks"
+msgstr ""

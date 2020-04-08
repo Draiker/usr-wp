@@ -1,0 +1,30 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+
+.wp-block-wpcast-blocks-caption {
+	padding: 10px 0;
+}
+.wp-block-wpcast-blocks-caption .wpcast-center {
+	text-align: center;
+}
+.wpcast-capfont, .wpcast-caption, .wpcast-cats, .wpcast-tags { text-transform: uppercase; letter-spacing: 0.05em; }
+
+.wpcast-caption { position: relative; padding-bottom: 0.5em; }
+
+.wpcast-caption a { color: inherit; }
+
+.wpcast-caption::after { display: inline-block; content: " "; margin: 0; padding: 0; height: 6px; width: 30px; border-bottom: 2px solid; position: absolute; bottom: -2px; left: 0; }
+
+.wpcast-caption__s, .wpcast-caption__xs { border-bottom: 1px solid rgba(100, 100, 100, 0.2); margin-bottom: 1.6em; font-size: 13px; }
+
+.wpcast-caption__l::after { border-width: 5px; width: 40px; }
+
+.wpcast-caption__xl::after { border-width: 5px; width: 50px; }
+
+.wpcast-caption__c { border: none; text-align: center; }
+
+.wpcast-caption__c::after { left: 50%; -webkit-transform: translateX(-50%); transform: translateX(-50%); }

@@ -1,0 +1,18 @@
+3.1.2 2019 February 05
+[x] Added sharebox functionality
+
+3.1.0 2018 December 13
+[x] ADDED shareball
+
+3.0.0
+NOT COMPATIBLE WITH VLOGGER!
+* replaced Socicons with reakticons (many more icons)
+* added shortcode ttg_reaktions_buttons
+* replaced all dripicons with new reakticons
+* added reading time shortcode
+* added social share counter
+
+2.0.4
+* removed views from counter
+
+* removed hR mobile

@@ -1,0 +1,57 @@
+TTG Core Changelog
+1.3.1 [08 June 2018]
+* meta_box.php fix selected format
+
+1.3.0 [07 June 2018]
+* meta_box.php line 195 added data check
+
+1.2.9 [02 May 2018]
+* Minor improvement to metaboxes file field
+
+1.2.8 [19 feb 2018]
+* removed img border
+* Better conditional fields hide / show
+
+1.2.5
+* added flush_rewrite_rules in posttype.php
+
+1.2.4
+* metaboxes update 20171206 for css img uploader background
+
+1.2.3
+* metaboxes update 20171129 for css img uploader background
+
+1.2.2 [2017 Nov 09]
+* autocompile music fields
+
+1.2.1 [2017 Nov 07]
+* updated kirki
+
+1.2.0
+* metaboxes.php and metaboxes-script.js: updated file uploader
+
+1.1.1 [2017 oct 22]
+* added timecue input type
+
+1.1.0 [2017 oct 12]
+* post_chosen custom type
+* updated meta_box.php:190 ($post_type > $posttype)
+
+1.0.6
+* updated google font URL in kirki customizer
+
+1.0.5
+* updated meta-box.php to version 20170428
+
+1.0.4
+* updated meta-box.php to version 20170425
+
+1.0.3
+* added Author thumbail url in author-meta.php
+
+1.0.2
+* qt-thumb -> qantumthemes-thumb
+
+1.0.1 
+* meta_box.php:301 fixed taxonomy link
+* added tax_select_disassociated in metaboxes

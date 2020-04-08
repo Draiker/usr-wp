@@ -1,0 +1,6 @@
+ttg-authorbox plugin changelog
+V 1.1.1 [2018 Dec 18]
+* Settings data split fix
+
+V 1.1.0 [2018 Dec 18]
+* Added qualification field

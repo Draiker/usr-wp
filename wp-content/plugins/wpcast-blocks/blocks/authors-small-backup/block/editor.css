@@ -1,0 +1,29 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-wpcast-blocks-heropost{
+	border:3px dotted blue;
+	padding: 20px;
+	background: #efefef;
+	position: relative;
+	display: block;
+	width: 100%;
+	pointer-events: none
+}
+.wp-block-wpcast-blocks-heropost * {
+	pointer-events: none
+}
+.wp-block-wpcast-blocks-heropost::after{
+	content: "Hero Post";
+	display: inline-block;
+	position: absolute;
+	background: blue;
+	color: white;
+	font-size: 9px;
+	padding: 5px 10px;
+	top: 0;
+	left: 0;
+}

@@ -1,0 +1,29 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wpcast-blocks-placeholder{
+	border:1px dotted #444;
+	padding: 20px 40px;
+	background: #f9f9f9;
+	position: relative;
+	display: block;
+	width: 100%;
+	pointer-events: none
+}
+.wpcast-blocks-placeholder * {
+	pointer-events: none
+}
+.wpcast-blocks-placeholder::after{
+/*	content: "Authors Grid Small";
+	display: inline-block;
+	position: absolute;
+	background: blue;
+	color: white;
+	font-size: 9px;
+	padding: 5px 10px;
+	top: 0;
+	left: 0;*/
+}

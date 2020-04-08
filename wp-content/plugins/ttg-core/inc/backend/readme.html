@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+<h2 id="conditionalfields">Conditional fields</h2>
+
+<pre><code>array (
+        'label' =&gt; esc_html__('Disable Page Background',&quot;kentha&quot;),
+        'id' =&gt; 'kentha_disable_bg',
+        'class' =&gt; 'qw-conditional-fields',
+        'type' =&gt; 'chosen',
+        'options' =&gt; array(
+            array(
+                'label' =&gt; __('Show background','_s'),
+                'value' =&gt; 1,
+                'revealfields'=&gt;array('#kentha_image_bg','#kentha_video_bg','#kentha_video_start','#kentha_fadeout'),
+                'hidefields'=&gt;array()
+                ),
+            array(
+                'label' =&gt; __('Hide background','_s'),
+                'value' =&gt; 0,
+                'hidefields'=&gt;array('#kentha_image_bg','#kentha_video_bg','#kentha_video_start','#kentha_fadeout'),
+                'revealfields'=&gt;array()
+                ),
+        )
+    ),
+</code></pre>
+
+</body>
+</html>

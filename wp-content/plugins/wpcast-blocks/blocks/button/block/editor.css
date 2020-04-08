@@ -1,0 +1,31 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+
+.wp-block-wpcast-blocks-button {
+	padding: 10px 0;
+}
+.wp-block-wpcast-blocks-button.aligncenter {
+	text-align: center;
+}
+.wp-block-wpcast-blocks-button .wpcast-btn{ padding: 0 14px; text-transform: uppercase; height: 36px; line-height: 36px; border-radius: 18px; text-align: center; min-width: 36px; display: inline-block; vertical-align: middle; border: 1px solid; color: inherit; font-size: 12px; }
+
+.wp-block-wpcast-blocks-button input.components-text-control__input { border: none; background: transparent;height: 36px; line-height: 36px; text-align: center; text-transform: uppercase;} 
+
+.wpcast-btn-primary { background: #111; color: #fff; }
+.wpcast-btn-primary input.components-text-control__input { color: #fff; }
+
+.wpcast-btn__r { padding: 0; width: 28px; }
+
+.wpcast-btn:hover { color: inherit; }
+
+
+
+.wpcast-btn-primary { border: none; line-height: 28px; }
+
+.wpcast-btn__txt { border: none; line-height: 28px; }
+
+.wpcast-btn__full { width: 100%; }
