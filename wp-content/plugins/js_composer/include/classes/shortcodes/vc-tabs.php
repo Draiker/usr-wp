@@ -3,19 +3,39 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-class WPBakeryShortCode_VC_Tabs extends WPBakeryShortCode {
-	static $filter_added = false;
+/**
+ * Class WPBakeryShortCode_Vc_Tabs
+ */
+class WPBakeryShortCode_Vc_Tabs extends WPBakeryShortCode {
+	public static $filter_added = false;
 	protected $controls_css_settings = 'out-tc vc_controls-content-widget';
-	protected $controls_list = array( 'edit', 'clone', 'delete' );
+	protected $controls_list = array(
+		'edit',
+		'clone',
+		'delete',
+	);
 
+	/**
+	 * WPBakeryShortCode_Vc_Tabs constructor.
+	 * @param $settings
+	 */
 	public function __construct( $settings ) {
 		parent::__construct( $settings );
 		if ( ! self::$filter_added ) {
-			$this->addFilter( 'vc_inline_template_content', 'setCustomTabId' );
+			add_filter( 'vc_inline_template_content', array(
+				$this,
+				'setCustomTabId',
+			) );
 			self::$filter_added = true;
 		}
 	}
 
+	/**
+	 * @param $atts
+	 * @param null $content
+	 * @return mixed|string
+	 * @throws \Exception
+	 */
 	public function contentAdmin( $atts, $content = null ) {
 		$width = $custom_markup = '';
 		$shortcode_attributes = array( 'width' => '1/1' );
@@ -32,7 +52,6 @@ class WPBakeryShortCode_VC_Tabs extends WPBakeryShortCode {
 
 		preg_match_all( '/vc_tab title="([^\"]+)"(\stab_id\=\"([^\"]+)\"){0,1}/i', $content, $matches, PREG_OFFSET_CAPTURE );
 
-		$output = '';
 		$tab_titles = array();
 
 		if ( isset( $matches[0] ) ) {
@@ -49,8 +68,6 @@ class WPBakeryShortCode_VC_Tabs extends WPBakeryShortCode {
 				}
 			}
 			$tmp .= '</ul>' . "\n";
-		} else {
-			$output .= do_shortcode( $content );
 		}
 
 		$elem = $this->getElementHolder( $width );
@@ -83,10 +100,17 @@ class WPBakeryShortCode_VC_Tabs extends WPBakeryShortCode {
 		return $output;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getTabTemplate() {
 		return '<div class="wpb_template">' . do_shortcode( '[vc_tab title="Tab" tab_id=""][/vc_tab]' ) . '</div>';
 	}
 
+	/**
+	 * @param $content
+	 * @return string|string[]|null
+	 */
 	public function setCustomTabId( $content ) {
 		return preg_replace( '/tab\_id\=\"([^\"]+)\"/', 'tab_id="$1-' . time() . '"', $content );
 	}

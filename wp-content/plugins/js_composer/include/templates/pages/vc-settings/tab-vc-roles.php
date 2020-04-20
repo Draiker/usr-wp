@@ -7,17 +7,18 @@ $editable_roles = get_editable_roles();
 require_once vc_path_dir( 'SETTINGS_DIR', 'class-vc-roles.php' );
 $vc_role = new Vc_Roles();
 ?>
-<form action="<?php echo admin_url( 'admin-ajax.php' ); ?>" method="post"
-	id="vc_settings-<?php echo $tab ?>"
-	class="vc_settings-tab-content vc_settings-tab-content-active"<?php echo apply_filters( 'vc_setting-tab-form-' . $tab, '' ) ?>
+<form action="<?php echo esc_attr( admin_url( 'admin-ajax.php' ) ); ?>" method="post"
+	id="vc_settings-<?php echo esc_attr( $tab ); ?>"
+	class="vc_settings-tab-content vc_settings-tab-content-active"
 	data-vc-roles="form">
 	<div class="tab_intro">
-		<p><?php _e( 'Control user group role access to the features and options of WPBakery Page Builder - manage WordPress default and custom roles.', 'js_composer' ) ?></p>
+		<p><?php esc_html_e( 'Control user group role access to the features and options of WPBakery Page Builder - manage WordPress default and custom roles.', 'js_composer' ); ?></p>
 	</div>
 	<!-- Settings template start -->
 	<div class="vc_wp-settings">
 		<div class="vc_wp-accordion" data-vc-action="collapseAll">
-			<?php foreach ( $editable_roles as $role => $details ) :
+			<?php
+			foreach ( $editable_roles as $role => $details ) :
 				$name = translate_user_role( $details['name'] );
 				$unique_id = 'vc_role-' . $role;
 				$valid_roles = array();
@@ -29,13 +30,13 @@ $vc_role = new Vc_Roles();
 				if ( count( $valid_roles ) > 0 ) :
 					?>
 					<div
-						class="vc_wp-accordion-panel vc_ui-settings-roles-role<?php echo ! isset( $next ) ? ' vc_active' : '' ?>"
-						data-vc-unique-id="<?php echo esc_attr( $unique_id ) ?>"
+						class="vc_wp-accordion-panel vc_ui-settings-roles-role<?php echo ! isset( $next ) ? ' vc_active' : ''; ?>"
+						data-vc-unique-id="<?php echo esc_attr( $unique_id ); ?>"
 						data-vc-content=".vc_wp-accordion-panel-body"
-						data-vc-role="<?php echo esc_attr( $role ) ?>">
+						data-vc-role="<?php echo esc_attr( $role ); ?>">
 						<div class="widget" data-vc-accordion=""
 							data-vc-container=".vc_wp-accordion"
-							data-vc-target="[data-vc-unique-id=<?php echo esc_attr( $unique_id ) ?>]">
+							data-vc-target="[data-vc-unique-id=<?php echo esc_attr( $unique_id ); ?>]">
 							<div class="widget-top">
 								<div class="widget-title-action">
 									<button type="button" class="widget-action hide-if-no-js" aria-expanded="true">
@@ -45,7 +46,7 @@ $vc_role = new Vc_Roles();
 								</div>
 								<div class="widget-title">
 									<h4>
-										<?php echo esc_html( $name ) ?>
+										<?php echo esc_html( $name ); ?>
 										<span class="in-widget-title"></span>
 									</h4>
 								</div>
@@ -81,8 +82,8 @@ $vc_role = new Vc_Roles();
 	$submit_button_attributes = array();
 	$submit_button_attributes = apply_filters( 'vc_settings-tab-submit-button-attributes', $submit_button_attributes, $tab );
 	$submit_button_attributes = apply_filters( 'vc_settings-tab-submit-button-attributes-' . $tab, $submit_button_attributes, $tab );
-	submit_button( __( 'Save Changes', 'js_composer' ), 'primary', 'submit_btn', true, $submit_button_attributes );
+	submit_button( esc_html__( 'Save Changes', 'js_composer' ), 'primary', 'submit_btn', true, $submit_button_attributes );
 	?>
 	<input type="hidden" name="action" value="vc_roles_settings_save"
-		id="vc_settings-<?php echo $tab; ?>-action"/>
+			id="vc_settings-<?php echo esc_attr( $tab ); ?>-action"/>
 </form>

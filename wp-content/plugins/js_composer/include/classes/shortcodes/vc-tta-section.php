@@ -3,19 +3,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-VcShortcodeAutoloader::getInstance()->includeClass( 'WPBakeryShortCode_VC_Tta_Accordion' );
+VcShortcodeAutoloader::getInstance()->includeClass( 'WPBakeryShortCode_Vc_Tta_Accordion' );
 
-class WPBakeryShortCode_VC_Tta_Section extends WPBakeryShortCode_VC_Tta_Accordion {
+/**
+ * Class WPBakeryShortCode_Vc_Tta_Section
+ */
+class WPBakeryShortCode_Vc_Tta_Section extends WPBakeryShortCode_Vc_Tta_Accordion {
 	protected $controls_css_settings = 'tc vc_control-container';
-	protected $controls_list = array( 'add', 'edit', 'clone', 'delete' );
+	protected $controls_list = array(
+		'add',
+		'edit',
+		'clone',
+		'delete',
+	);
 	protected $backened_editor_prepend_controls = false;
 	/**
-	 * @var WPBakeryShortCode_VC_Tta_Accordion
+	 * @var WPBakeryShortCode_Vc_Tta_Accordion
 	 */
 	public static $tta_base_shortcode;
 	public static $self_count = 0;
 	public static $section_info = array();
 
+	/**
+	 * @return mixed|string
+	 */
 	public function getFileName() {
 		if ( isset( self::$tta_base_shortcode ) && 'vc_tta_pageable' === self::$tta_base_shortcode->getShortcode() ) {
 			return 'vc_tta_pageable_section';
@@ -24,10 +35,16 @@ class WPBakeryShortCode_VC_Tta_Section extends WPBakeryShortCode_VC_Tta_Accordio
 		}
 	}
 
+	/**
+	 * @return string
+	 */
 	public function containerContentClass() {
 		return 'wpb_column_container vc_container_for_children vc_clearfix';
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getElementClasses() {
 		$classes = array();
 		$classes[] = 'vc_tta-panel';
@@ -152,12 +169,14 @@ class WPBakeryShortCode_VC_Tta_Section extends WPBakeryShortCode_VC_Tta_Accordio
 		return null;
 	}
 
+	/**
+	 * @param $atts
+	 * @param $content
+	 * @return string|null
+	 */
 	public function getParamControlIconPosition( $atts, $content ) {
 		if ( is_object( self::$tta_base_shortcode ) ) {
-			if (
-				isset( self::$tta_base_shortcode->atts['c_icon'] ) && strlen( self::$tta_base_shortcode->atts['c_icon'] ) > 0 &&
-				isset( self::$tta_base_shortcode->atts['c_position'] ) && strlen( self::$tta_base_shortcode->atts['c_position'] ) > 0
-			) {
+			if ( isset( self::$tta_base_shortcode->atts['c_icon'] ) && strlen( self::$tta_base_shortcode->atts['c_icon'] ) > 0 && isset( self::$tta_base_shortcode->atts['c_position'] ) && strlen( self::$tta_base_shortcode->atts['c_position'] ) > 0 ) {
 				$c_position = self::$tta_base_shortcode->atts['c_position'];
 
 				return 'vc_tta-controls-icon-position-' . $c_position;
@@ -167,6 +186,11 @@ class WPBakeryShortCode_VC_Tta_Section extends WPBakeryShortCode_VC_Tta_Accordio
 		return null;
 	}
 
+	/**
+	 * @param $atts
+	 * @param $content
+	 * @return string|null
+	 */
 	public function getParamControlIcon( $atts, $content ) {
 		if ( is_object( self::$tta_base_shortcode ) ) {
 			if ( isset( self::$tta_base_shortcode->atts['c_icon'] ) && strlen( self::$tta_base_shortcode->atts['c_icon'] ) > 0 ) {
@@ -179,6 +203,11 @@ class WPBakeryShortCode_VC_Tta_Section extends WPBakeryShortCode_VC_Tta_Accordio
 		return null;
 	}
 
+	/**
+	 * @param $atts
+	 * @param $content
+	 * @return string
+	 */
 	public function getParamHeading( $atts, $content ) {
 		$isPageEditable = vc_is_page_editable();
 
@@ -210,9 +239,7 @@ class WPBakeryShortCode_VC_Tta_Section extends WPBakeryShortCode_VC_Tta_Accordio
 
 		$output .= ' data-vc-container=".vc_tta-container">';
 		$output .= $this->getTemplateVariable( 'icon-left' );
-		$output .= '<span class="vc_tta-title-text">'
-		           . $this->getTemplateVariable( 'title' )
-		           . '</span>';
+		$output .= '<span class="vc_tta-title-text">' . $this->getTemplateVariable( 'title' ) . '</span>';
 		$output .= $this->getTemplateVariable( 'icon-right' );
 		if ( ! $isPageEditable ) {
 			$output .= $this->getTemplateVariable( 'control-icon' );
@@ -262,16 +289,15 @@ class WPBakeryShortCode_VC_Tta_Section extends WPBakeryShortCode_VC_Tta_Accordio
 
 		return $output;
 	}
+
 	/**
 	 * Check is allowed to add another element inside current element.
 	 *
+	 * @return bool
 	 * @since 4.8
 	 *
-	 * @return bool
 	 */
 	public function getAddAllowed() {
-		return  vc_user_access()
-			->part( 'shortcodes' )
-			->checkStateAny( true, 'custom', null )->get();
+		return vc_user_access()->part( 'shortcodes' )->checkStateAny( true, 'custom', null )->get();
 	}
 }

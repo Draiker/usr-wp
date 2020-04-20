@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $content - shortcode content
  * @var $css
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Message
+ * @var WPBakeryShortCode_Vc_Message $this
  */
 $el_class = $el_id = $message_box_color = $message_box_style = $style = $css = $color = $css_animation = $icon_type = '';
 $icon_fontawesome = $icon_linecons = $icon_openiconic = $icon_typicons = $icon_entypo = '';
@@ -34,11 +34,17 @@ $elementClass = array(
 	'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'vc_message_box', $this->settings['base'], $atts ),
 	'style' => 'vc_message_box-' . $message_box_style,
 	'shape' => 'vc_message_box-' . $style,
-	'color' => ( strlen( $color ) > 0 && false === strpos( 'alert', $color ) ) ? 'vc_color-' . $color : 'vc_color-' . $message_box_color,
+	'color' => ( ( strlen( $color ) > 0 && false === strpos( 'alert', $color ) ) ? ( 'vc_color-' . $color ) : ( 'vc_color-' . $message_box_color ) ),
 	'css_animation' => $this->getCSSAnimation( $css_animation ),
 );
 
-$class_to_filter = preg_replace( array( '/\s+/', '/^\s|\s$/' ), array( ' ', '' ), implode( ' ', $elementClass ) );
+$class_to_filter = preg_replace( array(
+	'/\s+/',
+	'/^\s|\s$/',
+), array(
+	' ',
+	'',
+), implode( ' ', $elementClass ) );
 $class_to_filter .= vc_shortcode_custom_css_class( $css, ' ' ) . $this->getExtraClass( $el_class );
 $css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $class_to_filter, $this->settings['base'], $atts );
 
@@ -47,7 +53,7 @@ $iconClass = isset( ${'icon_' . $icon_type} ) ? ${'icon_' . $icon_type} : $defau
 switch ( $color ) {
 	case 'info':
 		$icon_type = 'fontawesome';
-		$iconClass = 'fa fa-info-circle';
+		$iconClass = 'fas fa-info-circle';
 		break;
 	case 'alert-info':
 		$icon_type = 'pixelicons';
@@ -55,7 +61,7 @@ switch ( $color ) {
 		break;
 	case 'success':
 		$icon_type = 'fontawesome';
-		$iconClass = 'fa fa-check';
+		$iconClass = 'fas fa-check';
 		break;
 	case 'alert-success':
 		$icon_type = 'pixelicons';
@@ -63,7 +69,7 @@ switch ( $color ) {
 		break;
 	case 'warning':
 		$icon_type = 'fontawesome';
-		$iconClass = 'fa fa-exclamation-triangle';
+		$iconClass = 'fas fa-exclamation-triangle';
 		break;
 	case 'alert-warning':
 		$icon_type = 'pixelicons';
@@ -71,7 +77,7 @@ switch ( $color ) {
 		break;
 	case 'danger':
 		$icon_type = 'fontawesome';
-		$iconClass = 'fa fa-times';
+		$iconClass = 'fas fa-times';
 		break;
 	case 'alert-danger':
 		$icon_type = 'pixelicons';
@@ -90,8 +96,7 @@ $wrapper_attributes = array();
 if ( ! empty( $el_id ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
 }
-?>
-<div class="<?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
-	<div class="vc_message_box-icon"><i class="<?php echo esc_attr( $iconClass ); ?>"></i>
-	</div><?php echo wpb_js_remove_wpautop( $content, true );
-	?></div>
+$output = '';
+$output .= '<div class="' . esc_attr( $css_class ) . '" ' . implode( ' ', $wrapper_attributes ) . '>' . '<div class="vc_message_box-icon"><i class="' . esc_attr( $iconClass ) . '"></i></div>' . wpb_js_remove_wpautop( $content, true ) . '</div>';
+
+return $output;

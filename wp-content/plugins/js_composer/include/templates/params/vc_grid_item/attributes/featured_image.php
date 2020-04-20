@@ -3,14 +3,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-VcShortcodeAutoloader::getInstance()->includeClass( 'WPBakeryShortCode_VC_Single_image' );
+VcShortcodeAutoloader::getInstance()->includeClass( 'WPBakeryShortCode_Vc_Single_image' );
 
 $atts = array();
 parse_str( $data, $atts );
 $el_class = $image = $img_size = $img_link = $img_link_target = $img_link_large = $title = $alignment = $css_animation = $css = '';
 $image_string = '';
-$img_class = new WPBakeryShortCode_VC_Single_image( array( 'base' => 'vc_single_image' ) );
-/** @var $img_class WPBakeryShortCode_VC_Single_image */
+$img_class = new WPBakeryShortCode_Vc_Single_image( array( 'base' => 'vc_single_image' ) );
+/** @var WPBakeryShortCode_Vc_Single_image $img_class */
 $atts = vc_map_get_attributes( $img_class->getShortcode(), $atts );
 extract( $atts );
 $style = ( '' !== $style ) ? $style : '';
@@ -38,7 +38,7 @@ $css_class .= $img_class->getCSSAnimation( $css_animation );
 $css_class .= ' vc_align_' . $alignment;
 
 $output = '
-	<div class="' . $css_class . '">
+	<div class="' . esc_attr( $css_class ) . '">
 		<figure class="wpb_wrapper vc_figure">
 			' . $image_string . '
 		</figure>

@@ -11,18 +11,19 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $el_class
  * @var $el_id
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Wp_Archives
+ * @var WPBakeryShortCode $this
  */
 $title = $el_class = $el_id = $options = '';
 $output = '';
+
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
 $options = explode( ',', $options );
-if ( in_array( 'dropdown', $options ) ) {
+if ( in_array( 'dropdown', $options, true ) ) {
 	$atts['dropdown'] = true;
 }
-if ( in_array( 'count', $options ) ) {
+if ( in_array( 'count', $options, true ) ) {
 	$atts['count'] = true;
 }
 
@@ -43,5 +44,5 @@ if ( is_object( $wp_widget_factory ) && isset( $wp_widget_factory->widgets, $wp_
 
 	$output .= '</div>';
 
-	echo $output;
+	return $output;
 }

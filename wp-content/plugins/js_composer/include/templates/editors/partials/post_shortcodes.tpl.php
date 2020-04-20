@@ -3,13 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
+$custom_tag = 'script'; // TODO: Update response to ajax array
 ?>
-<script type="text/javascript">
-	window.vc_post_shortcodes = JSON.parse( decodeURIComponent( ("<?php echo rawurlencode( json_encode( $editor->post_shortcodes ) ); ?>" + '') ) );
-</script>
-
-<?php /*
- <?php echo json_encode($editor->post_shortcodes); ?>
- JSON.parse(decodeURIComponent(("<?php echo urlencode(json_encode($editor->post_shortcodes)); ?>"+'').replace(/\+/g,'%20')));
- */
-?>
+<<?php echo esc_attr( $custom_tag ); ?>>
+	window.vc_post_shortcodes = JSON.parse( decodeURIComponent( ("<?php echo rawurlencode( wp_json_encode( $editor->post_shortcodes ) ); ?>" + '') ) );
+</<?php echo esc_attr( $custom_tag ); ?>>

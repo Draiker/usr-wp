@@ -8,10 +8,10 @@ vc_include_template( 'pages/partials/vc-roles-parts/_part.tpl.php', array(
 	'params_prefix' => 'vc_roles[' . $role . '][' . $part . ']',
 	'controller' => vc_role_access()->who( $role )->part( $part ),
 	'options' => array(
-		array( true, __( 'All', 'js_composer' ) ),
-		array( 'add', __( 'Apply presets only', 'js_composer' ) ),
-		array( false, __( 'Disabled', 'js_composer' ) ),
+		array( true, esc_html__( 'All', 'js_composer' ) ),
+		array( 'add', esc_html__( 'Apply presets only', 'js_composer' ) ),
+		array( false, esc_html__( 'Disabled', 'js_composer' ) ),
 	),
-	'main_label' => __( 'Element Presets', 'js_composer' ),
-	'description' => __( 'Control access rights to element presets in element edit form. Note: "Apply presets only" restricts users from saving new presets and deleting existing.', 'js_composer' ),
+	'main_label' => esc_html__( 'Element Presets', 'js_composer' ),
+	'description' => esc_html__( 'Control access rights to element presets in element edit form. Note: "Apply presets only" restricts users from saving new presets and deleting existing.', 'js_composer' ),
 ) );

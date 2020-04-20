@@ -3,22 +3,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
+/**
+ * @param $settings
+ * @param $value
+ * @return string
+ */
 function vc_vc_grid_item_form_field( $settings, $value ) {
 	require_once vc_path_dir( 'PARAMS_DIR', 'vc_grid_item/editor/class-vc-grid-item-editor.php' );
 	require_once vc_path_dir( 'PARAMS_DIR', 'vc_grid_item/class-vc-grid-item.php' );
-	$output = '<div data-vc-grid-element="container">'
-	          . '<select data-vc-grid-element="value" type="hidden" name="' . $settings['param_name']
-	          . '" class="wpb_vc_param_value wpb-select '
-	          . $settings['param_name'] . ' ' . $settings['type'] . '_field" '
-	          . '>';
+	$output = '<div data-vc-grid-element="container">' . '<select data-vc-grid-element="value" type="hidden" name="' . esc_attr( $settings['param_name'] ) . '" class="wpb_vc_param_value wpb-select ' . esc_attr( $settings['param_name'] ) . ' ' . esc_attr( $settings['type'] ) . '_field" ' . '>';
 	$vc_grid_item_templates = Vc_Grid_Item::predefinedTemplates();
 	if ( is_array( $vc_grid_item_templates ) ) {
 		foreach ( $vc_grid_item_templates as $key => $data ) {
-			$output .= '<option data-vc-link="'
-			           . esc_url( admin_url( 'post-new.php?post_type=vc_grid_item&vc_gitem_template=' . $key ) )
-			           . '" value="' . $key . '"'
-			           . ( $key === $value ? ' selected="true"' : '' )
-			           . '>' . esc_html( $data['name'] ) . '</option>';
+			$output .= '<option data-vc-link="' . esc_url( admin_url( 'post-new.php?post_type=vc_grid_item&vc_gitem_template=' . $key ) ) . '" value="' . esc_attr( $key ) . '"' . ( $key === $value ? ' selected="true"' : '' ) . '>' . esc_html( $data['name'] ) . '</option>';
 		}
 	}
 
@@ -28,9 +25,7 @@ function vc_vc_grid_item_form_field( $settings, $value ) {
 		'post_type' => Vc_Grid_Item_Editor::postType(),
 	) );
 	foreach ( $grid_item_posts as $post ) {
-		$output .= '<option  data-vc-link="' . esc_url( get_edit_post_link( $post->ID ) ) . '"value="' . $post->ID . '"'
-		           . ( (string) $post->ID === $value ? ' selected="true"' : '' )
-		           . '>' . esc_html( $post->post_title ) . '</option>';
+		$output .= '<option  data-vc-link="' . esc_url( get_edit_post_link( $post->ID ) ) . '"value="' . esc_attr( $post->ID ) . '"' . ( (string) $post->ID === $value ? ' selected="true"' : '' ) . '>' . esc_html( $post->post_title ) . '</option>';
 	}
 	$output .= '</select></div>';
 
@@ -38,20 +33,32 @@ function vc_vc_grid_item_form_field( $settings, $value ) {
 }
 
 function vc_load_vc_grid_item_param() {
-	vc_add_shortcode_param(
-		'vc_grid_item',
-		'vc_vc_grid_item_form_field'
-	);
+	vc_add_shortcode_param( 'vc_grid_item', 'vc_vc_grid_item_form_field' );
 }
 
 add_action( 'vc_load_default_params', 'vc_load_vc_grid_item_param' );
+/**
+ * @param $target
+ * @return string
+ */
 function vc_gitem_post_data_get_link_target_frontend_editor( $target ) {
 	return ' target="_blank"';
 }
+
+/**
+ * @param $rel
+ * @return string
+ */
 function vc_gitem_post_data_get_link_rel_frontend_editor( $rel ) {
-	return ' rel="' . $rel . '"';
+	return ' rel="' . esc_attr( $rel ) . '"';
 }
 
+/**
+ * @param $atts
+ * @param string $default_class
+ * @param string $title
+ * @return string
+ */
 function vc_gitem_create_link( $atts, $default_class = '', $title = '' ) {
 	$link = '';
 	$target = '';
@@ -70,7 +77,7 @@ function vc_gitem_create_link( $atts, $default_class = '', $title = '' ) {
 			if ( strlen( $link['title'] ) ) {
 				$title = $link['title'];
 			}
-			$link = 'a href="' . esc_attr( $link['url'] ) . '" class="' . esc_attr( $css_class ) . '"';
+			$link = 'a href="' . esc_url( $link['url'] ) . '" class="' . esc_attr( $css_class ) . '"';
 		} elseif ( 'post_link' === $atts['link'] ) {
 			$link = 'a href="{{ post_link_url }}" class="' . esc_attr( $css_class ) . '"';
 			if ( ! strlen( $title ) ) {
@@ -91,12 +98,16 @@ function vc_gitem_create_link( $atts, $default_class = '', $title = '' ) {
 		$title_attr = ' title="' . esc_attr( $title ) . '"';
 	}
 
-	return apply_filters( 'vc_gitem_post_data_get_link_link', $link, $atts, $css_class )
-	       . apply_filters( 'vc_gitem_post_data_get_link_target', $target, $atts )
-	       . apply_filters( 'vc_gitem_post_data_get_link_rel', $rel, $atts )
-	       . apply_filters( 'vc_gitem_post_data_get_link_title', $title_attr, $atts );
+	return apply_filters( 'vc_gitem_post_data_get_link_link', $link, $atts, $css_class ) . apply_filters( 'vc_gitem_post_data_get_link_target', $target, $atts ) . apply_filters( 'vc_gitem_post_data_get_link_rel', $rel, $atts ) . apply_filters( 'vc_gitem_post_data_get_link_title', $title_attr, $atts );
 }
 
+/**
+ * @param $atts
+ * @param $post
+ * @param string $default_class
+ * @param string $title
+ * @return string
+ */
 function vc_gitem_create_link_real( $atts, $post, $default_class = '', $title = '' ) {
 	$link = '';
 	$target = '';
@@ -120,32 +131,36 @@ function vc_gitem_create_link_real( $atts, $post, $default_class = '', $title = 
 			if ( strlen( $link['title'] ) ) {
 				$title = $link['title'];
 			}
-			$link = 'a href="' . esc_attr( $link['url'] ) . '" class="' . esc_attr( $link_css_class ) . '"';
+			$link = 'a href="' . esc_url( $link['url'] ) . '" class="' . esc_attr( $link_css_class ) . '"';
 		} elseif ( 'post_link' === $atts['link'] ) {
-			$link = 'a href="' . get_permalink( $post->ID ) . '" class="' . esc_attr( $link_css_class ) . '"';
+			$link = 'a href="' . esc_url( get_permalink( $post->ID ) ) . '" class="' . esc_attr( $link_css_class ) . '"';
 			if ( ! strlen( $title ) ) {
 				$title = the_title( '', '', false );
 			}
 		} elseif ( 'image' === $atts['link'] ) {
-			$href_link = vc_gitem_template_attribute_post_image_url( '', array( 'post' => $post, 'data' => '' ) );
-			$link = 'a href="' . $href_link . '" class="' . esc_attr( $link_css_class ) . '"';
+			$href_link = vc_gitem_template_attribute_post_image_url( '', array(
+				'post' => $post,
+				'data' => '',
+			) );
+			$link = 'a href="' . esc_url( $href_link ) . '" class="' . esc_attr( $link_css_class ) . '"';
 		} elseif ( 'image_lightbox' === $atts['link'] ) {
 			$link = 'a' . vc_gitem_template_attribute_post_image_url_attr_prettyphoto( '', array(
-					'post' => $post,
-					'data' => esc_attr( $link_css_class ),
-				) );
+				'post' => $post,
+				'data' => esc_attr( $link_css_class ),
+			) );
 		}
 	}
 	if ( strlen( $title ) > 0 ) {
 		$title_attr = ' title="' . esc_attr( $title ) . '"';
 	}
 
-	return apply_filters( 'vc_gitem_post_data_get_link_real_link', $link, $atts, $post, $link_css_class )
-	       . apply_filters( 'vc_gitem_post_data_get_link_real_target', $target, $atts, $post )
-	       . apply_filters( 'vc_gitem_post_data_get_link_real_rel', $rel, $atts, $post )
-	       . apply_filters( 'vc_gitem_post_data_get_link_real_title', $title_attr, $atts );
+	return apply_filters( 'vc_gitem_post_data_get_link_real_link', $link, $atts, $post, $link_css_class ) . apply_filters( 'vc_gitem_post_data_get_link_real_target', $target, $atts, $post ) . apply_filters( 'vc_gitem_post_data_get_link_real_rel', $rel, $atts, $post ) . apply_filters( 'vc_gitem_post_data_get_link_real_title', $title_attr, $atts );
 }
 
+/**
+ * @param $link
+ * @return string
+ */
 function vc_gitem_post_data_get_link_link_frontend_editor( $link ) {
 	return empty( $link ) ? 'a' : $link;
 }

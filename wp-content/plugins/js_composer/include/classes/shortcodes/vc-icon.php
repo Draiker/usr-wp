@@ -4,8 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class WPBakeryShortCode_VC_Icon
+ * Class WPBakeryShortCode_Vc_Icon
  * @since 4.4
  */
-class WPBakeryShortCode_VC_Icon extends WPBakeryShortCode {
+class WPBakeryShortCode_Vc_Icon extends WPBakeryShortCode {
 }

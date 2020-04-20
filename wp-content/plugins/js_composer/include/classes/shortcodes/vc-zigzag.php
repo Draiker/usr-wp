@@ -3,5 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-class WPBakeryShortCode_VC_Zigzag extends WPBakeryShortCode {
+/**
+ * Class WPBakeryShortCode_Vc_Zigzag
+ */
+class WPBakeryShortCode_Vc_Zigzag extends WPBakeryShortCode {
 }

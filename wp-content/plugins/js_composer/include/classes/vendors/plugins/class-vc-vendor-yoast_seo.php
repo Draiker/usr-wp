@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Class Vc_Vendor_YoastSeo
  * @since 4.4
  */
-class Vc_Vendor_YoastSeo implements Vc_Vendor_Interface {
+class Vc_Vendor_YoastSeo {
 
 	/**
 	 * Created to improve yoast multiply calling wpseo_pre_analysis_post_content filter.
@@ -42,11 +42,11 @@ class Vc_Vendor_YoastSeo implements Vc_Vendor_Interface {
 
 	/**
 	 * Properly parse content to detect images/text keywords.
-	 * @since 4.4
-	 *
 	 * @param $content
 	 *
 	 * @return string
+	 * @since 4.4
+	 *
 	 */
 	public function filterResults( $content ) {
 		if ( empty( $this->parsedContent ) ) {
@@ -120,6 +120,11 @@ class Vc_Vendor_YoastSeo implements Vc_Vendor_Interface {
 		) );
 	}
 
+	/**
+	 * @param $images
+	 * @param $id
+	 * @return array
+	 */
 	public function filterSitemapUrlImages( $images, $id ) {
 		if ( empty( $images ) ) {
 			$post = get_post( $id );

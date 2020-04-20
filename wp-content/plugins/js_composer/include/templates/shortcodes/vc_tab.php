@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $title
  * @var $content - shortcode content
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Tab
+ * @var WPBakeryShortCode_Vc_Tab $this
  */
 $tab_id = $title = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
@@ -22,8 +22,8 @@ $css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'wpb_tab ui-tabs
 
 $output = '
 	<div id="tab-' . ( empty( $tab_id ) ? sanitize_title( $title ) : esc_attr( $tab_id ) ) . '" class="' . esc_attr( $css_class ) . '">
-		' . ( ( '' === trim( $content ) ) ? __( 'Empty tab. Edit page to add content here.', 'js_composer' ) : wpb_js_remove_wpautop( $content ) ) . '
+		' . ( ( '' === trim( $content ) ) ? esc_html__( 'Empty tab. Edit page to add content here.', 'js_composer' ) : wpb_js_remove_wpautop( $content ) ) . '
 	</div>
 ';
 
-echo $output;
+return $output;

@@ -5,7 +5,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once vc_path_dir( 'SHORTCODES_DIR', 'vc-custom-heading.php' );
 
-class WPBakeryShortCode_VC_Gitem_Post_Data extends WPBakeryShortCode_VC_Custom_heading {
+/**
+ * Class WPBakeryShortCode_Vc_Gitem_Post_Data
+ */
+class WPBakeryShortCode_Vc_Gitem_Post_Data extends WPBakeryShortCode_Vc_Custom_heading {
 	/**
 	 * Get data_source attribute value
 	 *
@@ -17,6 +20,11 @@ class WPBakeryShortCode_VC_Gitem_Post_Data extends WPBakeryShortCode_VC_Custom_h
 		return isset( $atts['data_source'] ) ? $atts['data_source'] : 'post_title';
 	}
 
+	/**
+	 * @param $atts
+	 * @return array
+	 * @throws \Exception
+	 */
 	public function getAttributes( $atts ) {
 		$atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 		if ( isset( $atts['block_container'] ) && strlen( $atts['block_container'] ) > 0 ) {

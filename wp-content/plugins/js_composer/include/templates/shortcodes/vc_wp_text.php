@@ -10,12 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $el_id
  * @var $content - shortcode content
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Wp_Text
+ * @var WPBakeryShortCode_Vc_Wp_Text $this
  */
 $el_class = $el_id = '';
 $output = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
-$atts['filter'] = true; //Hack to make sure that <p> added
+$atts['filter'] = true; // Hack to make sure that <p> added
 extract( $atts );
 
 $el_class = $this->getExtraClass( $el_class );
@@ -39,5 +39,5 @@ if ( is_object( $wp_widget_factory ) && isset( $wp_widget_factory->widgets, $wp_
 
 	$output .= '</div>';
 
-	echo $output;
+	return $output;
 }

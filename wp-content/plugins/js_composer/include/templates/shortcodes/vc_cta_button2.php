@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $css_animation
  * @var $content - shortcode content
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Cta_button2
+ * @var WPBakeryShortCode_Vc_Cta_button2 $this
  */
 $h2 = $h4 = $position = $el_class = $el_width = $size = $txt_align = $accent_color = $link = $title = $color = $size = $btn_style = $css_animation = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
@@ -42,19 +42,27 @@ $inline_css = ( '' !== $accent_color ) ? ' style="' . vc_get_css_color( 'backgro
 $class .= $this->getExtraClass( $el_class );
 $css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $class, $this->settings['base'], $atts );
 $css_class .= $this->getCSSAnimation( $css_animation );
-?>
-<div<?php echo $inline_css; ?> class="<?php echo esc_attr( trim( $css_class ) ); ?>">
-	<?php if ( '' !== $link && 'bottom' !== $position ) {
-		echo do_shortcode( '[vc_button2 align="' . $position . '" link="' . $link . '" title="' . $title . '" color="' . $color . '" size="' . $size . '" style="' . $btn_style . '" el_class="vc_cta_btn"]' );
-} ?>
-	<?php if ( '' !== $h2 || '' !== $h4 ) :  ?>
-		<hgroup>
-			<?php if ( '' !== $h2 ) :  ?><h2 class="wpb_heading"><?php echo $h2; ?></h2><?php endif ?>
-			<?php if ( '' !== $h4 ) :  ?><h4 class="wpb_heading"><?php echo $h4; ?></h4><?php endif ?>
-		</hgroup>
-	<?php endif ?>
-	<?php echo wpb_js_remove_wpautop( $content, true ); ?>
-	<?php if ( '' !== $link && 'bottom' === $position ) {
-		echo do_shortcode( '[vc_button2 link="' . $link . '" title="' . $title . '" color="' . $color . '" size="' . $size . '" style="' . $btn_style . '" el_class="vc_cta_btn"]' );
-} ?>
-</div>
+$output = '';
+
+$output .= '<div ' . $inline_css . ' class="' . esc_attr( trim( $css_class ) ) . '">';
+if ( '' !== $link && 'bottom' !== $position ) {
+	$output .= do_shortcode( '[vc_button2 align="' . $position . '" link="' . $link . '" title="' . $title . '" color="' . $color . '" size="' . $size . '" style="' . $btn_style . '" el_class="vc_cta_btn"]' );
+}
+
+if ( '' !== $h2 || '' !== $h4 ) {
+	$output .= '<hgroup>';
+	if ( '' !== $h2 ) {
+		$output .= '<h2 class="wpb_heading">' . $h2 . '</h2>';
+	}
+	if ( '' !== $h4 ) {
+		$output .= '<h4 class="wpb_heading">' . $h4 . '</h4>';
+	}
+	$output .= '</hgroup>';
+}
+$output .= wpb_js_remove_wpautop( $content, true );
+if ( '' !== $link && 'bottom' === $position ) {
+	$output .= do_shortcode( '[vc_button2 link="' . $link . '" title="' . $title . '" color="' . $color . '" size="' . $size . '" style="' . $btn_style . '" el_class="vc_cta_btn"]' );
+}
+$output .= '</div>';
+
+echo $output;

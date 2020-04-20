@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $css
  * @var $css_animation
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Facebook
+ * @var WPBakeryShortCode_Vc_Facebook $this
  */
 $type = $css = $el_class = $el_id = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
@@ -29,8 +29,8 @@ $wrapper_attributes = array();
 if ( ! empty( $el_id ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
 }
-$output = '<div class="' . esc_attr( $css_class ) . '" ' . implode( ' ', $wrapper_attributes ) . '><iframe src="//www.facebook.com/plugins/like.php?href='
-	. $url . '&amp;layout='
-	. $type . '&amp;show_faces=false&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true"></iframe></div>';
+$output = '<div class="' . esc_attr( $css_class ) . '" ' . implode( ' ', $wrapper_attributes ) . '><iframe src="https://www.facebook.com/plugins/like.php?href='
+	. esc_url( $url ) . '&amp;layout='
+	. esc_attr( $type ) . '&amp;show_faces=false&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true"></iframe></div>';
 
-echo $output;
+return $output;

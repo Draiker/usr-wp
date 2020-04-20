@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * To fix issues when shortcode doesn't exists in frontend editor. #1053, #1054 etc.
  * @since 4.3
  */
-class Vc_Vendor_ContactForm7 implements Vc_Vendor_Interface {
+class Vc_Vendor_ContactForm7 {
 
 	/**
 	 * Add action when contact form 7 is initialized to add shortcode.
@@ -18,8 +18,7 @@ class Vc_Vendor_ContactForm7 implements Vc_Vendor_Interface {
 	 */
 	public function load() {
 
-		vc_lean_map( 'contact-form-7',
-			array(
+		vc_lean_map( 'contact-form-7', array(
 				$this,
 				'addShortcodeSettings',
 			) );
@@ -28,11 +27,11 @@ class Vc_Vendor_ContactForm7 implements Vc_Vendor_Interface {
 	/**
 	 * Mapping settings for lean method.
 	 *
-	 * @since 4.9
-	 *
 	 * @param $tag
 	 *
 	 * @return array
+	 * @since 4.9
+	 *
 	 */
 	public function addShortcodeSettings( $tag ) {
 		/**
@@ -46,30 +45,30 @@ class Vc_Vendor_ContactForm7 implements Vc_Vendor_Interface {
 				$contact_forms[ $cform->post_title ] = $cform->ID;
 			}
 		} else {
-			$contact_forms[ __( 'No contact forms found', 'js_composer' ) ] = 0;
+			$contact_forms[ esc_html__( 'No contact forms found', 'js_composer' ) ] = 0;
 		}
 
 		return array(
 			'base' => $tag,
-			'name' => __( 'Contact Form 7', 'js_composer' ),
+			'name' => esc_html__( 'Contact Form 7', 'js_composer' ),
 			'icon' => 'icon-wpb-contactform7',
-			'category' => __( 'Content', 'js_composer' ),
-			'description' => __( 'Place Contact Form7', 'js_composer' ),
+			'category' => esc_html__( 'Content', 'js_composer' ),
+			'description' => esc_html__( 'Place Contact Form7', 'js_composer' ),
 			'params' => array(
 				array(
 					'type' => 'dropdown',
-					'heading' => __( 'Select contact form', 'js_composer' ),
+					'heading' => esc_html__( 'Select contact form', 'js_composer' ),
 					'param_name' => 'id',
 					'value' => $contact_forms,
 					'save_always' => true,
-					'description' => __( 'Choose previously created contact form from the drop down list.', 'js_composer' ),
+					'description' => esc_html__( 'Choose previously created contact form from the drop down list.', 'js_composer' ),
 				),
 				array(
 					'type' => 'textfield',
-					'heading' => __( 'Search title', 'js_composer' ),
+					'heading' => esc_html__( 'Search title', 'js_composer' ),
 					'param_name' => 'title',
 					'admin_label' => true,
-					'description' => __( 'Enter optional title to search if no ID selected or cannot find by ID.', 'js_composer' ),
+					'description' => esc_html__( 'Enter optional title to search if no ID selected or cannot find by ID.', 'js_composer' ),
 				),
 			),
 		);

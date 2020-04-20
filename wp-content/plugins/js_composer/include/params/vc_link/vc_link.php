@@ -7,24 +7,26 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param $settings
  * @param $value
  *
- * @since 4.2
  * @return string
+ * @since 4.2
  */
 function vc_vc_link_form_field( $settings, $value ) {
 	$link = vc_build_link( $value );
 
-	return '<div class="vc_link">'
-	       . '<input name="' . $settings['param_name'] . '" class="wpb_vc_param_value  ' . $settings['param_name'] . ' ' . $settings['type'] . '_field" type="hidden" value="' . htmlentities( $value, ENT_QUOTES, 'utf-8' ) . '" data-json="' . htmlentities( json_encode( $link ), ENT_QUOTES, 'utf-8' ) . '" />'
-	       . '<a href="#" class="button vc_link-build ' . $settings['param_name'] . '_button">' . __( 'Select URL', 'js_composer' ) . '</a> <span class="vc_link_label_title vc_link_label">' . __( 'Title', 'js_composer' ) . ':</span> <span class="title-label">' . $link['title'] . '</span> <span class="vc_link_label">' . __( 'URL', 'js_composer' ) . ':</span> <span class="url-label">' . $link['url'] . ' ' . $link['target'] . '</span>'
-	       . '</div>';
+	return sprintf( '<div class="vc_link"><input name="%s" class="wpb_vc_param_value  %s_field" type="hidden" value="%s" data-json="%s" /><a href="#" class="button vc_link-build %s_button">%s</a> <span class="vc_link_label_title vc_link_label">%s:</span> <span class="title-label">%s</span> <span class="vc_link_label">%s:</span> <span class="url-label">%s %s</span></div>', esc_attr( $settings['param_name'] ), esc_attr( $settings['param_name'] . ' ' . $settings['type'] ), htmlentities( $value, ENT_QUOTES, 'utf-8' ), htmlentities( wp_json_encode( $link ), ENT_QUOTES, 'utf-8' ), esc_attr( $settings['param_name'] ), esc_html__( 'Select URL', 'js_composer' ), esc_html__( 'Title', 'js_composer' ), $link['title'], esc_html__( 'URL', 'js_composer' ), $link['url'], $link['target'] );
 }
 
 /**
  * @param $value
  *
- * @since 4.2
  * @return array
+ * @since 4.2
  */
 function vc_build_link( $value ) {
-	return vc_parse_multi_attribute( $value, array( 'url' => '', 'title' => '', 'target' => '', 'rel' => '' ) );
+	return vc_parse_multi_attribute( $value, array(
+		'url' => '',
+		'title' => '',
+		'target' => '',
+		'rel' => '',
+	) );
 }

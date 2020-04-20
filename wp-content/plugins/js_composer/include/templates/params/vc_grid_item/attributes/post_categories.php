@@ -4,12 +4,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * @var $vc_btn WPBakeryShortCode_VC_Gitem_Post_Categories
- * @var $post WP_Post
+ * @var WPBakeryShortCode_Vc_Gitem_Post_Categories $vc_btn
+ * @var WP_Post $post
  * @var $atts
  *
  */
-VcShortcodeAutoloader::getInstance()->includeClass( 'WPBakeryShortCode_VC_Gitem_Post_Categories' );
+VcShortcodeAutoloader::getInstance()->includeClass( 'WPBakeryShortCode_Vc_Gitem_Post_Categories' );
 
 $categories = get_the_category();
 
@@ -25,7 +25,7 @@ if ( ! empty( $categories ) ) {
 	foreach ( $categories as $category ) {
 		$category_link = '';
 		if ( ! empty( $atts['link'] ) ) {
-			$category_link = 'href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'js_composer' ), $category->name ) ) . '"';
+			$category_link = 'href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . sprintf( esc_attr__( 'View all posts in %s', 'js_composer' ), $category->name ) . '"';
 		}
 
 		$wrapper = '<div class="vc_grid-filter-item vc_gitem-post-category-name">';

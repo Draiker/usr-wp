@@ -12,7 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string
  */
 function vc_gitem_template_attribute_acf( $value, $data ) {
-	$label = '';
 	/**
 	 * @var null|Wp_Post $post ;
 	 * @var string $data ;

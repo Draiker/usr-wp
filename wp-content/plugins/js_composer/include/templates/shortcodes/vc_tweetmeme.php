@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Shortcode attributes
  * @var $atts
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_TweetMeMe
+ * @var WPBakeryShortCode_Vc_TweetMeMe $this
  */
 
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
@@ -17,20 +17,20 @@ $type = $atts['type'];
 
 switch ( $type ) {
 	case 'follow':
-		$tweet_btn_text = __( 'Follow', 'js_composer' );
+		$tweet_btn_text = esc_html__( 'Follow', 'js_composer' );
 		break;
 
 	case 'mention':
-		$tweet_btn_text = __( 'Tweet to', 'js_composer' );
+		$tweet_btn_text = esc_html__( 'Tweet to', 'js_composer' );
 		break;
 
 	case 'share':
 	case 'hashtag':
-		$tweet_btn_text = __( 'Tweet', 'js_composer' );
+		$tweet_btn_text = esc_html__( 'Tweet', 'js_composer' );
 		break;
 	default:
 		$type = 'share';
-		$tweet_btn_text = __( 'Tweet', 'js_composer' );
+		$tweet_btn_text = esc_html__( 'Tweet', 'js_composer' );
 		break;
 }
 $data = array();
@@ -61,19 +61,19 @@ if ( 'share' === $type ) {
 	if ( ! empty( $atts['share_hashtag'] ) ) {
 		$data['data-hashtags'] = $atts['share_hashtag'];
 	}
-} else if ( 'follow' === $type ) {
+} elseif ( 'follow' === $type ) {
 	$url = 'https://twitter.com/';
 	$classes[] = 'twitter-follow-button';
 	if ( ! empty( $atts['follow_user'] ) ) {
 		$url .= esc_attr( $atts['follow_user'] );
 		$tweet_btn_text .= ' @' . esc_attr( $atts['follow_user'] );
 	}
-	if ( 'yes' != $atts['follow_show_username'] ) {
+	if ( 'yes' !== $atts['follow_show_username'] ) {
 		$data['data-show-screen-name'] = 'false';
 	}
 	$data['data-show-count'] = ( ! ! $atts['show_followers_count'] ) ? 'true' : 'false';
 
-} else if ( 'hashtag' === $type ) {
+} elseif ( 'hashtag' === $type ) {
 	$url = 'https://twitter.com/intent/tweet?';
 	$classes[] = 'twitter-hashtag-button';
 	$url_atts = array();
@@ -99,7 +99,7 @@ if ( 'share' === $type ) {
 	if ( 'yes' !== $atts['hashtag_no_url'] ) {
 		$data['data-url'] = $atts['hashtag_custom_tweet_url'];
 	}
-} else if ( 'mention' === $type ) {
+} elseif ( 'mention' === $type ) {
 	$url = 'https://twitter.com/intent/tweet?';
 	$classes[] = 'twitter-mention-button';
 	$url_atts = array();
@@ -137,7 +137,9 @@ if ( ! empty( $atts['el_id'] ) ) {
 }
 $wrapper = '<div ' . implode( ' ', $wrapper_attributes ) . ' class="' . esc_attr( $el_class ) . '">';
 $template = '<a href="' . esc_url( $url ) . '" class="' . esc_attr( implode( ' ', $classes ) ) . '" ' . implode( ' ', $data_imploded ) . '>' . $tweet_btn_text . '</a>';
-$template .= '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');</script>';
+$custom_tag = 'script';
+$template .= '<' . $custom_tag . '>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');</' . $custom_tag . '>';
 $wrapper .= $template;
 $wrapper .= '</div>';
-echo $wrapper;
+
+return $wrapper;

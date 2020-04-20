@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Class Vc_Vendor_QtranslateX
  * @since 4.12
  */
-class Vc_Vendor_QtranslateX implements Vc_Vendor_Interface {
+class Vc_Vendor_QtranslateX {
 
 	public function load() {
 		add_action( 'vc_backend_editor_render', array(
@@ -43,6 +43,10 @@ class Vc_Vendor_QtranslateX implements Vc_Vendor_Interface {
 		), '1.0', true );
 	}
 
+	/**
+	 * @param $link
+	 * @return string
+	 */
 	public function appendLangToUrl( $link ) {
 		global $q_config;
 		if ( $q_config && isset( $q_config['language'] ) ) {

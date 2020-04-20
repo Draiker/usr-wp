@@ -19,11 +19,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  *                'line_height',
  *                'color',
  *
- *                'tag_description' => __('Select element tag.','js_composer'),
- *                'text_align_description' => __('Select text alignment.','js_composer'),
- *                'font_size_description' => __('Enter font size.','js_composer'),
- *                'line_height_description' => __('Enter line height.','js_composer'),
- *                'color_description' => __('Select color for your element.','js_composer'),
+ *                'tag_description' => esc_html__('Select element tag.','js_composer'),
+ *                'text_align_description' => esc_html__('Select text alignment.','js_composer'),
+ *                'font_size_description' => esc_html__('Enter font size.','js_composer'),
+ *                'line_height_description' => esc_html__('Enter line height.','js_composer'),
+ *                'color_description' => esc_html__('Select color for your element.','js_composer'),
  *            ),
  *        ),
  *    ),
@@ -49,12 +49,12 @@ class Vc_Font_Container {
 			if ( isset( $fields['tag'] ) ) {
 				$data['tag'] = '
                 <div class="vc_row-fluid vc_column">
-                    <div class="wpb_element_label">' . __( 'Element tag', 'js_composer' ) . '</div>
+                    <div class="wpb_element_label">' . esc_html__( 'Element tag', 'js_composer' ) . '</div>
                     <div class="vc_font_container_form_field-tag-container">
                         <select class="vc_font_container_form_field-tag-select">';
 				$tags = $this->_vc_font_container_get_allowed_tags();
 				foreach ( $tags as $tag ) {
-					$data['tag'] .= '<option value="' . $tag . '" class="' . $tag . '" ' . ( $values['tag'] == $tag ? 'selected' : '' ) . '>' . $tag . '</option>';
+					$data['tag'] .= '<option value="' . $tag . '" class="' . $tag . '" ' . ( $values['tag'] === $tag ? 'selected' : '' ) . '>' . $tag . '</option>';
 				}
 				$data['tag'] .= '
                         </select>
@@ -70,7 +70,7 @@ class Vc_Font_Container {
 			if ( isset( $fields['font_size'] ) ) {
 				$data['font_size'] = '
                 <div class="vc_row-fluid vc_column">
-                    <div class="wpb_element_label">' . __( 'Font size', 'js_composer' ) . '</div>
+                    <div class="wpb_element_label">' . esc_html__( 'Font size', 'js_composer' ) . '</div>
                     <div class="vc_font_container_form_field-font_size-container">
                         <input class="vc_font_container_form_field-font_size-input" type="text" value="' . $values['font_size'] . '" />
                     </div>';
@@ -85,13 +85,13 @@ class Vc_Font_Container {
 			if ( isset( $fields['text_align'] ) ) {
 				$data['text_align'] = '
                 <div class="vc_row-fluid vc_column">
-                    <div class="wpb_element_label">' . __( 'Text align', 'js_composer' ) . '</div>
+                    <div class="wpb_element_label">' . esc_html__( 'Text align', 'js_composer' ) . '</div>
                     <div class="vc_font_container_form_field-text_align-container">
                         <select class="vc_font_container_form_field-text_align-select">
-                            <option value="left" class="left" ' . ( 'left' === $values['text_align'] ? 'selected="selected"' : '' ) . '>' . __( 'left', 'js_composer' ) . '</option>
-                            <option value="right" class="right" ' . ( 'right' === $values['text_align'] ? 'selected="selected"' : '' ) . '>' . __( 'right', 'js_composer' ) . '</option>
-                            <option value="center" class="center" ' . ( 'center' === $values['text_align'] ? 'selected="selected"' : '' ) . '>' . __( 'center', 'js_composer' ) . '</option>
-                            <option value="justify" class="justify" ' . ( 'justify' === $values['text_align'] ? 'selected="selected"' : '' ) . '>' . __( 'justify', 'js_composer' ) . '</option>
+                            <option value="left" class="left" ' . ( 'left' === $values['text_align'] ? 'selected="selected"' : '' ) . '>' . esc_html__( 'left', 'js_composer' ) . '</option>
+                            <option value="right" class="right" ' . ( 'right' === $values['text_align'] ? 'selected="selected"' : '' ) . '>' . esc_html__( 'right', 'js_composer' ) . '</option>
+                            <option value="center" class="center" ' . ( 'center' === $values['text_align'] ? 'selected="selected"' : '' ) . '>' . esc_html__( 'center', 'js_composer' ) . '</option>
+                            <option value="justify" class="justify" ' . ( 'justify' === $values['text_align'] ? 'selected="selected"' : '' ) . '>' . esc_html__( 'justify', 'js_composer' ) . '</option>
                         </select>
                     </div>';
 				if ( isset( $fields['text_align_description'] ) && strlen( $fields['text_align_description'] ) > 0 ) {
@@ -104,7 +104,7 @@ class Vc_Font_Container {
 			if ( isset( $fields['line_height'] ) ) {
 				$data['line_height'] = '
                 <div class="vc_row-fluid vc_column">
-                    <div class="wpb_element_label">' . __( 'Line height', 'js_composer' ) . '</div>
+                    <div class="wpb_element_label">' . esc_html__( 'Line height', 'js_composer' ) . '</div>
                     <div class="vc_font_container_form_field-line_height-container">
                         <input class="vc_font_container_form_field-line_height-input"  type="text"  value="' . $values['line_height'] . '" />
                     </div>';
@@ -118,7 +118,7 @@ class Vc_Font_Container {
 			if ( isset( $fields['color'] ) ) {
 				$data['color'] = '
                 <div class="vc_row-fluid vc_column">
-                    <div class="wpb_element_label">' . __( 'Text color', 'js_composer' ) . '</div>
+                    <div class="wpb_element_label">' . esc_html__( 'Text color', 'js_composer' ) . '</div>
                     <div class="vc_font_container_form_field-color-container">
                         <div class="color-group">
                             <input type="text" value="' . $values['color'] . '" class="vc_font_container_form_field-color-input vc_color-control" />
@@ -134,12 +134,12 @@ class Vc_Font_Container {
 			if ( isset( $fields['font_family'] ) ) {
 				$data['font_family'] = '
                 <div class="vc_row-fluid vc_column">
-                    <div class="wpb_element_label">' . __( 'Font Family', 'js_composer' ) . '</div>
+                    <div class="wpb_element_label">' . esc_html__( 'Font Family', 'js_composer' ) . '</div>
                     <div class="vc_font_container_form_field-font_family-container">
                         <select class="vc_font_container_form_field-font_family-select">';
 				$fonts = $this->_vc_font_container_get_web_safe_fonts();
 				foreach ( $fonts as $font_name => $font_data ) {
-					$data['font_family'] .= '<option value="' . $font_name . '" class="' . vc_build_safe_css_class( $font_name ) . '" ' . ( strtolower( $values['font_family'] ) == strtolower( $font_name ) ? 'selected' : '' ) . ' data[font_family]="' . urlencode( $font_data ) . '">' . $font_name . '</option>';
+					$data['font_family'] .= '<option value="' . $font_name . '" class="' . vc_build_safe_css_class( $font_name ) . '" ' . ( strtolower( $values['font_family'] ) === strtolower( $font_name ) ? 'selected' : '' ) . ' data[font_family]="' . rawurlencode( $font_data ) . '">' . $font_name . '</option>';
 				}
 				$data['font_family'] .= '
                         </select>
@@ -154,14 +154,14 @@ class Vc_Font_Container {
 			if ( isset( $fields['font_style'] ) ) {
 				$data['font_style'] = '
                 <div class="vc_row-fluid vc_column">
-                    <div class="wpb_element_label">' . __( 'Font style', 'js_composer' ) . '</div>
+                    <div class="wpb_element_label">' . esc_html__( 'Font style', 'js_composer' ) . '</div>
                     <div class="vc_font_container_form_field-font_style-container">
                         <label>
-                            <input type="checkbox" class="vc_font_container_form_field-font_style-checkbox italic" value="italic" ' . ( '1' === $values['font_style_italic'] ? 'checked' : '' ) . '><span class="vc_font_container_form_field-font_style-label italic">' . __( 'italic', 'js_composer' ) . '</span>
+                            <input type="checkbox" class="vc_font_container_form_field-font_style-checkbox italic" value="italic" ' . ( '1' === $values['font_style_italic'] ? 'checked' : '' ) . '><span class="vc_font_container_form_field-font_style-label italic">' . esc_html__( 'italic', 'js_composer' ) . '</span>
                          </label>
                         <br />
                         <label>
-                            <input type="checkbox" class="vc_font_container_form_field-font_style-checkbox bold" value="bold" ' . ( '1' === $values['font_style_bold'] ? 'checked' : '' ) . '><span class="vc_font_container_form_field-font_style-label bold">' . __( 'bold', 'js_composer' ) . '</span>
+                            <input type="checkbox" class="vc_font_container_form_field-font_style-checkbox bold" value="bold" ' . ( '1' === $values['font_style_bold'] ? 'checked' : '' ) . '><span class="vc_font_container_form_field-font_style-label bold">' . esc_html__( 'bold', 'js_composer' ) . '</span>
                         </label>
                     </div>';
 				if ( isset( $fields['font_style_description'] ) && strlen( $fields['font_style_description'] ) > 0 ) {
@@ -259,25 +259,27 @@ class Vc_Font_Container {
 		}
 
 		$values = vc_parse_multi_attribute( $value, array(
-				'tag' => isset( $fields['tag'] ) ? $fields['tag'] : 'h2',
-				'font_size' => isset( $fields['font_size'] ) ? $fields['font_size'] : '',
-				'font_style_italic' => isset( $fields['font_style_italic'] ) ? $fields['font_style_italic'] : '',
-				'font_style_bold' => isset( $fields['font_style_bold'] ) ? $fields['font_style_bold'] : '',
-				'font_family' => isset( $fields['font_family'] ) ? $fields['font_family'] : '',
-				'color' => isset( $fields['color'] ) ? $fields['color'] : '',
-				'line_height' => isset( $fields['line_height'] ) ? $fields['line_height'] : '',
-				'text_align' => isset( $fields['text_align'] ) ? $fields['text_align'] : 'left',
-				'tag_description' => isset( $fields['tag_description'] ) ? $fields['tag_description'] : '',
-				'font_size_description' => isset( $fields['font_size_description'] ) ? $fields['font_size_description'] : '',
-				'font_style_description' => isset( $fields['font_style_description'] ) ? $fields['font_style_description'] : '',
-				'font_family_description' => isset( $fields['font_family_description'] ) ? $fields['font_family_description'] : '',
-				'color_description' => isset( $fields['color_description'] ) ? $fields['color_description'] : 'left',
-				'line_height_description' => isset( $fields['line_height_description'] ) ? $fields['line_height_description'] : '',
-				'text_align_description' => isset( $fields['text_align_description'] ) ? $fields['text_align_description'] : '',
-			)
-		);
+			'tag' => isset( $fields['tag'] ) ? $fields['tag'] : 'h2',
+			'font_size' => isset( $fields['font_size'] ) ? $fields['font_size'] : '',
+			'font_style_italic' => isset( $fields['font_style_italic'] ) ? $fields['font_style_italic'] : '',
+			'font_style_bold' => isset( $fields['font_style_bold'] ) ? $fields['font_style_bold'] : '',
+			'font_family' => isset( $fields['font_family'] ) ? $fields['font_family'] : '',
+			'color' => isset( $fields['color'] ) ? $fields['color'] : '',
+			'line_height' => isset( $fields['line_height'] ) ? $fields['line_height'] : '',
+			'text_align' => isset( $fields['text_align'] ) ? $fields['text_align'] : 'left',
+			'tag_description' => isset( $fields['tag_description'] ) ? $fields['tag_description'] : '',
+			'font_size_description' => isset( $fields['font_size_description'] ) ? $fields['font_size_description'] : '',
+			'font_style_description' => isset( $fields['font_style_description'] ) ? $fields['font_style_description'] : '',
+			'font_family_description' => isset( $fields['font_family_description'] ) ? $fields['font_family_description'] : '',
+			'color_description' => isset( $fields['color_description'] ) ? $fields['color_description'] : 'left',
+			'line_height_description' => isset( $fields['line_height_description'] ) ? $fields['line_height_description'] : '',
+			'text_align_description' => isset( $fields['text_align_description'] ) ? $fields['text_align_description'] : '',
+		) );
 
-		return array( 'fields' => $fields, 'values' => $values );
+		return array(
+			'fields' => $fields,
+			'values' => $values,
+		);
 	}
 }
 
@@ -285,7 +287,7 @@ class Vc_Font_Container {
  * @param $settings
  * @param $value
  *
- * @return mixed|void
+ * @return mixed
  */
 function vc_font_container_form_field( $settings, $value ) {
 	$font_container = new Vc_Font_Container();

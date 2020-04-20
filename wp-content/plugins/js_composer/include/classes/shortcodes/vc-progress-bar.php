@@ -3,10 +3,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-/* Skills (Bar)
----------------------------------------------------------- */
-
-class WPBakeryShortCode_VC_Progress_Bar extends WPBakeryShortCode {
+/**
+ * Class WPBakeryShortCode_Vc_Progress_Bar
+ */
+class WPBakeryShortCode_Vc_Progress_Bar extends WPBakeryShortCode {
+	/**
+	 * @param $atts
+	 * @return mixed
+	 */
 	public static function convertAttributesToNewProgressBar( $atts ) {
 		if ( isset( $atts['values'] ) && strlen( $atts['values'] ) > 0 ) {
 			$values = vc_param_group_parse_atts( $atts['values'] );
@@ -20,7 +24,7 @@ class WPBakeryShortCode_VC_Progress_Bar extends WPBakeryShortCode {
 					$newLine['value'] = isset( $data[0] ) ? $data[0] : 0;
 					$newLine['label'] = isset( $data[1] ) ? $data[1] : '';
 					if ( isset( $data[1] ) && preg_match( '/^\d{1,3}\%$/', $data[1] ) ) {
-						$colorIndex += 1;
+						$colorIndex ++;
 						$newLine['value'] = (float) str_replace( '%', '', $data[1] );
 						$newLine['label'] = isset( $data[2] ) ? $data[2] : '';
 					}
@@ -29,7 +33,7 @@ class WPBakeryShortCode_VC_Progress_Bar extends WPBakeryShortCode {
 					}
 					$paramValues[] = $newLine;
 				}
-				$atts['values'] = urlencode( json_encode( $paramValues ) );
+				$atts['values'] = rawurlencode( wp_json_encode( $paramValues ) );
 			}
 		}
 

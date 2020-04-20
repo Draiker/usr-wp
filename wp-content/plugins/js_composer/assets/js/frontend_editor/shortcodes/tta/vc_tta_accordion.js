@@ -1,4 +1,6 @@
 (function ( $ ) {
+	'use strict';
+
 	window.InlineShortcodeView_vc_tta_accordion = window.InlineShortcodeViewContainer.extend( {
 		events: {},
 		childTag: 'vc_tta_section',
@@ -13,11 +15,13 @@
 			window.InlineShortcodeViewContainer.__super__.render.call( this );
 			this.content(); // just to remove span inline-container anchor..
 			this.buildPagination();
+
 			return this;
 		},
 		addControls: function () {
 			this.$controls = $( '<div class="no-controls"></div>' );
 			this.$controls.appendTo( this.$el );
+
 			return this;
 		},
 		/**
@@ -25,7 +29,9 @@
 		 * @param e
 		 */
 		addElement: function ( e ) {
-			e && e.preventDefault();
+			if ( e && e.preventDefault ) {
+				e.preventDefault();
+			}
 			this.addSection( 'parent.prepend' === $( e.currentTarget ).data( 'vcControl' ) );
 		},
 		appendElement: function ( e ) {
@@ -56,21 +62,18 @@
 			vc.builder.create( params );
 
 			// extend default params with settings presets if there are any
-			for ( i = vc.builder.models.length - 1;
-				  i >= 0;
-				  i -- ) {
+			for ( i = vc.builder.models.length - 1; i >= 0; i -- ) {
 				shortcode = vc.builder.models[ i ].get( 'shortcode' );
 			}
 
 			vc.builder.render();
 		},
 		getSiblingsFirstPositionIndex: function () {
-			var order,
-				shortcodeFirst;
+			var order, first_shortcode;
 			order = 0;
-			shortcodeFirst = vc.shortcodes.sort().findWhere( { parent_id: this.model.get( 'id' ) } );
-			if ( shortcodeFirst ) {
-				order = shortcodeFirst.get( 'order' ) - 1;
+			first_shortcode = vc.shortcodes.sort().findWhere( { parent_id: this.model.get( 'id' ) } );
+			if ( first_shortcode ) {
+				order = first_shortcode.get( 'order' ) - 1;
 			}
 			return order;
 		},
@@ -86,8 +89,8 @@
 			this.buildPagination();
 		},
 		buildSortable: function () {
-			if ( ! vc_user_access().shortcodeEdit( this.model.get( 'shortcode' ) ) ) {
-				return
+			if ( !vc_user_access().shortcodeEdit( this.model.get( 'shortcode' ) ) ) {
+				return;
 			}
 			if ( this.$el ) {
 				this.$el.find( '.vc_tta-panels' ).sortable( {
@@ -110,11 +113,11 @@
 		updateSorting: function ( event, ui ) {
 			var self = this;
 			this.getPanelsList().find( '> .vc_element' ).each( function () {
-				var shortcode, modelId, $this;
+				var shortcode, model_id, $this;
 
 				$this = $( this );
-				modelId = $this.data( 'modelId' );
-				shortcode = vc.shortcodes.get( modelId );
+				model_id = $this.data( 'modelId' );
+				shortcode = vc.shortcodes.get( model_id );
 				shortcode.save( { 'order': self.getIndex( $this ) }, { silent: true } );
 			} );
 			// re-render pagination
@@ -129,11 +132,11 @@
 		parentChanged: function () {
 			window.InlineShortcodeView_vc_tta_accordion.__super__.parentChanged.call( this );
 
-			if ( 'undefined' !== typeof(vc.frame_window.vc_round_charts) ) {
+			if ( 'undefined' !== typeof (vc.frame_window.vc_round_charts) ) {
 				vc.frame_window.vc_round_charts( this.model.get( 'id' ) );
 			}
 
-			if ( 'undefined' !== typeof(vc.frame_window.vc_line_charts) ) {
+			if ( 'undefined' !== typeof (vc.frame_window.vc_line_charts) ) {
 				vc.frame_window.vc_line_charts( this.model.get( 'id' ) );
 			}
 		},
@@ -143,24 +146,19 @@
 			this.$el.find( '.vc_tta-panels-container' ).find( ' > .vc_pagination' ).remove(); // TODO: check this
 		},
 		getPaginationList: function () {
-			var $accordions,
-				classes,
-				styleChunks,
-				that,
-				html,
-				params;
+			var $accordions, classes, style_chunks, that, html, params;
 
 			params = this.model.get( 'params' );
-			if ( ! _.isUndefined( params.pagination_style ) && params.pagination_style.length ) {
+			if ( !_.isUndefined( params.pagination_style ) && params.pagination_style.length ) {
 				$accordions = this.$el.find( '[data-vc-accordion]' );
 				classes = [];
 				classes.push( 'vc_general' );
 				classes.push( 'vc_pagination' );
-				styleChunks = params.pagination_style.split( '-' );
-				classes.push( 'vc_pagination-style-' + styleChunks[ 0 ] );
-				classes.push( 'vc_pagination-shape-' + styleChunks[ 1 ] );
+				style_chunks = params.pagination_style.split( '-' );
+				classes.push( 'vc_pagination-style-' + style_chunks[ 0 ] );
+				classes.push( 'vc_pagination-shape-' + style_chunks[ 1 ] );
 
-				if ( ! _.isUndefined( params.pagination_color ) && params.pagination_color.length ) {
+				if ( !_.isUndefined( params.pagination_color ) && params.pagination_color.length ) {
 					classes.push( 'vc_pagination-color-' + params.pagination_color );
 				}
 				html = [];
@@ -168,19 +166,14 @@
 
 				that = this;
 				$accordions.each( function () {
-					var sectionClasses,
-						activeSection,
-						$this,
-						$closestPanel,
-						selector,
-						aHtml;
+					var section_classes, active_section, $this, $closest_panel, selector, a_html;
 
 					$this = $( this );
-					$closestPanel = $this.closest( '.vc_tta-panel' );
-					activeSection = $closestPanel.hasClass( that.activeClass );
-					sectionClasses = [ 'vc_pagination-item' ];
-					if ( activeSection ) {
-						sectionClasses.push( that.activeClass );
+					$closest_panel = $this.closest( '.vc_tta-panel' );
+					active_section = $closest_panel.hasClass( that.activeClass );
+					section_classes = [ 'vc_pagination-item' ];
+					if ( active_section ) {
+						section_classes.push( that.activeClass );
 					}
 
 					selector = $this.attr( 'href' );
@@ -190,13 +183,15 @@
 					if ( $this.attr( 'data-vc-target' ) ) {
 						selector = $this.attr( 'data-vc-target' );
 					}
-					aHtml = '<a href="javascript:;" data-vc-target="' + selector + '" class="vc_pagination-trigger" data-vc-tabs data-vc-container=".vc_tta"></a>';
-					html.push( '<li class="' + sectionClasses.join( ' ' ) + '" data-vc-tab>' + aHtml + '</li>' );
+					a_html = '<a href="javascript:;" data-vc-target="' + selector + '" class="vc_pagination-trigger" data-vc-tabs data-vc-container=".vc_tta"></a>';
+					html.push( '<li class="' + section_classes.join( ' ' ) + '" data-vc-tab>' + a_html + '</li>' );
 				} );
 
 				html.push( '</ul>' );
+
 				return $( html.join( '' ) );
 			}
+
 			return null;
 		}
 	} );

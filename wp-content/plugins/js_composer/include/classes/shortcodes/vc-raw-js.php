@@ -5,11 +5,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once vc_path_dir( 'SHORTCODES_DIR', 'vc-raw-html.php' );
 
-class WPBakeryShortCode_VC_Raw_js extends WPBakeryShortCode_VC_Raw_html {
+/**
+ * Class WPBakeryShortCode_Vc_Raw_Js
+ */
+class WPBakeryShortCode_Vc_Raw_Js extends WPBakeryShortCode_Vc_Raw_html {
+	/**
+	 * @return mixed|string
+	 */
 	protected function getFileName() {
 		return 'vc_raw_html';
 	}
 
+	/**
+	 * @param $atts
+	 * @param null $content
+	 * @return string
+	 */
 	protected function contentInline( $atts, $content = null ) {
 		$el_class = $width = $el_position = '';
 		extract( shortcode_atts( array(
@@ -20,7 +31,8 @@ class WPBakeryShortCode_VC_Raw_js extends WPBakeryShortCode_VC_Raw_html {
 
 		$el_class = $this->getExtraClass( $el_class );
 		$el_class .= ' wpb_raw_js';
-		$content = rawurldecode( base64_decode( strip_tags( $content ) ) );
+		// @codingStandardsIgnoreLine
+		$content = rawurldecode( base64_decode( wp_strip_all_tags( $content ) ) );
 		$css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'wpb_raw_code' . $el_class, $this->settings['base'], $atts );
 
 		$output = '

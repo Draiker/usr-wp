@@ -3,6 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-class WPBakeryShortCode_VC_Gitem_Zone extends WPBakeryShortCodesContainer {
+/**
+ * Class WPBakeryShortCode_Vc_Gitem_Zone
+ */
+class WPBakeryShortCode_Vc_Gitem_Zone extends WPBakeryShortCodesContainer {
 	public $zone_name = '';
 }

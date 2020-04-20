@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $content - shortcode content
  * @var $css_animation
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Row
+ * @var WPBakeryShortCode_Vc_Row $this
  */
 $el_class = $full_height = $parallax_speed_bg = $parallax_speed_video = $full_width = $flex_row = $columns_placement = $content_placement = $parallax = $parallax_image = $css = $el_id = $video_bg = $video_bg_url = $video_bg_parallax = $css_animation = '';
 $disable_element = '';
@@ -50,9 +50,9 @@ if ( 'yes' === $disable_element ) {
 }
 
 if ( vc_shortcode_custom_css_has_property( $css, array(
-		'border',
-		'background',
-	) ) || $video_bg || $parallax
+	'border',
+	'background',
+) ) || $video_bg || $parallax
 ) {
 	$css_classes[] = 'vc_section-has-fill';
 }
@@ -131,4 +131,4 @@ $output .= wpb_js_remove_wpautop( $content );
 $output .= '</section>';
 $output .= $after_output;
 
-echo $output;
+return $output;

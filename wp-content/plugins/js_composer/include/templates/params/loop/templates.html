@@ -2,36 +2,36 @@
     <div class="vc_row">
         <div class="vc_col-sm-12">
             <# if(vc.loop_field_not_hidden('post_type', loop)) { #>
-                <label class="wpb_element_label"><?php _e('Post types', 'js_composer') ?></label>
+                <label class="wpb_element_label"><?php esc_html_e('Post types', 'js_composer') ?></label>
 
                 <div class="post-types-list">
                     {{{ vc.loop_partial('checkboxes', 'post_type', loop) }}}
                 </div>
-                <span class="description clear"><?php _e('Select post types to populate posts from. Note: If no post type is selected, WordPress will use default "Post" value.', 'js_composer'); ?></span>
+                <span class="description clear"><?php esc_html_e('Select post types to populate posts from. Note: If no post type is selected, WordPress will use default "Post" value.', 'js_composer'); ?></span>
                 <# } #>
         </div>
     </div>
     <div class="vc_row">
         <# if(vc.loop_field_not_hidden('size', loop)) { #>
             <div class="vc_col-sm-4">
-                <label class="wpb_element_label"><?php _e('Post count', 'js_composer') ?></label>
+                <label class="wpb_element_label"><?php esc_html_e('Post count', 'js_composer') ?></label>
                 {{{ vc.loop_partial('text-input', 'size', loop) }}}
-                <span class="description clear"><?php _e('How many teasers to show? Enter number or word "All".', 'js_composer'); ?></span>
+                <span class="description clear"><?php esc_html_e('How many teasers to show? Enter number or word "All".', 'js_composer'); ?></span>
             </div>
             <# } #>
                 <# if(vc.loop_field_not_hidden('order_by', loop)) { #>
                     <div class="vc_col-sm-4">
-                        <label class="wpb_element_label"><?php _e('Order by', 'js_composer') ?></label>
+                        <label class="wpb_element_label"><?php esc_html_e('Order by', 'js_composer') ?></label>
                         {{{ vc.loop_partial('dropdown', 'order_by', loop) }}}
-                        <span class="description clear"><?php echo sprintf(__('Select how to sort retrieved posts. More at %s.', 'js_composer'), '<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">
+                        <span class="description clear"><?php echo sprintf(__('Select how to sort retrieved posts. More at %s.', 'js_composer'), '<a href="https://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">
                             WordPress codex page</a>'); ?></span>
                     </div>
                     <# } #>
                         <# if(vc.loop_field_not_hidden('order', loop)) { #>
                             <div class="vc_col-sm-4">
-                                <label class="wpb_element_label"><?php _e('Sort order', 'js_composer') ?></label>
+                                <label class="wpb_element_label"><?php esc_html_e('Sort order', 'js_composer') ?></label>
                                 {{{ vc.loop_partial('dropdown', 'order', loop) }}}
-                                <span class="description clear"><?php _e('Designates the ascending or descending order.', 'js_composer'); ?></span>
+                                <span class="description clear"><?php esc_html_e('Designates the ascending or descending order.', 'js_composer'); ?></span>
                             </div>
                             <# } #>
     </div>
@@ -40,9 +40,9 @@
         <div class="vc_row">
             <div class="vc_col-sm-12">
                 <div class="vc_suggest-field" data-block="suggestion">
-                    <label class="wpb_element_label"><?php _e('Categories', 'js_composer') ?></label>
+                    <label class="wpb_element_label"><?php esc_html_e('Categories', 'js_composer') ?></label>
                     {{{ vc.loop_partial('autosuggest', 'categories', loop) }}}
-                    <span class="description clear"><?php _e('Filter output by posts categories, enter category names here.', 'js_composer'); ?></span>
+                    <span class="description clear"><?php esc_html_e('Filter output by posts categories, enter category names here.', 'js_composer'); ?></span>
                 </div>
             </div>
         </div>
@@ -51,9 +51,9 @@
                 <div class="vc_row">
                     <div class="vc_col-sm-12">
                         <div class="vc_suggest-field" data-block="suggestion">
-                            <label class="wpb_element_label"><?php _e('Tags', 'js_composer') ?></label>
+                            <label class="wpb_element_label"><?php esc_html_e('Tags', 'js_composer') ?></label>
                             {{{ vc.loop_partial('autosuggest', 'tags', loop) }}}
-                            <span class="description clear"><?php _e('Filter output by posts tags, enter tag names here.', 'js_composer'); ?></span>
+                            <span class="description clear"><?php esc_html_e('Filter output by posts tags, enter tag names here.', 'js_composer'); ?></span>
                         </div>
                     </div>
                 </div>
@@ -62,9 +62,9 @@
                         <div class="vc_row">
                             <div class="vc_col-sm-12">
                                 <div class="vc_suggest-field" data-block="suggestion">
-                                    <label class="wpb_element_label"><?php _e('Taxonomies', 'js_composer') ?></label>
+                                    <label class="wpb_element_label"><?php esc_html_e('Taxonomies', 'js_composer') ?></label>
                                     {{{ vc.loop_partial('autosuggest', 'tax_query', loop) }}}
-                                    <span class="description clear"><?php _e('Filter output by custom taxonomies categories, enter category names here.', 'js_composer'); ?></span>
+                                    <span class="description clear"><?php esc_html_e('Filter output by custom taxonomies categories, enter category names here.', 'js_composer'); ?></span>
                                 </div>
                             </div>
                         </div>
@@ -73,9 +73,9 @@
                                 <div class="vc_row">
                                     <div class="vc_col-sm-12">
                                         <div class="vc_suggest-field" data-block="suggestion">
-                                            <label class="wpb_element_label"><?php _e('Individual Posts/Pages/Custom Post Types', 'js_composer') ?></label>
+                                            <label class="wpb_element_label"><?php esc_html_e('Individual Posts/Pages/Custom Post Types', 'js_composer') ?></label>
                                             {{{ vc.loop_partial('autosuggest', 'by_id', loop) }}}
-                                            <span class="description clear"><?php _e('Only entered posts/pages will be included in the output. Note: Works in conjunction with selected "Post types".', 'js_composer'); ?></span>
+                                            <span class="description clear"><?php esc_html_e('Only entered posts/pages will be included in the output. Note: Works in conjunction with selected "Post types".', 'js_composer'); ?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -84,9 +84,9 @@
                                         <div class="vc_row">
                                             <div class="vc_col-sm-12">
                                                 <div class="vc_suggest-field" data-block="suggestion">
-                                                    <label class="wpb_element_label"><?php _e('Author', 'js_composer') ?></label>
+                                                    <label class="wpb_element_label"><?php esc_html_e('Author', 'js_composer') ?></label>
                                                     {{{ vc.loop_partial('autosuggest', 'authors', loop) }}}
-                                                    <span class="description clear"><?php _e('Filter by author name.', 'js_composer'); ?></span>
+                                                    <span class="description clear"><?php esc_html_e('Filter by author name.', 'js_composer'); ?></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -158,6 +158,6 @@
                value="{{ _.isObject(data) && _.isArray(data.value) ? data.value.join(',') : '' }}"
                data-suggest-value="{{ name }}">
         <input type="text" name="{{ name }}_autosuggest" value=""
-               placeholder="<?php _e('Click here and start typing...', 'js_composer'); ?>" class="vc_{{ name }}_field"
+               placeholder="<?php esc_html_e('Click here and start typing...', 'js_composer'); ?>" class="vc_{{ name }}_field"
                data-suggest="{{ name }}" {{ limit_param }}/>
 </script>

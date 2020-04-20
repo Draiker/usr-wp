@@ -33,13 +33,12 @@ class Vc_Mapper {
 
 	protected $hasAccess = array();
 
-	// @todo fix_roles and maybe remove/@deprecate this
 	protected $checkForAccess = true;
 
 	/**
 	 * @since 4.2
 	 */
-	function __construct() {
+	public function __construct() {
 	}
 
 	/**
@@ -60,13 +59,13 @@ class Vc_Mapper {
 	/**
 	 * This method is called by VC objects methods if it is called before VC initialization.
 	 *
-	 * @see WPBMAP
-	 * @since  4.2
-	 * @access public
-	 *
 	 * @param $object - mame of class object
 	 * @param $method - method name
 	 * @param array $params - list of attributes for object method
+	 * @since  4.2
+	 * @access public
+	 *
+	 * @see WPBMAP
 	 */
 	public function addActivity( $object, $method, $params = array() ) {
 		$this->init_activity[] = array(
@@ -79,13 +78,13 @@ class Vc_Mapper {
 	/**
 	 * This method is called by VC objects methods if it is called before VC initialization.
 	 *
-	 * @see WPBMAP
-	 * @since  4.9
-	 * @access public
-	 *
 	 * @param $tag - shortcode tag of element
 	 * @param $method - method name
 	 * @param array $params - list of attributes for object method
+	 * @since  4.9
+	 * @access public
+	 *
+	 * @see WPBMAP
 	 */
 	public function addElementActivity( $tag, $method, $params = array() ) {
 		if ( ! isset( $this->element_activities[ $tag ] ) ) {
@@ -148,9 +147,9 @@ class Vc_Mapper {
 	 *
 	 * @param $shortcode
 	 *
-	 * @todo fix_roles and maybe remove/@deprecate this
-	 * @since 4.5
 	 * @return bool
+	 * @since 4.5
+	 * @todo fix_roles and maybe remove/@deprecate this
 	 */
 	public function userHasAccess( $shortcode ) {
 		if ( $this->isCheckForAccess() ) {
@@ -167,24 +166,28 @@ class Vc_Mapper {
 	}
 
 	/**
-	 * @todo fix_roles and maybe remove/@deprecate this
-	 * @since 4.5
 	 * @return bool
+	 * @since 4.5
+	 * @todo fix_roles and maybe remove/@deprecate this
 	 */
 	public function isCheckForAccess() {
 		return $this->checkForAccess;
 	}
 
 	/**
-	 * @todo fix_roles and maybe remove/@deprecate this
+	 * @param bool $checkForAccess
 	 * @since 4.5
 	 *
-	 * @param bool $checkForAccess
+	 * @todo fix_roles and maybe remove/@deprecate this
 	 */
 	public function setCheckForAccess( $checkForAccess ) {
 		$this->checkForAccess = $checkForAccess;
 	}
 
+	/**
+	 * @param $tag
+	 * @throws \Exception
+	 */
 	public function callElementActivities( $tag ) {
 		do_action( 'vc_mapper_call_activities_before' );
 		if ( isset( $this->element_activities[ $tag ] ) ) {

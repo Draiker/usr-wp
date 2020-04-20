@@ -1,11 +1,11 @@
-(function ( $ ) {
+(function () {
+	'use strict';
 	window.InlineShortcodeView_vc_section = window.InlineShortcodeViewContainer.extend( {
 		controls_selector: '#vc_controls-template-container',
 		initialize: function () {
 			_.bindAll( this, 'checkSectionWidth' );
 			window.InlineShortcodeView_vc_section.__super__.initialize.call( this );
-			vc.frame_window.jQuery( vc.frame_window.document ).off( 'vc-full-width-row-single',
-				this.checkSectionWidth );
+			vc.frame_window.jQuery( vc.frame_window.document ).off( 'vc-full-width-row-single', this.checkSectionWidth );
 			vc.frame_window.jQuery( vc.frame_window.document ).on( 'vc-full-width-row-single', this.checkSectionWidth );
 		},
 		checkSectionWidth: function ( e, data ) {
@@ -23,4 +23,4 @@
 			return window.InlineShortcodeView_vc_section.__super__.render.call( this );
 		}
 	} );
-})( window.jQuery );
+})();

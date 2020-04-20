@@ -17,41 +17,41 @@ if ( 'vc_edit_form' === vc_post_param( 'action' ) && vc_verify_admin_nonce() ) {
 	}
 }
 return array(
-	'name' => 'WP ' . __( 'Tag Cloud' ),
+	'name' => 'WP ' . esc_html__( 'Tag Cloud' ),
 	'base' => 'vc_wp_tagcloud',
 	'icon' => 'icon-wpb-wp',
-	'category' => __( 'WordPress Widgets', 'js_composer' ),
+	'category' => esc_html__( 'WordPress Widgets', 'js_composer' ),
 	'class' => 'wpb_vc_wp_widget',
 	'weight' => - 50,
-	'description' => __( 'Your most used tags in cloud format', 'js_composer' ),
+	'description' => esc_html__( 'Your most used tags in cloud format', 'js_composer' ),
 	'params' => array(
 		array(
 			'type' => 'textfield',
-			'heading' => __( 'Widget title', 'js_composer' ),
+			'heading' => esc_html__( 'Widget title', 'js_composer' ),
 			'param_name' => 'title',
-			'value' => __( 'Tags', 'js_composer' ),
-			'description' => __( 'What text use as a widget title. Leave blank to use default widget title.', 'js_composer' ),
+			'value' => esc_html__( 'Tags', 'js_composer' ),
+			'description' => esc_html__( 'What text use as a widget title. Leave blank to use default widget title.', 'js_composer' ),
 		),
 		array(
 			'type' => 'dropdown',
-			'heading' => __( 'Taxonomy', 'js_composer' ),
+			'heading' => esc_html__( 'Taxonomy', 'js_composer' ),
 			'param_name' => 'taxonomy',
 			'value' => $tag_taxonomies,
-			'description' => __( 'Select source for tag cloud.', 'js_composer' ),
+			'description' => esc_html__( 'Select source for tag cloud.', 'js_composer' ),
 			'admin_label' => true,
 			'save_always' => true,
 		),
 		array(
 			'type' => 'el_id',
-			'heading' => __( 'Element ID', 'js_composer' ),
+			'heading' => esc_html__( 'Element ID', 'js_composer' ),
 			'param_name' => 'el_id',
-			'description' => sprintf( __( 'Enter element ID (Note: make sure it is unique and valid according to <a href="%s" target="_blank">w3c specification</a>).', 'js_composer' ), 'http://www.w3schools.com/tags/att_global_id.asp' ),
+			'description' => sprintf( esc_html__( 'Enter element ID (Note: make sure it is unique and valid according to %sw3c specification%s).', 'js_composer' ), '<a href="https://www.w3schools.com/tags/att_global_id.asp" target="_blank">', '</a>' ),
 		),
 		array(
 			'type' => 'textfield',
-			'heading' => __( 'Extra class name', 'js_composer' ),
+			'heading' => esc_html__( 'Extra class name', 'js_composer' ),
 			'param_name' => 'el_class',
-			'description' => __( 'Style particular content element differently - add a class name and refer to it in custom CSS.', 'js_composer' ),
+			'description' => esc_html__( 'Style particular content element differently - add a class name and refer to it in custom CSS.', 'js_composer' ),
 		),
 	),
 );

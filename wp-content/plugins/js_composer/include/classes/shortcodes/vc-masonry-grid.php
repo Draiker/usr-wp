@@ -5,7 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once vc_path_dir( 'SHORTCODES_DIR', 'vc-basic-grid.php' );
 
-class WPBakeryShortCode_VC_Masonry_Grid extends WPBakeryShortCode_VC_Basic_Grid {
+/**
+ * Class WPBakeryShortCode_Vc_Masonry_Grid
+ */
+class WPBakeryShortCode_Vc_Masonry_Grid extends WPBakeryShortCode_Vc_Basic_Grid {
+	/**
+	 * @return mixed|string
+	 */
 	protected function getFileName() {
 		return 'vc_basic_grid';
 	}
@@ -25,14 +31,32 @@ class WPBakeryShortCode_VC_Masonry_Grid extends WPBakeryShortCode_VC_Basic_Grid 
 		$this->grid_settings['style'] .= '-masonry';
 	}
 
+	/**
+	 * @param $grid_style
+	 * @param $settings
+	 * @param $content
+	 * @return string
+	 */
 	protected function contentAllMasonry( $grid_style, $settings, $content ) {
 		return parent::contentAll( $grid_style, $settings, $content );
 	}
 
+	/**
+	 * @param $grid_style
+	 * @param $settings
+	 * @param $content
+	 * @return string
+	 */
 	protected function contentLazyMasonry( $grid_style, $settings, $content ) {
 		return parent::contentLazy( $grid_style, $settings, $content );
 	}
 
+	/**
+	 * @param $grid_style
+	 * @param $settings
+	 * @param $content
+	 * @return string
+	 */
 	protected function contentLoadMoreMasonry( $grid_style, $settings, $content ) {
 		return parent::contentLoadMore( $grid_style, $settings, $content );
 	}

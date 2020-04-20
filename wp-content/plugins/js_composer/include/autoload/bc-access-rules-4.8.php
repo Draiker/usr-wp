@@ -5,6 +5,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Part BC: Post types
 // =========================
 
+/**
+ * @param $state
+ * @return bool|string
+ */
 function vc_bc_access_rule_48_post_type_get_state( $state ) {
 	if ( null === $state ) {
 		$content_types = vc_settings()->get( 'content_types' );
@@ -18,6 +22,13 @@ function vc_bc_access_rule_48_post_type_get_state( $state ) {
 	return $state;
 }
 
+/**
+ * @param $value
+ * @param $role
+ * @param $rule
+ * @return bool
+ * @throws \Exception
+ */
 function vc_bc_access_rule_48_post_type_rule( $value, $role, $rule ) {
 	if ( ! $role ) {
 		return $value;
@@ -30,7 +41,7 @@ function vc_bc_access_rule_48_post_type_rule( $value, $role, $rule ) {
 			$vc_bc_access_rule_48_editor_post_types = $pt_array ? $pt_array : vc_default_editor_post_types();
 		}
 
-		return in_array( $rule, $vc_bc_access_rule_48_editor_post_types );
+		return in_array( $rule, $vc_bc_access_rule_48_editor_post_types, true );
 	}
 
 	return $value;
@@ -39,6 +50,11 @@ function vc_bc_access_rule_48_post_type_rule( $value, $role, $rule ) {
 // Part BC: shortcodes
 // =========================
 
+/**
+ * @param $state
+ * @param $role
+ * @return bool|string
+ */
 function vc_bc_access_rule_48_shortcodes_get_state( $state, $role ) {
 	if ( ! $role ) {
 		return $state;
@@ -55,6 +71,13 @@ function vc_bc_access_rule_48_shortcodes_get_state( $state, $role ) {
 	return $state;
 }
 
+/**
+ * @param $value
+ * @param $role
+ * @param $rule
+ * @return bool
+ * @throws \Exception
+ */
 function vc_bc_access_rule_48_shortcodes_rule( $value, $role, $rule ) {
 	if ( ! $role ) {
 		return $value;
@@ -82,6 +105,7 @@ function vc_bc_access_rule_48_shortcodes_rule( $value, $role, $rule ) {
  * @param $role
  *
  * @return bool
+ * @throws \Exception
  */
 function vc_bc_access_get_shortcodes_state_is_set( $role ) {
 	if ( ! $role ) {
@@ -94,6 +118,11 @@ function vc_bc_access_get_shortcodes_state_is_set( $role ) {
 
 // Part BC: backened editor
 // ===========================
+/**
+ * @param $state
+ * @param $role
+ * @return bool|string
+ */
 function vc_bc_access_rule_48_backend_editor_get_state( $state, $role ) {
 	if ( ! $role ) {
 		return $state;
@@ -112,6 +141,11 @@ function vc_bc_access_rule_48_backend_editor_get_state( $state, $role ) {
 	return $state;
 }
 
+/**
+ * @param $state
+ * @param $role
+ * @return bool
+ */
 function vc_bc_access_rule_48_frontend_editor_get_state( $state, $role ) {
 	if ( ! $role ) {
 		return $state;
@@ -129,6 +163,12 @@ function vc_bc_access_rule_48_frontend_editor_get_state( $state, $role ) {
 	return $state;
 }
 
+/**
+ * @param $value
+ * @param $role
+ * @return bool
+ * @throws \Exception
+ */
 function vc_bc_access_rule_48_backend_editor_can_disabled_ce_editor_rule( $value, $role ) {
 	if ( ! $role ) {
 		return $value;
@@ -143,6 +183,11 @@ function vc_bc_access_rule_48_backend_editor_can_disabled_ce_editor_rule( $value
 	return $value;
 }
 
+/**
+ * @param $role
+ * @return mixed
+ * @throws \Exception
+ */
 function vc_bc_access_rule_48_backend_editor_add_cap_disabled_ce_editor( $role ) {
 	if ( ! $role ) {
 		return $role;

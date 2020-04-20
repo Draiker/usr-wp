@@ -9,10 +9,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package WPBakeryPageBuilder
  *
  */
-class WPBakeryShortCode_VC_Button extends WPBakeryShortCode {
+class WPBakeryShortCode_Vc_Button extends WPBakeryShortCode {
+	/**
+	 * @param $title
+	 * @return string
+	 */
 	protected function outputTitle( $title ) {
 		$icon = $this->settings( 'icon' );
 
-		return '<h4 class="wpb_element_title"><span class="vc_general vc_element-icon' . ( ! empty( $icon ) ? ' ' . $icon : '' ) . '"></span></h4>';
+		return '<h4 class="wpb_element_title"><span class="vc_general vc_element-icon' . ( ! empty( $icon ) ? ' ' . esc_attr( $icon ) : '' ) . '"></span></h4>';
 	}
 }

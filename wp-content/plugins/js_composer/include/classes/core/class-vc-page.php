@@ -3,7 +3,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-class Vc_Page implements Vc_Render {
+/**
+ * Class Vc_Page
+ */
+class Vc_Page {
 	protected $slug;
 	protected $title;
 	protected $templatePath;
@@ -64,11 +67,8 @@ class Vc_Page implements Vc_Render {
 	}
 
 	public function render() {
-		ob_start();
 		vc_include_template( $this->getTemplatePath(), array(
 			'page' => $this,
 		) );
-
-		echo apply_filters( 'vc_settings-page-render-' . $this->getSlug(), ob_get_clean(), $this );
 	}
 }

@@ -5,6 +5,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once vc_path_dir( 'CORE_DIR', 'access/class-vc-role-access-controller.php' );
 
+/**
+ * Class Vc_Current_User_Access_Controller
+ */
 class Vc_Current_User_Access_Controller extends Vc_Role_Access_Controller {
 	/**
 	 * Get capability for current user
@@ -31,6 +34,9 @@ class Vc_Current_User_Access_Controller extends Vc_Role_Access_Controller {
 		wp_get_current_user()->add_cap( $role_rule, $value );
 	}
 
+	/**
+	 * @return bool|\WP_Role|null
+	 */
 	public function getRole() {
 		if ( ! $this->roleName && function_exists( 'wp_get_current_user' ) ) {
 			$user = wp_get_current_user();

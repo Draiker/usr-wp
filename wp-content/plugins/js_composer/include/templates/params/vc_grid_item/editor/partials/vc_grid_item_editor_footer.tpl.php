@@ -22,32 +22,34 @@ if ( vc_user_access()->part( 'presets' )->can()->get() ) {
 	$vc_vendor_settings_presets = array();
 	$vc_all_presets = array();
 }
-
+$custom_tag = 'script';
 ?>
-	<script type="text/javascript">
-		var vc_user_mapper = <?php echo json_encode( WpbMap_Grid_Item::getGitemUserShortCodes() ) ?>,
-			vc_mapper = <?php echo json_encode( WpbMap_Grid_Item::getShortCodes() ) ?>,
-			vc_vendor_settings_presets = <?php echo json_encode( $vc_vendor_settings_presets ) ?>,
-			vc_all_presets = <?php echo json_encode( $vc_all_presets ) ?>,
-			vc_frontend_enabled = false,
-			vc_mode = '<?php echo vc_mode(); ?>',
-			vcAdminNonce = '<?php echo vc_generate_nonce( 'vc-admin-nonce' ); ?>';
-	</script>
+	<<?php echo esc_attr( $custom_tag ); ?>>
+		window.vc_user_mapper = <?php echo wp_json_encode( WpbMap_Grid_Item::getGitemUserShortCodes() ); ?>;
+		window.vc_mapper = <?php echo wp_json_encode( WpbMap_Grid_Item::getShortCodes() ); ?>;
+		window.vc_vendor_settings_presets = <?php echo wp_json_encode( $vc_vendor_settings_presets ); ?>;
+		window.vc_all_presets = <?php echo wp_json_encode( $vc_all_presets ); ?>;
+		window.vc_frontend_enabled = false;
+		window.vc_mode = '<?php echo esc_js( vc_mode() ); ?>';
+		window.vcAdminNonce = '<?php echo esc_js( vc_generate_nonce( 'vc-admin-nonce' ) ); ?>';
+	</<?php echo esc_attr( $custom_tag ); ?>>
 
-	<script type="text/html" id="vc_settings-image-block">
+	<<?php echo esc_attr( $custom_tag ); ?> type="text/html" id="vc_settings-image-block">
 		<li class="added">
 			<div class="inner" style="width: 80px; height: 80px; overflow: hidden;text-align: center;">
 				<img rel="{{ id }}" src="<# if(sizes && sizes.thumbnail) { #>{{ sizes.thumbnail.url }}<# } else {#>{{ url }}<# } #>"/>
 			</div>
 			<a href="#" class="vc_icon-remove"><i class="vc-composer-icon vc-c-icon-close"></i></a>
 		</li>
-	</script>
-<?php foreach ( WpbMap_Grid_Item::getShortCodes() as $sc_base => $el ) :  ?>
-	<script type="text/html" id="vc_shortcode-template-<?php echo $sc_base ?>">
+	</<?php echo esc_attr( $custom_tag ); ?>>
+<?php foreach ( WpbMap_Grid_Item::getShortCodes() as $sc_base => $el ) : ?>
+	<<?php echo esc_attr( $custom_tag ); ?> type="text/html" id="vc_shortcode-template-<?php echo esc_attr( $sc_base ); ?>">
 		<?php
-		echo visual_composer()->getShortCode( $sc_base )->template();
+		// @codingStandardsIgnoreLine
+		print visual_composer()->getShortCode( $sc_base )->template();
 		?>
-	</script>
+	</<?php echo esc_attr( $custom_tag ); ?>>
 <?php endforeach ?>
 
-<?php vc_include_template( 'editors/partials/access-manager-js.tpl.php' );
+<?php
+vc_include_template( 'editors/partials/access-manager-js.tpl.php' );

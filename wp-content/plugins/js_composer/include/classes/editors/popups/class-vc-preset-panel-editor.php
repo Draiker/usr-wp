@@ -40,10 +40,10 @@ class Vc_Preset_Panel_Editor {
 	/**
 	 * Get list of all presets for specific shortcode
 	 *
+	 * @return array E.g. array(id1 => title1, id2 => title2, ...)
 	 * @since 5.2
 	 *
 	 *
-	 * @return array E.g. array(id1 => title1, id2 => title2, ...)
 	 */
 	public function listPresets() {
 		$list = array();
@@ -71,10 +71,10 @@ class Vc_Preset_Panel_Editor {
 	/**
 	 * Single preset html
 	 *
+	 * @return string
 	 * @since 5.2
 	 *
 	 *
-	 * @return string
 	 */
 	public function getPresets() {
 		$listPresets = $this->listPresets();
@@ -106,11 +106,11 @@ class Vc_Preset_Panel_Editor {
 	/**
 	 * Get preset parent shortcode name from post mime type
 	 *
-	 * @since 5.2
-	 *
 	 * @param $presetMimeType
 	 *
 	 * @return string
+	 * @since 5.2
+	 *
 	 */
 	public static function constructPresetParent( $presetMimeType ) {
 		return str_replace( '-', '_', str_replace( 'vc-settings-preset/', '', $presetMimeType ) );

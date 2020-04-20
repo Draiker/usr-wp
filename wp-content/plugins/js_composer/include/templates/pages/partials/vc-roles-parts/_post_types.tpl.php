@@ -11,11 +11,11 @@ vc_include_template( 'pages/partials/vc-roles-parts/_part.tpl.php', array(
 
 	'capabilities' => $vc_role->getPostTypes(),
 	'options' => array(
-		array( true, __( 'Pages only', 'js_composer' ) ),
-		array( 'custom', __( 'Custom', 'js_composer' ) ),
-		array( false, __( 'Disabled', 'js_composer' ) ),
+		array( true, esc_html__( 'Pages only', 'js_composer' ) ),
+		array( 'custom', esc_html__( 'Custom', 'js_composer' ) ),
+		array( false, esc_html__( 'Disabled', 'js_composer' ) ),
 	),
-	'main_label' => __( 'Post types', 'js_composer' ),
-	'custom_label' => __( 'Post types', 'js_composer' ),
-	'description' => __( 'Enable WPBakery Page Builder for pages, posts and custom post types. Note: By default WPBakery Page Builder is available for pages only.', 'js_composer' ),
+	'main_label' => esc_html__( 'Post types', 'js_composer' ),
+	'custom_label' => esc_html__( 'Post types', 'js_composer' ),
+	'description' => esc_html__( 'Enable WPBakery Page Builder for pages, posts and custom post types. Note: By default WPBakery Page Builder is available for pages only.', 'js_composer' ),
 ) );

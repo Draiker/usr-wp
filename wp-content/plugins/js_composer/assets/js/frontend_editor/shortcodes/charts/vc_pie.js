@@ -1,4 +1,5 @@
 (function ( $ ) {
+	'use strict';
 	window.InlineShortcodeView_vc_pie = window.InlineShortcodeView.extend( {
 		render: function () {
 			_.bindAll( this, 'parentChanged' );

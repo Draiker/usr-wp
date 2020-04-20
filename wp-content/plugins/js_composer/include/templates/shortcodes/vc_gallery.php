@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $css
  * @var $css_animation
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_gallery
+ * @var WPBakeryShortCode_Vc_gallery $this
  */
 $thumbnail = '';
 $title = $source = $type = $onclick = $custom_links = $custom_links_target = $img_size = $external_img_size = $images = $custom_srcs = $el_class = $el_id = $interval = $css = $css_animation = '';
@@ -88,7 +88,7 @@ if ( '' === $images ) {
 	$images = '-1,-2,-3';
 }
 
-$pretty_rel_random = ' data-rel="prettyPhoto[rel-' . get_the_ID() . '-' . rand() . ']"';
+$pretty_rel_random = ' data-rel="prettyPhoto[rel-' . get_the_ID() . '-' . wp_rand() . ']"';
 
 if ( 'custom_link' === $onclick ) {
 	$custom_links = vc_value_from_safe( $custom_links );
@@ -118,15 +118,14 @@ foreach ( $images as $i => $image ) {
 				$large_img_src = $img['p_img_large'][0];
 			} else {
 				$large_img_src = $default_src;
-				$thumbnail = '<img src="' . $default_src . '" />';
+				$thumbnail = '<img src="' . esc_url( $default_src ) . '" />';
 			}
 			break;
 
 		case 'external_link':
-			$image = esc_attr( $image );
-			$dimensions = vcExtractDimensions( $external_img_size );
+			$dimensions = vc_extract_dimensions( $external_img_size );
 			$hwstring = $dimensions ? image_hwstring( $dimensions[0], $dimensions[1] ) : '';
-			$thumbnail = '<img ' . $hwstring . ' src="' . $image . '" />';
+			$thumbnail = '<img ' . $hwstring . ' src="' . esc_url( $image ) . '" />';
 			$large_img_src = $image;
 			break;
 	}
@@ -135,18 +134,18 @@ foreach ( $images as $i => $image ) {
 
 	switch ( $onclick ) {
 		case 'img_link_large':
-			$link_start = '<a href="' . $large_img_src . '" target="' . $custom_links_target . '">';
+			$link_start = '<a href="' . esc_url( $large_img_src ) . '" target="' . $custom_links_target . '">';
 			$link_end = '</a>';
 			break;
 
 		case 'link_image':
-			$link_start = '<a class="prettyphoto" href="' . $large_img_src . '"' . $pretty_rel_random . '>';
+			$link_start = '<a class="prettyphoto" href="' . esc_url( $large_img_src ) . '"' . $pretty_rel_random . '>';
 			$link_end = '</a>';
 			break;
 
 		case 'custom_link':
 			if ( ! empty( $custom_links[ $i ] ) ) {
-				$link_start = '<a href="' . $custom_links[ $i ] . '"' . ( ! empty( $custom_links_target ) ? ' target="' . $custom_links_target . '"' : '' ) . '>';
+				$link_start = '<a href="' . esc_url( $custom_links[ $i ] ) . '"' . ( ! empty( $custom_links_target ) ? ' target="' . $custom_links_target . '"' : '' ) . '>';
 				$link_end = '</a>';
 			}
 			break;
@@ -173,4 +172,4 @@ $output .= '<div class="wpb_gallery_slides' . $type . '" data-interval="' . $int
 $output .= '</div>';
 $output .= '</div>';
 
-echo $output;
+return $output;

@@ -3,7 +3,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-class WPBakeryShortCode_VC_GooglePlus extends WPBakeryShortCode {
+/**
+ * Class WPBakeryShortCode_Vc_GooglePlus
+ */
+class WPBakeryShortCode_Vc_GooglePlus extends WPBakeryShortCode {
+	/**
+	 * @param $atts
+	 * @param null $content
+	 * @return string
+	 * @throws \Exception
+	 */
 	protected function contentInline( $atts, $content = null ) {
 		/**
 		 * Shortcode attributes
@@ -14,7 +23,7 @@ class WPBakeryShortCode_VC_GooglePlus extends WPBakeryShortCode {
 		 * @var $css
 		 * @var $css_animation
 		 * Shortcode class
-		 * @var $this WPBakeryShortCode_VC_GooglePlus
+		 * @var WPBakeryShortCode_Vc_GooglePlus $this
 		 */
 		$type = $annotation = $widget_width = $css = $css_animation = '';
 		$atts = vc_map_get_attributes( $this->getShortcode(), $atts );

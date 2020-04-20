@@ -3,5 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-class WPBakeryShortCode_VC_Gmaps extends WPBakeryShortCode {
+/**
+ * Class WPBakeryShortCode_Vc_Gmaps
+ */
+class WPBakeryShortCode_Vc_Gmaps extends WPBakeryShortCode {
 }

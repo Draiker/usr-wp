@@ -9,11 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param $settings
  * @param $value
  *
- * @since 4.4
  * @return string
+ * @since 4.4
  */
 function vc_colorpicker_form_field( $settings, $value ) {
-	return '<div class="color-group">'
-	       . '<input name="' . $settings['param_name'] . '" class="wpb_vc_param_value wpb-textinput ' . $settings['param_name'] . ' ' . $settings['type'] . '_field vc_color-control" type="text" value="' . $value . '"/>'
-	       . '</div>';
+	return sprintf( '<div class="color-group"><input name="%s" class="wpb_vc_param_value wpb-textinput %s %s_field vc_color-control" type="text" value="%s"/></div>', $settings['param_name'], $settings['param_name'], $settings['type'], $value );
 }

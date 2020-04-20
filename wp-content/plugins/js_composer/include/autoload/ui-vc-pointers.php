@@ -4,13 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $vc_default_pointers, $vc_pointers;
-$vc_default_pointers = (array) apply_filters( 'vc_pointers_list',
-	array(
-		'vc_grid_item',
-		'vc_pointers_backend_editor',
-		'vc_pointers_frontend_editor',
-	)
-);
+$vc_default_pointers = (array) apply_filters( 'vc_pointers_list', array(
+	'vc_grid_item',
+	'vc_pointers_backend_editor',
+	'vc_pointers_frontend_editor',
+) );
 if ( is_admin() ) {
 	add_action( 'admin_enqueue_scripts', 'vc_pointer_load', 1000 );
 }
@@ -41,7 +39,7 @@ function vc_pointer_load() {
 	foreach ( $pointers as $pointer_id => $pointer ) {
 
 		// Sanity check
-		if ( in_array( $pointer_id, $dismissed ) || empty( $pointer ) || empty( $pointer_id ) || empty( $pointer['name'] ) ) {
+		if ( in_array( $pointer_id, $dismissed, true ) || empty( $pointer ) || empty( $pointer_id ) || empty( $pointer['name'] ) ) {
 			continue;
 		}
 
@@ -60,9 +58,9 @@ function vc_pointer_load() {
 	wp_enqueue_script( 'wp-pointer' );
 	// messages
 	$vc_pointers['texts'] = array(
-		'finish' => __( 'Finish', 'js_composer' ),
-		'next' => __( 'Next', 'js_composer' ),
-		'prev' => __( 'Prev', 'js_composer' ),
+		'finish' => esc_html__( 'Finish', 'js_composer' ),
+		'next' => esc_html__( 'Next', 'js_composer' ),
+		'prev' => esc_html__( 'Prev', 'js_composer' ),
 	);
 
 	// Add pointer options to script.
@@ -75,14 +73,7 @@ function vc_pointer_load() {
  */
 function vc_pointer_reset() {
 	global $vc_default_pointers;
-	vc_user_access()
-		->checkAdminNonce()
-		->validateDie()
-		->wpAny( 'manage_options' )
-		->validateDie()
-		->part( 'settings' )
-		->can( 'vc-general-tab' )
-		->validateDie();
+	vc_user_access()->checkAdminNonce()->validateDie()->wpAny( 'manage_options' )->validateDie()->part( 'settings' )->can( 'vc-general-tab' )->validateDie();
 
 	$pointers = (array) apply_filters( 'vc_pointers_list', $vc_default_pointers );
 	$prev_meta_value = get_user_meta( get_current_user_id(), 'dismissed_wp_pointers', true );

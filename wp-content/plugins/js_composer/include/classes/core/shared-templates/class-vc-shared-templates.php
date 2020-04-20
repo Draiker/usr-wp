@@ -3,8 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-require_once dirname( __FILE__ ) . '/importer/wordpress-importer.php';
-require_once dirname( __FILE__ ) . '/importer/plugin.php';
+require_once dirname( __FILE__ ) . '/importer/class-vc-wp-import.php';
+require_once dirname( __FILE__ ) . '/importer/class-vc-wxr-parser-plugin.php';
 
 /**
  * Class Vc_Shared_Templates
@@ -18,7 +18,7 @@ class Vc_Shared_Templates {
 	/**
 	 * @var string
 	 */
-	protected $download_link_url = 'http://support.wpbakery.com/templates/download-link';
+	protected $download_link_url = 'https://support.wpbakery.com/templates/download-link';
 
 	/**
 	 *
@@ -51,14 +51,6 @@ class Vc_Shared_Templates {
 			$this,
 			'delete',
 		), 10, 2 );
-		/*
-		 *
-				add_action( 'wp_ajax_vc_frontend_load_template', array(
-					$this,
-					'renderFrontendTemplate',
-				) );
-		*/
-
 		add_filter( 'wp_ajax_vc_shared_templates_download', array(
 			$this,
 			'ajaxDownloadTemplate',
@@ -71,6 +63,11 @@ class Vc_Shared_Templates {
 		$this->registerPostType();
 	}
 
+	/**
+	 * @param $templateId
+	 * @param $templateType
+	 * @return string
+	 */
 	public function renderBackendTemplate( $templateId, $templateType ) {
 		if ( 'shared_templates' === $templateType ) {
 			$templates = get_posts( array(
@@ -91,6 +88,11 @@ class Vc_Shared_Templates {
 		return $templateId;
 	}
 
+	/**
+	 * @param $templateId
+	 * @param $templateType
+	 * @return mixed
+	 */
 	public function renderFrontendTemplate( $templateId, $templateType ) {
 		if ( 'shared_templates' === $templateType ) {
 			$templates = get_posts( array(
@@ -116,6 +118,11 @@ class Vc_Shared_Templates {
 		return $templateId;
 	}
 
+	/**
+	 * @param $templateId
+	 * @param $templateType
+	 * @return mixed
+	 */
 	public function delete( $templateId, $templateType ) {
 		if ( 'shared_templates' === $templateType ) {
 			$templates = get_posts( array(
@@ -138,7 +145,7 @@ class Vc_Shared_Templates {
 	}
 
 	/**
-	 * Post type from templates registration in wordpress
+	 * Post type from templates registration in WordPress
 	 */
 	private function registerPostType() {
 		register_post_type( 'vc4_templates', array(
@@ -164,17 +171,17 @@ class Vc_Shared_Templates {
 	 */
 	public function ajaxDownloadTemplate() {
 		/** @var Vc_Current_User_Access $access */
-		$access = vc_user_access()->checkAdminNonce()->validateDie( json_encode( array(
+		$access = vc_user_access()->checkAdminNonce()->validateDie( wp_json_encode( array(
 			'success' => false,
 			'message' => 'access denied',
-		) ) )->part( 'templates' )->checkStateAny( true, null )->validateDie( json_encode( array(
+		) ) )->part( 'templates' )->checkStateAny( true, null )->validateDie( wp_json_encode( array(
 			'success' => false,
 			'message' => 'part access denied',
 		) ) )->check( array(
 			vc_license(),
 			'isActivated',
 		) );
-		$access->validateDie( json_encode( array(
+		$access->validateDie( wp_json_encode( array(
 			'success' => false,
 			'message' => 'license is not activated',
 		) ) );
@@ -266,7 +273,7 @@ class Vc_Shared_Templates {
 			if ( ! empty( $templates ) || vc_user_access()->part( 'templates' )->checkStateAny( true, null )->get() ) {
 				$newCategory = array(
 					'category' => 'shared_templates',
-					'category_name' => __( 'Template library', 'js_composer' ),
+					'category_name' => esc_html__( 'Template library', 'js_composer' ),
 					'category_weight' => 10,
 					'templates' => $this->getTemplates(),
 				);
@@ -303,6 +310,9 @@ class Vc_Shared_Templates {
 		return ob_get_clean();
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getTemplates() {
 		$posts = get_posts( 'post_type=vc4_templates&numberposts=-1' );
 		$templates = array();

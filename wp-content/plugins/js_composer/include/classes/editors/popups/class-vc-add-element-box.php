@@ -4,18 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WPBakery WPBakery Page Builder front end editor
- *
- * @package WPBakeryPageBuilder
- *
- */
-
-/**
  * Add element for VC editors with a list of mapped shortcodes.
  *
  * @since 4.3
  */
-class Vc_Add_Element_Box implements Vc_Render {
+class Vc_Add_Element_Box {
 	/**
 	 * Enable show empty message
 	 *
@@ -35,7 +28,7 @@ class Vc_Add_Element_Box implements Vc_Render {
 			$data = ' data-is-container="true"';
 		}
 
-		return '<i class="vc_general vc_element-icon' . ( ! empty( $params['icon'] ) ? ' ' . sanitize_text_field( $params['icon'] ) : '' ) . '"' . $data . '></i> ';
+		return '<i class="vc_general vc_element-icon' . ( ! empty( $params['icon'] ) ? ' ' . esc_attr( sanitize_text_field( $params['icon'] ) ) : '' ) . '" ' . $data . '></i> ';
 	}
 
 	/**
@@ -52,7 +45,8 @@ class Vc_Add_Element_Box implements Vc_Render {
 		$output = $class = $class_out = $data = $category_css_classes = '';
 		if ( ! empty( $params['class'] ) ) {
 			$class_ar = $class_at_out = explode( ' ', $params['class'] );
-			for ( $n = 0; $n < count( $class_ar ); $n ++ ) {
+			$count = count( $class_ar );
+			for ( $n = 0; $n < $count; $n ++ ) {
 				$class_ar[ $n ] .= '_nav';
 				$class_at_out[ $n ] .= '_o';
 			}
@@ -68,9 +62,9 @@ class Vc_Add_Element_Box implements Vc_Render {
 			$data .= ' data-is-container="true"';
 		}
 		$data .= ' data-vc-ui-element="add-element-button"';
-		$description = ! empty( $params['description'] ) ? '<span class="vc_element-description">' . htmlspecialchars( $params['description'] ) . '</span>' : '';
-		$name = '<span data-vc-shortcode-name>' . htmlspecialchars( stripslashes( $params['name'] ) ) . '</span>';
-		$output .= '<li data-element="' . $params['base'] . '"'. ( isset( $params['presetId'] ) ? ' data-preset="' . $params['presetId'] . '"' : '' ) .' class="wpb-layout-element-button vc_col-xs-12 vc_col-sm-4 vc_col-md-3 vc_col-lg-2' . ( isset( $params['deprecated'] ) ? ' vc_element-deprecated' : '' ) . $category_css_classes . $class_out . '"' . $data . '><div class="vc_el-container"><a id="' . $params['base'] . '" data-tag="' . $params['base'] . '" class="dropable_el vc_shortcode-link' . $class . '" href="#" data-vc-clickable>' . $this->getIcon( $params ) . $name . $description . '</a></div></li>';
+		$description = ! empty( $params['description'] ) ? '<span class="vc_element-description">' . htmlspecialchars( esc_html( $params['description'] ), ENT_QUOTES, 'UTF-8' ) . '</span>' : '';
+		$name = '<span data-vc-shortcode-name>' . htmlspecialchars( esc_html( stripslashes( $params['name'] ) ), ENT_QUOTES, 'UTF-8' ) . '</span>';
+		$output .= '<li data-element="' . esc_attr( $params['base'] ) . '" ' . ( isset( $params['presetId'] ) ? 'data-preset="' . esc_attr( $params['presetId'] ) . '"' : '' ) . ' class="wpb-layout-element-button vc_col-xs-12 vc_col-sm-4 vc_col-md-3 vc_col-lg-2' . ( isset( $params['deprecated'] ) ? ' vc_element-deprecated' : '' ) . esc_attr( $category_css_classes ) . esc_attr( $class_out ) . '" ' . $data . '><div class="vc_el-container"><a id="' . esc_attr( $params['base'] ) . '" data-tag="' . esc_attr( $params['base'] ) . '" class="dropable_el vc_shortcode-link' . esc_attr( $class ) . '" href="javascript:;" data-vc-clickable>' . $this->getIcon( $params ) . $name . $description . '</a></div></li>';
 
 		return $output;
 	}
@@ -78,8 +72,9 @@ class Vc_Add_Element_Box implements Vc_Render {
 	/**
 	 * Get mapped shortcodes list.
 	 *
-	 * @since 4.4
 	 * @return array
+	 * @throws \Exception
+	 * @since 4.4
 	 */
 	public function shortcodes() {
 		return apply_filters( 'vc_add_new_elements_to_box', WPBMap::getSortedUserShortCodes() );
@@ -88,8 +83,9 @@ class Vc_Add_Element_Box implements Vc_Render {
 	/**
 	 * Render list of buttons for each mapped and allowed VC shortcodes.
 	 * vc_filter: vc_add_element_box_buttons - hook to override output of getControls method
+	 * @return mixed
+	 * @throws \Exception
 	 * @see WPBMap::getSortedUserShortCodes
-	 * @return mixed|void
 	 */
 	public function getControls() {
 		$output = '<ul class="wpb-content-layouts">';
@@ -116,14 +112,17 @@ class Vc_Add_Element_Box implements Vc_Render {
 
 	/**
 	 * Get categories list from mapping data.
-	 * @since 4.5
-	 *
 	 * @return array
+	 * @throws \Exception
+	 * @since 4.5
 	 */
 	public function getCategories() {
 		return apply_filters( 'vc_add_new_category_filter', WPBMap::getUserCategories() );
 	}
 
+	/**
+	 *
+	 */
 	public function render() {
 		vc_include_template( 'editors/popups/vc_ui-panel-add-element.tpl.php', array(
 			'box' => $this,
@@ -138,8 +137,8 @@ class Vc_Add_Element_Box implements Vc_Render {
 	 *
 	 * @param $params
 	 *
-	 * @since 4.8
 	 * @return string
+	 * @since 4.8
 	 */
 	public function renderIcon( $params ) {
 		return $this->getIcon( $params );
@@ -152,6 +151,10 @@ class Vc_Add_Element_Box implements Vc_Render {
 		return $this->show_empty_message;
 	}
 
+	/**
+	 * @return mixed
+	 * @throws \Exception
+	 */
 	public function getPartState() {
 		return vc_user_access()->part( 'shortcodes' )->getState();
 	}

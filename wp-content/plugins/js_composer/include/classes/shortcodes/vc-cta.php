@@ -12,11 +12,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * @since 4.5
- * Class WPBakeryShortCode_VC_Cta
+ * Class WPBakeryShortCode_Vc_Cta
  */
-class WPBakeryShortCode_VC_Cta extends WPBakeryShortCode {
+class WPBakeryShortCode_Vc_Cta extends WPBakeryShortCode {
 	protected $template_vars = array();
 
+	/**
+	 * @param $atts
+	 * @param $content
+	 * @throws \Exception
+	 */
 	public function buildTemplate( $atts, $content ) {
 		$output = array();
 		$inline_css = array();
@@ -84,6 +89,12 @@ class WPBakeryShortCode_VC_Cta extends WPBakeryShortCode {
 		$this->template_vars = $output;
 	}
 
+	/**
+	 * @param $tag
+	 * @param $atts
+	 * @return string
+	 * @throws \Exception
+	 */
 	public function getHeading( $tag, $atts ) {
 		if ( isset( $atts[ $tag ] ) && '' !== trim( $atts[ $tag ] ) ) {
 			if ( isset( $atts[ 'use_custom_fonts_' . $tag ] ) && 'true' === $atts[ 'use_custom_fonts_' . $tag ] ) {
@@ -115,6 +126,11 @@ class WPBakeryShortCode_VC_Cta extends WPBakeryShortCode {
 		return '';
 	}
 
+	/**
+	 * @param $atts
+	 * @return string
+	 * @throws \Exception
+	 */
 	public function getButton( $atts ) {
 		$data = vc_map_integrate_parse_atts( $this->shortcode, 'vc_btn', $atts, 'btn_' );
 		if ( $data ) {
@@ -127,6 +143,11 @@ class WPBakeryShortCode_VC_Cta extends WPBakeryShortCode {
 		return '';
 	}
 
+	/**
+	 * @param $atts
+	 * @return string
+	 * @throws \Exception
+	 */
 	public function getVcIcon( $atts ) {
 
 		if ( empty( $atts['i_type'] ) ) {
@@ -143,6 +164,10 @@ class WPBakeryShortCode_VC_Cta extends WPBakeryShortCode {
 		return '';
 	}
 
+	/**
+	 * @param $string
+	 * @return mixed|string
+	 */
 	public function getTemplateVariable( $string ) {
 		if ( is_array( $this->template_vars ) && isset( $this->template_vars[ $string ] ) ) {
 

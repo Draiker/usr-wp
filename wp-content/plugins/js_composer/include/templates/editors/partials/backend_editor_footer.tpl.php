@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-/** @var $edit Vc_Backend_Editor */
+/** @var Vc_Backend_Editor $editor */
 // [add element box]
 require_once vc_path_dir( 'EDITORS_DIR', 'popups/class-vc-add-element-box.php' );
 $add_element_box = new Vc_Add_Element_Box();

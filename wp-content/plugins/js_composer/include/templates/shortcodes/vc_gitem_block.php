@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $float
  * @var $content - shortcode content
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Gitem
+ * @var WPBakeryShortCode_Vc_Gitem $this
  */
 $el_class = $background_color = $float = '';
 
@@ -21,8 +21,7 @@ extract( $atts );
 if ( ! empty( $background_color ) ) {
 	$background_color = ' vc_bg-' . $background_color;
 }
-echo '<div class="vc_gitem-block' . esc_attr( $background_color )
-	. ( strlen( $el_class ) > 0 ? ' ' . esc_attr( $el_class ) : '' )
-	. ' vc_gitem-float-' . esc_attr( $float )
-	. '">'
-	. do_shortcode( $content ) . '</div>';
+
+$output = '<div class="vc_gitem-block' . esc_attr( $background_color ) . ( strlen( $el_class ) > 0 ? ' ' . esc_attr( $el_class ) : '' ) . ' vc_gitem-float-' . esc_attr( $float ) . '">' . do_shortcode( $content ) . '</div>';
+
+echo $output;

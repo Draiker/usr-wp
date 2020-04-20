@@ -3,7 +3,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-class WPBakeryShortCode_VC_Gutenberg extends WPBakeryShortCode {
+/**
+ * Class WPBakeryShortCode_Vc_Gutenberg
+ */
+class WPBakeryShortCode_Vc_Gutenberg extends WPBakeryShortCode {
+	/**
+	 * @param $title
+	 * @return string
+	 */
 	protected function outputTitle( $title ) {
 		return '';
 	}

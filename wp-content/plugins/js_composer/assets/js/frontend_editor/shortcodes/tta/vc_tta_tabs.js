@@ -1,4 +1,6 @@
 (function ( $ ) {
+	'use strict';
+
 	window.InlineShortcodeView_vc_tta_tabs = window.InlineShortcodeView_vc_tta_accordion.extend( {
 		render: function () {
 			window.InlineShortcodeView_vc_tta_tabs.__super__.render.call( this );
@@ -18,17 +20,17 @@
 		},
 		defaultSectionTitle: window.i18nLocale.tab,
 		addIcon: function ( model, html ) {
-			var icon, iconClass, iconHtml;
+			var icon, icon_class, icon_html;
 			if ( 'true' === model.getParam( 'add_icon' ) ) {
 				icon = model.getParam( 'i_icon_' + model.getParam( 'i_type' ) );
-				if ( ! _.isUndefined( icon ) ) {
-					iconClass = 'vc_tta-icon' + ' ' + icon;
-					iconHtml = '<i class="' + iconClass + '"></i>';
+				if ( !_.isUndefined( icon ) ) {
+					icon_class = 'vc_tta-icon' + ' ' + icon;
+					icon_html = '<i class="' + icon_class + '"></i>';
 				}
 				if ( 'right' === model.getParam( 'i_position' ) ) {
-					html += iconHtml;
+					html += icon_html;
 				} else {
-					html = iconHtml + html;
+					html = icon_html + html;
 				}
 			}
 			return html;
@@ -38,7 +40,7 @@
 		 * @param {Backbone.Model}model
 		 */
 		sectionUpdated: function ( model, justAppend ) {
-			// update builded tabs, remove/add check orders and title/target
+			// update build tabs, remove/add check orders and title/target
 
 			var $tabEl,
 				$navigation,
@@ -72,7 +74,9 @@
 						tabAdded = true;
 					}
 				}
-				! tabAdded && $element.appendTo( $navigation );
+				if ( !tabAdded ) {
+					$element.appendTo( $navigation );
+				}
 				if ( model.get( 'isActiveSection' ) ) {
 					$element.addClass( this.activeClass );
 				}
@@ -110,8 +114,8 @@
 			this.buildPagination();
 		},
 		buildSortableNavigation: function () {
-			if ( ! vc_user_access().shortcodeEdit( this.model.get( 'shortcode' ) ) ) {
-				return
+			if ( !vc_user_access().shortcodeEdit( this.model.get( 'shortcode' ) ) ) {
+				return;
 			}
 			// this should be called when new tab added/removed/changed.
 			this.$el.find( '.vc_tta-tabs-container .vc_tta-tabs-list' ).sortable( {
@@ -187,11 +191,11 @@
 			this.removePagination();
 			// If tap-pos top append:
 			params = this.model.get( 'params' );
-			if ( ! _.isUndefined( params.pagination_style ) && params.pagination_style.length ) {
+			if ( !_.isUndefined( params.pagination_style ) && params.pagination_style.length ) {
 				if ( 'top' === params.tab_position ) {
 					this.$el.find( '.vc_tta-panels-container' ).append( this.getPaginationList() );
 				} else {
-					this.getPaginationList().insertBefore( this.$el.find( '.vc_tta-container .vc_tta-panels' ) ); // TODO: change this
+					this.getPaginationList().insertBefore( this.$el.find( '.vc_tta-container .vc_tta-panels' ) );
 				}
 			}
 		}

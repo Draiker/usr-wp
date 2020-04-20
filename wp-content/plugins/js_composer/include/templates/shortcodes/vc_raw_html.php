@@ -11,13 +11,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $content - shortcode content
  * @var $css
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Raw_html
+ * @var WPBakeryShortCode_Vc_Raw_html $this
  */
 $el_class = $el_id = $css = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
-$content = rawurldecode( base64_decode( strip_tags( $content ) ) );
+$content = rawurldecode( base64_decode( wp_strip_all_tags( $content ) ) );
 $content = wpb_js_remove_wpautop( apply_filters( 'vc_raw_html_module_content', $content ) );
 
 // template is also used by 'Raw JS' shortcode which doesn't have Design Options
@@ -40,4 +40,4 @@ $output = '
 	</div>
 ';
 
-echo $output;
+return $output;

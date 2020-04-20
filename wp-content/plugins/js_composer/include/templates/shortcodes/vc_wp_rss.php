@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $el_class
  * @var $el_id
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Wp_Rss
+ * @var WPBakeryShortCode_Vc_Wp_Rss $this
  */
 $title = $url = $items = $options = $el_class = $el_id = '';
 
@@ -27,13 +27,13 @@ if ( '' === $url ) {
 }
 
 $options = explode( ',', $options );
-if ( in_array( 'show_summary', $options ) ) {
+if ( in_array( 'show_summary', $options, true ) ) {
 	$atts['show_summary'] = true;
 }
-if ( in_array( 'show_author', $options ) ) {
+if ( in_array( 'show_author', $options, true ) ) {
 	$atts['show_author'] = true;
 }
-if ( in_array( 'show_date', $options ) ) {
+if ( in_array( 'show_date', $options, true ) ) {
 	$atts['show_date'] = true;
 }
 
@@ -54,5 +54,5 @@ if ( is_object( $wp_widget_factory ) && isset( $wp_widget_factory->widgets, $wp_
 
 	$output .= '</div>';
 
-	echo $output;
+	return $output;
 }

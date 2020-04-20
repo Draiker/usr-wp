@@ -3,5 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-class WPBakeryShortCode_VC_Widget_sidebar extends WPBakeryShortCode {
+/**
+ * Class WPBakeryShortCode_Vc_Widget_sidebar
+ */
+class WPBakeryShortCode_Vc_Widget_Sidebar extends WPBakeryShortCode {
 }

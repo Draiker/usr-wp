@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $content_placement
  * @var $content - shortcode content
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Row_Inner
+ * @var WPBakeryShortCode_Vc_Row_Inner $this
  */
 $el_class = $equal_height = $content_placement = $css = $el_id = '';
 $disable_element = '';
@@ -25,7 +25,7 @@ $el_class = $this->getExtraClass( $el_class );
 $css_classes = array(
 	'vc_row',
 	'wpb_row',
-	//deprecated
+	// deprecated
 	'vc_inner',
 	'vc_row-fluid',
 	$el_class,
@@ -82,4 +82,4 @@ $output .= wpb_js_remove_wpautop( $content );
 $output .= '</div>';
 $output .= $after_output;
 
-echo $output;
+return $output;

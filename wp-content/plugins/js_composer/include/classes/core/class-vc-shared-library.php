@@ -306,117 +306,45 @@ class VcSharedLibrary {
 		$list = array();
 		$groups = (array) $groups;
 
-		if ( ! $groups || in_array( 'default', $groups ) ) {
+		if ( ! $groups || in_array( 'default', $groups, true ) ) {
 			$list += self::$box_styles;
 		}
 
-		if ( ! $groups || in_array( 'round', $groups ) ) {
+		if ( ! $groups || in_array( 'round', $groups, true ) ) {
 			$list += self::$round_box_styles;
 		}
 
-		if ( ! $groups || in_array( 'cirlce', $groups ) ) {
+		if ( ! $groups || in_array( 'cirlce', $groups, true ) ) {
 			$list += self::$circle_box_styles;
 		}
 
 		return $list;
 	}
 
+	/**
+	 * @return array
+	 */
 	public static function getColorsDashed() {
 		$colors = array(
-			__( 'Blue', 'js_composer' ) => 'blue',
-			__( 'Turquoise', 'js_composer' ) => 'turquoise',
-			__( 'Pink', 'js_composer' ) => 'pink',
-			__( 'Violet', 'js_composer' ) => 'violet',
-			__( 'Peacoc', 'js_composer' ) => 'peacoc',
-			__( 'Chino', 'js_composer' ) => 'chino',
-			__( 'Mulled Wine', 'js_composer' ) => 'mulled-wine',
-			__( 'Vista Blue', 'js_composer' ) => 'vista-blue',
-			__( 'Black', 'js_composer' ) => 'black',
-			__( 'Grey', 'js_composer' ) => 'grey',
-			__( 'Orange', 'js_composer' ) => 'orange',
-			__( 'Sky', 'js_composer' ) => 'sky',
-			__( 'Green', 'js_composer' ) => 'green',
-			__( 'Juicy pink', 'js_composer' ) => 'juicy-pink',
-			__( 'Sandy brown', 'js_composer' ) => 'sandy-brown',
-			__( 'Purple', 'js_composer' ) => 'purple',
-			__( 'White', 'js_composer' ) => 'white',
+			esc_html__( 'Blue', 'js_composer' ) => 'blue',
+			esc_html__( 'Turquoise', 'js_composer' ) => 'turquoise',
+			esc_html__( 'Pink', 'js_composer' ) => 'pink',
+			esc_html__( 'Violet', 'js_composer' ) => 'violet',
+			esc_html__( 'Peacoc', 'js_composer' ) => 'peacoc',
+			esc_html__( 'Chino', 'js_composer' ) => 'chino',
+			esc_html__( 'Mulled Wine', 'js_composer' ) => 'mulled-wine',
+			esc_html__( 'Vista Blue', 'js_composer' ) => 'vista-blue',
+			esc_html__( 'Black', 'js_composer' ) => 'black',
+			esc_html__( 'Grey', 'js_composer' ) => 'grey',
+			esc_html__( 'Orange', 'js_composer' ) => 'orange',
+			esc_html__( 'Sky', 'js_composer' ) => 'sky',
+			esc_html__( 'Green', 'js_composer' ) => 'green',
+			esc_html__( 'Juicy pink', 'js_composer' ) => 'juicy-pink',
+			esc_html__( 'Sandy brown', 'js_composer' ) => 'sandy-brown',
+			esc_html__( 'Purple', 'js_composer' ) => 'purple',
+			esc_html__( 'White', 'js_composer' ) => 'white',
 		);
 
 		return $colors;
 	}
-}
-
-/**
- * @param string $asset
- *
- * @return array|string
- */
-function getVcShared( $asset = '' ) {
-	switch ( $asset ) {
-		case 'colors':
-			return VcSharedLibrary::getColors();
-			break;
-
-		case 'colors-dashed':
-			return VcSharedLibrary::getColorsDashed();
-			break;
-
-		case 'icons':
-			return VcSharedLibrary::getIcons();
-			break;
-
-		case 'sizes':
-			return VcSharedLibrary::getSizes();
-			break;
-
-		case 'button styles':
-		case 'alert styles':
-			return VcSharedLibrary::getButtonStyles();
-			break;
-		case 'message_box_styles':
-			return VcSharedLibrary::getMessageBoxStyles();
-			break;
-		case 'cta styles':
-			return VcSharedLibrary::getCtaStyles();
-			break;
-
-		case 'text align':
-			return VcSharedLibrary::getTextAlign();
-			break;
-
-		case 'cta widths':
-		case 'separator widths':
-			return VcSharedLibrary::getElementWidths();
-			break;
-
-		case 'separator styles':
-			return VcSharedLibrary::getSeparatorStyles();
-			break;
-
-		case 'separator border widths':
-			return VcSharedLibrary::getBorderWidths();
-			break;
-
-		case 'single image styles':
-			return VcSharedLibrary::getBoxStyles();
-			break;
-
-		case 'single image external styles':
-			return VcSharedLibrary::getBoxStyles( array( 'default', 'round' ) );
-			break;
-
-		case 'toggle styles':
-			return VcSharedLibrary::getToggleStyles();
-			break;
-
-		case 'animation styles':
-			return VcSharedLibrary::getAnimationStyles();
-			break;
-
-		default:
-			# code...
-			break;
-	}
-
-	return '';
 }

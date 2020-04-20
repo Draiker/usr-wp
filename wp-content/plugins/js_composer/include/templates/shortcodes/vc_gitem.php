@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $height
  * @var $content - shortcode content
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Gitem
+ * @var WPBakeryShortCode_Vc_Gitem $this
  */
 $el_class = $width = $is_end = $css = $c_zone_position = $bgimage = $height = '';
 
@@ -29,11 +29,7 @@ extract( shortcode_atts( array(
 	'height' => '',
 ), $atts ) );
 
-$css_class = 'vc_grid-item vc_clearfix' . ( 'true' === $is_end ? ' vc_grid-last-item' : '' )
-	. ( strlen( $el_class ) ? ' ' . $el_class : '' )
-	. ' vc_col-sm-'
-	. $width
-	. ( ! empty( $c_zone_position ) ? ' vc_grid-item-zone-c-' . $c_zone_position : '' );
+$css_class = 'vc_grid-item vc_clearfix' . ( 'true' === $is_end ? ' vc_grid-last-item' : '' ) . ( strlen( $el_class ) ? ' ' . $el_class : '' ) . ' vc_col-sm-' . $width . ( ! empty( $c_zone_position ) ? ' vc_grid-item-zone-c-' . $c_zone_position : '' );
 $css_class_mini = 'vc_grid-item-mini vc_clearfix ' . vc_shortcode_custom_css_class( $css, ' ' );
 $css_class .= '{{ filter_terms_css_classes }}';
 $css_style = '';
@@ -45,8 +41,6 @@ if ( 'featured' === $bgimage ) {
 if ( strlen( $height ) > 0 ) {
 	$css_style .= 'height: ' . $height . ';';
 }
-$output = '<div class="' . esc_attr( $css_class ) . '"'
-	. ( empty( $css_style ) ? '' : ' style="' . esc_attr( $css_style ) . '"' )
-	. '><div class="' . $css_class_mini . '">' . do_shortcode( $content )
-	. '</div><div class="vc_clearfix"></div></div>';
+$output = '<div class="' . esc_attr( $css_class ) . '"' . ( empty( $css_style ) ? '' : ' style="' . esc_attr( $css_style ) . '"' ) . '><div class="' . esc_attr( $css_class_mini ) . '">' . do_shortcode( $content ) . '</div><div class="vc_clearfix"></div></div>';
+
 echo $output;

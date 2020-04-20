@@ -44,6 +44,8 @@
   }
 }
 
+@import "grid-5-cols-non-responsive.less";
+
 // fix for flexbox row
 .vc_column_container {
   width: 100%;
@@ -99,12 +101,12 @@
 .vc_float-grid-columns-rtl(@class) {
   .vc_col-rtl(@index) when (@index = 1) {
     // initial
-    @item: ~".rtl .vc_rtl-columns-reverse .vc_col-@{class}-@{index}";
+    @item: ~"[dir=rtl] .vc_rtl-columns-reverse .vc_col-@{class}-@{index}";
     .vc_col-rtl((@index + 1), @item);
   }
   .vc_col-rtl(@index, @list) when (@index =< @grid-columns) {
     // general
-    @item: ~".rtl .vc_rtl-columns-reverse .vc_col-@{class}-@{index}";
+    @item: ~"[dir=rtl] .vc_rtl-columns-reverse .vc_col-@{class}-@{index}";
     .vc_col-rtl((@index + 1), ~"@{list}, @{item}");
   }
   .vc_col-rtl(@index, @list) when (@index > @grid-columns) {
@@ -180,9 +182,11 @@
 // smartphones.
 
 .vc_make-grid(xs);
+@import "grid-5-cols-xs.less";
 
 @media (min-width: @screen-sm-min) {
   .vc_make-grid(sm);
+  @import "grid-5-cols-sm";
 }
 
 // Medium grid
@@ -191,6 +195,7 @@
 
 @media (min-width: @screen-md-min) {
   .vc_make-grid(md);
+  @import "grid-5-cols-md";
 }
 
 // Large grid
@@ -199,6 +204,7 @@
 
 @media (min-width: @screen-lg-min) {
   .vc_make-grid(lg);
+  @import "grid-5-cols-lg";
 }
 
-@import (less) "grid-5-cols.css";
+@import "grid-5-cols-xs.less";

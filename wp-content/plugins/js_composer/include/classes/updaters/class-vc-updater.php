@@ -72,11 +72,9 @@ class Vc_Updater {
 	/**
 	 * Get unique, short-lived download link
 	 *
-	 * @param deprecated string $license_key
-	 *
 	 * @return array|boolean JSON response or false if request failed
 	 */
-	public function getDownloadUrl( $license_key = '' ) {
+	public function getDownloadUrl() {
 		$url = $this->getUrl();
 		// FIX SSL SNI
 		$filter_add = true;
@@ -102,6 +100,9 @@ class Vc_Updater {
 		return json_decode( $response['body'], true );
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getUrl() {
 		$host = esc_url( vc_license()->getSiteUrl() );
 		$key = rawurlencode( vc_license()->getLicenseKey() );
@@ -111,6 +112,9 @@ class Vc_Updater {
 		return $url;
 	}
 
+	/**
+	 * @return string|void
+	 */
 	public static function getUpdaterUrl() {
 		return vc_is_network_plugin() ? network_admin_url( 'admin.php?page=vc-updater' ) : admin_url( 'admin.php?page=vc-updater' );
 	}
@@ -120,7 +124,7 @@ class Vc_Updater {
 	 *
 	 * @param $reply
 	 * @param $package
-	 * @param $updater WP_Upgrader
+	 * @param WP_Upgrader $updater
 	 *
 	 * @return mixed|string|WP_Error
 	 */
@@ -133,32 +137,32 @@ class Vc_Updater {
 
 		$res = $updater->fs_connect( array( WP_CONTENT_DIR ) );
 		if ( ! $res ) {
-			return new WP_Error( 'no_credentials', __( "Error! Can't connect to filesystem", 'js_composer' ) );
+			return new WP_Error( 'no_credentials', esc_html__( "Error! Can't connect to filesystem", 'js_composer' ) );
 		}
 
 		if ( ! vc_license()->isActivated() ) {
 			if ( vc_is_as_theme() && vc_get_param( 'action' ) !== 'update-selected' ) {
 				return false;
 			}
-			$url = esc_url( self::getUpdaterUrl() );
+			$url = self::getUpdaterUrl();
 
-			return new WP_Error( 'no_credentials', __( 'To receive automatic updates license activation is required. Please visit <a href="' . $url . '' . '" target="_blank">Settings</a> to activate your WPBakery Page Builder.', 'js_composer' ) . ' ' . sprintf( ' <a href="http://go.wpbakery.com/faq-update-in-theme" target="_blank">%s</a>', __( 'Got WPBakery Page Builder in theme?', 'js_composer' ) ) );
+			return new WP_Error( 'no_credentials', sprintf( esc_html__( 'To receive automatic updates license activation is required. Please visit %sSettings%s to activate your WPBakery Page Builder.', 'js_composer' ), '<a href="' . esc_url( $url ) . '" target="_blank">', '</a>' ) . ' ' . sprintf( ' <a href="https://go.wpbakery.com/faq-update-in-theme" target="_blank">%s</a>', esc_html__( 'Got WPBakery Page Builder in theme?', 'js_composer' ) ) );
 		}
 
-		$updater->strings['downloading_package_url'] = __( 'Getting download link...', 'js_composer' );
+		$updater->strings['downloading_package_url'] = esc_html__( 'Getting download link...', 'js_composer' );
 		$updater->skin->feedback( 'downloading_package_url' );
 
 		$response = $this->getDownloadUrl();
 
 		if ( ! $response ) {
-			return new WP_Error( 'no_credentials', __( 'Download link could not be retrieved', 'js_composer' ) );
+			return new WP_Error( 'no_credentials', esc_html__( 'Download link could not be retrieved', 'js_composer' ) );
 		}
 
 		if ( ! $response['status'] ) {
 			return new WP_Error( 'no_credentials', $response['error'] );
 		}
 
-		$updater->strings['downloading_package'] = __( 'Downloading package...', 'js_composer' );
+		$updater->strings['downloading_package'] = esc_html__( 'Downloading package...', 'js_composer' );
 		$updater->skin->feedback( 'downloading_package' );
 
 		$downloaded_archive = download_url( $response['url'] );

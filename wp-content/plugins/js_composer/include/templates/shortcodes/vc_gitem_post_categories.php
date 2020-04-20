@@ -7,12 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Shortcode attributes
  * @var $atts
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Gitem_Post_Categories
+ * @var WPBakeryShortCode_Vc_Gitem_Post_Categories $this
  */
 
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 
-?>
-{{ post_categories:<?php echo http_build_query( array(
-	'atts' => $atts,
-) ); ?> }}
+return '{{ post_categories:' . http_build_query( array( 'atts' => $atts ) ) . ' }}';

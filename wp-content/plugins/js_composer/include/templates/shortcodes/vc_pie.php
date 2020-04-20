@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $css
  * @var $css_animation
  * Shortcode class
- * @var $this WPBakeryShortCode_Vc_Pie
+ * @var WPBakeryShortCode_Vc_Pie $this
  */
 $title = $el_class = $el_id = $value = $units = $color = $custom_color = $label_value = $css = $css_animation = '';
 $atts = $this->convertOldColorsToNew( $atts );
@@ -79,4 +79,4 @@ if ( '' !== $title ) {
 $output .= '</div>';
 $output .= '</div>';
 
-echo $output;
+return $output;

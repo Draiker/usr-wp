@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since   4.2
  */
-class Vc_Shortcode_Edit_Form implements Vc_Render {
+class Vc_Shortcode_Edit_Form {
 	protected $initialized;
 
 	/**
@@ -58,18 +58,19 @@ class Vc_Shortcode_Edit_Form implements Vc_Render {
 	 */
 	public function renderFields() {
 		$tag = vc_post_param( 'tag' );
-		vc_user_access()->checkAdminNonce()->validateDie( __( 'Access denied', 'js_composer' ) )->wpAny( array(
-					'edit_post',
-					(int) vc_request_param( 'post_id' ),
-				) )->validateDie( __( 'Access denied', 'js_composer' ) )->check( 'vc_user_access_check_shortcode_edit', $tag )->validateDie( __( 'Access denied', 'js_composer' ) );
+		vc_user_access()->checkAdminNonce()->validateDie( esc_html__( 'Access denied', 'js_composer' ) )->wpAny( array(
+			'edit_post',
+			(int) vc_request_param( 'post_id' ),
+		) )->validateDie( esc_html__( 'Access denied', 'js_composer' ) )->check( 'vc_user_access_check_shortcode_edit', $tag )->validateDie( esc_html__( 'Access denied', 'js_composer' ) );
 
 		$params = (array) stripslashes_deep( vc_post_param( 'params' ) );
 		$params = array_map( 'vc_htmlspecialchars_decode_deep', $params );
 
 		require_once vc_path_dir( 'EDITORS_DIR', 'class-vc-edit-form-fields.php' );
 		$fields = new Vc_Edit_Form_Fields( $tag, $params );
-		$fields->render();
-		die();
+		$output = $fields->render();
+		// @codingStandardsIgnoreLine
+		wp_die( $output );
 	}
 
 	/**

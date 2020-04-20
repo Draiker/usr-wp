@@ -3,12 +3,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
+/**
+ * Class Vc_Gitem_Acf_Shortcode
+ */
 class Vc_Gitem_Acf_Shortcode extends WPBakeryShortCode {
 	/**
 	 * @param $atts
 	 * @param null $content
 	 *
-	 * @return mixed|void
+	 * @return mixed
 	 */
 	protected function content( $atts, $content = null ) {
 		$field_key = $label = '';
@@ -37,13 +40,8 @@ class Vc_Gitem_Acf_Shortcode extends WPBakeryShortCode {
 		if ( 'yes' === $show_label && $field_key ) {
 			$field_key .= '_labeled';
 		}
-		$css_class = 'vc_gitem-acf'
-		             . ( strlen( $el_class ) ? ' ' . $el_class : '' )
-		             . ( strlen( $align ) ? ' vc_gitem-align-' . $align : '' )
-		             . ( strlen( $field_key ) ? ' ' . $field_key : '' );
+		$css_class = 'vc_gitem-acf' . ( strlen( $el_class ) ? ' ' . $el_class : '' ) . ( strlen( $align ) ? ' vc_gitem-align-' . $align : '' ) . ( strlen( $field_key ) ? ' ' . $field_key : '' );
 
-		return '<div ' . $field_key . ' class="' . esc_attr( $css_class ) . '">'
-		       . '{{ acf' . ( ! empty( $field_key ) ? ':' . $field_key : '' ) . ' }}'
-		       . '</div>';
+		return '<div ' . $field_key . ' class="' . esc_attr( $css_class ) . '">' . '{{ acf' . ( ! empty( $field_key ) ? ':' . $field_key : '' ) . ' }}' . '</div>';
 	}
 }

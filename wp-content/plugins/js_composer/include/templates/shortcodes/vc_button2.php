@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $el_class
  * @var $align
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Button2
+ * @var WPBakeryShortCode_Vc_Button2 $this
  */
 $link = $title = $color = $size = $style = $el_class = $align = '';
 $wrapper_start = $wrapper_end = '';
@@ -21,7 +21,7 @@ $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
 $class = 'vc_btn';
-//parse link
+// parse link
 $link = ( '||' === $link ) ? '' : $link;
 $link = vc_build_link( $link );
 $a_href = $link['url'];
@@ -42,6 +42,11 @@ $wrapper_css_class = 'vc_button-2-wrapper';
 if ( $align ) {
 	$wrapper_css_class .= ' vc_button-2-align-' . $align;
 }
-?>
-<div class="<?php echo esc_attr( $wrapper_css_class ) ?>"><a class="<?php echo esc_attr( trim( $css_class ) ); ?>" href="<?php echo esc_attr( $a_href ); ?>" title="<?php echo esc_attr( $a_title ); ?>" target="<?php echo esc_attr( $a_target ); ?>"<?php echo $a_rel; ?>><?php echo $title; ?></a>
-</div>
+$output = '';
+
+$output .= '
+<div class="' . esc_attr( $wrapper_css_class ) . '"><a class="' . esc_attr( trim( $css_class ) ) . '" href="' . esc_attr( $a_href ) . '" title="' . esc_attr( $a_title ) . '" target="' . esc_attr( $a_target ) . '"' . ( ! empty( $a_rel ) ? ' rel="' . esc_attr( trim( $a_rel ) ) . '"' : '' ) . '>';
+$output .= $title;
+$output .= '</a></div>';
+
+return $output;

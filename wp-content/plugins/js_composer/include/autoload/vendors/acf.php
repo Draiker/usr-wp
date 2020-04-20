@@ -16,15 +16,13 @@ function vc_init_vendor_acf() {
 	if ( did_action( 'vc-vendor-acf-load' ) ) {
 		return;
 	}
-	include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); // Require plugin.php to use is_plugin_active() below
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); // Require class-vc-wxr-parser-plugin.php to use is_plugin_active() below
 	if ( class_exists( 'acf' ) || is_plugin_active( 'advanced-custom-fields/acf.php' ) || is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
-		require_once vc_path_dir( 'VENDORS_DIR',
-			'plugins/class-vc-vendor-advanced-custom-fields.php' );
+		require_once vc_path_dir( 'VENDORS_DIR', 'plugins/class-vc-vendor-advanced-custom-fields.php' );
 		$vendor = new Vc_Vendor_AdvancedCustomFields();
-		add_action( 'vc_after_set_mode',
-			array(
-				$vendor,
-				'load',
-			) );
+		add_action( 'vc_after_set_mode', array(
+			$vendor,
+			'load',
+		) );
 	}
 }

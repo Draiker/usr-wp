@@ -9,10 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 4.5
  */
 function vc_woocommerce_add_to_cart_script() {
-	wp_enqueue_script( 'vc_woocommerce-add-to-cart-js',
-		vc_asset_url( 'js/vendors/woocommerce-add-to-cart.js' ),
-		array( 'wc-add-to-cart' ),
-	WPB_VC_VERSION );
+	wp_enqueue_script( 'vc_woocommerce-add-to-cart-js', vc_asset_url( 'js/vendors/woocommerce-add-to-cart.js' ), array( 'wc-add-to-cart' ), WPB_VC_VERSION );
 }
 
 /**
@@ -22,7 +19,7 @@ function vc_woocommerce_add_to_cart_script() {
  */
 add_action( 'plugins_loaded', 'vc_init_vendor_woocommerce' );
 function vc_init_vendor_woocommerce() {
-	include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); // Require plugin.php to use is_plugin_active() below
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); // Require class-vc-wxr-parser-plugin.php to use is_plugin_active() below
 	if ( is_plugin_active( 'woocommerce/woocommerce.php' ) || class_exists( 'WooCommerce' ) ) {
 		require_once vc_path_dir( 'VENDORS_DIR', 'plugins/class-vc-vendor-woocommerce.php' );
 		$vendor = new Vc_Vendor_Woocommerce();

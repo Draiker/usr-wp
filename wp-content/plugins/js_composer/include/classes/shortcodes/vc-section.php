@@ -9,7 +9,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package WPBakeryPageBuilder
  *
  */
-class WPBakeryShortCode_VC_Section extends WPBakeryShortCodesContainer {
+class WPBakeryShortCode_Vc_Section extends WPBakeryShortCodesContainer {
+	/**
+	 * @param $width
+	 * @param $i
+	 * @return string
+	 */
 	public function containerHtmlBlockParams( $width, $i ) {
 		return 'class="vc_section_container vc_container_for_children"';
 	}
@@ -27,27 +32,37 @@ class WPBakeryShortCode_VC_Section extends WPBakeryShortCodesContainer {
 		wp_register_script( 'vc_youtube_iframe_api_js', 'https://www.youtube.com/iframe_api', array(), WPB_VC_VERSION, true );
 	}
 
+	/**
+	 * @return string
+	 * @throws \Exception
+	 */
 	public function cssAdminClass() {
 		$sortable = ( vc_user_access_check_shortcode_all( $this->shortcode ) ? ' wpb_sortable' : ' ' . $this->nonDraggableClass );
 
 		return 'wpb_' . $this->settings['base'] . $sortable . '' . ( ! empty( $this->settings['class'] ) ? ' ' . $this->settings['class'] : '' );
 	}
 
+	/**
+	 * @param string $controls
+	 * @param string $extended_css
+	 * @return string
+	 * @throws \Exception
+	 */
 	public function getColumnControls( $controls = 'full', $extended_css = '' ) {
 		$controls_start = '<div class="vc_controls vc_controls-visible controls_column' . ( ! empty( $extended_css ) ? " {$extended_css}" : '' ) . '">';
 
 		$output = '<div class="vc_controls vc_controls-row controls_row vc_clearfix">';
 		$controls_end = '</div>';
-		//Create columns
-		$controls_move = ' <a class="vc_control column_move vc_column-move" href="#" title="' . __( 'Drag row to reorder', 'js_composer' ) . '" data-vc-control="move"><i class="vc-composer-icon vc-c-icon-dragndrop"></i></a>';
+		// Create columns
+		$controls_move = ' <a class="vc_control column_move vc_column-move" href="#" title="' . esc_attr__( 'Drag row to reorder', 'js_composer' ) . '" data-vc-control="move"><i class="vc-composer-icon vc-c-icon-dragndrop"></i></a>';
 		$moveAccess = vc_user_access()->part( 'dragndrop' )->checkStateAny( true, null )->get();
 		if ( ! $moveAccess ) {
 			$controls_move = '';
 		}
-		$controls_add = ' <a class="vc_control column_add vc_column-add" href="#" title="' . __( 'Add column', 'js_composer' ) . '" data-vc-control="add"><i class="vc-composer-icon vc-c-icon-add"></i></a>';
-		$controls_delete = '<a class="vc_control column_delete vc_column-delete" href="#" title="' . __( 'Delete this row', 'js_composer' ) . '" data-vc-control="delete"><i class="vc-composer-icon vc-c-icon-delete_empty"></i></a>';
-		$controls_edit = ' <a class="vc_control column_edit vc_column-edit" href="#" title="' . __( 'Edit this row', 'js_composer' ) . '" data-vc-control="edit"><i class="vc-composer-icon vc-c-icon-mode_edit"></i></a>';
-		$controls_clone = ' <a class="vc_control column_clone vc_column-clone" href="#" title="' . __( 'Clone this row', 'js_composer' ) . '" data-vc-control="clone"><i class="vc-composer-icon vc-c-icon-content_copy"></i></a>';
+		$controls_add = ' <a class="vc_control column_add vc_column-add" href="#" title="' . esc_attr__( 'Add column', 'js_composer' ) . '" data-vc-control="add"><i class="vc-composer-icon vc-c-icon-add"></i></a>';
+		$controls_delete = '<a class="vc_control column_delete vc_column-delete" href="#" title="' . esc_attr__( 'Delete this row', 'js_composer' ) . '" data-vc-control="delete"><i class="vc-composer-icon vc-c-icon-delete_empty"></i></a>';
+		$controls_edit = ' <a class="vc_control column_edit vc_column-edit" href="#" title="' . esc_attr__( 'Edit this row', 'js_composer' ) . '" data-vc-control="edit"><i class="vc-composer-icon vc-c-icon-mode_edit"></i></a>';
+		$controls_clone = ' <a class="vc_control column_clone vc_column-clone" href="#" title="' . esc_attr__( 'Clone this row', 'js_composer' ) . '" data-vc-control="clone"><i class="vc-composer-icon vc-c-icon-content_copy"></i></a>';
 		$editAccess = vc_user_access_check_shortcode_edit( $this->shortcode );
 		$allAccess = vc_user_access_check_shortcode_all( $this->shortcode );
 		$row_edit_clone_delete = '<span class="vc_row_edit_clone_delete">';
@@ -63,7 +78,7 @@ class WPBakeryShortCode_VC_Section extends WPBakeryShortCodesContainer {
 		$row_edit_clone_delete .= '</span>';
 
 		if ( $allAccess ) {
-			$output .= $controls_move . $controls_add . $row_edit_clone_delete . $controls_end;
+			$output .= '<div>' . $controls_move . $controls_add . '</div>' . $row_edit_clone_delete . $controls_end;
 		} elseif ( $editAccess ) {
 			$output .= $row_edit_clone_delete . $controls_end;
 		} else {
@@ -73,6 +88,12 @@ class WPBakeryShortCode_VC_Section extends WPBakeryShortCodesContainer {
 		return $output;
 	}
 
+	/**
+	 * @param $atts
+	 * @param null $content
+	 * @return string
+	 * @throws \Exception
+	 */
 	public function contentAdmin( $atts, $content = null ) {
 		$width = '';
 		$atts = shortcode_atts( $this->predefined_atts, $atts );
@@ -88,11 +109,9 @@ class WPBakeryShortCode_VC_Section extends WPBakeryShortCodesContainer {
 			$markup = $this->settings['custom_markup'];
 			$output .= $this->customMarkup( $markup );
 		} else {
-			// $output .= $this->outputTitle( $this->settings['name'] );
 			$output .= '<div ' . $this->containerHtmlBlockParams( $width, 1 ) . '>';
 			$output .= do_shortcode( shortcode_unautop( $content ) );
 			$output .= '</div>';
-			// $output .= $this->paramsHtmlHolders( $atts );
 		}
 		if ( isset( $this->settings['params'] ) ) {
 			$inner = '';

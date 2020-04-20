@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $css
  * @var $css_animation
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_GooglePlus
+ * @var WPBakeryShortCode_Vc_GooglePlus $this
  */
 $type = $annotation = $widget_width = $css = $el_class = $el_id = $css_animation = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
@@ -43,4 +43,4 @@ if ( ! empty( $el_id ) ) {
 }
 $output = '<div class="' . esc_attr( $css_class ) . '" ' . implode( ' ', $wrapper_attributes ) . '><g:plusone' . $params . '></g:plusone></div>';
 
-echo $output;
+return $output;

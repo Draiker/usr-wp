@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $el_class
  * @var $el_id
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Wp_Pages
+ * @var WPBakeryShortCode_Vc_Wp_Pages $this
  */
 $title = $sortby = $exclude = $el_class = $el_id = '';
 $output = '';
@@ -36,5 +36,5 @@ if ( is_object( $wp_widget_factory ) && isset( $wp_widget_factory->widgets, $wp_
 
 	$output .= '</div>';
 
-	echo $output;
+	return $output;
 }

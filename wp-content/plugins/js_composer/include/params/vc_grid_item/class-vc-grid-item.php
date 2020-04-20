@@ -12,17 +12,15 @@ class Vc_Grid_Item {
 	protected $post = false;
 	protected $grid_atts = array();
 	protected $is_end = false;
-	protected static $templates_added = false;
 	protected $shortcodes = false;
 	protected $found_variables = false;
 	protected static $predefined_templates = false;
 	protected $template_id = false;
-	protected static $custom_fields_meta_data = false;
 
 	/**
 	 * Get shortcodes to build vc grid item templates.
 	 *
-	 * @return bool|mixed|void
+	 * @return bool|mixed
 	 */
 	public function shortcodes() {
 		if ( false === $this->shortcodes ) {
@@ -146,6 +144,7 @@ class Vc_Grid_Item {
 
 	/**
 	 * Map shortcodes for vc_grid_item param type.
+	 * @throws \Exception
 	 */
 	public function mapShortcodes() {
 		// @kludge
@@ -190,6 +189,7 @@ class Vc_Grid_Item {
 	 * @param $id
 	 *
 	 * @return bool
+	 * @throws \Exception
 	 */
 	public function setTemplateById( $id ) {
 		require_once vc_path_dir( 'PARAMS_DIR', 'vc_grid_item/templates.php' );
@@ -198,13 +198,18 @@ class Vc_Grid_Item {
 		}
 		if ( preg_match( '/^\d+$/', $id ) ) {
 			$post = get_post( (int) $id );
-			$post && $this->setTemplate( $post->post_content, $post->ID );
+			if ( $post ) {
+				$this->setTemplate( $post->post_content, $post->ID );
+			}
 
 			return true;
-		} elseif ( false !== ( $predefined_template = $this->predefinedTemplate( $id ) ) ) {
-			$this->setTemplate( $predefined_template['template'], $id );
+		} else {
+			$predefined_template = $this->predefinedTemplate( $id );
+			if ( $predefined_template ) {
+				$this->setTemplate( $predefined_template['template'], $id );
 
-			return true;
+				return true;
+			}
 		}
 
 		return false;
@@ -215,6 +220,7 @@ class Vc_Grid_Item {
 	 *
 	 * @param $template
 	 * @param $template_id
+	 * @throws \Exception
 	 */
 	public function setTemplate( $template, $template_id ) {
 		$this->template = $template;
@@ -226,27 +232,32 @@ class Vc_Grid_Item {
 	 * Getter for template attribute.
 	 * @return string
 	 */
-	function template() {
+	public function template() {
 		return $this->template;
 	}
 
 	/**
 	 * Add custom css from shortcodes that were mapped for vc grid item.
 	 * @return string
+	 * @throws \Exception
 	 */
 	public function addShortcodesCustomCss() {
 		$output = $shortcodes_custom_css = '';
 		$id = $this->template_id;
 		if ( preg_match( '/^\d+$/', $id ) ) {
 			$shortcodes_custom_css = get_post_meta( $id, '_wpb_shortcodes_custom_css', true );
-		} elseif ( false !== ( $predefined_template = $this->predefinedTemplate( $id ) ) ) {
-			$shortcodes_custom_css = visual_composer()->parseShortcodesCustomCss( $predefined_template['template'] );
+		} else {
+			$predefined_template = $this->predefinedTemplate( $id );
+			if ( $predefined_template ) {
+				$shortcodes_custom_css = visual_composer()->parseShortcodesCustomCss( $predefined_template['template'] );
+			}
 		}
 		if ( ! empty( $shortcodes_custom_css ) ) {
-			$shortcodes_custom_css = strip_tags( $shortcodes_custom_css );
-			$output .= '<style type="text/css" data-type="vc_shortcodes-custom-css">';
+			$shortcodes_custom_css = wp_strip_all_tags( $shortcodes_custom_css );
+			$first_tag = 'style';
+			$output .= '<' . $first_tag . ' data-type="vc_shortcodes-custom-css">';
 			$output .= $shortcodes_custom_css;
-			$output .= '</style>';
+			$output .= '</' . $first_tag . '>';
 		}
 
 		return $output;
@@ -256,6 +267,7 @@ class Vc_Grid_Item {
 	 * Generates html with template's variables for rendering new project.
 	 *
 	 * @param $template
+	 * @throws \Exception
 	 */
 	public function parseTemplate( $template ) {
 		$this->mapShortcodes();
@@ -300,7 +312,7 @@ class Vc_Grid_Item {
 	 *
 	 * @return mixed
 	 */
-	function renderItem( WP_Post $post ) {
+	public function renderItem( WP_Post $post ) {
 		$pattern = array();
 		$replacement = array();
 		$this->addAttributesFilters();
@@ -347,7 +359,7 @@ class Vc_Grid_Item {
 	 * @param $post
 	 * @param string $data
 	 *
-	 * @return mixed|void
+	 * @return mixed
 	 */
 	public function attribute( $name, $post, $data = '' ) {
 		$data = html_entity_decode( $data );

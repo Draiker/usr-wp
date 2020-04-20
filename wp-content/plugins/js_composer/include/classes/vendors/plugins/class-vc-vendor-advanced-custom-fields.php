@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Class Vc_Vendor_AdvancedCustomFields
  * @since 4.3.3
  */
-class Vc_Vendor_AdvancedCustomFields implements Vc_Vendor_Interface {
+class Vc_Vendor_AdvancedCustomFields {
 
 	/**
 	 * Initializing actions when backend/frontend editor renders to enqueue fix-js file
@@ -24,26 +24,26 @@ class Vc_Vendor_AdvancedCustomFields implements Vc_Vendor_Interface {
 		 * @see Vc_Backend_Editor::renderEditor wp-content/plugins/js_composer/include/classes/editors/class-vc-backend-editor.php
 		 */
 		add_action( 'vc_backend_editor_render', array(
-				$this,
-				'enqueueJs',
-			) );
+			$this,
+			'enqueueJs',
+		) );
 
 		/**
 		 * Action when frontend editor is rendering
 		 * @see Vc_Frontend_Editor::renderEditor wp-content/plugins/js_composer/include/classes/editors/class-vc-frontend-editor.php
 		 */
 		add_action( 'vc_frontend_editor_render', array(
-				$this,
-				'enqueueJs',
-			) );
+			$this,
+			'enqueueJs',
+		) );
 		add_filter( 'vc_grid_item_shortcodes', array(
-				$this,
-				'mapGridItemShortcodes',
-			) );
+			$this,
+			'mapGridItemShortcodes',
+		) );
 		add_action( 'vc_after_mapping', array(
-				$this,
-				'mapEditorsShortcodes',
-			) );
+			$this,
+			'mapEditorsShortcodes',
+		) );
 
 		do_action( 'vc-vendor-acf-load', $this );
 	}
@@ -56,6 +56,10 @@ class Vc_Vendor_AdvancedCustomFields implements Vc_Vendor_Interface {
 		wp_enqueue_script( 'vc_vendor_acf', vc_asset_url( 'js/vendors/advanced_custom_fields.js' ), array( 'jquery' ), '1.0', true );
 	}
 
+	/**
+	 * @param array $shortcodes
+	 * @return array|mixed
+	 */
 	public function mapGridItemShortcodes( array $shortcodes ) {
 		require_once vc_path_dir( 'VENDORS_DIR', 'plugins/acf/class-vc-gitem-acf-shortcode.php' );
 		require_once vc_path_dir( 'VENDORS_DIR', 'plugins/acf/grid-item-attributes.php' );

@@ -4,10 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( 'vc_edit_form' === vc_post_param( 'action' ) ) {
-	VcShortcodeAutoloader::getInstance()->includeClass( 'WPBakeryShortCode_VC_Wp_Text' );
+	VcShortcodeAutoloader::getInstance()->includeClass( 'WPBakeryShortCode_Vc_Wp_Text' );
 
 	add_filter( 'vc_edit_form_fields_attributes_vc_wp_text', array(
-		'WPBakeryShortCode_VC_Wp_Text',
+		'WPBakeryShortCode_Vc_Wp_Text',
 		'convertTextAttributeToContent',
 	) );
 }

@@ -3,9 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 /**
- * @var $this \WPBakeryShortCode_VC_Hoverbox
- * @var $atts array
- * @var $content string
+ * @var \WPBakeryShortCode_Vc_Hoverbox $this
+ * @var array $atts
+ * @var string $content
  */
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 
@@ -49,7 +49,7 @@ if ( $atts['hover_add_button'] ) {
 	$button = $this->renderButton( $atts );
 }
 $template = <<<HTML
-<div class="vc-hoverbox-wrapper $css_class $shape $align $reverse $width" $id>
+<div class="vc-hoverbox-wrapper $css_class $shape $align $reverse $width" $id ontouchstart="">
   <div class="vc-hoverbox">
     <div class="vc-hoverbox-inner">
       <div class="vc-hoverbox-block vc-hoverbox-front" style="background-image: url($image_src);">
@@ -69,5 +69,4 @@ $template = <<<HTML
 </div>
 HTML;
 
-echo $template;
-
+return $template;

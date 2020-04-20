@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $i_css_animation
  * @var $css_animation
  * Shortcode class
- * @var $this WPBakeryShortcode_Vc_Text_Separator
+ * @var WPBakeryShortcode_Vc_Text_Separator $this
  */
 
 $title_align = $el_width = $style = $title = $align = $color = $accent_color = $el_class = $el_id = $layout = $css = $border_width = $add_icon = $i_type = $i_icon_fontawesome = $i_icon_openiconic = $i_icon_typicons = $i_icon_entypo = $i_icon_linecons = $i_color = $i_custom_color = $i_background_style = $i_background_color = $i_custom_background_color = $i_size = $i_css_animation = $css_animation = '';
@@ -83,4 +83,5 @@ $separatorHtml = <<<TEMPLATE
 <div class="$css_class" $wrapper_attributes_html><span class="vc_sep_holder vc_sep_holder_l"><span $inline_css class="vc_sep_line"></span></span>$content<span class="vc_sep_holder vc_sep_holder_r"><span $inline_css class="vc_sep_line"></span></span>
 </div>
 TEMPLATE;
-echo $separatorHtml;
+
+return $separatorHtml;

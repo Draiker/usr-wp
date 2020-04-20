@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $el_id
  * @var $sidebar_id
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Widget_sidebar
+ * @var WPBakeryShortCode_Vc_Widget_sidebar $this
  */
 $title = $el_class = $el_id = $sidebar_id = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
@@ -38,10 +38,13 @@ if ( ! empty( $el_id ) ) {
 }
 $output = '<div ' . implode( ' ', $wrapper_attributes ) . ' class="' . esc_attr( $css_class ) . '">
 		<div class="wpb_wrapper">
-			' . wpb_widget_title( array( 'title' => $title, 'extraclass' => 'wpb_widgetised_column_heading' ) ) . '
+			' . wpb_widget_title( array(
+	'title' => $title,
+	'extraclass' => 'wpb_widgetised_column_heading',
+) ) . '
 			' . $sidebar_value . '
 		</div>
 	</div>
 ';
 
-echo $output;
+return $output;

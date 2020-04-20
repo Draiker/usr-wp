@@ -6,25 +6,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="vc_resources-tab changelog">
 	<div class="feature-section vc_row">
 		<div class="vc_col-xs-6">
-			<h3><?php _e( 'Resources', 'js_composer' ); ?></h3>
+			<h3><?php esc_html_e( 'Resources', 'js_composer' ); ?></h3>
 
-			<p><?php _e( 'There are several resources available to WPBakery Page Builder users to help you to get around plugin:', 'js_composer' ); ?></p>
+			<p><?php esc_html_e( 'There are several resources available to WPBakery Page Builder users to help you to get around plugin:', 'js_composer' ); ?></p>
 			<ul>
-				<li><a href="http://wpbakery.com/?utm_campaign=VCplugin&amp;utm_source=vc_user&amp;utm_medium=welcome_page" target="_blank">Official website</a></li>
-				<li><a href="http://kb.wpbakery.com" target="_blank">Official Knowledge Base</a></li>
-				<li><a href="http://wpbakery.com/video-academy/" target="_blank">Video Academy</a></li>
-				<li><a href="http://support.wpbakery.com" target="_blank">Official support</a></li>
-				<li><a href="http://facebook.com/wpbakery" target="_blank">Facebook page</a></li>
-				<li><a href="http://twitter.com/wpbakery" target="_blank">Twitter account</a></li>
+				<li>
+					<a href="https://wpbakery.com/?utm_campaign=VCplugin&amp;utm_source=vc_user&amp;utm_medium=welcome_page" target="_blank"><?php esc_html_e( 'Official website', 'js_composer' ); ?></a>
+				</li>
+				<li><a href="https://kb.wpbakery.com" target="_blank"><?php esc_html_e( 'Official Knowledge Base', 'js_composer' ); ?></a></li>
+				<li><a href="https://wpbakery.com/video-academy/" target="_blank"><?php esc_html_e( 'Video Academy', 'js_composer' ); ?></a></li>
+				<li><a href="https://support.wpbakery.com" target="_blank"><?php esc_html_e( 'Official support', 'js_composer' ); ?></a></li>
+				<li><a href="https://facebook.com/wpbakery" target="_blank"><?php esc_html_e( 'Facebook page', 'js_composer' ); ?></a></li>
+				<li><a href="https://twitter.com/wpbakery" target="_blank"><?php esc_html_e( 'Twitter account', 'js_composer' ); ?></a></li>
 			</ul>
 		</div>
-		
+
 		<div class="vc_col-xs-6">
-			<h3><?php _e( 'Official Support', 'js_composer' ); ?></h3>
+			<h3><?php esc_html_e( 'Official Support', 'js_composer' ); ?></h3>
 
-			<p><?php printf( __( 'To get your support related question answered in the fastest timing, please head over to our <a href="%s" target="_blank">support page</a> and open Support ticket. To open a support ticket you should have a valid support subscription in case if your support has expired you can <a href="%s" target="_blank">purchase support extension</a> on support.wpbakery.com.', 'js_composer' ), 'http://support.wpbakery.com', 'http://support.wpbakery.com' ); ?></p>
+			<p><?php printf( esc_html__( 'To get your support related question answered in the fastest timing, please head over to our %ssupport page%s and open Support ticket. To open a support ticket you should have a valid support subscription in case if your support has expired you can %spurchase support extension%s on support.wpbakery.com.', 'js_composer' ), '<a href="https://support.wpbakery.com" target="_blank">', '</a>', '<a href="https://support.wpbakery.com" target="_blank">', '</a>' ); ?></p>
 
-			<p><?php printf( __( 'Before applying for support please make sure you understand the rules of support and go through all steps described and listed in <a href="%s" target="_blank">Support Policy</a> in order to get your issues solved as soon as possible.', 'js_composer' ), 'http://go.wpbakery.com/support-policy' ); ?></p>
+			<p><?php printf( esc_html__( 'Before applying for support please make sure you understand the rules of support and go through all steps described and listed in %sSupport Policy%s in order to get your issues solved as soon as possible.', 'js_composer' ), '<a href="https://go.wpbakery.com/support-policy" target="_blank">', '</a>' ); ?></p>
 		</div>
 	</div>
 </div>

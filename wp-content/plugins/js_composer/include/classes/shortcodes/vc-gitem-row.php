@@ -5,7 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once vc_path_dir( 'SHORTCODES_DIR', 'vc-row.php' );
 
-class WPBakeryShortCode_VC_Gitem_Row extends WPBakeryShortCode_VC_Row {
+/**
+ * Class WPBakeryShortCode_Vc_Gitem_Row
+ */
+class WPBakeryShortCode_Vc_Gitem_Row extends WPBakeryShortCode_Vc_Row {
+	/**
+	 * @return string
+	 */
 	public function getLayoutsControl() {
 		global $vc_row_layouts;
 		$controls_layout = '<span class="vc_row_layouts vc_control">';

@@ -3,19 +3,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
+$custom_tag = 'script';
 ?>
-<script type="text/javascript" id="vc_role_access_manager_script">
+<<?php echo esc_attr( $custom_tag ); ?> id="vc_role_access_manager_script">
 	(function ( $ ) {
 		var _localCapabilities, _check, _groupAccessRules, _shortcodesPartSet, _mergedCaps;
-		_localCapabilities = <?php echo json_encode( vc_user_roles_get_all() ); ?>;
+		_localCapabilities = <?php echo wp_json_encode( vc_user_roles_get_all() ); ?>;
 		_shortcodesPartSet = <?php echo vc_bc_access_get_shortcodes_state_is_set( vc_user_access()->part( 'shortcodes' )->getRole() ) ? 'true' : 'false'; ?>;
-		_groupAccessRules = <?php echo json_encode( array_merge( array( 'current_user' => wp_get_current_user()->roles ), (array) vc_settings()->get( 'groups_access_rules' ) ) ); ?>;
-		_mergedCaps = <?php echo json_encode( vc_user_access()->part( 'shortcodes' )->getMergedCaps() ) ?>;
+		_groupAccessRules = <?php echo wp_json_encode( array_merge( array( 'current_user' => wp_get_current_user()->roles ), (array) vc_settings()->get( 'groups_access_rules' ) ) ); ?>;
+		_mergedCaps = <?php echo wp_json_encode( vc_user_access()->part( 'shortcodes' )->getMergedCaps() ); ?>;
 		_check = function ( part, rule, custom, not_check_state ) {
 			var state, partObj, findRule;
 
 			partObj = _.isUndefined( _localCapabilities[ part ] ) ? {} : _localCapabilities[ part ];
-			rule = vc_user_access().updateMergedCaps(rule);
+			rule = vc_user_access().updateMergedCaps( rule );
 			if ( ! not_check_state ) {
 				state = _.isUndefined( partObj.state ) ? false : partObj.state; // if we don't have state it is incorrect part
 				if ( null === state ) {
@@ -86,9 +87,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 						return _mergedCaps[ rule ];
 					}
 					return rule;
+				},
+				isBlockEditorIsEnabled: function () {
+					return <?php echo function_exists( 'use_block_editor_for_post_type' ) && use_block_editor_for_post_type( get_post_type() ) ? 'true' : 'false'; ?>;
 				}
 			};
 		};
-		<?php do_action( 'vc_acesss_manager-js' ); ?>
 	})( window.jQuery );
-</script>
+</<?php echo esc_attr( $custom_tag ); ?>>

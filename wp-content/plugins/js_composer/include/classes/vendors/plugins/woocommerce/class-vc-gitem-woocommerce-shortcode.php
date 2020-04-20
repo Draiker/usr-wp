@@ -3,12 +3,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
+/**
+ * Class Vc_Gitem_Woocommerce_Shortcode
+ */
 class Vc_Gitem_Woocommerce_Shortcode extends WPBakeryShortCode {
 	/**
 	 * @param $atts
 	 * @param null $content
 	 *
-	 * @return mixed|void
+	 * @return mixed
 	 */
 	protected function content( $atts, $content = null ) {
 		$key = '';
@@ -41,12 +44,8 @@ class Vc_Gitem_Woocommerce_Shortcode extends WPBakeryShortCode {
 		if ( 'yes' === $show_label ) {
 			$key .= '_labeled';
 		}
-		$css_class = 'vc_gitem-woocommerce vc_gitem-woocommerce-' . $post_type . '-' . $key
-		             . ( strlen( $el_class ) ? ' ' . $el_class : '' )
-		             . ( strlen( $align ) ? ' vc_gitem-align-' . $align : '' );
+		$css_class = 'vc_gitem-woocommerce vc_gitem-woocommerce-' . $post_type . '-' . $key . ( strlen( $el_class ) ? ' ' . $el_class : '' ) . ( strlen( $align ) ? ' vc_gitem-align-' . $align : '' );
 
-		return '<div class="' . esc_attr( $css_class ) . '">'
-		       . '{{ woocommerce_' . $post_type . ':' . $key . ' }}'
-		       . '</div>';
+		return '<div class="' . esc_attr( $css_class ) . '">' . '{{ woocommerce_' . $post_type . ':' . $key . ' }}' . '</div>';
 	}
 }

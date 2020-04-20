@@ -10,51 +10,64 @@
 	'use strict';
 	if ( window.vc && vc.visualComposerView ) {
 		// unset Draggable
-		vc.visualComposerView.prototype.setDraggable = function () {
+		window.vc.visualComposerView.prototype.setDraggable = function () {
 		};
 		// unset Sortable
-		vc.visualComposerView.prototype.setSortable = function () {
+		window.vc.visualComposerView.prototype.setSortable = function () {
 		};
 		// unset Sortable
-		vc.visualComposerView.prototype.setSorting = function () {
+		window.vc.visualComposerView.prototype.setSorting = function () {
 		};
 		// unset save
-		vc.visualComposerView.prototype.save = function () {
+		window.vc.visualComposerView.prototype.save = function () {
 		};
 		// unset controls checks for scroll
-		vc.visualComposerView.prototype.navOnScroll = function () {
+		window.vc.visualComposerView.prototype.navOnScroll = function () {
 		};
 
-		vc.visualComposerView.prototype.addElement = function ( e ) {
-			e && e.preventDefault && e.preventDefault();
+		window.vc.visualComposerView.prototype.addElement = function ( e ) {
+			if ( e && e.preventDefault ) {
+				e.preventDefault();
+			}
 		};
 
-		vc.visualComposerView.prototype.addTextBlock = function ( e ) {
-			e && e.preventDefault && e.preventDefault();
+		window.vc.visualComposerView.prototype.addTextBlock = function ( e ) {
+			if ( e && e.preventDefault ) {
+				e.preventDefault();
+			}
 		};
 
-		vc.shortcode_view.prototype.events = {};
-		vc.shortcode_view.prototype.editElement = function ( e ) {
-			e && e.preventDefault && e.preventDefault();
+		window.vc.shortcode_view.prototype.events = {};
+		window.vc.shortcode_view.prototype.editElement = function ( e ) {
+			if ( e && e.preventDefault ) {
+				e.preventDefault();
+			}
 		};
-		vc.shortcode_view.prototype.clone = function ( e ) {
-			e && e.preventDefault && e.preventDefault();
+		window.vc.shortcode_view.prototype.clone = function ( e ) {
+			if ( e && e.preventDefault ) {
+				e.preventDefault();
+			}
 		};
-		vc.shortcode_view.prototype.addElement = function ( e ) {
-			e && e.preventDefault && e.preventDefault();
+		window.vc.shortcode_view.prototype.addElement = function ( e ) {
+			if ( e && e.preventDefault ) {
+				e.preventDefault();
+			}
 		};
-		vc.shortcode_view.prototype.deleteShortcode = function ( e ) {
-			e && e.preventDefault && e.preventDefault();
+		window.vc.shortcode_view.prototype.deleteShortcode = function ( e ) {
+			if ( e && e.preventDefault ) {
+				e.preventDefault();
+			}
 		};
-		vc.shortcode_view.prototype.setEmpty = function () {
+		window.vc.shortcode_view.prototype.setEmpty = function () {
 		};
-		vc.visualComposerView.prototype.events = {};
+		window.vc.visualComposerView.prototype.events = {};
 		//vc.shortcode_view.prototype.designHelpersSelector = '[data-js-handler-design-helper]';
 
 		// update backend getView
-		vc.visualComposerView.prototype.getView = function ( model ) {
+		window.vc.visualComposerView.prototype.getView = function ( model ) {
 			var view;
-			if ( _.isObject( vc.map[ model.get( 'shortcode' ) ] ) && _.isString( vc.map[ model.get( 'shortcode' ) ].js_view ) && vc.map[ model.get( 'shortcode' ) ].js_view.length && ! _.isUndefined( window[ window.vc.map[ model.get( 'shortcode' ) ].js_view ] ) ) {
+			if ( _.isObject( vc.map[ model.get( 'shortcode' ) ] ) && _.isString( vc.map[ model.get( 'shortcode' ) ].js_view ) && vc.map[ model.get( 'shortcode' ) ].js_view.length && !_.isUndefined(
+				window[ window.vc.map[ model.get( 'shortcode' ) ].js_view ] ) ) {
 				try {
 					var viewConstructor = window[ window.vc.map[ model.get( 'shortcode' ) ].js_view ];
 					viewConstructor.prototype.events = {};
@@ -65,27 +78,37 @@
 					viewConstructor.prototype.setDropable = function () {
 					};
 					viewConstructor.prototype.editElement = function ( e ) {
-						e && e.preventDefault && e.preventDefault();
+						if ( e && e.preventDefault ) {
+							e.preventDefault();
+						}
 					};
 					viewConstructor.prototype.clone = function ( e ) {
-						e && e.preventDefault && e.preventDefault();
+						if ( e && e.preventDefault ) {
+							e.preventDefault();
+						}
 					};
 					viewConstructor.prototype.addElement = function ( e ) {
-						e && e.preventDefault && e.preventDefault();
+						if ( e && e.preventDefault ) {
+							e.preventDefault();
+						}
 					};
 					viewConstructor.prototype.deleteShortcode = function ( e ) {
-						e && e.preventDefault && e.preventDefault();
+						if ( e && e.preventDefault ) {
+							e.preventDefault();
+						}
 					};
 					viewConstructor.prototype.setEmpty = function () {
 					};
 					viewConstructor.prototype.events = {};
 					//	viewConstructor.prototype.designHelpersSelector = '[data-js-handler-design-helper]';
 					view = new viewConstructor( { model: model } );
-				} catch ( e ) {
-					window.console && window.console.error && window.console.error( e );
+				} catch ( err ) {
+					if ( window.console && window.console.warn ) {
+						window.console.warn( 'template preview getView error', err );
+					}
 				}
 			} else {
-				vc.shortcode_view.prototype.events = {};
+				window.vc.shortcode_view.prototype.events = {};
 				view = new vc.shortcode_view( { model: model } );
 			}
 			model.set( { view: view } );
@@ -94,13 +117,6 @@
 
 	}
 
-	// unset sortable,draggable,droppable - removed due to issues of return types
-	/*jQuery.fn.sortable = function () {
-	 }
-	 jQuery.fn.draggable = function () {
-	 }
-	 jQuery.fn.droppable = function () {
-	 }*/
 	if ( window.VcGitemView ) {
 		window.VcGitemView.prototype.setDropable = function () {
 		};
@@ -114,36 +130,11 @@
 	if ( window.vc && window.vc.events ) {
 		window.vc.events.on( 'shortcodeView:ready', function ( view ) {
 			if ( window.VcGitemView ) {
-				// and do more complex for grid builder
-				/*var goodShortcodes = [
-				 'vc_gitem',
-				 'vc_gitem_animated_block',
-				 'vc_gitem_zone_a',
-				 'vc_gitem_row',
-				 'vc_gitem_col',
-				 'vc_gitem_zone_c',
-				 'vc_gitem_zone_b'
-				 ];
-				 if ( view.$control_buttons && _.indexOf( goodShortcodes, view.model.get( 'shortcode' ) ) !== - 1 ) {
-				 //	view.$controls_buttons.remove(); // do this for normal case BE
-				 }
-				 view.$el.find( '.vc_control.column_edit' ).remove();
-				 view.$el.find( '.vc_control.column_add' ).remove();
-				 view.$el.find( '.vc_control.column_delete' ).remove();
-				 view.$el.find( '.vc_control.column_clone' ).remove();
-				 view.$el.find( '.vc_control.column_move' ).remove();
-				 view.$el.find( '.vc_color-helper' ).css( 'right', '0' );*/
-				view.$el.find( '.vc_control-btn.vc_element-name.vc_element-move .vc_btn-content' ).attr( 'style',
-					'cursor:pointer !important;' +
-					'padding-left: 10px !important;' );
+				view.$el.find( '.vc_control-btn.vc_element-name.vc_element-move .vc_btn-content' ).attr( 'style', 'cursor:pointer !important;' + 'padding-left: 10px !important;' );
 				view.$el.find( '.vc_control-btn.vc_element-name.vc_element-move .vc_btn-content .vc-c-icon-dragndrop' ).hide();
-				//view.$el.find( '.vc_controls.vc_controls-visible.bottom-controls' ).remove();
 				if ( 'vc_gitem' === view.model.get( 'shortcode' ) ) {
-					view.$el.find( '.vc_gitem-add-c-col:not(.vc_zone-added)' ).remove()
+					view.$el.find( '.vc_gitem-add-c-col:not(.vc_zone-added)' ).remove();
 				}
-			} else {
-				//view.$control_buttons && view.$controls_buttons.remove(); // do this for normal case BE
-				//view.$el.find( '.vc_controls' ).remove(); // do this for normal case BE
 			}
 			if ( view.$el ) {
 				// remove TTA section append
@@ -157,19 +148,19 @@
 		} );
 	}
 
-	vc.visualComposerView.prototype.initializeAccessPolicy = function () {
+	window.vc.visualComposerView.prototype.initializeAccessPolicy = function () {
 		this.accessPolicy = {
 			be_editor: true,
 			fe_editor: false,
 			classic_editor: false
 		};
 	};
-	vc.events.on( 'app.addAll', function () {
+	window.vc.events.on( 'app.addAll', function () {
 		if ( parent && parent.vc ) {
 			parent.vc.templates_panel_view.setTemplatePreviewSize();
 		}
 	} );
-	$(window ).resize(function(){
+	$( window ).on( 'resize', function () {
 		parent.vc.templates_panel_view.setTemplatePreviewSize();
-	});
+	} );
 })( window.jQuery );

@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $el_class
  * @var $el_id
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Pinterest
+ * @var WPBakeryShortCode_Vc_Pinterest $this
  */
 $type = $annotation = $css = $el_class = $el_id = $css_animation = '';
 global $post;
@@ -28,7 +28,7 @@ if ( has_post_thumbnail() ) {
 	$media = '';
 }
 $excerpt = is_object( $post ) && isset( $post->post_excerpt ) ? $post->post_excerpt : '';
-$description = ( '' !== $excerpt ) ? '&amp;description=' . rawurlencode( strip_tags( $excerpt ) ) : '';
+$description = ( '' !== $excerpt ) ? '&amp;description=' . rawurlencode( wp_strip_all_tags( $excerpt ) ) : '';
 
 $el_class = isset( $el_class ) ? $el_class : '';
 $class_to_filter = 'wpb_pinterest wpb_content_element wpb_pinterest_type_' . $type;
@@ -39,7 +39,7 @@ if ( ! empty( $el_id ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
 }
 $output .= '<div class="' . esc_attr( $css_class ) . '" ' . implode( ' ', $wrapper_attributes ) . '>';
-$output .= '<a href="//pinterest.com/pin/create/button/?url=' . $url . $media . $description . '" class="pin-it-button" count-layout="' . $type . '"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>';
+$output .= '<a href="https://pinterest.com/pin/create/button/?url=' . $url . $media . $description . '" class="pin-it-button" count-layout="' . $type . '"><img border="0" src="https://assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>';
 $output .= '</div>';
 
-echo $output;
+return $output;

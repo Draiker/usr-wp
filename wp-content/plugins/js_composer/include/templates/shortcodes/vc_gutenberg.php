@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $css
  * @var $content - shortcode content
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Gutenberg
+ * @var WPBakeryShortCode_Vc_Gutenberg $this
  */
 $el_class = $el_id = $css = $css_animation = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
@@ -33,4 +33,4 @@ $output = '
 	</div>
 ';
 
-echo $output;
+return $output;

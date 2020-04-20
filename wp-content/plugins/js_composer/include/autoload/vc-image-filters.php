@@ -13,35 +13,35 @@ add_action( 'wp_ajax_vc_media_editor_preview_image', 'vc_media_editor_preview_im
  */
 function vc_get_filters() {
 	return array(
-		'antique' => __( 'Antique', 'js_composer' ),
-		'blackwhite' => __( 'Black & White', 'js_composer' ),
-		'boost' => __( 'Boost', 'js_composer' ),
-		'concentrate' => __( 'Concentrate', 'js_composer' ),
-		'country' => __( 'Country', 'js_composer' ),
-		'darken' => __( 'Darken', 'js_composer' ),
-		'dream' => __( 'Dream', 'js_composer' ),
-		'everglow' => __( 'Everglow', 'js_composer' ),
-		'forest' => __( 'Forest', 'js_composer' ),
-		'freshblue' => __( 'Fresh Blue', 'js_composer' ),
-		'frozen' => __( 'Frozen', 'js_composer' ),
-		'hermajesty' => __( 'Her Majesty', 'js_composer' ),
-		'light' => __( 'Light', 'js_composer' ),
-		'orangepeel' => __( 'Orange Peel', 'js_composer' ),
-		'rain' => __( 'Rain', 'js_composer' ),
-		'retro' => __( 'Retro', 'js_composer' ),
-		'sepia' => __( 'Sepia', 'js_composer' ),
-		'summer' => __( 'Summer', 'js_composer' ),
-		'tender' => __( 'Tender', 'js_composer' ),
-		'vintage' => __( 'Vintage', 'js_composer' ),
-		'washed' => __( 'Washed', 'js_composer' ),
+		'antique' => esc_html__( 'Antique', 'js_composer' ),
+		'blackwhite' => esc_html__( 'Black & White', 'js_composer' ),
+		'boost' => esc_html__( 'Boost', 'js_composer' ),
+		'concentrate' => esc_html__( 'Concentrate', 'js_composer' ),
+		'country' => esc_html__( 'Country', 'js_composer' ),
+		'darken' => esc_html__( 'Darken', 'js_composer' ),
+		'dream' => esc_html__( 'Dream', 'js_composer' ),
+		'everglow' => esc_html__( 'Everglow', 'js_composer' ),
+		'forest' => esc_html__( 'Forest', 'js_composer' ),
+		'freshblue' => esc_html__( 'Fresh Blue', 'js_composer' ),
+		'frozen' => esc_html__( 'Frozen', 'js_composer' ),
+		'hermajesty' => esc_html__( 'Her Majesty', 'js_composer' ),
+		'light' => esc_html__( 'Light', 'js_composer' ),
+		'orangepeel' => esc_html__( 'Orange Peel', 'js_composer' ),
+		'rain' => esc_html__( 'Rain', 'js_composer' ),
+		'retro' => esc_html__( 'Retro', 'js_composer' ),
+		'sepia' => esc_html__( 'Sepia', 'js_composer' ),
+		'summer' => esc_html__( 'Summer', 'js_composer' ),
+		'tender' => esc_html__( 'Tender', 'js_composer' ),
+		'vintage' => esc_html__( 'Vintage', 'js_composer' ),
+		'washed' => esc_html__( 'Washed', 'js_composer' ),
 	);
 }
 
 /**
  * Add Image Filter field to media uploader
  *
- * @param $form_fields array, fields to include in attachment form
- * @param $post object, attachment record in database
+ * @param array $form_fields , fields to include in attachment form
+ * @param object $post , attachment record in database
  *
  * @return array $form_fields, modified form fields
  */
@@ -53,9 +53,9 @@ function vc_attachment_filter_field( $form_fields, $post ) {
 
 	$options = vc_get_filters();
 
-	$html_options = '<option value="">' . __( 'None', 'js_composer' ) . '</option>';
+	$html_options = '<option value="">' . esc_html__( 'None', 'js_composer' ) . '</option>';
 	foreach ( $options as $value => $title ) {
-		$html_options .= '<option value="' . $value . '">' . $title . '</option>';
+		$html_options .= '<option value="' . esc_attr( $value ) . '">' . esc_html( $title ) . '</option>';
 	}
 
 	$form_fields['vc-image-filter'] = array(
@@ -63,8 +63,8 @@ function vc_attachment_filter_field( $form_fields, $post ) {
 		'input' => 'html',
 		'html' => '
 			<div style="display:none">
-				<span class="vc-filter-label">' . __( 'Image filter', 'js_composer' ) . '</span>
-				<select name="attachments[' . $post->ID . '][vc-image-filter]" id="attachments-' . $post->ID . '-vc-image-filter" data-vc-preview-image-filter="' . $post->ID . '">
+				<span class="vc-filter-label">' . esc_html__( 'Image filter', 'js_composer' ) . '</span>
+				<select name="attachments[' . esc_attr( $post->ID ) . '][vc-image-filter]" id="attachments-' . esc_attr( $post->ID ) . '-vc-image-filter" data-vc-preview-image-filter="' . esc_attr( $post->ID ) . '">
 					' . $html_options . '
 				</select>
 			</div>',
@@ -91,13 +91,9 @@ function vc_attachment_filter_field( $form_fields, $post ) {
  *
  */
 function vc_media_editor_add_image() {
-	vc_user_access()
-		->checkAdminNonce()
-		->validateDie()
-		->wpAny( 'upload_files' )
-		->validateDie();
+	vc_user_access()->checkAdminNonce()->validateDie()->wpAny( 'upload_files' )->validateDie();
 
-	require_once vc_path_dir( 'APP_ROOT', 'vendor/mmihey/PHP-Instagram-effects/src/Image/Filter.php' );
+	require_once vc_path_dir( 'HELPERS_DIR', 'class-vc-image-filter.php' );
 	$response = array(
 		'success' => true,
 		'data' => array(
@@ -213,15 +209,12 @@ function vc_media_editor_add_image() {
  * - int attachment_id: attachment id
  *
  * @return void Results are sent out as json
+ * @throws \Exception
  */
 function vc_media_editor_preview_image() {
-	vc_user_access()
-		->checkAdminNonce()
-		->validateDie()
-		->wpAny( 'upload_files' )
-		->validateDie();
+	vc_user_access()->checkAdminNonce()->validateDie()->wpAny( 'upload_files' )->validateDie();
 
-	require_once vc_path_dir( 'APP_ROOT', 'vendor/mmihey/PHP-Instagram-effects/src/Image/Filter.php' );
+	require_once vc_path_dir( 'HELPERS_DIR', 'class-vc-image-filter.php' );
 
 	$response = array(
 		'success' => true,
@@ -283,6 +276,7 @@ function vc_media_editor_preview_image() {
 
 	$data = ob_get_clean();
 
+	// @codingStandardsIgnoreLine
 	$response['data']['src'] = 'data:image/' . $extension . ';base64,' . base64_encode( $data );
 
 	wp_send_json( $response );
@@ -342,10 +336,10 @@ function vc_save_gd_resource( $resource, $file ) {
 /**
  * Add "Filter: ..." meta field to attachment details box
  *
- * @param $media_meta array, meta to include in attachment form
- * @param $post object, attachment record in database
+ * @param array $media_meta , meta to include in attachment form
+ * @param object $post , attachment record in database
  *
- * @return array $media_meta, modified meta fields
+ * @return array|string
  */
 function vc_attachment_filter_media_meta( $media_meta, $post ) {
 	$filter_name = get_post_meta( $post->ID, 'vc-applied-image-filter', true );
@@ -358,7 +352,7 @@ function vc_attachment_filter_media_meta( $media_meta, $post ) {
 		return $media_meta;
 	}
 
-	$media_meta .= __( 'Filter:', 'js_composer' ) . ' ' . $filters[ $filter_name ];
+	$media_meta .= esc_html__( 'Filter:', 'js_composer' ) . ' ' . $filters[ $filter_name ];
 
 	return $media_meta;
 }

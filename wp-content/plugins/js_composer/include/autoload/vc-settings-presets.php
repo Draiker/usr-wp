@@ -239,12 +239,23 @@ function vc_register_settings_preset( $title, $shortcode, $params, $default = fa
 	vc_vendor_preset()->add( $title, $shortcode, $params, $default );
 }
 
+/**
+ * @param $shortcodes
+ * @return array
+ * @throws \Exception
+ */
 function vc_add_new_elements_to_box( $shortcodes ) {
 	require_once vc_path_dir( 'AUTOLOAD_DIR', 'class-vc-settings-presets.php' );
+
 	return Vc_Settings_Preset::addVcPresetsToShortcodes( $shortcodes );
 }
 
+/**
+ * @param $cat
+ * @return array
+ */
 function vc_add_new_category_filter( $cat ) {
 	require_once vc_path_dir( 'AUTOLOAD_DIR', 'class-vc-settings-presets.php' );
+
 	return Vc_Settings_Preset::addPresetCategory( $cat );
 }

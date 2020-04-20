@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return array(
-	'name' => __( 'Accordion', 'js_composer' ),
+	'name' => esc_html__( 'Accordion', 'js_composer' ),
 	'base' => 'vc_tta_accordion',
 	'icon' => 'icon-wpb-ui-accordion',
 	'is_container' => true,
@@ -12,58 +12,58 @@ return array(
 	'as_parent' => array(
 		'only' => 'vc_tta_section',
 	),
-	'category' => __( 'Content', 'js_composer' ),
-	'description' => __( 'Collapsible content panels', 'js_composer' ),
+	'category' => esc_html__( 'Content', 'js_composer' ),
+	'description' => esc_html__( 'Collapsible content panels', 'js_composer' ),
 	'params' => array(
 		array(
 			'type' => 'textfield',
 			'param_name' => 'title',
-			'heading' => __( 'Widget title', 'js_composer' ),
-			'description' => __( 'Enter text used as widget title (Note: located above content element).', 'js_composer' ),
+			'heading' => esc_html__( 'Widget title', 'js_composer' ),
+			'description' => esc_html__( 'Enter text used as widget title (Note: located above content element).', 'js_composer' ),
 		),
 		array(
 			'type' => 'dropdown',
 			'param_name' => 'style',
 			'value' => array(
-				__( 'Classic', 'js_composer' ) => 'classic',
-				__( 'Modern', 'js_composer' ) => 'modern',
-				__( 'Flat', 'js_composer' ) => 'flat',
-				__( 'Outline', 'js_composer' ) => 'outline',
+				esc_html__( 'Classic', 'js_composer' ) => 'classic',
+				esc_html__( 'Modern', 'js_composer' ) => 'modern',
+				esc_html__( 'Flat', 'js_composer' ) => 'flat',
+				esc_html__( 'Outline', 'js_composer' ) => 'outline',
 			),
-			'heading' => __( 'Style', 'js_composer' ),
-			'description' => __( 'Select accordion display style.', 'js_composer' ),
+			'heading' => esc_html__( 'Style', 'js_composer' ),
+			'description' => esc_html__( 'Select accordion display style.', 'js_composer' ),
 		),
 		array(
 			'type' => 'dropdown',
 			'param_name' => 'shape',
 			'value' => array(
-				__( 'Rounded', 'js_composer' ) => 'rounded',
-				__( 'Square', 'js_composer' ) => 'square',
-				__( 'Round', 'js_composer' ) => 'round',
+				esc_html__( 'Rounded', 'js_composer' ) => 'rounded',
+				esc_html__( 'Square', 'js_composer' ) => 'square',
+				esc_html__( 'Round', 'js_composer' ) => 'round',
 			),
-			'heading' => __( 'Shape', 'js_composer' ),
-			'description' => __( 'Select accordion shape.', 'js_composer' ),
+			'heading' => esc_html__( 'Shape', 'js_composer' ),
+			'description' => esc_html__( 'Select accordion shape.', 'js_composer' ),
 		),
 		array(
 			'type' => 'dropdown',
 			'param_name' => 'color',
-			'value' => getVcShared( 'colors-dashed' ),
+			'value' => vc_get_shared( 'colors-dashed' ),
 			'std' => 'grey',
-			'heading' => __( 'Color', 'js_composer' ),
-			'description' => __( 'Select accordion color.', 'js_composer' ),
+			'heading' => esc_html__( 'Color', 'js_composer' ),
+			'description' => esc_html__( 'Select accordion color.', 'js_composer' ),
 			'param_holder_class' => 'vc_colored-dropdown',
 		),
 		array(
 			'type' => 'checkbox',
 			'param_name' => 'no_fill',
-			'heading' => __( 'Do not fill content area?', 'js_composer' ),
-			'description' => __( 'Do not fill content area with color.', 'js_composer' ),
+			'heading' => esc_html__( 'Do not fill content area?', 'js_composer' ),
+			'description' => esc_html__( 'Do not fill content area with color.', 'js_composer' ),
 		),
 		array(
 			'type' => 'dropdown',
 			'param_name' => 'spacing',
 			'value' => array(
-				__( 'None', 'js_composer' ) => '',
+				esc_html__( 'None', 'js_composer' ) => '',
 				'1px' => '1',
 				'2px' => '2',
 				'3px' => '3',
@@ -76,14 +76,14 @@ return array(
 				'30px' => '30',
 				'35px' => '35',
 			),
-			'heading' => __( 'Spacing', 'js_composer' ),
-			'description' => __( 'Select accordion spacing.', 'js_composer' ),
+			'heading' => esc_html__( 'Spacing', 'js_composer' ),
+			'description' => esc_html__( 'Select accordion spacing.', 'js_composer' ),
 		),
 		array(
 			'type' => 'dropdown',
 			'param_name' => 'gap',
 			'value' => array(
-				__( 'None', 'js_composer' ) => '',
+				esc_html__( 'None', 'js_composer' ) => '',
 				'1px' => '1',
 				'2px' => '2',
 				'3px' => '3',
@@ -96,25 +96,25 @@ return array(
 				'30px' => '30',
 				'35px' => '35',
 			),
-			'heading' => __( 'Gap', 'js_composer' ),
-			'description' => __( 'Select accordion gap.', 'js_composer' ),
+			'heading' => esc_html__( 'Gap', 'js_composer' ),
+			'description' => esc_html__( 'Select accordion gap.', 'js_composer' ),
 		),
 		array(
 			'type' => 'dropdown',
 			'param_name' => 'c_align',
 			'value' => array(
-				__( 'Left', 'js_composer' ) => 'left',
-				__( 'Right', 'js_composer' ) => 'right',
-				__( 'Center', 'js_composer' ) => 'center',
+				esc_html__( 'Left', 'js_composer' ) => 'left',
+				esc_html__( 'Right', 'js_composer' ) => 'right',
+				esc_html__( 'Center', 'js_composer' ) => 'center',
 			),
-			'heading' => __( 'Alignment', 'js_composer' ),
-			'description' => __( 'Select accordion section title alignment.', 'js_composer' ),
+			'heading' => esc_html__( 'Alignment', 'js_composer' ),
+			'description' => esc_html__( 'Select accordion section title alignment.', 'js_composer' ),
 		),
 		array(
 			'type' => 'dropdown',
 			'param_name' => 'autoplay',
 			'value' => array(
-				__( 'None', 'js_composer' ) => 'none',
+				esc_html__( 'None', 'js_composer' ) => 'none',
 				'1' => '1',
 				'2' => '2',
 				'3' => '3',
@@ -128,69 +128,69 @@ return array(
 				'60' => '60',
 			),
 			'std' => 'none',
-			'heading' => __( 'Autoplay', 'js_composer' ),
-			'description' => __( 'Select auto rotate for accordion in seconds (Note: disabled by default).', 'js_composer' ),
+			'heading' => esc_html__( 'Autoplay', 'js_composer' ),
+			'description' => esc_html__( 'Select auto rotate for accordion in seconds (Note: disabled by default).', 'js_composer' ),
 		),
 		array(
 			'type' => 'checkbox',
 			'param_name' => 'collapsible_all',
-			'heading' => __( 'Allow collapse all?', 'js_composer' ),
-			'description' => __( 'Allow collapse all accordion sections.', 'js_composer' ),
+			'heading' => esc_html__( 'Allow collapse all?', 'js_composer' ),
+			'description' => esc_html__( 'Allow collapse all accordion sections.', 'js_composer' ),
 		),
 		// Control Icons
 		array(
 			'type' => 'dropdown',
 			'param_name' => 'c_icon',
 			'value' => array(
-				__( 'None', 'js_composer' ) => '',
-				__( 'Chevron', 'js_composer' ) => 'chevron',
-				__( 'Plus', 'js_composer' ) => 'plus',
-				__( 'Triangle', 'js_composer' ) => 'triangle',
+				esc_html__( 'None', 'js_composer' ) => '',
+				esc_html__( 'Chevron', 'js_composer' ) => 'chevron',
+				esc_html__( 'Plus', 'js_composer' ) => 'plus',
+				esc_html__( 'Triangle', 'js_composer' ) => 'triangle',
 			),
 			'std' => 'plus',
-			'heading' => __( 'Icon', 'js_composer' ),
-			'description' => __( 'Select accordion navigation icon.', 'js_composer' ),
+			'heading' => esc_html__( 'Icon', 'js_composer' ),
+			'description' => esc_html__( 'Select accordion navigation icon.', 'js_composer' ),
 		),
 		array(
 			'type' => 'dropdown',
 			'param_name' => 'c_position',
 			'value' => array(
-				__( 'Left', 'js_composer' ) => 'left',
-				__( 'Right', 'js_composer' ) => 'right',
+				esc_html__( 'Left', 'js_composer' ) => 'left',
+				esc_html__( 'Right', 'js_composer' ) => 'right',
 			),
 			'dependency' => array(
 				'element' => 'c_icon',
 				'not_empty' => true,
 			),
-			'heading' => __( 'Position', 'js_composer' ),
-			'description' => __( 'Select accordion navigation icon position.', 'js_composer' ),
+			'heading' => esc_html__( 'Position', 'js_composer' ),
+			'description' => esc_html__( 'Select accordion navigation icon position.', 'js_composer' ),
 		),
 		// Control Icons END
 		array(
 			'type' => 'textfield',
 			'param_name' => 'active_section',
-			'heading' => __( 'Active section', 'js_composer' ),
+			'heading' => esc_html__( 'Active section', 'js_composer' ),
 			'value' => 1,
-			'description' => __( 'Enter active section number (Note: to have all sections closed on initial load enter non-existing number).', 'js_composer' ),
+			'description' => esc_html__( 'Enter active section number (Note: to have all sections closed on initial load enter non-existing number).', 'js_composer' ),
 		),
 		vc_map_add_css_animation(),
 		array(
 			'type' => 'el_id',
-			'heading' => __( 'Element ID', 'js_composer' ),
+			'heading' => esc_html__( 'Element ID', 'js_composer' ),
 			'param_name' => 'el_id',
-			'description' => sprintf( __( 'Enter element ID (Note: make sure it is unique and valid according to <a href="%s" target="_blank">w3c specification</a>).', 'js_composer' ), 'http://www.w3schools.com/tags/att_global_id.asp' ),
+			'description' => sprintf( esc_html__( 'Enter element ID (Note: make sure it is unique and valid according to %sw3c specification%s).', 'js_composer' ), '<a href="https://www.w3schools.com/tags/att_global_id.asp" target="_blank">', '</a>' ),
 		),
 		array(
 			'type' => 'textfield',
-			'heading' => __( 'Extra class name', 'js_composer' ),
+			'heading' => esc_html__( 'Extra class name', 'js_composer' ),
 			'param_name' => 'el_class',
-			'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
+			'description' => esc_html__( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
 		),
 		array(
 			'type' => 'css_editor',
-			'heading' => __( 'CSS box', 'js_composer' ),
+			'heading' => esc_html__( 'CSS box', 'js_composer' ),
 			'param_name' => 'css',
-			'group' => __( 'Design Options', 'js_composer' ),
+			'group' => esc_html__( 'Design Options', 'js_composer' ),
 		),
 	),
 	'js_view' => 'VcBackendTtaAccordionView',
@@ -203,7 +203,7 @@ return array(
 	         <div class="vc_tta-panel-heading">
 	            <h4 class="vc_tta-panel-title vc_tta-controls-icon-position-left">
 	               <a href="javascript:;" aria-expanded="false" class="vc_tta-backend-add-control">
-	                   <span class="vc_tta-title-text">' . __( 'Add Section', 'js_composer' ) . '</span>
+	                   <span class="vc_tta-title-text">' . esc_html__( 'Add Section', 'js_composer' ) . '</span>
 	                    <i class="vc_tta-controls-icon vc_tta-controls-icon-plus"></i>
 					</a>
 	            </h4>
@@ -212,5 +212,5 @@ return array(
 	   </div>
 	</div>
 </div>',
-	'default_content' => '[vc_tta_section title="' . sprintf( '%s %d', __( 'Section', 'js_composer' ), 1 ) . '"][/vc_tta_section][vc_tta_section title="' . sprintf( '%s %d', __( 'Section', 'js_composer' ), 2 ) . '"][/vc_tta_section]',
+	'default_content' => '[vc_tta_section title="' . sprintf( '%s %d', esc_html__( 'Section', 'js_composer' ), 1 ) . '"][/vc_tta_section][vc_tta_section title="' . sprintf( '%s %d', esc_html__( 'Section', 'js_composer' ), 2 ) . '"][/vc_tta_section]',
 );

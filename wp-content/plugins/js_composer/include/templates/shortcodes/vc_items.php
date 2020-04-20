@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $el_class
  * @var $content - shortcode content
  * Shortcode class
- * @var $this WPBakeryShortCodesContainer
+ * @var WPBakeryShortCodesContainer $this
  */
 $el_class = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
@@ -28,4 +28,4 @@ $output = '
 	</div>
 ';
 
-echo $output;
+return $output;

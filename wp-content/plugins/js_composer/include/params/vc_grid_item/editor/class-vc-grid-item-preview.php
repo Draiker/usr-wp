@@ -3,6 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
+/**
+ * Class Vc_Grid_Item_Preview
+ */
 class Vc_Grid_Item_Preview {
 	protected $shortcodes_string = '';
 	protected $post_id = false;
@@ -25,6 +28,10 @@ class Vc_Grid_Item_Preview {
 		) );
 	}
 
+	/**
+	 * @param $css
+	 * @return string
+	 */
 	public function addCssBackgroundImage( $css ) {
 		if ( empty( $css ) ) {
 			$css = 'background-image: url(' . vc_asset_url( 'vc/vc_gitem_image.png' ) . ') !important';
@@ -33,6 +40,10 @@ class Vc_Grid_Item_Preview {
 		return $css;
 	}
 
+	/**
+	 * @param $url
+	 * @return string
+	 */
 	public function addImageUrl( $url ) {
 		if ( empty( $url ) ) {
 			$url = vc_asset_url( 'vc/vc_gitem_image.png' );
@@ -41,9 +52,13 @@ class Vc_Grid_Item_Preview {
 		return $url;
 	}
 
+	/**
+	 * @param $img
+	 * @return string
+	 */
 	public function addImage( $img ) {
 		if ( empty( $img ) ) {
-			$img = '<img src="' . vc_asset_url( 'vc/vc_gitem_image.png' ) . '" alt="">';
+			$img = '<img src="' . esc_url( vc_asset_url( 'vc/vc_gitem_image.png' ) ) . '" alt="">';
 		}
 
 		return $img;
@@ -51,13 +66,13 @@ class Vc_Grid_Item_Preview {
 
 	/**
 	 *
-	 * @since 4.5
-	 *
 	 * @param $link
 	 *
 	 * @param $atts
 	 * @param $css_class
 	 * @return string
+	 * @since 4.5
+	 *
 	 */
 	public function disableContentLink( $link, $atts, $css_class ) {
 		return 'a' . ( strlen( $css_class ) > 0 ? ' class="' . esc_attr( $css_class ) . '"' : '' );
@@ -65,14 +80,14 @@ class Vc_Grid_Item_Preview {
 
 	/**
 	 *
-	 * @since 4.5
-	 *
 	 * @param $link
 	 *
 	 * @param $atts
 	 * @param $post
 	 * @param $css_class
 	 * @return string
+	 * @since 4.5
+	 *
 	 */
 	public function disableRealContentLink( $link, $atts, $post, $css_class ) {
 		return 'a' . ( strlen( $css_class ) > 0 ? ' class="' . esc_attr( $css_class ) . '"' : '' );
@@ -80,11 +95,11 @@ class Vc_Grid_Item_Preview {
 
 	/**
 	 * Used for filter: vc_gitem_zone_image_block_link
-	 * @since 4.5
-	 *
 	 * @param $link
 	 *
 	 * @return string
+	 * @since 4.5
+	 *
 	 */
 	public function disableGitemZoneLink( $link ) {
 		return '';
@@ -99,19 +114,22 @@ class Vc_Grid_Item_Preview {
 		wp_enqueue_script( 'wpb_composer_front_js' );
 		wp_enqueue_style( 'js_composer_custom_css' );
 
-		VcShortcodeAutoloader::getInstance()->includeClass( 'WPBakeryShortCode_VC_Basic_Grid' );
+		VcShortcodeAutoloader::getInstance()->includeClass( 'WPBakeryShortCode_Vc_Basic_Grid' );
 
-		$grid = new WPBakeryShortCode_VC_Basic_Grid( array( 'base' => 'vc_basic_grid' ) );
+		$grid = new WPBakeryShortCode_Vc_Basic_Grid( array( 'base' => 'vc_basic_grid' ) );
 		$grid->shortcodeScripts();
 		$grid->enqueueScripts();
 	}
 
+	/**
+	 * @return array|\WP_Post|null
+	 */
 	public function mockingPost() {
 		$post = get_post( $this->post_id );
 		setup_postdata( $post );
-		$post->post_title = __( 'Post title', 'js_composer' );
-		$post->post_content = __( 'The WordPress Excerpt is an optional summary or description of a post; in short, a post summary.', 'js_composer' );
-		$post->post_excerpt = __( 'The WordPress Excerpt is an optional summary or description of a post; in short, a post summary.', 'js_composer' );
+		$post->post_title = esc_html__( 'Post title', 'js_composer' );
+		$post->post_content = esc_html__( 'The WordPress Excerpt is an optional summary or description of a post; in short, a post summary.', 'js_composer' );
+		$post->post_excerpt = esc_html__( 'The WordPress Excerpt is an optional summary or description of a post; in short, a post summary.', 'js_composer' );
 		add_filter( 'get_the_categories', array(
 			$this,
 			'getTheCategories',
@@ -121,9 +139,14 @@ class Vc_Grid_Item_Preview {
 		return $post;
 	}
 
+	/**
+	 * @param $categories
+	 * @param $post_id
+	 * @return array
+	 */
 	public function getTheCategories( $categories, $post_id ) {
 		$ret = $categories;
-		if ( ! $post_id || ( $post_id && $post_id == $this->post_id ) ) {
+		if ( ! $post_id || ( $post_id && $post_id === $this->post_id ) ) {
 			$cat = get_categories( 'number=5' );
 			if ( empty( $ret ) && ! empty( $cat ) ) {
 				$ret += $cat;
@@ -133,10 +156,14 @@ class Vc_Grid_Item_Preview {
 		return $ret;
 	}
 
+	/**
+	 * @param $img
+	 * @return array
+	 */
 	public function addPlaceholderImage( $img ) {
 		if ( null === $img || false === $img ) {
 			$img = array(
-				'thumbnail' => '<img class="vc_img-placeholder vc_single_image-img" src="' . vc_asset_url( 'vc/vc_gitem_image.png' ) . '" />',
+				'thumbnail' => '<img class="vc_img-placeholder vc_single_image-img" src="' . esc_url( vc_asset_url( 'vc/vc_gitem_image.png' ) ) . '" />',
 			);
 		}
 

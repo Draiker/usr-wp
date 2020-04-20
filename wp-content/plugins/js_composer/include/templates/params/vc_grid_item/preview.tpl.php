@@ -2,30 +2,27 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
+$custom_tag = 'script';
+$first_tag = 'style';
 ?>
 <!DOCTYPE html>
-<!--[if IE 7]>
-<html class="ie ie7" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if IE 8]>
-<html class="ie ie8" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if !(IE 7) | !(IE 8)  ]><!-->
 <html <?php language_attributes(); ?>>
-<!--<![endif]-->
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>"/>
 	<meta name="viewport" content="width=device-width"/>
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 	<?php wp_head(); ?>
-	<style type="text/css">
+	<<?php echo esc_attr( $first_tag ); ?>>
 		body {
 			background-color: #FFF;
 			color: #000;
 			font-size: 12px;
 		}
 
-		<?php echo visual_composer()->parseShortcodesCustomCss( $shortcodes_string ) ?>
+		<?php
+		// @codingStandardsIgnoreLine
+		print visual_composer()->parseShortcodesCustomCss( $shortcodes_string );
+		?>
 		.vc_gitem-preview {
 			margin: 60px auto;
 		}
@@ -47,14 +44,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 		img {
 			width: 100%;
 		}
-	</style>
+	</<?php echo esc_attr( $first_tag ); ?>>
 </head>
 <div id="vc_grid-item-primary" class="vc_grid-item-site-content">
 	<div id="vc_grid-item-content" role="vc_grid-item-main">
 		<div class="vc_gitem-preview" data-vc-grid-settings="{}">
 			<div class="vc_container">
 				<div class="vc_row">
-					<?php echo $grid_item->renderItem( $post ); ?>
+					<?php
+					// @codingStandardsIgnoreLine
+					print $grid_item->renderItem( $post );
+					?>
 				</div>
 			</div>
 
@@ -64,8 +64,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 </div>
 <!-- #primary -->
 <?php wp_footer(); ?>
-<script type="text/javascript">
-	var currentWidth = '<?php echo $default_width_value ?>',
+<<?php echo esc_attr( $custom_tag ); ?>>
+	var currentWidth = '<?php echo esc_js( $default_width_value ); ?>',
 		vcSetItemWidth = function ( value ) {
 			jQuery( '.vc_grid-item' ).removeClass( 'vc_col-sm-' + currentWidth )
 				.addClass( 'vc_col-sm-' + value );
@@ -86,6 +86,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	jQuery( document ).ready( function ( $ ) {
 		window.parent.vc && window.parent.vc.app.showPreview( currentWidth );
 	} );
-</script>
+</<?php echo esc_attr( $custom_tag ); ?>>
 </body>
 </html>

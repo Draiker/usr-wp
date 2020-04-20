@@ -12,31 +12,31 @@ if ( $include_icon_params ) {
 		array(
 			'type' => 'checkbox',
 			'param_name' => 'add_icon',
-			'heading' => __( 'Add icon?', 'js_composer' ),
-			'description' => __( 'Add icon next to section title.', 'js_composer' ),
+			'heading' => esc_html__( 'Add icon?', 'js_composer' ),
+			'description' => esc_html__( 'Add icon next to section title.', 'js_composer' ),
 		),
 		array(
 			'type' => 'dropdown',
 			'param_name' => 'i_position',
 			'value' => array(
-				__( 'Before title', 'js_composer' ) => 'left',
-				__( 'After title', 'js_composer' ) => 'right',
+				esc_html__( 'Before title', 'js_composer' ) => 'left',
+				esc_html__( 'After title', 'js_composer' ) => 'right',
 			),
 			'dependency' => array(
 				'element' => 'add_icon',
 				'value' => 'true',
 			),
-			'heading' => __( 'Icon position', 'js_composer' ),
-			'description' => __( 'Select icon position.', 'js_composer' ),
+			'heading' => esc_html__( 'Icon position', 'js_composer' ),
+			'description' => esc_html__( 'Select icon position.', 'js_composer' ),
 		),
 	);
 	$icon_params = array_merge( $icon_params, (array) vc_map_integrate_shortcode( vc_icon_element_params(), 'i_', '', array(
-			// we need only type, icon_fontawesome, icon_.., NOT color and etc
-			'include_only_regex' => '/^(type|icon_\w*)/',
-		), array(
-			'element' => 'add_icon',
-			'value' => 'true',
-		) ) );
+		// we need only type, icon_fontawesome, icon_.., NOT color and etc
+		'include_only_regex' => '/^(type|icon_\w*)/',
+	), array(
+		'element' => 'add_icon',
+		'value' => 'true',
+	) ) );
 } else {
 	$icon_params = array();
 }
@@ -45,8 +45,8 @@ $params = array_merge( array(
 	array(
 		'type' => 'textfield',
 		'param_name' => 'title',
-		'heading' => __( 'Title', 'js_composer' ),
-		'description' => __( 'Enter section title (Note: you can leave it empty).', 'js_composer' ),
+		'heading' => esc_html__( 'Title', 'js_composer' ),
+		'description' => esc_html__( 'Enter section title (Note: you can leave it empty).', 'js_composer' ),
 	),
 	array(
 		'type' => 'el_id',
@@ -54,20 +54,20 @@ $params = array_merge( array(
 		'settings' => array(
 			'auto_generate' => true,
 		),
-		'heading' => __( 'Section ID', 'js_composer' ),
-		'description' => __( 'Enter section ID (Note: make sure it is unique and valid according to <a href="%s" target="_blank">w3c specification</a>).', 'js_composer' ),
+		'heading' => esc_html__( 'Section ID', 'js_composer' ),
+		'description' => sprintf( esc_html__( 'Enter section ID (Note: make sure it is unique and valid according to %sw3c specification%s).', 'js_composer' ), '<a href="https://www.w3schools.com/tags/att_global_id.asp" target="_blank">', '</a>' ),
 	),
 ), $icon_params, array(
-		array(
-			'type' => 'textfield',
-			'heading' => __( 'Extra class name', 'js_composer' ),
-			'param_name' => 'el_class',
-			'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
-		),
-	) );
+	array(
+		'type' => 'textfield',
+		'heading' => esc_html__( 'Extra class name', 'js_composer' ),
+		'param_name' => 'el_class',
+		'description' => esc_html__( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
+	),
+) );
 
 return array(
-	'name' => __( 'Section', 'js_composer' ),
+	'name' => esc_html__( 'Section', 'js_composer' ),
 	'base' => 'vc_tta_section',
 	'icon' => 'icon-wpb-ui-tta-section',
 	'allowed_container_element' => 'vc_row',
@@ -76,8 +76,8 @@ return array(
 	'as_child' => array(
 		'only' => 'vc_tta_tour,vc_tta_tabs,vc_tta_accordion',
 	),
-	'category' => __( 'Content', 'js_composer' ),
-	'description' => __( 'Section for Tabs, Tours, Accordions.', 'js_composer' ),
+	'category' => esc_html__( 'Content', 'js_composer' ),
+	'description' => esc_html__( 'Section for Tabs, Tours, Accordions.', 'js_composer' ),
 	'params' => $params,
 	'js_view' => 'VcBackendTtaSectionView',
 	'custom_markup' => '

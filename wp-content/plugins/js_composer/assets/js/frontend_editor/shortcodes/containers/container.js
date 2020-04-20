@@ -1,10 +1,12 @@
 (function ( $ ) {
-	vc.events.on( 'shortcodeView:updated', function ( model ) {
+	'use strict';
+
+	window.vc.events.on( 'shortcodeView:updated', function ( model ) {
 		var modelId, settings;
 		settings = vc.map[ model.get( 'shortcode' ) ] || false;
 		if ( true === settings.is_container ) {
 			modelId = model.get( 'id' );
-			vc.frame_window.vc_iframe.updateChildGrids( modelId );
+			window.vc.frame_window.vc_iframe.updateChildGrids( modelId );
 		}
 	} );
 	window.InlineShortcodeViewContainer = window.InlineShortcodeView.extend( {
@@ -29,14 +31,18 @@
 			}
 		},
 		resetActive: function ( e ) {
-			this.hold_active && window.clearTimeout( this.hold_active );
+			if ( this.hold_active ) {
+				window.clearTimeout( this.hold_active );
+			}
 		},
 		holdActive: function ( e ) {
 			this.resetActive();
 			this.$el.addClass( 'vc_hold-active' );
 			var view = this;
 			this.hold_active = window.setTimeout( function () {
-				view.hold_active && window.clearTimeout( view.hold_active );
+				if ( view.hold_active ) {
+					window.clearTimeout( view.hold_active );
+				}
 				view.hold_active = false;
 				view.$el.removeClass( 'vc_hold-active' );
 			}, 700 );
@@ -56,19 +62,25 @@
 		},
 		changed: function () {
 			if ( this.allowAddControlOnEmpty() ) {
-				(0 === this.$el.find( '.vc_element[data-tag]' ).length && this.$el.addClass( 'vc_empty' ).find(
-					'> :first' ).addClass( 'vc_empty-element' ))
-				|| this.$el.removeClass( 'vc_empty' ).find( '> .vc_empty-element' ).removeClass( 'vc_empty-element' );
+				if ( 0 === this.$el.find( '.vc_element[data-tag]' ).length ) {
+					this.$el.addClass( 'vc_empty' ).find( '> :first' ).addClass( 'vc_empty-element' );
+				} else {
+					this.$el.removeClass( 'vc_empty' ).find( '> .vc_empty-element' ).removeClass( 'vc_empty-element' );
+				}
 			}
 		},
 		prependElement: function ( e ) {
-			_.isObject( e ) && e.preventDefault();
+			if ( e && e.preventDefault ) {
+				e.preventDefault();
+			}
 			this.prepend = true;
-			vc.add_element_block_view.render( this.model, true );
+			window.vc.add_element_block_view.render( this.model, true );
 		},
 		appendElement: function ( e ) {
-			_.isObject( e ) && e.preventDefault();
-			vc.add_element_block_view.render( this.model );
+			if ( e && e.preventDefault ) {
+				e.preventDefault();
+			}
+			window.vc.add_element_block_view.render( this.model );
 		},
 		addControls: function () {
 			var shortcodeTag, parentShortcodeTag, allAccess, moveAccess, editAccess, parentAllAccess, parentEditAccess, template, parent, data;
@@ -85,7 +97,7 @@
 			editAccess = vc_user_access().shortcodeEdit( shortcodeTag );
 			parentAllAccess = vc_user_access().shortcodeAll( parentShortcodeTag );
 			parentEditAccess = vc_user_access().shortcodeEdit( parentShortcodeTag );
-			moveAccess = vc_user_access().partAccess('dragndrop');
+			moveAccess = vc_user_access().partAccess( 'dragndrop' );
 
 			data = {
 				name: vc.getMapped( shortcodeTag ).name,
@@ -99,7 +111,7 @@
 				parent_can_all: parentAllAccess,
 				state: vc_user_access().getState( 'shortcodes' ),
 				allowAdd: this.allowAddControl(),
-				switcherPrefix: ! parentAllAccess || ! allAccess ? '-disable-switcher' : ''
+				switcherPrefix: !parentAllAccess || !allAccess ? '-disable-switcher' : ''
 			};
 			var compiledTemplate = vc.template( _.unescape( template ),
 				_.extend( {}, vc.templateOptions.custom, { evaluate: /\{#([\s\S]+?)#}/g } ) );
@@ -108,24 +120,26 @@
 			this.$controls.appendTo( this.$el );
 		},
 		allowAddControl: function () {
-			return vc_user_access().getState( 'shortcodes' ) !== 'edit';
+			return 'edit' !== vc_user_access().getState( 'shortcodes' );
 		},
 		multi_edit: function ( e ) {
 			var models = [], parent, children;
-			_.isObject( e ) && e.preventDefault();
+			if ( e && e.preventDefault ) {
+				e.preventDefault();
+			}
 			if ( this.model.get( 'parent_id' ) ) {
 				parent = vc.shortcodes.get( this.model.get( 'parent_id' ) );
 			}
 			if ( parent ) {
 				models.push( parent );
 				children = vc.shortcodes.where( { parent_id: parent.get( 'id' ) } );
-				vc.multi_edit_element_block_view.render( models.concat( children ), this.model.get( 'id' ) );
+				window.vc.multi_edit_element_block_view.render( models.concat( children ), this.model.get( 'id' ) );
 			} else {
-				vc.edit_element_block_view.render( this.model );
+				window.vc.edit_element_block_view.render( this.model );
 			}
 		},
 		allowAddControlOnEmpty: function () {
-			return vc_user_access().getState( 'shortcodes' ) !== 'edit';
+			return 'edit' !== vc_user_access().getState( 'shortcodes' );
 		}
 	} );
 })( window.jQuery );

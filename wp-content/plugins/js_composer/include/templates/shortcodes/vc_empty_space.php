@@ -10,14 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $el_id
  * @var $css
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Empty_space
+ * @var WPBakeryShortCode_Vc_Empty_space $this
  */
 $height = $el_class = $el_id = $css = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
 $pattern = '/^(\d*(?:\.\d+)?)\s*(px|\%|in|cm|mm|em|rem|ex|pt|pc|vw|vh|vmin|vmax)?$/';
-// allowed metrics: http://www.w3schools.com/cssref/css_units.asp
+// allowed metrics: https://www.w3schools.com/cssref/css_units.asp
 $regexr = preg_match( $pattern, $height, $matches );
 $value = isset( $matches[1] ) ? (float) $matches[1] : (float) WPBMap::getParam( 'vc_empty_space', 'height' );
 $unit = isset( $matches[2] ) ? $matches[2] : 'px';
@@ -31,5 +31,10 @@ $wrapper_attributes = array();
 if ( ! empty( $el_id ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
 }
-?>
-<div class="<?php echo esc_attr( trim( $css_class ) ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?> <?php echo $inline_css; ?> ><span class="vc_empty_space_inner"></span></div>
+
+$output = '';
+$output .= '<div class="' . esc_attr( trim( $css_class ) ) . '" ';
+$output .= implode( ' ', $wrapper_attributes ) . ' ' . $inline_css;
+$output .= '><span class="vc_empty_space_inner"></span></div>';
+
+return $output;

@@ -1,3 +1,69 @@
+13.12.2019 - ver 6.1.0
+  - Added: Catalan, Ukrainian, Hungarian translations
+  - Update: WordPress 5.3 Compatibility
+  - Update: FontAwesome update to 5.10.2
+  - Update: loop attribute not found rows and order by relevance
+  - Update: PrettyPhoto https support
+  - Fix: RTL controls on backend
+  - Fix: RTL column reverse
+  - Fix: Disabled post revisions desing options
+  - Fix: Save row/section as template
+  - Fix: HoverBox improvements
+  - Remove: IE9 support
+
+17.07.2019 - ver 6.0.5
+  - Fix: LESS vendor folder available
+  - Fix: All Media in Text Block works properly
+
+15.07.2019 - ver 6.0.4
+  - Fix: Element API works properly for 3rd party elements
+  - Fix: Post grid filter displayed properly
+  - Fix: Custom CSS editor does not remove "\"
+  - Fix: Directory name typo for Instagram filter files corrected
+  - Fix: Templates import API does work correctly
+  - Fix: Row design options settings for elements in templates works properly
+  - Fix: WooCommerce cart element works properly
+  - Fix: Option "Save as a template" for a row is available
+  - Fix: Elements edit form displayed correctly
+  - Fix: Warning message for PHP function `htmlspecialchars`
+  - Fix: Custom post types taxonomies work in Post Grid element
+  - Fix: Revolution Slider output content properly
+
+31.05.2019 - ver 6.0.3
+  - Update: Init action priority is changed from 9 to 11
+  - Update: Allow return in shortcode templates
+  - Update: Coding standards improvements
+  - Fix: Param Group clone
+  - Fix: Checkbox value display in edit form
+  - Fix: Loop attribute tax_query render
+  - Fix: Attach image typo
+  - Fix: Removed notice when shortcode template file missing
+  - Fix: Map meta cap warning on custom post types
+
+17.05.2019 - ver 6.0.2
+  - Fix: Container elements controls in Backend Editor
+
+15.05.2019 - ver 6.0.1
+  - Fix: Tour element class error
+
+15.05.2019 - ver 6.0
+  - Update: Compliance with coding standards
+  - Update: jQuery Waypoints update to the latest version
+  - Update: Fallback for previews added
+  - Fix: Pageable container autoplay
+  - Fix: Hover box does not flip on iOS devices
+  - Fix: Responsive media queries work properly
+  - Fix: WooCommerce products pages in preview mode
+  - Fix: Data source for Post Grid works with correct taxonomies
+  - Fix: Design options for elements work in preview mode
+  - Fix: The Editor got broken after adding many images
+  - Fix: The posts source got broken in Post Grid after importing data
+
+13.02.2019 - ver 5.7
+  - Update: Compatibility with PHP 7.3
+  - Fix: WooCommerce corrected editable role
+  - Fix: Page preview styles independent from view page
+
 27.11.2018 - ver 5.6
   - Update: Compatibility with Wordpress 5.0
 
@@ -663,7 +729,7 @@
    - Custom CSS in Settings->WPBakery Page Builder->Custom CSS fixed
    - CSS editor accept css3 units
    - Removed "Activation notice" if vc_set_as_theme() called
-   - front_enqueue_css and front_enqueue_js added in vc_map() http://kb.wpbakery.com/index.php?title=Vc_map
+   - front_enqueue_css and front_enqueue_js added in vc_map() https://kb.wpbakery.com/index.php?title=Vc_map
    - edit_post_link() caused problems in some themes - fixed
    - Template has the html tags for rich text formatting double encoded fixed
    - std param in maps improved logic
@@ -803,7 +869,7 @@
    - New: Fine tune margins and paddings within a row
    - New: Single image alignment added
    - New: Custom CSS for singular pages. Add Custom CSS code to particular pages only
-   - New: Now third party developers can easily create nested shortcodes Eg: [items][single_item][single_item][/items] More: http://kb.wpbakery.com/index.php?title=Nested_Shortcodes_%28container%29
+   - New: Now third party developers can easily create nested shortcodes Eg: [items][single_item][single_item][/items] More: https://kb.wpbakery.com/index.php?title=Nested_Shortcodes_%28container%29
    - New: Weight attribute for content elements added
    - Conflict with Gantry framework fixed
    - Conflict with QuForm plugin fixed
@@ -860,7 +926,7 @@
 
 03.07.2013 - ver 3.6.7
    - Navigation for Accordion added, now you can link to specific section directly
-   - Inner API extended. More details http://kb.wpbakery.com/index.php?title=Inner_API
+   - Inner API extended. More details https://kb.wpbakery.com/index.php?title=Inner_API
    - PHP code formatted for PHP Strict standards
    - default.po and .mo files updated
 
@@ -872,7 +938,7 @@
    - "Show only WPBakery Page Builder" permission fixed
 
 17.06.2013 - ver 3.6.5
-   - New: Shortcode Template logic. More here: http://kb.wpbakery.com/index.php?title=Shortcode_Templates_(markup)
+   - New: Shortcode Template logic. More here: https://kb.wpbakery.com/index.php?title=Shortcode_Templates_(markup)
    - New: Link param type
    - New: Updates notifier now "hooks" into the WP Updates system
    - New helper function added for easier param adding to existing content elements wpb_add_param($shortcode, $param)
@@ -969,7 +1035,7 @@
    - WP 3.5 compatibility fixes added
 
 29.12.2012 - ver 3.4.9
-   - Introduced developers methods more info http://kb.wpbakery.com/index.php?title=Category:Visual_Composer
+   - Introduced developers methods more info https://kb.wpbakery.com/index.php?title=Category:Visual_Composer
    - Exceprts now are working for posts/pages created with WPBakery Page Builder
    - Nivo slider updated (ver. 3.1)
    - Responsive css can be turned off from WPBakery Page Builder settings page
@@ -1055,7 +1121,7 @@
    - Extra class name for containers added
    - .js files outputs in footer
    - If user switch WPBakery Page Builder mode when there's text already, then this text is wrapped in text block.
-   - Administrator now can set user roles related settings in Visual Compsoer->Settings
+   - Administrator now can set user roles related settings in WPBakery Page Builder->Settings
    - Administrator now can set WPBakery Page Builder as default editor (per user role)
    - Image gallery: link target added
    - Single image element: link option added

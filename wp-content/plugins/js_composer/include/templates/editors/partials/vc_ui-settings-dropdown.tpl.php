@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="vc_ui-dropdown" data-vc-ui-element="settings-dropdown" data-vc-action="dropdown"
 	data-vc-content=".vc_ui-dropdown-content">
 	<div class="vc_ui-dropdown-trigger">
-		<button class="vc_general vc_ui-control-button vc_ui-settings-button" type="button" title="<?php _e( 'Element Settings', 'js_composer' ); ?>"
+		<button class="vc_general vc_ui-control-button vc_ui-settings-button" type="button" title="<?php esc_attr_e( 'Element Settings', 'js_composer' ); ?>"
 			data-vc-ui-element="settings-dropdown-button"
 			data-vc-accordion
 			data-vc-container=".vc_ui-dropdown" data-vc-target=".vc_ui-dropdown">

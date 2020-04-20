@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-/** @var $editor Vc_Frontend_Editor */
+/** @var Vc_Frontend_Editor $editor */
 global $menu, $submenu, $parent_file, $post_ID, $post, $post_type, $post_type_object;
 $post_ID = $editor->post_id;
 $post = $editor->post;
@@ -16,19 +16,19 @@ $form_action = 'editpost';
 $menu = array();
 add_thickbox();
 wp_enqueue_media( array( 'post' => $editor->post_id ) );
-require_once( $editor->adminFile( 'admin-header.php' ) );
+require_once $editor->adminFile( 'admin-header.php' );
 // @since 4.8 js logic for user role access manager.
 vc_include_template( 'editors/partials/access-manager-js.tpl.php' );
-
+$custom_tag = 'script';
 ?>
 	<div id="vc_preloader"></div>
 	<div id="vc_overlay_spinner" class="vc_ui-wp-spinner vc_ui-wp-spinner-dark vc_ui-wp-spinner-lg" style="display:none;"></div>
-	<script type="text/javascript">
+	<<?php echo esc_attr( $custom_tag ); ?>>
 		document.getElementById( 'vc_preloader' ).style.height = window.screen.availHeight;
-		var vc_mode = '<?php echo vc_mode() ?>',
-			vc_iframe_src = '<?php echo esc_attr( $editor->url ); ?>';
-		window.wpbGutenbergEditorUrl = '<?php echo set_url_scheme( admin_url( 'post-new.php?post_type=wpb_gutenberg_param' ) ); ?>';
-	</script>
+		window.vc_mode = '<?php echo esc_js( vc_mode() ); ?>';
+		window.vc_iframe_src = '<?php echo esc_js( $editor->url ); ?>';
+		window.wpbGutenbergEditorUrl = '<?php echo esc_js( set_url_scheme( admin_url( 'post-new.php?post_type=wpb_gutenberg_param' ) ) ); ?>';
+	</<?php echo esc_attr( $custom_tag ); ?>>
 	<input type="hidden" name="vc_post_title" id="vc_title-saved" value="<?php echo esc_attr( $post_title ); ?>"/>
 	<input type="hidden" name="vc_post_id" id="vc_post-id" value="<?php echo esc_attr( $editor->post_id ); ?>"/>
 <?php
@@ -43,7 +43,7 @@ $nav_bar->render();
 <?php
 // [add element popup/box]
 require_once vc_path_dir( 'EDITORS_DIR', 'popups/class-vc-add-element-box.php' );
-$add_element_box = new Vc_Add_Element_Box( $editor );
+$add_element_box = new Vc_Add_Element_Box();
 $add_element_box->render();
 // [/add element popup/box]
 
@@ -90,21 +90,20 @@ if ( vc_user_access()->part( 'presets' )->can()->get() ) {
 // [/shortcodes presets data]
 
 ?>
-	<input type="hidden" name="vc_post_custom_css" id="vc_post-custom-css"
-	       value="<?php echo esc_attr( $editor->post_custom_css ); ?>" autocomplete="off"/>
-	<script type="text/javascript">
-		var vc_user_mapper = <?php echo json_encode( WPBMap::getUserShortCodes() ) ?>,
-			vc_mapper = <?php echo json_encode( WPBMap::getShortCodes() ) ?>,
-			vc_vendor_settings_presets = <?php echo json_encode( $vc_vendor_settings_presets ) ?>,
-		    vc_all_presets = <?php echo json_encode( $vc_all_presets ) ?>,
-			vc_roles = [], // @todo fix_roles BC for roles
-			vcAdminNonce = '<?php echo vc_generate_nonce( 'vc-admin-nonce' ); ?>',
-			vc_post_id = <?php echo $post_ID; ?>;
-	</script>
+	<input type="hidden" name="vc_post_custom_css" id="vc_post-custom-css" value="<?php echo esc_attr( $editor->post_custom_css ); ?>" autocomplete="off"/>
+	<<?php echo esc_attr( $custom_tag ); ?>>
+		window.vc_user_mapper = <?php echo wp_json_encode( WPBMap::getUserShortCodes() ); ?>;
+		window.vc_mapper = <?php echo wp_json_encode( WPBMap::getShortCodes() ); ?>;
+		window.vc_vendor_settings_presets = <?php echo wp_json_encode( $vc_vendor_settings_presets ); ?>;
+		window.vc_all_presets = <?php echo wp_json_encode( $vc_all_presets ); ?>;
+		window.vc_roles = [];
+		window.vcAdminNonce = '<?php echo esc_js( vc_generate_nonce( 'vc-admin-nonce' ) ); ?>';
+		window.vc_post_id = <?php echo esc_js( $post_ID ); ?>;
+	</<?php echo esc_attr( $custom_tag ); ?>>
 
-<?php vc_include_template( 'editors/partials/vc_settings-image-block.tpl.php' ) ?>
+<?php vc_include_template( 'editors/partials/vc_settings-image-block.tpl.php' ); ?>
 <!-- BC for older plugins 5.5 !-->
-<input type="hidden" id="post_ID" name="post_ID" value="<?php echo $post_ID; ?>" />
+<input type="hidden" id="post_ID" name="post_ID" value="<?php echo esc_attr( $post_ID ); ?>"/>
 	<div style="height: 1px; visibility: hidden; overflow: hidden;">
 		<?php
 		// Disable notice in edit-form-advanced.php
@@ -126,4 +125,4 @@ if ( vc_user_access()->part( 'presets' )->can()->get() ) {
 <?php
 
 // other admin footer files and actions.
-require_once( $editor->adminFile( 'admin-footer.php' ) ); ?>
+require_once $editor->adminFile( 'admin-footer.php' ); ?>

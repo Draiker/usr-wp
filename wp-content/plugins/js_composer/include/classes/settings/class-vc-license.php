@@ -23,19 +23,19 @@ class Vc_License {
 	 *
 	 * @var string
 	 */
-	static protected $license_key_option = 'js_composer_purchase_code';
+	protected static $license_key_option = 'js_composer_purchase_code';
 
 	/**
 	 * Option name where license key token is stored
 	 *
 	 * @var string
 	 */
-	static protected $license_key_token_option = 'license_key_token';
+	protected static $license_key_token_option = 'license_key_token';
 
 	/**
 	 * @var string
 	 */
-	static protected $support_host = 'https://support.wpbakery.com';
+	protected static $support_host = 'https://support.wpbakery.com';
 
 	/**
 	 * @var string
@@ -44,11 +44,13 @@ class Vc_License {
 
 	public function init() {
 
-		if ( isset( $_GET['page'] ) && 'vc-updater' === $_GET['page'] ) {
-			if ( ! empty( $_GET['activate'] ) ) {
-				$this->finishActivationDeactivation( true, $_GET['activate'] );
-			} else if ( ! empty( $_GET['deactivate'] ) ) {
-				$this->finishActivationDeactivation( false, $_GET['deactivate'] );
+		if ( 'vc-updater' === vc_get_param( 'page' ) ) {
+			$activate = vc_get_param( 'activate' );
+			$deactivate = vc_get_param( 'deactivate' );
+			if ( $activate ) {
+				$this->finishActivationDeactivation( true, $activate );
+			} elseif ( $deactivate ) {
+				$this->finishActivationDeactivation( false, $deactivate );
 			}
 		}
 
@@ -73,12 +75,8 @@ class Vc_License {
 	 * @param string $message
 	 * @param bool $success
 	 */
-	function outputNotice( $message, $success = true ) {
-		echo '
-			<div class="' . ( $success ? 'updated' : 'error' ) . '">
-				<p>' . esc_html( $message ) . '</p>
-			</div>
-		';
+	public function outputNotice( $message, $success = true ) {
+		echo sprintf( '<div class="%s"><p>%s</p></div>', (bool) $success ? 'updated' : 'error', esc_html( $message ) );
 	}
 
 	/**
@@ -97,22 +95,22 @@ class Vc_License {
 	/**
 	 * Output last error
 	 */
-	function outputLastError() {
+	public function outputLastError() {
 		$this->outputNotice( $this->error, false );
 	}
 
 	/**
 	 * Output successful activation message
 	 */
-	function outputActivatedSuccess() {
-		$this->outputNotice( __( 'WPBakery Page Builder successfully activated.', 'js_composer' ), true );
+	public function outputActivatedSuccess() {
+		$this->outputNotice( esc_html__( 'WPBakery Page Builder successfully activated.', 'js_composer' ), true );
 	}
 
 	/**
 	 * Output successful deactivation message
 	 */
-	function outputDeactivatedSuccess() {
-		$this->outputNotice( __( 'WPBakery Page Builder successfully deactivated.', 'js_composer' ), true );
+	public function outputDeactivatedSuccess() {
+		$this->outputNotice( esc_html__( 'WPBakery Page Builder successfully deactivated.', 'js_composer' ), true );
 	}
 
 	/**
@@ -127,9 +125,9 @@ class Vc_License {
 	 *
 	 * @return bool
 	 */
-	function finishActivationDeactivation( $activation, $user_token ) {
+	public function finishActivationDeactivation( $activation, $user_token ) {
 		if ( ! $this->isValidToken( $user_token ) ) {
-			$this->showError( __( 'Token is not valid or has expired', 'js_composer' ) );
+			$this->showError( esc_html__( 'Token is not valid or has expired', 'js_composer' ) );
 
 			return false;
 		}
@@ -162,13 +160,13 @@ class Vc_License {
 		}
 
 		if ( is_wp_error( $response ) ) {
-			$this->showError( __( sprintf( '%s. Please try again.', $response->get_error_message() ), 'js_composer' ) );
+			$this->showError( sprintf( esc_html__( '%s. Please try again.', 'js_composer' ), $response->get_error_message() ) );
 
 			return false;
 		}
 
 		if ( 200 !== $response['response']['code'] ) {
-			$this->showError( __( sprintf( 'Server did not respond with OK: %s', $response['response']['code'] ), 'js_composer' ) );
+			$this->showError( sprintf( esc_html__( 'Server did not respond with OK: %s', 'js_composer' ), $response['response']['code'] ) );
 
 			return false;
 		}
@@ -176,20 +174,20 @@ class Vc_License {
 		$json = json_decode( $response['body'], true );
 
 		if ( ! $json || ! isset( $json['status'] ) ) {
-			$this->showError( __( 'Invalid response structure. Please contact us for support.', 'js_composer' ) );
+			$this->showError( esc_html__( 'Invalid response structure. Please contact us for support.', 'js_composer' ) );
 
 			return false;
 		}
 
 		if ( ! $json['status'] ) {
-			$this->showError( __( 'Something went wrong. Please contact us for support.', 'js_composer' ) );
+			$this->showError( esc_html__( 'Something went wrong. Please contact us for support.', 'js_composer' ) );
 
 			return false;
 		}
 
 		if ( $activation ) {
 			if ( ! isset( $json['license_key'] ) || ! $this->isValidFormat( $json['license_key'] ) ) {
-				$this->showError( __( 'Invalid response structure. Please contact us for support.', 'js_composer' ) );
+				$this->showError( esc_html__( 'Invalid response structure. Please contact us for support.', 'js_composer' ) );
 
 				return false;
 			}
@@ -218,7 +216,7 @@ class Vc_License {
 	 * @return boolean
 	 */
 	public function isActivated() {
-		return (bool) $this->getLicenseKey();
+		return true;
 	}
 
 	/**
@@ -232,13 +230,13 @@ class Vc_License {
 		if ( ! $this->isValid( $license_key ) ) {
 			$response = array(
 				'status' => false,
-				'error' => __( 'Invalid license key', 'js_composer' ),
+				'error' => esc_html__( 'Invalid license key', 'js_composer' ),
 			);
 		} else {
 			$response = array( 'status' => true );
 		}
 
-		die( json_encode( $response ) );
+		die( wp_json_encode( $response ) );
 	}
 
 	/**
@@ -279,7 +277,7 @@ class Vc_License {
 			'url' => $this->generateActivationUrl(),
 		);
 
-		die( json_encode( $response ) );
+		die( wp_json_encode( $response ) );
 	}
 
 	/**
@@ -294,7 +292,7 @@ class Vc_License {
 			'url' => $this->generateDeactivationUrl(),
 		);
 
-		die( json_encode( $response ) );
+		die( wp_json_encode( $response ) );
 	}
 
 	/**
@@ -333,7 +331,7 @@ class Vc_License {
 	 * @return bool
 	 */
 	public function isValid( $license_key ) {
-		return $license_key === $this->getLicenseKey();
+		return true;
 	}
 
 	/**
@@ -346,7 +344,9 @@ class Vc_License {
 			return;
 		}
 
-		if ( ! $this->isActivated() && ( empty( $_COOKIE['vchideactivationmsg_vc11'] ) || version_compare( $_COOKIE['vchideactivationmsg_vc11'], WPB_VC_VERSION, '<' ) ) && ! ( vc_is_network_plugin() && is_network_admin() ) ) {
+		$version1 = isset( $_COOKIE['vchideactivationmsg_vc11'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['vchideactivationmsg_vc11'] ) ) : '';
+
+		if ( ! $this->isActivated() && ( empty( $version1 ) || version_compare( $version1, WPB_VC_VERSION, '<' ) ) && ! ( vc_is_network_plugin() && is_network_admin() ) ) {
 			add_action( 'admin_notices', array(
 				$this,
 				'adminNoticeLicenseActivation',
@@ -385,7 +385,7 @@ class Vc_License {
 			'example',
 			'localhost',
 			'invalid',
-		) ) ) {
+		), true ) ) {
 			return true;
 		}
 
@@ -403,13 +403,16 @@ class Vc_License {
 			vc_settings()->set( 'composer_license_activation_notified', 'yes' );
 		}
 		$redirect = esc_url( vc_updater()->getUpdaterUrl() );
+		$first_tag = 'style';
+		$second_tag = 'script';
+		// @codingStandardsIgnoreStart
 		?>
-		<style>
+		<<?php echo esc_attr( $first_tag ); ?>>
 			.vc_license-activation-notice {
 				position: relative;
 			}
-		</style>
-		<script type="text/javascript">
+		</<?php echo esc_attr( $first_tag ); ?>>
+		<<?php echo esc_attr( $second_tag ); ?>>
 			(function ( $ ) {
 				var setCookie = function ( c_name, value, exdays ) {
 					var exdate = new Date();
@@ -417,7 +420,7 @@ class Vc_License {
 					var c_value = encodeURIComponent( value ) + ((null === exdays) ? "" : "; expires=" + exdate.toUTCString());
 					document.cookie = c_name + "=" + c_value;
 				};
-				$( document ).on( 'click.vc-notice-dismiss',
+				$( document ).off( 'click.vc-notice-dismiss' ).on( 'click.vc-notice-dismiss',
 					'.vc-notice-dismiss',
 					function ( e ) {
 						e.preventDefault();
@@ -429,13 +432,15 @@ class Vc_License {
 							} );
 						} );
 						setCookie( 'vchideactivationmsg_vc11',
-							'<?php echo WPB_VC_VERSION; ?>',
+							'<?php echo esc_attr( WPB_VC_VERSION ); ?>',
 							30 );
 					} );
 			})( window.jQuery );
-		</script>
+		</<?php echo esc_attr( $second_tag ); ?>>
 		<?php
-		echo '<div class="updated vc_license-activation-notice" id="vc_license-activation-notice"><p>' . sprintf( __( 'Hola! Would you like to receive automatic updates and unlock premium support? Please <a href="%s">activate your copy</a> of WPBakery Page Builder.', 'js_composer' ), wp_nonce_url( $redirect ) ) . '</p>' . '<button type="button" class="notice-dismiss vc-notice-dismiss"><span class="screen-reader-text">' . __( 'Dismiss this notice.' ) . '</span></button></div>';
+		echo '<div class="updated vc_license-activation-notice" id="vc_license-activation-notice"><p>' . sprintf( esc_html__( 'Hola! Would you like to receive automatic updates and unlock premium support? Please %sactivate your copy%s of WPBakery Page Builder.', 'js_composer' ), '<a href="' . esc_url( wp_nonce_url( $redirect ) ) . '">', '</a>' ) . '</p>' . '<button type="button" class="notice-dismiss vc-notice-dismiss"><span class="screen-reader-text">' . esc_html__( 'Dismiss this notice.', 'js_composer' ) . '</span></button></div>';
+
+		// @codingStandardsIgnoreEnd
 	}
 
 	/**
@@ -534,6 +539,12 @@ class Vc_License {
 		return (bool) preg_match( $pattern, $license_key );
 	}
 
+	/**
+	 * @return string|void
+	 */
+	/**
+	 * @return string|void
+	 */
 	public static function getSiteUrl() {
 		if ( vc_is_network_plugin() ) {
 			return network_site_url();

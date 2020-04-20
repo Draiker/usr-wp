@@ -1,36 +1,40 @@
-(function ( $ ) {
+(function () {
+	'use strict';
+
 	function ttaMapChildEvents( model ) {
-		var childTag = 'vc_tta_section';
-		vc.events.on(
-			'shortcodes:' + childTag + ':add:parent:' + model.get( 'id' ),
+		var child_tag = 'vc_tta_section';
+		window.vc.events.on(
+			'shortcodes:' + child_tag + ':add:parent:' + model.get( 'id' ),
 			function ( model ) {
-				var activeTabIndex, models, parentModel;
-				parentModel = vc.shortcodes.get( model.get( 'parent_id' ) );
-				activeTabIndex = parseInt( parentModel.getParam( 'active_section' ) );
-				if ( 'undefined' === typeof(activeTabIndex) ) {
-					activeTabIndex = 1;
+				var active_tab_index, models, parent_model;
+				parent_model = window.vc.shortcodes.get( model.get( 'parent_id' ) );
+				active_tab_index = parseInt( parent_model.getParam( 'active_section' ), 10 );
+				if ( 'undefined' === typeof (active_tab_index) ) {
+					active_tab_index = 1;
 				}
-				models = _.pluck( _.sortBy( vc.shortcodes.where( { parent_id: parentModel.get( 'id' ) } ),
+				models = _.pluck( _.sortBy( window.vc.shortcodes.where( { parent_id: parent_model.get( 'id' ) } ),
 					function ( model ) {
 						return model.get( 'order' );
 					} ), 'id' );
-				if ( models.indexOf( model.get( 'id' ) ) === activeTabIndex - 1 ) {
+				if ( models.indexOf( model.get( 'id' ) ) === active_tab_index - 1 ) {
 					model.set( 'isActiveSection', true );
 				}
 				return model;
 			}
 		);
-		vc.events.on(
-			'shortcodes:' + childTag + ':clone:parent:' + model.get( 'id' ),
+		window.vc.events.on(
+			'shortcodes:' + child_tag + ':clone:parent:' + model.get( 'id' ),
 			function ( model ) {
-				vc.ttaSectionActivateOnClone && model.set( 'isActiveSection', true );
-				vc.ttaSectionActivateOnClone = false;
+				if ( window.vc.ttaSectionActivateOnClone ) {
+					model.set( 'isActiveSection', true );
+				}
+				window.vc.ttaSectionActivateOnClone = false;
 			}
 		);
 	}
 
-	vc.events.on( 'shortcodes:vc_tta_accordion:add', ttaMapChildEvents );
-	vc.events.on( 'shortcodes:vc_tta_tabs:add', ttaMapChildEvents );
-	vc.events.on( 'shortcodes:vc_tta_tour:add', ttaMapChildEvents );
-	vc.events.on( 'shortcodes:vc_tta_pageable:add', ttaMapChildEvents );
-})( window.jQuery );
+	window.vc.events.on( 'shortcodes:vc_tta_accordion:add', ttaMapChildEvents );
+	window.vc.events.on( 'shortcodes:vc_tta_tabs:add', ttaMapChildEvents );
+	window.vc.events.on( 'shortcodes:vc_tta_tour:add', ttaMapChildEvents );
+	window.vc.events.on( 'shortcodes:vc_tta_pageable:add', ttaMapChildEvents );
+})();

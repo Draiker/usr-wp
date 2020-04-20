@@ -18,12 +18,8 @@ add_action( 'vc_before_init', 'vc_check_for_custom_css_build' );
  */
 function vc_check_for_custom_css_build() {
 	$version = vc_settings()->getCustomCssVersion();
-	if ( vc_user_access()
-			->wpAny( 'manage_options' )
-			->part( 'settings' )
-			->can( 'vc-color-tab' )
-			->get() && vc_settings()->useCustomCss() && ( ! $version || version_compare( WPB_VC_VERSION, $version, '<>' ) )
-	) {
+	if ( vc_user_access()->wpAny( 'manage_options' )->part( 'settings' )->can( 'vc-color-tab' )
+			->get() && vc_settings()->useCustomCss() && ( ! $version || version_compare( WPB_VC_VERSION, $version, '<>' ) ) ) {
 		add_action( 'admin_notices', 'vc_custom_css_admin_notice' );
 	}
 }
@@ -37,32 +33,34 @@ function vc_custom_css_admin_notice() {
 	global $current_screen;
 	vc_settings()->set( 'compiled_js_composer_less', '' );
 	$class = 'notice notice-warning vc_settings-custom-design-notice';
-	$message_important = __( 'Important notice', 'js_composer' );
+	$message_important = esc_html__( 'Important notice', 'js_composer' );
 	if ( is_object( $current_screen ) && isset( $current_screen->id ) && 'visual-composer_page_vc-color' === $current_screen->id ) {
-		$message = __( 'You have an outdated version of WPBakery Page Builder Design Options. It is required to review and save it.', 'js_composer' );
-		$html = '<p><strong>' . esc_html( $message_important ) . '</strong>: ' . esc_html( $message ) . '</p>';
+		$message = esc_html__( 'You have an outdated version of WPBakery Page Builder Design Options. It is required to review and save it.', 'js_composer' );
+		echo '<div class="' . esc_attr( $class ) . '"><p><strong>' . esc_html( $message_important ) . '</strong>: ' . esc_html( $message ) . '</p></div>';
 	} else {
-		$message = __( 'You have an outdated version of WPBakery Page Builder Design Options. It is required to review and save it.', 'js_composer' );
+		$message = esc_html__( 'You have an outdated version of WPBakery Page Builder Design Options. It is required to review and save it.', 'js_composer' );
 		$btnClass = 'button button-primary button-large vc_button-settings-less';
-		$btnAtts = array(
-			'href="' . admin_url( 'admin.php?page=vc-color' ) . '"',
+		echo '<div class="' . esc_attr( $class ) . '"><p><strong>' . esc_html( $message_important ) . '</strong>: ' . esc_html( $message ) . '</p>' . '<p>';
+		echo '<a ' . implode( ' ', array(
+			'href="' . esc_url( admin_url( 'admin.php?page=vc-color' ) ) . '"',
 			'class="' . esc_attr( $btnClass ) . '"',
 			'id="vc_less-save-button"',
 			'style="vertical-align: baseline;"',
 			// needed to fix ":active bug"
-		);
-		$html = '<p><strong>' . esc_html( $message_important ) . '</strong>: ' . esc_html( $message ) . '</p>'
-		        . '<p><a ' . implode( ' ', $btnAtts ) . '>'
-		        . __( 'Open Design Options', 'js_composer' ) . '</a></p>';
+		) ) . '>';
+		echo esc_html__( 'Open Design Options', 'js_composer' ) . '</a>';
+		echo '</p></div>';
 	}
-	echo '<div class="' . esc_attr( $class ) . '">' . $html . '</div>';
-
 }
 
+/**
+ * @param $submitButtonAttributes
+ * @return mixed
+ */
 function vc_page_settings_tab_color_submit_attributes( $submitButtonAttributes ) {
 	$submitButtonAttributes['data-vc-less-path'] = vc_str_remove_protocol( vc_asset_url( 'less/js_composer.less' ) );
 	$submitButtonAttributes['data-vc-less-root'] = vc_str_remove_protocol( vc_asset_url( 'less' ) );
-	$submitButtonAttributes['data-vc-less-variables'] = json_encode( apply_filters( 'vc_settings-less-variables', array(
+	$submitButtonAttributes['data-vc-less-variables'] = wp_json_encode( apply_filters( 'vc_settings-less-variables', array(
 		// Main accent color:
 		'vc_grey' => array(
 			'key' => 'wpb_js_vc_color',
@@ -136,7 +134,7 @@ function vc_page_settings_tab_color_submit_attributes( $submitButtonAttributes )
 
 function vc_page_settings_desing_options_load() {
 	add_filter( 'vc_settings-tab-submit-button-attributes-color', 'vc_page_settings_tab_color_submit_attributes' );
-	wp_enqueue_script( 'vc_less_js', vc_asset_url( 'lib/bower/lessjs/dist/less.min.js' ), array(), WPB_VC_VERSION );
+	wp_enqueue_script( 'vc_less_js', vc_asset_url( 'lib/bower/lessjs/dist/less.min.js' ), array(), WPB_VC_VERSION, true );
 }
 
 add_action( 'vc-settings-render-tab-vc-color', 'vc_page_settings_desing_options_load' );

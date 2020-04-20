@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 add_action( 'plugins_loaded', 'vc_init_vendor_qtranslate' );
 function vc_init_vendor_qtranslate() {
-	include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); // Require plugin.php to use is_plugin_active() below
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); // Require class-vc-wxr-parser-plugin.php to use is_plugin_active() below
 	if ( is_plugin_active( 'qtranslate/qtranslate.php' ) || defined( 'QT_SUPPORTED_WP_VERSION' ) ) {
 		require_once vc_path_dir( 'VENDORS_DIR', 'plugins/class-vc-vendor-qtranslate.php' );
 		$vendor = new Vc_Vendor_Qtranslate();

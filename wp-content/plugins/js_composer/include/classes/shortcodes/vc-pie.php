@@ -3,18 +3,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
+/**
+ * Class WPBakeryShortCode_Vc_Pie
+ */
 class WPBakeryShortCode_Vc_Pie extends WPBakeryShortCode {
+	/**
+	 * WPBakeryShortCode_Vc_Pie constructor.
+	 * @param $settings
+	 */
 	public function __construct( $settings ) {
 		parent::__construct( $settings );
 		$this->jsScripts();
 	}
 
 	public function jsScripts() {
-		wp_register_script( 'waypoints', vc_asset_url( 'lib/waypoints/waypoints.min.js' ), array( 'jquery' ), WPB_VC_VERSION, true );
+		wp_register_script( 'vc_waypoints', vc_asset_url( 'lib/vc_waypoints/vc-waypoints.min.js' ), array( 'jquery' ), WPB_VC_VERSION, true );
 		wp_register_script( 'progressCircle', vc_asset_url( 'lib/bower/progress-circle/ProgressCircle.min.js' ), array(), WPB_VC_VERSION, true );
 		wp_register_script( 'vc_pie', vc_asset_url( 'lib/vc_chart/jquery.vc_chart.min.js' ), array(
 			'jquery',
-			'waypoints',
+			'vc_waypoints',
 			'progressCircle',
 		), WPB_VC_VERSION, true );
 	}

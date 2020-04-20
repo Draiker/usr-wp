@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return array(
-	'name' => __( 'Old Tab', 'js_composer' ),
+	'name' => esc_html__( 'Old Tab', 'js_composer' ),
 	'base' => 'vc_tab',
 	'allowed_container_element' => 'vc_row',
 	'is_container' => true,
@@ -13,13 +13,13 @@ return array(
 	'params' => array(
 		array(
 			'type' => 'textfield',
-			'heading' => __( 'Title', 'js_composer' ),
+			'heading' => esc_html__( 'Title', 'js_composer' ),
 			'param_name' => 'title',
-			'description' => __( 'Enter title of tab.', 'js_composer' ),
+			'description' => esc_html__( 'Enter title of tab.', 'js_composer' ),
 		),
 		array(
 			'type' => 'tab_id',
-			'heading' => __( 'Tab ID', 'js_composer' ),
+			'heading' => esc_html__( 'Tab ID', 'js_composer' ),
 			'param_name' => 'tab_id',
 		),
 	),

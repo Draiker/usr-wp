@@ -15,11 +15,11 @@ foreach ( (array) $groups as $group ) {
 	}
 	$fields_params[] = array(
 		'type' => 'dropdown',
-		'heading' => __( 'Field name', 'js_composer' ),
+		'heading' => esc_html__( 'Field name', 'js_composer' ),
 		'param_name' => 'field_from_' . $group[ $id ],
 		'value' => $fields_param_value,
 		'save_always' => true,
-		'description' => __( 'Select field from group.', 'js_composer' ),
+		'description' => esc_html__( 'Choose field from group.', 'js_composer' ),
 		'dependency' => array(
 			'element' => 'field_group',
 			'value' => array( (string) $group[ $id ] ),
@@ -28,45 +28,45 @@ foreach ( (array) $groups as $group ) {
 }
 
 return array(
-	'name' => __( 'Advanced Custom Field', 'js_composer' ),
+	'name' => esc_html__( 'Advanced Custom Field', 'js_composer' ),
 	'base' => 'vc_acf',
 	'icon' => 'vc_icon-acf',
-	'category' => __( 'Content', 'js_composer' ),
-	'description' => __( 'Advanced Custom Field', 'js_composer' ),
+	'category' => esc_html__( 'Content', 'js_composer' ),
+	'description' => esc_html__( 'Advanced Custom Field', 'js_composer' ),
 	'params' => array_merge( array(
 		array(
 			'type' => 'dropdown',
-			'heading' => __( 'Field group', 'js_composer' ),
+			'heading' => esc_html__( 'Field group', 'js_composer' ),
 			'param_name' => 'field_group',
 			'value' => $groups_param_values,
 			'save_always' => true,
-			'description' => __( 'Select field group.', 'js_composer' ),
+			'description' => esc_html__( 'Select field group.', 'js_composer' ),
 		),
 	), $fields_params, array(
-			array(
-				'type' => 'checkbox',
-				'heading' => __( 'Show label', 'js_composer' ),
-				'param_name' => 'show_label',
-				'value' => array( __( 'Yes', 'js_composer' ) => 'yes' ),
-				'description' => __( 'Enter label to display before key value.', 'js_composer' ),
+		array(
+			'type' => 'checkbox',
+			'heading' => esc_html__( 'Show label', 'js_composer' ),
+			'param_name' => 'show_label',
+			'value' => array( esc_html__( 'Yes', 'js_composer' ) => 'yes' ),
+			'description' => esc_html__( 'Enter label to display before key value.', 'js_composer' ),
+		),
+		array(
+			'type' => 'dropdown',
+			'heading' => esc_html__( 'Align', 'js_composer' ),
+			'param_name' => 'align',
+			'value' => array(
+				esc_attr__( 'left', 'js_composer' ) => 'left',
+				esc_attr__( 'right', 'js_composer' ) => 'right',
+				esc_attr__( 'center', 'js_composer' ) => 'center',
+				esc_attr__( 'justify', 'js_composer' ) => 'justify',
 			),
-			array(
-				'type' => 'dropdown',
-				'heading' => __( 'Align', 'js_composer' ),
-				'param_name' => 'align',
-				'value' => array(
-					__( 'left', 'js_composer' ) => 'left',
-					__( 'right', 'js_composer' ) => 'right',
-					__( 'center', 'js_composer' ) => 'center',
-					__( 'justify', 'js_composer' ) => 'justify',
-				),
-				'description' => __( 'Select alignment.', 'js_composer' ),
-			),
-			array(
-				'type' => 'textfield',
-				'heading' => __( 'Extra class name', 'js_composer' ),
-				'param_name' => 'el_class',
-				'description' => __( 'Style particular content element differently - add a class name and refer to it in custom CSS.', 'js_composer' ),
-			),
-		) ),
+			'description' => esc_html__( 'Select alignment.', 'js_composer' ),
+		),
+		array(
+			'type' => 'textfield',
+			'heading' => esc_html__( 'Extra class name', 'js_composer' ),
+			'param_name' => 'el_class',
+			'description' => esc_html__( 'Style particular content element differently - add a class name and refer to it in custom CSS.', 'js_composer' ),
+		),
+	) ),
 );

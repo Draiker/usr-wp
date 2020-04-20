@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * @var $this WPBakeryShortCode_VC_Custom_heading
+ * @var WPBakeryShortCode_Vc_Custom_heading $this
  */
 
 extract( $this->getAttributes( $atts ) );
@@ -23,7 +23,7 @@ if ( ! empty( $link ) ) {
 }
 
 if ( ( ! isset( $atts['use_theme_fonts'] ) || 'yes' !== $atts['use_theme_fonts'] ) && ! empty( $google_fonts_data ) && isset( $google_fonts_data['values']['font_family'] ) ) {
-	wp_enqueue_style( 'vc_google_fonts_' . vc_build_safe_css_class( $google_fonts_data['values']['font_family'] ), 'https://fonts.googleapis.com/css?family=' . $google_fonts_data['values']['font_family'] . $subsets );
+	wp_enqueue_style( 'vc_google_fonts_' . vc_build_safe_css_class( $google_fonts_data['values']['font_family'] ), 'https://fonts.googleapis.com/css?family=' . $google_fonts_data['values']['font_family'] . $subsets, [], WPB_VC_VERSION );
 }
 
 if ( ! empty( $styles ) ) {
@@ -45,4 +45,4 @@ if ( apply_filters( 'vc_custom_heading_template_use_wrapper', false ) ) {
 	$output .= '</' . $font_container_data['values']['tag'] . '>';
 }
 
-echo $output;
+return $output;

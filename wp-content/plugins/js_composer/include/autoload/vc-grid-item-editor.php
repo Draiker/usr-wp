@@ -127,8 +127,7 @@ function vc_grid_item_editor_shortcodes() {
 	require_once vc_path_dir( 'PARAMS_DIR', 'vc_grid_item/editor/class-vc-grid-item-editor.php' );
 	// TODO: remove this because mapping can be based on post_type
 	if ( ( 'true' === vc_request_param( 'vc_grid_item_editor' ) || ( is_admin() && vc_grid_item_get_post_type() === Vc_Grid_Item_Editor::postType() ) && vc_user_access()
-			->wpAny( 'edit_posts', 'edit_pages' )->part( 'grid_builder' )->can()->get() )
-	) {
+			->wpAny( 'edit_posts', 'edit_pages' )->part( 'grid_builder' )->can()->get() ) ) {
 
 		global $vc_grid_item_editor;
 		add_action( 'vc_user_access_check-shortcode_edit', array(
@@ -162,6 +161,10 @@ if ( is_admin() ) {
 	add_filter( 'vc_ui-pointers-vc_grid_item', 'vc_grid_item_register_pointer' );
 }
 
+/**
+ * @param $pointers
+ * @return mixed
+ */
 function vc_grid_item_register_pointer( $pointers ) {
 	$screen = get_current_screen();
 	if ( 'add' === $screen->action ) {
@@ -171,7 +174,7 @@ function vc_grid_item_register_pointer( $pointers ) {
 				array(
 					'target' => '#vc_templates-editor-button',
 					'options' => array(
-						'content' => sprintf( '<h3> %s </h3> <p> %s </p>', __( 'Start Here!', 'js_composer' ), __( 'Start easy - use predefined template as a starting point and modify it.', 'js_composer' ) ),
+						'content' => sprintf( '<h3> %s </h3> <p> %s </p>', esc_html__( 'Start Here!', 'js_composer' ), esc_html__( 'Start easy - use predefined template as a starting point and modify it.', 'js_composer' ) ),
 						'position' => array(
 							'edge' => 'left',
 							'align' => 'center',
@@ -181,7 +184,7 @@ function vc_grid_item_register_pointer( $pointers ) {
 				array(
 					'target' => '[data-vc-navbar-control="animation"]',
 					'options' => array(
-						'content' => sprintf( '<h3> %s </h3> <p> %s </p>', __( 'Use Animations', 'js_composer' ), __( 'Select animation preset for grid element. "Hover" state will be added next to the "Normal" state tab.', 'js_composer' ) ),
+						'content' => sprintf( '<h3> %s </h3> <p> %s </p>', esc_html__( 'Use Animations', 'js_composer' ), esc_html__( 'Select animation preset for grid element. "Hover" state will be added next to the "Normal" state tab.', 'js_composer' ) ),
 						'position' => array(
 							'edge' => 'right',
 							'align' => 'center',
@@ -191,7 +194,7 @@ function vc_grid_item_register_pointer( $pointers ) {
 				array(
 					'target' => '.vc_gitem_animated_block-shortcode',
 					'options' => array(
-						'content' => sprintf( '<h3> %s </h3> <p> %s </p>', __( 'Style Design Options', 'js_composer' ), __( 'Edit "Normal" state to set "Featured image" as a background, control zone sizing proportions and other design options (Height mode: Select "Original" to scale image without cropping).', 'js_composer' ) ),
+						'content' => sprintf( '<h3> %s </h3> <p> %s </p>', esc_html__( 'Style Design Options', 'js_composer' ), esc_html__( 'Edit "Normal" state to set "Featured image" as a background, control zone sizing proportions and other design options (Height mode: Select "Original" to scale image without cropping).', 'js_composer' ) ),
 						'position' => array(
 							'edge' => 'bottom',
 							'align' => 'center',
@@ -201,7 +204,7 @@ function vc_grid_item_register_pointer( $pointers ) {
 				array(
 					'target' => '[data-vc-gitem="add-c"][data-vc-position="top"]',
 					'options' => array(
-						'content' => sprintf( '<h3> %s </h3> <p> %s </p>', __( 'Extend Element', 'js_composer' ), __( 'Additional content zone can be added to grid element edges (Note: This zone can not be animated).', 'js_composer' ) ) . '<p><img src="' . vc_asset_url( 'vc/gb_additional_content.png' ) . '" alt="" /></p>',
+						'content' => sprintf( '<h3> %s </h3> <p> %s </p>', esc_html__( 'Extend Element', 'js_composer' ), esc_html__( 'Additional content zone can be added to grid element edges (Note: This zone can not be animated).', 'js_composer' ) ) . '<p><img src="' . esc_url( vc_asset_url( 'vc/gb_additional_content.png' ) ) . '" alt="" /></p>',
 						'position' => array(
 							'edge' => 'right',
 							'align' => 'center',
@@ -211,7 +214,7 @@ function vc_grid_item_register_pointer( $pointers ) {
 				array(
 					'target' => '#wpadminbar',
 					'options' => array(
-						'content' => sprintf( '<h3> %s </h3> %s', __( 'Watch Video Tutorial', 'js_composer' ), '<p>' . __( 'Have a look how easy it is to work with grid element builder.', 'js_composer' ) . '</p>' . '<iframe width="500" height="281" src="//www.youtube.com/embed/sBvEiIL6Blo" frameborder="0" allowfullscreen></iframe>' ),
+						'content' => sprintf( '<h3> %s </h3> %s', esc_html__( 'Watch Video Tutorial', 'js_composer' ), '<p>' . esc_html__( 'Have a look how easy it is to work with grid element builder.', 'js_composer' ) . '</p>' . '<iframe width="500" height="281" src="https://www.youtube.com/embed/sBvEiIL6Blo" frameborder="0" allowfullscreen></iframe>' ),
 						'position' => array(
 							'edge' => 'top',
 							'align' => 'center',
@@ -227,6 +230,9 @@ function vc_grid_item_register_pointer( $pointers ) {
 	return $pointers;
 }
 
+/**
+ * @return array|mixed|void
+ */
 function vc_gitem_content_shortcodes() {
 	require_once vc_path_dir( 'PARAMS_DIR', 'vc_grid_item/class-vc-grid-item.php' );
 	$grid_item = new Vc_Grid_Item();
@@ -244,6 +250,10 @@ function vc_gitem_content_shortcodes() {
 	return array_diff( array_keys( $grid_item->shortcodes() ), $invalid_shortcodes );
 }
 
+/**
+ * @param $content
+ * @return false|int
+ */
 function vc_gitem_has_content( $content ) {
 	$tags = vc_gitem_content_shortcodes();
 	$regexp = vc_get_shortcode_regex( implode( '|', $tags ) );

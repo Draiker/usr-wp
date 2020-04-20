@@ -4,47 +4,47 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return array(
-	'name' => __( 'Old Accordion', 'js_composer' ),
+	'name' => esc_html__( 'Old Accordion', 'js_composer' ),
 	'base' => 'vc_accordion',
 	'show_settings_on_create' => false,
 	'is_container' => true,
 	'icon' => 'icon-wpb-ui-accordion',
 	'deprecated' => '4.6',
-	'category' => __( 'Content', 'js_composer' ),
-	'description' => __( 'Collapsible content panels', 'js_composer' ),
+	'category' => esc_html__( 'Content', 'js_composer' ),
+	'description' => esc_html__( 'Collapsible content panels', 'js_composer' ),
 	'params' => array(
 		array(
 			'type' => 'textfield',
-			'heading' => __( 'Widget title', 'js_composer' ),
+			'heading' => esc_html__( 'Widget title', 'js_composer' ),
 			'param_name' => 'title',
-			'description' => __( 'Enter text used as widget title (Note: located above content element).', 'js_composer' ),
+			'description' => esc_html__( 'Enter text used as widget title (Note: located above content element).', 'js_composer' ),
 		),
 		array(
 			'type' => 'textfield',
-			'heading' => __( 'Active section', 'js_composer' ),
+			'heading' => esc_html__( 'Active section', 'js_composer' ),
 			'param_name' => 'active_tab',
 			'value' => 1,
-			'description' => __( 'Enter section number to be active on load or enter "false" to collapse all sections.', 'js_composer' ),
+			'description' => esc_html__( 'Enter section number to be active on load or enter "false" to collapse all sections.', 'js_composer' ),
 		),
 		array(
 			'type' => 'checkbox',
-			'heading' => __( 'Allow collapse all sections?', 'js_composer' ),
+			'heading' => esc_html__( 'Allow collapse all sections?', 'js_composer' ),
 			'param_name' => 'collapsible',
-			'description' => __( 'If checked, it is allowed to collapse all sections.', 'js_composer' ),
-			'value' => array( __( 'Yes', 'js_composer' ) => 'yes' ),
+			'description' => esc_html__( 'If checked, it is allowed to collapse all sections.', 'js_composer' ),
+			'value' => array( esc_html__( 'Yes', 'js_composer' ) => 'yes' ),
 		),
 		array(
 			'type' => 'checkbox',
-			'heading' => __( 'Disable keyboard interactions?', 'js_composer' ),
+			'heading' => esc_html__( 'Disable keyboard interactions?', 'js_composer' ),
 			'param_name' => 'disable_keyboard',
-			'description' => __( 'If checked, disables keyboard arrow interactions (Keys: Left, Up, Right, Down, Space).', 'js_composer' ),
-			'value' => array( __( 'Yes', 'js_composer' ) => 'yes' ),
+			'description' => esc_html__( 'If checked, disables keyboard arrow interactions (Keys: Left, Up, Right, Down, Space).', 'js_composer' ),
+			'value' => array( esc_html__( 'Yes', 'js_composer' ) => 'yes' ),
 		),
 		array(
 			'type' => 'textfield',
-			'heading' => __( 'Extra class name', 'js_composer' ),
+			'heading' => esc_html__( 'Extra class name', 'js_composer' ),
 			'param_name' => 'el_class',
-			'description' => __( 'Style particular content element differently - add a class name and refer to it in custom CSS.', 'js_composer' ),
+			'description' => esc_html__( 'Style particular content element differently - add a class name and refer to it in custom CSS.', 'js_composer' ),
 		),
 	),
 	'custom_markup' => '
@@ -52,12 +52,12 @@ return array(
 %content%
 </div>
 <div class="tab_controls">
-    <a class="add_tab" title="' . __( 'Add section', 'js_composer' ) . '"><span class="vc_icon"></span> <span class="tab-label">' . __( 'Add section', 'js_composer' ) . '</span></a>
+    <a class="add_tab" title="' . esc_html__( 'Add section', 'js_composer' ) . '"><span class="vc_icon"></span> <span class="tab-label">' . esc_html__( 'Add section', 'js_composer' ) . '</span></a>
 </div>
 ',
 	'default_content' => '
-    [vc_accordion_tab title="' . __( 'Section 1', 'js_composer' ) . '"][/vc_accordion_tab]
-    [vc_accordion_tab title="' . __( 'Section 2', 'js_composer' ) . '"][/vc_accordion_tab]
+    [vc_accordion_tab title="' . esc_html__( 'Section 1', 'js_composer' ) . '"][/vc_accordion_tab]
+    [vc_accordion_tab title="' . esc_html__( 'Section 2', 'js_composer' ) . '"][/vc_accordion_tab]
 ',
 	'js_view' => 'VcAccordionView',
 );

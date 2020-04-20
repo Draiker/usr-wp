@@ -3,15 +3,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-class WPBakeryShortCode_VC_Hoverbox extends WPBakeryShortCode {
+/**
+ * Class WPBakeryShortCode_Vc_Hoverbox
+ */
+class WPBakeryShortCode_Vc_Hoverbox extends WPBakeryShortCode {
 
+	/**
+	 * @param $tag
+	 * @param $atts
+	 * @param $align
+	 * @return string
+	 * @throws \Exception
+	 */
 	public function getHeading( $tag, $atts, $align ) {
 		if ( isset( $atts[ $tag ] ) && '' !== trim( $atts[ $tag ] ) ) {
 			if ( isset( $atts[ 'use_custom_fonts_' . $tag ] ) && 'true' === $atts[ 'use_custom_fonts_' . $tag ] ) {
 				$custom_heading = visual_composer()->getShortCode( 'vc_custom_heading' );
 				$data = vc_map_integrate_parse_atts( $this->shortcode, 'vc_custom_heading', $atts, $tag . '_' );
 				$data['font_container'] = implode( '|', array_filter( array(
-					'tag:' . 'h2',
+					'tag:h2',
 					'text_align:' . esc_attr( $align ),
 					$data['font_container'],
 				) ) );
@@ -40,6 +50,11 @@ class WPBakeryShortCode_VC_Hoverbox extends WPBakeryShortCode {
 		return '';
 	}
 
+	/**
+	 * @param $atts
+	 * @return string
+	 * @throws \Exception
+	 */
 	public function renderButton( $atts ) {
 		$button_atts = vc_map_integrate_parse_atts( $this->shortcode, 'vc_btn', $atts, 'hover_btn_' );
 		$button = visual_composer()->getShortCode( 'vc_btn' );

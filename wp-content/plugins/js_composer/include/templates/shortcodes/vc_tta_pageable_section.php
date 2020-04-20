@@ -9,12 +9,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $el_id
  * @var $el_class
  * @var $content - shortcode content
- * @var $this WPBakeryShortCode_VC_Tta_Section
+ * @var WPBakeryShortCode_Vc_Tta_Section $this
  */
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 $this->resetVariables( $atts, $content );
-WPBakeryShortCode_VC_Tta_Section::$self_count ++;
-WPBakeryShortCode_VC_Tta_Section::$section_info[] = $atts;
+WPBakeryShortCode_Vc_Tta_Section::$self_count ++;
+WPBakeryShortCode_Vc_Tta_Section::$section_info[] = $atts;
 $isPageEditable = vc_is_page_editable();
 
 $output = '';
@@ -37,4 +37,4 @@ if ( $isPageEditable ) {
 $output .= '</div>';
 $output .= '</div>';
 
-echo $output;
+return $output;

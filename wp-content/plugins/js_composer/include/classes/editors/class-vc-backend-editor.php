@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 4.2
  */
-class Vc_Backend_Editor implements Vc_Editor_Interface {
+class Vc_Backend_Editor {
 
 	/**
 	 * @var
@@ -75,19 +75,21 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 		visual_composer()->registerAdminCss();
 		visual_composer()->registerAdminJavascript();
 	}
+
 	/**
 	 *    Calls add_meta_box to create Editor block. Block is rendered by WPBakeryVisualComposerLayout.
 	 *
-	 * @see WPBakeryVisualComposerLayout
+	 * @param $post_type
+	 * @throws \Exception
 	 * @since  4.2
 	 * @access public
 	 *
-	 * @param $post_type
+	 * @see WPBakeryVisualComposerLayout
 	 */
 	public function render( $post_type ) {
 		if ( $this->isValidPostType( $post_type ) ) {
 			// meta box to render
-			add_meta_box( 'wpb_visual_composer', __( 'WPBakery Page Builder', 'js_composer' ), array(
+			add_meta_box( 'wpb_visual_composer', esc_html__( 'WPBakery Page Builder', 'js_composer' ), array(
 				$this,
 				'renderEditor',
 			), $post_type, 'normal', 'high' );
@@ -109,7 +111,7 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 			return false;
 		}
 		$this->post = $post;
-		$post_custom_css = strip_tags( get_post_meta( $post->ID, '_wpb_post_custom_css', true ) );
+		$post_custom_css = wp_strip_all_tags( get_post_meta( $post->ID, '_wpb_post_custom_css', true ) );
 		$this->post_custom_css = $post_custom_css;
 		vc_include_template( 'editors/backend_editor.tpl.php', array(
 			'editor' => $this,
@@ -143,6 +145,7 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 	 * @param string $type
 	 *
 	 * @return bool
+	 * @throws \Exception
 	 */
 	public function isValidPostType( $type = '' ) {
 		$type = ! empty( $type ) ? $type : get_post_type();
@@ -181,7 +184,7 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 			WPBakeryShortCodeFishBones::enqueueJs();
 		} else {
 			wp_enqueue_script( 'vc-backend-actions-js' );
-			$this->enqueueCss(); //needed for navbar @todo split
+			$this->enqueueCss(); // needed for navbar @todo split
 		}
 		do_action( 'vc_backend_editor_enqueue_js_css' );
 	}
@@ -201,7 +204,7 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 		wp_register_script( 'wpb_json-js', vc_asset_url( 'lib/bower/json-js/json2.min.js' ), array(), WPB_VC_VERSION, true );
 		// used in post settings editor
 		wp_register_script( 'ace-editor', vc_asset_url( 'lib/bower/ace-builds/src-min-noconflict/ace.js' ), array( 'jquery' ), WPB_VC_VERSION, true );
-		wp_register_script( 'webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' ); // Google Web Font CDN
+		wp_register_script( 'webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array(), WPB_VC_VERSION, true ); // Google Web Font CDN
 
 		wp_localize_script( 'vc-backend-actions-js', 'i18nLocale', visual_composer()->getEditorsLocale() );
 	}
@@ -219,13 +222,13 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 			 * @todo check vc_add-element-deprecated-warning for fa icon usage ( set to our font )
 			 * also used in vc_icon shortcode
 			 */
-			wp_register_style( 'font-awesome', vc_asset_url( 'lib/bower/font-awesome/css/font-awesome.min.css' ), array(), WPB_VC_VERSION );
-
+			wp_register_style( 'vc_font_awesome_5_shims', vc_asset_url( 'lib/bower/font-awesome/css/v4-shims.min.css' ), array(), WPB_VC_VERSION );
+			wp_register_style( 'vc_font_awesome_5', vc_asset_url( 'lib/bower/font-awesome/css/all.min.css' ), array( 'vc_font_awesome_5_shims' ), WPB_VC_VERSION );
 			/**
 			 * @todo check for usages
 			 * definetelly used in edit form param: css_animation, but curreny vc_add_shortcode_param doesn't accept css [ @todo refactor that ]
 			 */
-			wp_register_style( 'animate-css', vc_asset_url( 'lib/bower/animate-css/animate.min.css' ), array(), WPB_VC_VERSION );
+			wp_register_style( 'vc_animate-css', vc_asset_url( 'lib/bower/animate-css/animate.min.css' ), array(), WPB_VC_VERSION );
 		}
 	}
 
@@ -274,9 +277,9 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 			// deprecated for tabs/accordion
 			'ui-custom-theme',
 			// used in deprecated message and also in vc-icon shortcode
-			'font-awesome',
+			'vc_font_awesome_5',
 			// used in css_animation edit form param
-			'animate-css',
+			'vc_animate-css',
 		);
 		$dependencies = array(
 			'js_composer',
@@ -293,6 +296,7 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 
 	/**
 	 * @return bool
+	 * @throws \Exception
 	 */
 	public function editorEnabled() {
 		return vc_user_access()->part( 'backend_editor' )->can()->get();

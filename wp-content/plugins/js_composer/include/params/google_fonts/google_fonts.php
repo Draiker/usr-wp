@@ -21,11 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  *     Default font family and all available styles to fetch
  *                        'font_style'=>'400 regular:400:normal', // Default font style. Name:weight:style, example:
  *     "800 bold regular:800:normal"
- *                        'font_family_description' => __('Select font family.','js_composer'),
- *                        'font_style_description' => __('Select font styling.','js_composer')
+ *                        'font_family_description' => esc_html__('Select font family.','js_composer'),
+ *                        'font_style_description' => esc_html__('Select font styling.','js_composer')
  *                  )
  *                ),
- *                'description' => __( 'Description for this group', 'js_composer' ), // Description for field group
+ *                'description' => esc_html__( 'Description for this group', 'js_composer' ), // Description for field group
  *            ),
  *      )
  */
@@ -36,11 +36,13 @@ class Vc_Google_Fonts {
 	 * @param $settings
 	 * @param $value
 	 *
-	 * @since 4.3
 	 * @return string
+	 * @since 4.3
 	 */
 	public function render( $settings, $value ) {
+		/** @var array $fields - used in template.php */
 		$fields = array();
+		/** @var array $values - used in template.php */
 		$values = array();
 		$set = isset( $settings['settings'], $settings['settings']['fields'] ) ? $settings['settings']['fields'] : array();
 		extract( $this->_vc_google_fonts_parse_attributes( $set, $value ) );
@@ -55,11 +57,9 @@ class Vc_Google_Fonts {
 	 * Load google fonts list for param
 	 * To change this list use add_filters('vc_google_fonts_get_fonts_filter','your_custom_function'); and change array
 	 * vc_filter: vc_google_fonts_get_fonts_filter
-	 * @since 4.3
-	 * @return array List of available fonts as array of objects. {"font_family":"Abril
-	 *     Fatface","font_styles":"regular","font_types":"400 regular:400:normal"}
 	 *
 	 * @return array
+	 * @since 4.3
 	 */
 	public function _vc_google_fonts_get_fonts() {
 		return apply_filters( 'vc_google_fonts_get_fonts_filter', json_decode( $this->fonts_list ) );
@@ -69,8 +69,8 @@ class Vc_Google_Fonts {
 	 * @param $attr
 	 * @param $value
 	 *
-	 * @since 4.3
 	 * @return array
+	 * @since 4.3
 	 */
 	public function _vc_google_fonts_parse_attributes( $attr, $value ) {
 		$fields = array();
@@ -91,7 +91,10 @@ class Vc_Google_Fonts {
 			'font_style_description' => isset( $fields['font_style_description'] ) ? $fields['font_style_description'] : '',
 		) );
 
-		return array( 'fields' => $fields, 'values' => $values );
+		return array(
+			'fields' => $fields,
+			'values' => $values,
+		);
 	}
 }
 
@@ -102,10 +105,10 @@ class Vc_Google_Fonts {
  * @param $settings
  * @param $value
  *
+ * @return mixed rendered template for params in edit form
+ *
  * @since 4.3
  * vc_filter: vc_google_fonts_render_filter
- * @return mixed|void rendered template for params in edit form
- *
  */
 function vc_google_fonts_form_field( $settings, $value ) {
 	$google_fonts = new Vc_Google_Fonts();

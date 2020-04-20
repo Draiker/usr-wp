@@ -6,9 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Return true value for filter 'wpb_vc_js_status_filter'.
  * It allows to start backend editor on load.
+ * @return string
  * @since 4.12
  *
- * @return string
  */
 function vc_set_default_content_for_post_type_wpb_vc_js_status_filter() {
 	return 'true';
@@ -21,16 +21,18 @@ function vc_set_default_content_for_post_type_wpb_vc_js_status_filter() {
  *
  * @param $post_content
  * @param $post
+ * @return null
+ * @throws \Exception
  * @since 4.12
  *
- * @return null
  */
 function vc_set_default_content_for_post_type( $post_content, $post ) {
 	if ( ! empty( $post_content ) || ! vc_backend_editor()->isValidPostType( $post->post_type ) ) {
 		return $post_content;
 	}
 	$template_settings = new Vc_Setting_Post_Type_Default_Template_Field( 'general', 'default_template_post_type' );
-	if ( ( $new_post_content = $template_settings->getTemplateByPostType( $post->post_type ) ) !== null ) {
+	$new_post_content = $template_settings->getTemplateByPostType( $post->post_type );
+	if ( null !== $new_post_content ) {
 		add_filter( 'wpb_vc_js_status_filter', 'vc_set_default_content_for_post_type_wpb_vc_js_status_filter' );
 
 		return $new_post_content;
@@ -51,7 +53,12 @@ class Vc_Setting_Post_Type_Default_Template_Field {
 	protected $key;
 	protected $post_types = false;
 
-	function __construct( $tab, $key ) {
+	/**
+	 * Vc_Setting_Post_Type_Default_Template_Field constructor.
+	 * @param $tab
+	 * @param $key
+	 */
+	public function __construct( $tab, $key ) {
 		$this->tab = $tab;
 		$this->key = $key;
 		add_action( 'vc_settings_tab-general', array(
@@ -60,20 +67,33 @@ class Vc_Setting_Post_Type_Default_Template_Field {
 		) );
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getFieldName() {
-		return __( 'Default template for post types', 'js_composer' );
+		return esc_html__( 'Default template for post types', 'js_composer' );
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getFieldKey() {
 		require_once vc_path_dir( 'SETTINGS_DIR', 'class-vc-settings.php' );
 
 		return Vc_Settings::getFieldPrefix() . $this->key;
 	}
 
+	/**
+	 * @param $type
+	 * @return bool
+	 */
 	protected function isValidPostType( $type ) {
 		return post_type_exists( $type );
 	}
 
+	/**
+	 * @return array|bool
+	 */
 	protected function getPostTypes() {
 		if ( false === $this->post_types ) {
 			require_once vc_path_dir( 'SETTINGS_DIR', 'class-vc-roles.php' );
@@ -84,10 +104,16 @@ class Vc_Setting_Post_Type_Default_Template_Field {
 		return $this->post_types;
 	}
 
+	/**
+	 * @return array
+	 */
 	protected function getTemplates() {
 		return $this->getTemplatesEditor()->getAllTemplates();
 	}
 
+	/**
+	 * @return bool|\Vc_Templates_Panel_Editor
+	 */
 	protected function getTemplatesEditor() {
 		return visual_composer()->templatesPanelEditor();
 	}
@@ -95,12 +121,14 @@ class Vc_Setting_Post_Type_Default_Template_Field {
 	/**
 	 * Get settings data for default templates
 	 *
-	 * @return array|mixed|void
+	 * @return array|mixed
 	 */
 	protected function get() {
 		require_once vc_path_dir( 'SETTINGS_DIR', 'class-vc-settings.php' );
 
-		return ( $value = Vc_Settings::get( $this->key ) ) ? $value : array();
+		$value = Vc_Settings::get( $this->key );
+
+		return $value ? $value : array();
 	}
 
 	/**
@@ -129,7 +157,7 @@ class Vc_Setting_Post_Type_Default_Template_Field {
 			$template = preg_replace_callback( "/{$pattern}/s", 'vc_convert_shortcode', $content );
 		} else {
 			if ( 'default_templates' === $template_type ) {
-				$template_data = $this->getTemplatesEditor()->getDefaultTemplate( $template_id );
+				$template_data = $this->getTemplatesEditor()->getDefaultTemplate( (int) $template_id );
 				if ( isset( $template_data['content'] ) ) {
 					$template = $template_data['content'];
 				}
@@ -144,18 +172,26 @@ class Vc_Setting_Post_Type_Default_Template_Field {
 		return $template;
 	}
 
+	/**
+	 * @param $type
+	 * @return string|null
+	 */
 	public function getTemplateByPostType( $type ) {
 		$value = $this->get();
 
 		return isset( $value[ $type ] ) ? $this->getTemplate( $value[ $type ] ) : null;
 	}
 
+	/**
+	 * @param $settings
+	 * @return mixed
+	 */
 	public function sanitize( $settings ) {
 		foreach ( $settings as $type => $template ) {
 			if ( empty( $template ) ) {
 				unset( $settings[ $type ] );
-			} else if ( ! $this->isValidPostType( $type ) || ! $this->getTemplate( $template ) ) {
-				add_settings_error( $this->getFieldKey(), 1, __( 'Invalid template or post type.', 'js_composer' ), 'error' );
+			} elseif ( ! $this->isValidPostType( $type ) || ! $this->getTemplate( $template ) ) {
+				add_settings_error( $this->getFieldKey(), 1, esc_html__( 'Invalid template or post type.', 'js_composer' ), 'error' );
 
 				return $settings;
 			}

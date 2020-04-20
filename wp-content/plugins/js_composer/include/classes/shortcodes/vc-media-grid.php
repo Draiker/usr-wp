@@ -5,21 +5,40 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once vc_path_dir( 'SHORTCODES_DIR', 'vc-basic-grid.php' );
 
-class WPBakeryShortCode_VC_Media_Grid extends WPBakeryShortCode_VC_Basic_Grid {
+/**
+ * Class WPBakeryShortCode_Vc_Media_Grid
+ */
+class WPBakeryShortCode_Vc_Media_Grid extends WPBakeryShortCode_Vc_Basic_Grid {
+	/**
+	 * WPBakeryShortCode_Vc_Media_Grid constructor.
+	 * @param $settings
+	 */
 	public function __construct( $settings ) {
 		parent::__construct( $settings );
-		add_filter( $this->shortcode . '_items_list', array( $this, 'setItemsIfEmpty' ) );
+		add_filter( $this->shortcode . '_items_list', array(
+			$this,
+			'setItemsIfEmpty',
+		) );
 	}
 
+	/**
+	 * @return mixed|string
+	 */
 	protected function getFileName() {
 		return 'vc_basic_grid';
 	}
 
+	/**
+	 * @param $max_items
+	 */
 	protected function setPagingAll( $max_items ) {
-		$this->atts['items_per_page'] = $this->atts['query_items_per_page']
-			= apply_filters( 'vc_basic_grid_items_per_page_all_max_items', self::$default_max_items );
+		$this->atts['items_per_page'] = $this->atts['query_items_per_page'] = apply_filters( 'vc_basic_grid_items_per_page_all_max_items', self::$default_max_items );
 	}
 
+	/**
+	 * @param $atts
+	 * @return array
+	 */
 	public function buildQuery( $atts ) {
 		if ( empty( $atts['include'] ) ) {
 			$atts['include'] = - 1;
@@ -35,6 +54,10 @@ class WPBakeryShortCode_VC_Media_Grid extends WPBakeryShortCode_VC_Basic_Grid {
 		return $settings;
 	}
 
+	/**
+	 * @param $items
+	 * @return string
+	 */
 	public function setItemsIfEmpty( $items ) {
 
 		if ( empty( $items ) ) {
@@ -42,7 +65,7 @@ class WPBakeryShortCode_VC_Media_Grid extends WPBakeryShortCode_VC_Basic_Grid {
 			$grid_item = new Vc_Grid_Item();
 			$grid_item->setGridAttributes( $this->atts );
 			$grid_item->shortcodes();
-			$item = '[vc_gitem]<img src="' . vc_asset_url( 'vc/vc_gitem_image.png' ) . '">[/vc_gitem]';
+			$item = '[vc_gitem]<img src="' . esc_url( vc_asset_url( 'vc/vc_gitem_image.png' ) ) . '">[/vc_gitem]';
 			$grid_item->parseTemplate( $item );
 			$items = str_repeat( $grid_item->renderItem( get_post( (int) vc_request_param( 'vc_post_id' ) ) ), 3 );
 		}
@@ -50,6 +73,11 @@ class WPBakeryShortCode_VC_Media_Grid extends WPBakeryShortCode_VC_Basic_Grid {
 		return $items;
 	}
 
+	/**
+	 * @param $param
+	 * @param $value
+	 * @return string
+	 */
 	public function singleParamHtmlHolder( $param, $value ) {
 		$output = '';
 		// Compatibility fixes
@@ -89,11 +117,14 @@ class WPBakeryShortCode_VC_Media_Grid extends WPBakeryShortCode_VC_Basic_Grid {
 			$images_ids = empty( $value ) ? array() : explode( ',', trim( $value ) );
 			$output .= '<ul class="attachment-thumbnails' . ( empty( $images_ids ) ? ' image-exists' : '' ) . '" data-name="' . $param_name . '">';
 			foreach ( $images_ids as $image ) {
-				$img = wpb_getImageBySize( array( 'attach_id' => (int) $image, 'thumb_size' => 'thumbnail' ) );
-				$output .= ( $img ? '<li>' . $img['thumbnail'] . '</li>' : '<li><img width="150" height="150" test="' . $image . '" src="' . vc_asset_url( 'vc/blank.gif' ) . '" class="attachment-thumbnail" alt="" title="" /></li>' );
+				$img = wpb_getImageBySize( array(
+					'attach_id' => (int) $image,
+					'thumb_size' => 'thumbnail',
+				) );
+				$output .= ( $img ? '<li>' . $img['thumbnail'] . '</li>' : '<li><img width="150" height="150" src="' . esc_url( vc_asset_url( 'vc/blank.gif' ) ) . '" class="attachment-thumbnail" alt="" title="" /></li>' );
 			}
 			$output .= '</ul>';
-			$output .= '<a href="#" class="column_edit_trigger' . ( ! empty( $images_ids ) ? ' image-exists' : '' ) . '">' . __( 'Add images', 'js_composer' ) . '</a>';
+			$output .= '<a href="#" class="column_edit_trigger' . ( ! empty( $images_ids ) ? ' image-exists' : '' ) . '">' . esc_html__( 'Add images', 'js_composer' ) . '</a>';
 
 		}
 

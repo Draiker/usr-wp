@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $css
  * @var $css_animation
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_flickr
+ * @var WPBakeryShortCode_Vc_flickr $this
  */
 $el_class = $el_id = $title = $flickr_id = $css = $css_animation = $count = $type = $display = '';
 $output = '';
@@ -30,17 +30,18 @@ $wrapper_attributes = array();
 if ( ! empty( $el_id ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
 }
+$custom_tag = 'script';
+// @codingStandardsIgnoreStarts
 $output = '
 	<div class="' . esc_attr( $css_class ) . '" ' . implode( ' ', $wrapper_attributes ) . '>
 		<div class="wpb_wrapper">
 			' . wpb_widget_title( array(
 		'title' => $title,
 		'extraclass' => 'wpb_flickr_heading',
-	) ) . '
-			<script type="text/javascript" src="//www.flickr.com/badge_code_v2.gne?count=' . $count . '&amp;display=' . $display . '&amp;size=s&amp;layout=x&amp;source=' . $type . '&amp;' . $type . '=' . $flickr_id . '"></script>
-			<p class="flickr_stream_wrap"><a class="wpb_follow_btn wpb_flickr_stream" href="//www.flickr.com/photos/' . $flickr_id . '">' . __( 'View stream on flickr', 'js_composer' ) . '</a></p>
+	) ) . '<' . $custom_tag . ' src="https://www.flickr.com/badge_code_v2.gne?count=' . esc_attr( $count ) . '&amp;display=' . esc_attr( $display ) . '&amp;size=s&amp;layout=x&amp;source=' . esc_attr( $type ) . '&amp;' . esc_attr( $type ) . '=' . esc_attr( $flickr_id ) . '"></' . $custom_tag . '>
+			<p class="flickr_stream_wrap"><a class="wpb_follow_btn wpb_flickr_stream" href="https://www.flickr.com/photos/' . esc_attr( $flickr_id ) . '">' . esc_html__( 'View stream on flickr', 'js_composer' ) . '</a></p>
 		</div>
 	</div>
 ';
 
-echo $output;
+return $output;

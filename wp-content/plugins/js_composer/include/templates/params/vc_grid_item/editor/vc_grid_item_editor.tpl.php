@@ -5,28 +5,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once vc_path_dir( 'PARAMS_DIR', 'vc_grid_item/editor/navbar/class-vc-navbar-grid-item.php' );
 $nav_bar = new Vc_Navbar_Grid_Item( $post );
 $nav_bar->render();
-
+$custom_tag = 'script';
 ?>
 <div class="metabox-composer-content">
 	<div id="visual_composer_content" class="wpb_main_sortable main_wrapper"
-		data-type="<?php echo esc_attr( get_post_type() ) ?>"></div>
+		data-type="<?php echo esc_attr( get_post_type() ); ?>"></div>
 	<div id="vc_gitem-preview" class="main_wrapper vc_gitem-preview" data-vc-grid-item="preview">
 	</div>
 </div>
 <input type="hidden" id="wpb_vc_js_status" name="wpb_vc_js_status" value="true"/>
 <input type="hidden" id="wpb_vc_loading" name="wpb_vc_loading"
-	value="<?php _e( 'Loading, please wait...', 'js_composer' ) ?>"/>
+	value="<?php esc_html_e( 'Loading, please wait...', 'js_composer' ); ?>"/>
 <input type="hidden" id="wpb_vc_loading_row" name="wpb_vc_loading_row"
-	value="<?php _e( 'Crunching...', 'js_composer' ) ?>"/>
+	value="<?php esc_html_e( 'Crunching...', 'js_composer' ); ?>"/>
 <input type="hidden" name="vc_grid_item_editor" value="true"/>
-<script type="text/javascript">
-	var vc_post_id = <?php echo get_the_ID(); ?>;
+<<?php echo esc_attr( $custom_tag ); ?>>
+	window.vc_post_id = <?php echo get_the_ID(); ?>;
 	<?php
 	$vc_gitem_template = vc_request_param( 'vc_gitem_template' );
-	if ( strlen( $vc_gitem_template ) && false !== ( $template = Vc_Grid_Item::predefinedTemplate( $vc_gitem_template ) ) ) {
-		echo "var vcDefaultGridItemContent = '" . $template['template'] . "';";
+	$template = Vc_Grid_Item::predefinedTemplate( $vc_gitem_template );
+	if ( strlen( $vc_gitem_template ) && $template ) {
+		echo "var vcDefaultGridItemContent = '" . esc_attr( $template['template'] ) . "';";
 	} else {
-	?>
+		?>
 	/**
 	 * Get content of grid item editor of current post. Data is used as models collection of shortcodes.
 	 * Data always wrapped with vc_gitem shortcode.
@@ -61,7 +62,7 @@ $nav_bar->render();
 		'[/vc_gitem_zone_b]' +
 		'[/vc_gitem_animated_block]' +
 		'[/vc_gitem]';
-	<?php
+		<?php
 	}
 	?>
-</script>
+</<?php echo esc_attr( $custom_tag ); ?>>

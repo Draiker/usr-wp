@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $render
  * @var $content - shortcode content
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Gitem_Zone
+ * @var WPBakeryShortCode_Vc_Gitem_Zone $this
  */
 $el_class = $css = $render = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
@@ -23,15 +23,13 @@ if ( 'no' === $render ) {
 
 	return;
 }
-$css_class = 'vc_gitem-zone'
-	. ( strlen( $this->zone_name ) ? ' vc_gitem-zone-' . $this->zone_name : '' )
-	. $this->getExtraClass( $el_class );
+$css_class = 'vc_gitem-zone' . ( strlen( $this->zone_name ) ? ' vc_gitem-zone-' . $this->zone_name : '' ) . $this->getExtraClass( $el_class );
 
 $css_class_mini = 'vc_gitem-zone-mini';
 $css_class .= vc_shortcode_custom_css_class( $css, ' ' );
-?>
-<div class="<?php echo esc_attr( $css_class ) ?>">
-	<div class="<?php echo esc_attr( $css_class_mini ) ?>">
-		<?php echo do_shortcode( $content ) ?>
-	</div>
-</div>
+
+$output = '';
+
+$output .= '<div class="' . esc_attr( $css_class ) . '"><div class="' . esc_attr( $css_class_mini ) . '">' . do_shortcode( $content ) . '</div></div>';
+
+echo $output;

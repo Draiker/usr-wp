@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $css
  * @var $css_animation
  * Shortcode class
- * @var $this WPBakeryShortCode_Vc_Round_Chart
+ * @var WPBakeryShortCode_Vc_Round_Chart $this
  */
 $el_class = $el_id = $title = $type = $style = $legend = $animation = $tooltips = $stroke_color = $stroke_width = $values = $css = $css_animation = $custom_stroke_color = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
@@ -139,7 +139,7 @@ foreach ( $values as $k => $v ) {
 	if ( 'custom' === $style ) {
 		if ( ! empty( $v['custom_color'] ) ) {
 			$color = $v['custom_color'];
-			$highlight = vc_colorCreator( $v['custom_color'], - 10 ); //10% darker
+			$highlight = vc_colorCreator( $v['custom_color'], - 10 ); // 10% darker
 		} else {
 			$color = $base_colors['normal']['grey'];
 			$highlight = $base_colors['active']['grey'];
@@ -158,7 +158,7 @@ foreach ( $values as $k => $v ) {
 }
 
 $options[] = 'data-vc-type="' . esc_attr( $type ) . '"';
-$options[] = 'data-vc-values="' . esc_attr( json_encode( $data ) ) . '"';
+$options[] = 'data-vc-values="' . esc_attr( wp_json_encode( $data ) ) . '"';
 
 if ( '' !== $title ) {
 	$title = '<h2 class="wpb_heading">' . $title . '</h4>';
@@ -186,4 +186,4 @@ $output = '
 </div>' . '
 ';
 
-echo $output;
+return $output;

@@ -3,20 +3,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-class WPBakeryShortCode_VC_gallery extends WPBakeryShortCode {
-
-	function __construct( $settings ) {
+/**
+ * Class WPBakeryShortCode_Vc_gallery
+ */
+class WPBakeryShortCode_Vc_Gallery extends WPBakeryShortCode {
+	/**
+	 * WPBakeryShortCode_Vc_gallery constructor.
+	 * @param $settings
+	 */
+	public function __construct( $settings ) {
 		parent::__construct( $settings );
 
 		$this->shortcodeScripts();
 	}
 
 	public function shortcodeScripts() {
-		wp_register_script( 'vc_grid-js-imagesloaded',
-			vc_asset_url( 'lib/bower/imagesloaded/imagesloaded.pkgd.min.js' )
-		);
+		wp_register_script( 'vc_grid-js-imagesloaded', vc_asset_url( 'lib/bower/imagesloaded/imagesloaded.pkgd.min.js' ), array( 'jquery' ), WPB_VC_VERSION, true );
 	}
 
+	/**
+	 * @param $param
+	 * @param $value
+	 * @return string
+	 */
 	public function singleParamHtmlHolder( $param, $value ) {
 		$output = '';
 		// Compatibility fixes
@@ -54,11 +63,14 @@ class WPBakeryShortCode_VC_gallery extends WPBakeryShortCode {
 			$images_ids = empty( $value ) ? array() : explode( ',', trim( $value ) );
 			$output .= '<ul class="attachment-thumbnails' . ( empty( $images_ids ) ? ' image-exists' : '' ) . '" data-name="' . $param_name . '">';
 			foreach ( $images_ids as $image ) {
-				$img = wpb_getImageBySize( array( 'attach_id' => (int) $image, 'thumb_size' => 'thumbnail' ) );
-				$output .= ( $img ? '<li>' . $img['thumbnail'] . '</li>' : '<li><img width="150" height="150" test="' . $image . '" src="' . vc_asset_url( 'vc/blank.gif' ) . '" class="attachment-thumbnail" alt="" title="" /></li>' );
+				$img = wpb_getImageBySize( array(
+					'attach_id' => (int) $image,
+					'thumb_size' => 'thumbnail',
+				) );
+				$output .= ( $img ? '<li>' . $img['thumbnail'] . '</li>' : '<li><img width="150" height="150" test="' . $image . '" src="' . esc_url( vc_asset_url( 'vc/blank.gif' ) ) . '" class="attachment-thumbnail" alt="" title="" /></li>' );
 			}
 			$output .= '</ul>';
-			$output .= '<a href="#" class="column_edit_trigger' . ( ! empty( $images_ids ) ? ' image-exists' : '' ) . '">' . __( 'Add images', 'js_composer' ) . '</a>';
+			$output .= '<a href="#" class="column_edit_trigger' . ( ! empty( $images_ids ) ? ' image-exists' : '' ) . '">' . esc_html__( 'Add images', 'js_composer' ) . '</a>';
 
 		}
 

@@ -18,8 +18,9 @@ extract( shortcode_atts( array(
 
 $key = strlen( $custom_field_key ) > 0 ? $custom_field_key : $field_key;
 
-if ( strlen( $key ) ) :  ?>
-	<div class="vc_gitem-custom-field-<?php echo esc_attr( $key ) ?>">{{ post_meta_value:<?php echo esc_attr( $key ) ?>
-		}}
-	</div>
-<?php endif ?>
+$output = '';
+if ( strlen( $key ) ) {
+	$output .= '<div class="vc_gitem-custom-field-' . esc_attr( $key ) . '">{{ post_meta_value: ' . esc_attr( $key ) . '}}</div>';
+}
+
+return $output;

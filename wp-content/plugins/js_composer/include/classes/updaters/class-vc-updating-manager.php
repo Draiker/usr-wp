@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Manage update messages and Plugins info for VC in default Wordpress plugins list.
+ * Manage update messages and Plugins info for VC in default WordPress plugins list.
  */
 class Vc_Updating_Manager {
 	/**
@@ -47,7 +47,7 @@ class Vc_Updating_Manager {
 	 * @param string $update_path
 	 * @param string $plugin_slug
 	 */
-	function __construct( $current_version, $update_path, $plugin_slug ) {
+	public function __construct( $current_version, $update_path, $plugin_slug ) {
 		// Set the class public variables
 		$this->current_version = $current_version;
 		$this->update_path = $update_path;
@@ -199,10 +199,9 @@ class Vc_Updating_Manager {
 	public function addUpgradeMessageLink() {
 		$is_activated = vc_license()->isActivated();
 		if ( ! $is_activated ) {
-			$url = esc_url( vc_updater()->getUpdaterUrl() );
-			$redirect = sprintf( '<a href="%s" target="_blank">%s</a>', $url, __( 'settings', 'js_composer' ) );
+			$url = vc_updater()->getUpdaterUrl();
 
-			echo sprintf( ' ' . __( 'To receive automatic updates license activation is required. Please visit %s to activate your WPBakery Page Builder.', 'js_composer' ), $redirect ) . sprintf( ' <a href="http://go.wpbakery.com/faq-update-in-theme" target="_blank">%s</a>', __( 'Got WPBakery Page Builder in theme?', 'js_composer' ) );
+			echo sprintf( ' ' . esc_html__( 'To receive automatic updates license activation is required. Please visit %ssettings%s to activate your WPBakery Page Builder.', 'js_composer' ), '<a href="' . esc_url( $url ) . '" target="_blank">', '</a>' ) . sprintf( ' <a href="https://go.wpbakery.com/faq-update-in-theme" target="_blank">%s</a>', esc_html__( 'Got WPBakery Page Builder in theme?', 'js_composer' ) );
 		}
 	}
 }

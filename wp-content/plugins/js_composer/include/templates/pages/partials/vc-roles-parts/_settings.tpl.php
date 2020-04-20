@@ -14,11 +14,11 @@ vc_include_template( 'pages/partials/vc-roles-parts/_part.tpl.php', array(
 	'custom_value' => 'custom',
 	'capabilities' => $tabs,
 	'options' => array(
-		array( true, __( 'All', 'js_composer' ) ),
-		array( 'custom', __( 'Custom', 'js_composer' ) ),
-		array( false, __( 'Disabled', 'js_composer' ) ),
+		array( true, esc_html__( 'All', 'js_composer' ) ),
+		array( 'custom', esc_html__( 'Custom', 'js_composer' ) ),
+		array( false, esc_html__( 'Disabled', 'js_composer' ) ),
 	),
-	'main_label' => __( 'Settings options', 'js_composer' ),
-	'custom_label' => __( 'Settings options', 'js_composer' ),
-	'description' => __( 'Control access rights to WPBakery Page Builder admin settings tabs (e.g. General Settings, Shortcode Mapper, ...)', 'js_composer' ),
+	'main_label' => esc_html__( 'Settings options', 'js_composer' ),
+	'custom_label' => esc_html__( 'Settings options', 'js_composer' ),
+	'description' => esc_html__( 'Control access rights to WPBakery Page Builder admin settings tabs (e.g. General Settings, Shortcode Mapper, ...)', 'js_composer' ),
 ) );

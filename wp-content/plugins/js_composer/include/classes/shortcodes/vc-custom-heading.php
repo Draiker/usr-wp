@@ -4,10 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class WPBakeryShortCode_VC_Custom_heading
+ * Class WPBakeryShortCode_Vc_Custom_heading
  * @since 4.3
  */
-class WPBakeryShortCode_VC_Custom_heading extends WPBakeryShortCode {
+class WPBakeryShortCode_Vc_Custom_Heading extends WPBakeryShortCode {
 	/**
 	 * Defines fields names for google_fonts, font_container and etc
 	 * @since 4.4
@@ -26,8 +26,8 @@ class WPBakeryShortCode_VC_Custom_heading extends WPBakeryShortCode {
 	 *
 	 * @param $key
 	 *
-	 * @since 4.4
 	 * @return bool
+	 * @since 4.4
 	 */
 	protected function getField( $key ) {
 		return isset( $this->fields[ $key ] ) ? $this->fields[ $key ] : false;
@@ -38,8 +38,9 @@ class WPBakeryShortCode_VC_Custom_heading extends WPBakeryShortCode {
 	 *
 	 * @param $key
 	 *
-	 * @since 4.4
 	 * @return array|bool
+	 * @throws \Exception
+	 * @since 4.4
 	 */
 	protected function getParamData( $key ) {
 		return WPBMap::getParam( $this->shortcode, $this->getField( $key ) );
@@ -50,8 +51,9 @@ class WPBakeryShortCode_VC_Custom_heading extends WPBakeryShortCode {
 	 *
 	 * @param $atts
 	 *
-	 * @since 4.3
 	 * @return array
+	 * @throws \Exception
+	 * @since 4.3
 	 */
 	public function getAttributes( $atts ) {
 		/**
@@ -68,7 +70,7 @@ class WPBakeryShortCode_VC_Custom_heading extends WPBakeryShortCode {
 
 		/**
 		 * Get default values from VC_MAP.
-		 **/
+		 */
 		$google_fonts_field = $this->getParamData( 'google_fonts' );
 		$font_container_field = $this->getParamData( 'font_container' );
 
@@ -101,8 +103,8 @@ class WPBakeryShortCode_VC_Custom_heading extends WPBakeryShortCode {
 	 * @param $font_container_data
 	 * @param $atts
 	 *
-	 * @since 4.3
 	 * @return array
+	 * @since 4.3
 	 */
 	public function getStyles( $el_class, $css, $google_fonts_data, $font_container_data, $atts ) {
 		$styles = array();
@@ -118,7 +120,7 @@ class WPBakeryShortCode_VC_Custom_heading extends WPBakeryShortCode {
 					if ( 'font_size' === $key ) {
 						$pattern = '/^(\d*(?:\.\d+)?)\s*(px|\%|in|cm|mm|em|rem|ex|pt|pc|vw|vh|vmin|vmax)?$/';
 						// allowed metrics: http://www.w3schools.com/cssref/css_units.asp
-						$regexr = preg_match( $pattern, $value, $matches );
+						preg_match( $pattern, $value, $matches );
 						$value = isset( $matches[1] ) ? (float) $matches[1] : (float) $value;
 						$unit = isset( $matches[2] ) ? $matches[2] : 'px';
 						$value = $value . $unit;

@@ -12,6 +12,10 @@ function vc_frontend_editor_pointer() {
 
 add_action( 'admin_init', 'vc_frontend_editor_pointer' );
 
+/**
+ * @param $pointers
+ * @return mixed
+ */
 function vc_frontend_editor_register_pointer( $pointers ) {
 	global $post;
 	if ( is_object( $post ) && ! strlen( $post->post_content ) ) {
@@ -21,10 +25,7 @@ function vc_frontend_editor_register_pointer( $pointers ) {
 				array(
 					'target' => '#vc_add-new-element',
 					'options' => array(
-						'content' => sprintf( '<h3> %s </h3> <p> %s </p>',
-							__( 'Add Elements', 'js_composer' ),
-							__( 'Add new element or start with a template.', 'js_composer' )
-						),
+						'content' => sprintf( '<h3> %s </h3> <p> %s </p>', esc_html__( 'Add Elements', 'js_composer' ), esc_html__( 'Add new element or start with a template.', 'js_composer' ) ),
 						'position' => array(
 							'edge' => 'top',
 							'align' => 'left',
@@ -36,10 +37,7 @@ function vc_frontend_editor_register_pointer( $pointers ) {
 				array(
 					'target' => '.vc_controls-out-tl:first',
 					'options' => array(
-						'content' => sprintf( '<h3> %s </h3> <p> %s </p>',
-							__( 'Rows and Columns', 'js_composer' ),
-							__( 'This is a row container. Divide it into columns and style it. You can add elements into columns.', 'js_composer' )
-						),
+						'content' => sprintf( '<h3> %s </h3> <p> %s </p>', esc_html__( 'Rows and Columns', 'js_composer' ), esc_html__( 'This is a row container. Divide it into columns and style it. You can add elements into columns.', 'js_composer' ) ),
 						'position' => array(
 							'edge' => 'left',
 							'align' => 'center',
@@ -52,11 +50,7 @@ function vc_frontend_editor_register_pointer( $pointers ) {
 				array(
 					'target' => '.vc_controls-cc:first',
 					'options' => array(
-						'content' => sprintf( '<h3> %s </h3> <p> %s <br/><br/> %s</p>',
-							__( 'Control Elements', 'js_composer' ),
-							__( 'You can edit your element at any time and drag it around your layout.', 'js_composer' ),
-							sprintf( __( 'P.S. Learn more at our <a href="%s" target="_blank">Knowledge Base</a>.', 'js_composer' ), 'http://kb.wpbakery.com' )
-						),
+						'content' => sprintf( '<h3> %s </h3> <p> %s <br/><br/> %s</p>', esc_html__( 'Control Elements', 'js_composer' ), esc_html__( 'You can edit your element at any time and drag it around your layout.', 'js_composer' ), sprintf( esc_html__( 'P.S. Learn more at our %sKnowledge Base%s.', 'js_composer' ), '<a href="https://kb.wpbakery.com" target="_blank">', '</a>' ) ),
 						'position' => array(
 							'edge' => 'left',
 							'align' => 'center',
@@ -73,7 +67,6 @@ function vc_frontend_editor_register_pointer( $pointers ) {
 	return $pointers;
 }
 
-// @todo check is this correct place (editable page)
 function vc_page_editable_enqueue_pointer_scripts() {
 	if ( vc_is_page_editable() ) {
 		wp_enqueue_style( 'wp-pointer' );

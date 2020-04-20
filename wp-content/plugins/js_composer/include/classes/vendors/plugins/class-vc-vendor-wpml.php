@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Class Vc_Vendor_WPML
  * @since 4.9
  */
-class Vc_Vendor_WPML implements Vc_Vendor_Interface {
+class Vc_Vendor_WPML {
 
 	public function load() {
 		add_filter( 'vc_object_id', array(
@@ -33,6 +33,10 @@ class Vc_Vendor_WPML implements Vc_Vendor_Interface {
 		}
 	}
 
+	/**
+	 * @param $link
+	 * @return string
+	 */
 	public function appendLangToUrlGrid( $link ) {
 		global $sitepress;
 		if ( is_object( $sitepress ) ) {
@@ -47,6 +51,10 @@ class Vc_Vendor_WPML implements Vc_Vendor_Interface {
 		return $link;
 	}
 
+	/**
+	 * @param $id
+	 * @return mixed|void
+	 */
 	public function filterMediaId( $id ) {
 		return apply_filters( 'wpml_object_id', $id, 'post', true );
 	}

@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $css
  * @var $css_animation
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Progress_Bar
+ * @var WPBakeryShortCode_Vc_Progress_Bar $this
  */
 $title = $values = $units = $bgcolor = $css = $custombgcolor = $customtxtcolor = $options = $el_class = $el_id = $css_animation = '';
 $output = '';
@@ -26,16 +26,16 @@ $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 $atts = $this->convertAttributesToNewProgressBar( $atts );
 
 extract( $atts );
-wp_enqueue_script( 'waypoints' );
+wp_enqueue_script( 'vc_waypoints' );
 
 $el_class = $this->getExtraClass( $el_class ) . $this->getCSSAnimation( $css_animation );
 
 $bar_options = array();
 $options = explode( ',', $options );
-if ( in_array( 'animated', $options ) ) {
+if ( in_array( 'animated', $options, true ) ) {
 	$bar_options[] = 'animated';
 }
-if ( in_array( 'striped', $options ) ) {
+if ( in_array( 'striped', $options, true ) ) {
 	$bar_options[] = 'striped';
 }
 
@@ -61,7 +61,10 @@ if ( ! empty( $el_id ) ) {
 }
 $output = '<div class="' . esc_attr( $css_class ) . '" ' . implode( ' ', $wrapper_attributes ) . '>';
 
-$output .= wpb_widget_title( array( 'title' => $title, 'extraclass' => 'wpb_progress_bar_heading' ) );
+$output .= wpb_widget_title( array(
+	'title' => $title,
+	'extraclass' => 'wpb_progress_bar_heading',
+) );
 
 $values = (array) vc_param_group_parse_atts( $values );
 $max_value = 0.0;
@@ -102,4 +105,4 @@ foreach ( $graph_lines_data as $line ) {
 
 $output .= '</div>';
 
-echo $output;
+return $output;

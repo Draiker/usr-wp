@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $el_class
  * @var $el_id
  * Shortcode class
- * @var $this WPBakeryShortCode_VC_Wp_Links
+ * @var WPBakeryShortCode_Vc_Wp_Links $this
  */
 $category = $options = $orderby = $limit = $el_class = $el_id = '';
 $output = '';
@@ -21,16 +21,16 @@ $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
 $options = explode( ',', $options );
-if ( in_array( 'images', $options ) ) {
+if ( in_array( 'images', $options, true ) ) {
 	$atts['images'] = true;
 }
-if ( in_array( 'name', $options ) ) {
+if ( in_array( 'name', $options, true ) ) {
 	$atts['name'] = true;
 }
-if ( in_array( 'description', $options ) ) {
+if ( in_array( 'description', $options, true ) ) {
 	$atts['description'] = true;
 }
-if ( in_array( 'rating', $options ) ) {
+if ( in_array( 'rating', $options, true ) ) {
 	$atts['rating'] = true;
 }
 
@@ -51,5 +51,5 @@ if ( is_object( $wp_widget_factory ) && isset( $wp_widget_factory->widgets, $wp_
 
 	$output .= '</div>';
 
-	echo $output;
+	return $output;
 }

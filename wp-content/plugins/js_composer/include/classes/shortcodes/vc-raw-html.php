@@ -5,8 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  */
-class WPBakeryShortCode_VC_Raw_html extends WPBakeryShortCode {
+class WPBakeryShortCode_Vc_Raw_Html extends WPBakeryShortCode {
 
+	/**
+	 * @param $param
+	 * @param $value
+	 * @return string
+	 */
 	public function singleParamHtmlHolder( $param, $value ) {
 		$output = '';
 		// Compatibility fixes
@@ -41,7 +46,9 @@ class WPBakeryShortCode_VC_Raw_html extends WPBakeryShortCode {
 
 		if ( isset( $param['holder'] ) && 'hidden' !== $param['holder'] ) {
 			if ( 'textarea_raw_html' === $param['type'] ) {
-				$output .= '<' . $param['holder'] . ' class="wpb_vc_param_value ' . $param_name . ' ' . $type . ' ' . $class . '" name="' . $param_name . '">' . htmlentities( rawurldecode( base64_decode( strip_tags( $value ) ) ), ENT_COMPAT, 'UTF-8' ) . '</' . $param['holder'] . '><input type="hidden" name="' . $param_name . '_code" class="' . $param_name . '_code" value="' . strip_tags( $value ) . '" />';
+				// @codingStandardsIgnoreLine
+				$output .= sprintf( '<%s class="wpb_vc_param_value %s %s %s" name="%s">%s</%s><input type="hidden" name="%s_code" class="%s_code" value="%s" />', $param['holder'], $param_name, $type, $class, $param_name, htmlentities( rawurldecode( base64_decode( wp_strip_all_tags( $value ) ) ), ENT_COMPAT, 'UTF-8' ), $param['holder'], $param_name, $param_name, wp_strip_all_tags( $value ) );
+
 			} else {
 				$output .= '<' . $param['holder'] . ' class="wpb_vc_param_value ' . $param_name . ' ' . $type . ' ' . $class . '" name="' . $param_name . '">' . $value . '</' . $param['holder'] . '>';
 			}

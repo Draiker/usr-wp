@@ -6,8 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Get welcome pages main slug.
  *
- * @since 4.5
  * @return mixed|string
+ * @since 4.5
  */
 function vc_page_welcome_slug() {
 	$vc_page_welcome_tabs = vc_get_page_welcome_tabs();
@@ -35,7 +35,7 @@ function vc_page_welcome_render() {
 
 function vc_page_welcome_add_sub_page() {
 	// Add submenu page
-	$page = add_submenu_page( VC_PAGE_MAIN_SLUG, __( 'About', 'js_composer' ), __( 'About', 'js_composer' ), 'edit_posts', vc_page_welcome_slug(), 'vc_page_welcome_render' );
+	$page = add_submenu_page( VC_PAGE_MAIN_SLUG, esc_html__( 'About', 'js_composer' ), esc_html__( 'About', 'js_composer' ), 'edit_posts', vc_page_welcome_slug(), 'vc_page_welcome_render' );
 	// Css for perfect styling.
 	add_action( 'admin_print_styles-' . $page, 'vc_page_css_enqueue' );
 
@@ -79,19 +79,24 @@ function vc_page_welcome_set_redirect() {
 function vc_page_welcome_redirect() {
 	$redirect = get_transient( '_vc_page_welcome_redirect' );
 	delete_transient( '_vc_page_welcome_redirect' );
-	$redirect && wp_redirect( admin_url( 'admin.php?page=' . rawurlencode( vc_page_welcome_slug() ) ) );
+	if ( $redirect ) {
+		wp_safe_redirect( admin_url( 'admin.php?page=' . rawurlencode( vc_page_welcome_slug() ) ) );
+	}
 }
 
 // Enables redirect on activation.
 add_action( 'vc_activation_hook', 'vc_page_welcome_set_redirect' );
 add_action( 'admin_init', 'vc_page_welcome_redirect' );
 
+/**
+ * @return mixed|void
+ */
 function vc_get_page_welcome_tabs() {
 	global $vc_page_welcome_tabs;
 	$vc_page_welcome_tabs = apply_filters( 'vc_page-welcome-slugs-list', array(
-		'vc-welcome' => __( 'What\'s New', 'js_composer' ),
-		'vc-faq' => __( 'FAQ', 'js_composer' ),
-		'vc-resources' => __( 'Resources', 'js_composer' ),
+		'vc-welcome' => esc_html__( 'What\'s New', 'js_composer' ),
+		'vc-faq' => esc_html__( 'FAQ', 'js_composer' ),
+		'vc-resources' => esc_html__( 'Resources', 'js_composer' ),
 	) );
 
 	return $vc_page_welcome_tabs;
