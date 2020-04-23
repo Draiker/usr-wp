@@ -1,0 +1,381 @@
+# Translation of Themes - Twenty Thirteen in Ukrainian
+# This file is distributed under the same license as the Themes - Twenty Thirteen package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-04-02 08:06:20+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: uk_UA\n"
+"Project-Id-Version: Themes - Twenty Thirteen\n"
+
+#. Description of the theme
+msgid "The 2013 theme for WordPress takes us back to the blog, featuring a full range of post formats, each displayed beautifully in their own unique way. Design details abound, starting with a vibrant color scheme and matching header images, beautiful typography and icons, and a flexible layout that looks great on any device, big or small."
+msgstr "Тема 2013 року для WordPress знову відкриває для нас ведення блогу, надаючи повний набір форматів записів, кожен з яких чудово відображається у своєму неповторному стилі. Дизайн рясніє ретельно підібраними елементами, починаючи з яскравої колірної схеми і відповідних зображень заголовка, красивої типографії та іконок, а також гнучкої розмітки, яка чудово виглядає на будь-яких пристроях, великих і маленьких."
+
+#. Theme Name of the theme
+msgid "Twenty Thirteen"
+msgstr "Twenty Thirteen"
+
+#. translators: %s: The post title.
+#: comments.php:29
+msgctxt "comments title"
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr "Один коментар до &ldquo;%s&rdquo;"
+
+#: functions.php:147
+msgid "Off-white"
+msgstr "Не біла"
+
+#: functions.php:142
+msgid "Beige"
+msgstr "Бежева"
+
+#: functions.php:137
+msgid "Light Brown"
+msgstr "Світло-коричнева"
+
+#: functions.php:132
+msgid "Medium Brown"
+msgstr "Середньо-коричнева"
+
+#: functions.php:127
+msgid "Dark Brown"
+msgstr "Темно-коричнева"
+
+#: functions.php:122
+msgid "White"
+msgstr "Біла"
+
+#: functions.php:117
+msgid "Yellow"
+msgstr "Жовта"
+
+#: functions.php:112
+msgid "Light Orange"
+msgstr "Світло-помаранчева"
+
+#: functions.php:107
+msgid "Medium Orange"
+msgstr "Середньо-помаранчева"
+
+#: functions.php:102
+msgid "Red"
+msgstr "Червона"
+
+#: functions.php:97
+msgid "Dark Gray"
+msgstr "Темно-сіра"
+
+#. translators: %s: Post format name.
+#: taxonomy-post_format.php:26
+msgid "%s Archives"
+msgstr "Архів формату &laquo;%s&raquo;"
+
+#. translators: Tag title.
+#: tag.php:24
+msgid "Tag Archives: %s"
+msgstr "Архів теґу:  %s"
+
+#. translators: %s: Search query.
+#: search.php:21
+msgid "Search Results for: %s"
+msgstr "Результати пошуку для фрази: %s"
+
+#: inc/custom-header.php:60
+msgctxt "header image description"
+msgid "Star"
+msgstr "Зірка"
+
+#: inc/custom-header.php:55
+msgctxt "header image description"
+msgid "Diamond"
+msgstr "Ромб"
+
+#: inc/custom-header.php:50
+msgctxt "header image description"
+msgid "Circle"
+msgstr "Круг"
+
+#. translators: %s: WordPress version.
+#: inc/back-compat.php:38 inc/back-compat.php:50 inc/back-compat.php:67
+msgid "Twenty Thirteen requires at least WordPress version 3.6. You are running version %s. Please upgrade and try again."
+msgstr "Тема Twenty Thirteen вимагає WordPress 3.6 або вище. У вас версія %s. Будь ласка, оновіть WordPress і спробуйте ще раз."
+
+#: image.php:63
+msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Наступне <span class=\"meta-nav\">&rarr;</span>"
+
+#: image.php:62
+msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr "<span class=\"meta-nav\">&larr;</span> Попередня"
+
+#: image.php:50
+msgid "Full resolution"
+msgstr "Повний розмір"
+
+#: image.php:49
+msgid "Link to full-size image"
+msgstr "Посилання на оригінальне зображення"
+
+#. translators: 1: Date, 2: Date, 3, Parent permalink, 4, Post title, 5: Post
+#. title.
+#: image.php:30
+msgid "<span class=\"attachment-meta\">Published on <time class=\"entry-date\" datetime=\"%1$s\">%2$s</time> in <a href=\"%3$s\" title=\"Return to %4$s\" rel=\"gallery\">%5$s</a></span>"
+msgstr "<span class=\"attachment-meta\">Опубліковано <time class=\"entry-date\" datetime=\"%1$s\">%2$s</time> в галереї <a href=\"%3$s\" title=\"Повернутися: %4$s\" rel=\"gallery\">%5$s</a></span>"
+
+#: header.php:45
+msgid "Skip to content"
+msgstr "Перейти до контенту"
+
+#: header.php:44
+msgid "Menu"
+msgstr "Меню"
+
+#. translators: %s: Post title.
+#: functions.php:533
+msgid "Permalink to %s"
+msgstr "Посилання до %s"
+
+#. translators: 1: Post format name, 2: Date.
+#: functions.php:524
+msgctxt "1: post format name. 2: date"
+msgid "%1$s on %2$s"
+msgstr "%1$s від %2$s"
+
+#. translators: %s: Author display name.
+#: functions.php:503
+msgid "View all posts by %s"
+msgstr "Подивитися всі записи автора %s"
+
+#. translators: Used between list items, there is a space after the comma.
+#: functions.php:486 functions.php:492
+msgid ", "
+msgstr ", "
+
+#: functions.php:478
+msgid "Sticky"
+msgstr "Липучка"
+
+#: functions.php:460
+msgctxt "Next post link"
+msgid "%title <span class=\"meta-nav\">&rarr;</span>"
+msgstr "%title <span class=\"meta-nav\">&rarr;</span>"
+
+#: functions.php:459
+msgctxt "Previous post link"
+msgid "<span class=\"meta-nav\">&larr;</span> %title"
+msgstr "<span class=\"meta-nav\">&larr;</span> %title"
+
+#: functions.php:456
+msgid "Post navigation"
+msgstr "Навігація по запису"
+
+#: functions.php:429
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Наступні записи <span class=\"meta-nav\">&rarr;</span>"
+
+#: functions.php:425
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Попередні записи"
+
+#: functions.php:421
+msgid "Posts navigation"
+msgstr "Навігація по записах"
+
+#: functions.php:396
+msgid "Appears on posts and pages in the sidebar."
+msgstr "Відображається на записах і сторінках в бічній колонці."
+
+#: functions.php:394
+msgid "Secondary Widget Area"
+msgstr "Другий регіон віджетів"
+
+#: functions.php:384
+msgid "Appears in the footer section of the site."
+msgstr "Відображається в нижній частині сайту."
+
+#: functions.php:382
+msgid "Main Widget Area"
+msgstr "Основна область віджетів"
+
+#. translators: %s: Page number.
+#: functions.php:367
+msgid "Page %s"
+msgstr "Сторінка %s"
+
+#: functions.php:234
+msgctxt "Bitter font: on or off"
+msgid "on"
+msgstr "off"
+
+#: functions.php:228
+msgctxt "Source Sans Pro font: on or off"
+msgid "on"
+msgstr "on"
+
+#: functions.php:194
+msgid "Navigation Menu"
+msgstr "Меню навігації"
+
+#. translators: %s: WordPress
+#: footer.php:27
+msgid "Proudly powered by %s"
+msgstr "Сайт працює на %s"
+
+#: content-none.php:32
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Інформацію на запит знайти не вдалося. Можливо, буде корисний пошук по сайту."
+
+#: content-none.php:27
+msgid "Sorry, but nothing matched your search terms. Please try again with different keywords."
+msgstr "Вибачте, за вашим запитом нічого не знайдено. Спробуйте інші ключові слова."
+
+#. translators: %s: Post editor URL.
+#: content-none.php:21
+msgid "Ready to publish your first post? <a href=\"%s\">Get started here</a>."
+msgstr "Готові опублікувати свій перший запис? <a href=\"%s\">Почніть звідси</a>."
+
+#: content-none.php:12
+msgid "Nothing Found"
+msgstr "Нічого не знайдено"
+
+#: content-image.php:48 content-gallery.php:52 content.php:65
+#: content-video.php:48 content-quote.php:38
+msgid "View all % comments"
+msgstr "Коментарі (%)"
+
+#: content-image.php:48 content-gallery.php:52 content.php:65
+#: content-video.php:48 content-quote.php:38
+msgid "One comment so far"
+msgstr "1 коментар"
+
+#: content-image.php:48 content-gallery.php:52 content.php:65
+#: content-video.php:48 content-quote.php:38
+msgid "Leave a comment"
+msgstr "Залишити коментар"
+
+#: content-image.php:51 content-gallery.php:55 content.php:31
+#: content-video.php:51 content-audio.php:47 image.php:55 content-status.php:35
+#: page.php:51 content-chat.php:45 content-quote.php:41 content-aside.php:36
+#: content-aside.php:44 content-link.php:19
+msgid "Edit"
+msgstr "Редагувати"
+
+#: content-image.php:34 content-gallery.php:35 content.php:52
+#: content-video.php:34 content-audio.php:35 image.php:84 content-status.php:24
+#: page.php:41 content-chat.php:34 content-quote.php:24 content-aside.php:24
+#: content-link.php:35
+msgid "Pages:"
+msgstr "Сторінки:"
+
+#. translators: %s: Post title.
+#: content-image.php:27 functions.php:647 content-gallery.php:28 content.php:45
+#: content-video.php:27 content-audio.php:28 content-status.php:17
+#: content-chat.php:27 content-quote.php:17 content-aside.php:17
+#: content-link.php:28
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Продовжувати читання %s <span class=\"meta-nav\">&rarr;</span>"
+
+#: comments.php:67
+msgid "Comments are closed."
+msgstr "Коментарі закриті."
+
+#: comments.php:62
+msgid "Newer Comments &rarr;"
+msgstr "Новіші коментарі &rarr;"
+
+#: comments.php:61
+msgid "&larr; Older Comments"
+msgstr "&larr; Старіші коментарі"
+
+#: comments.php:60
+msgid "Comment navigation"
+msgstr "Навігація по коментарях"
+
+#. translators: %1$s: The number of comments. %2$s: The post title.
+#: comments.php:35
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "%2$s: %1$s коментар"
+msgstr[1] "%2$s: %1$s коментаря"
+msgstr[2] "%2$s: %1$s коментарів"
+
+#. translators: %s: Category title.
+#: category.php:22
+msgid "Category Archives: %s"
+msgstr "Архів категорії: %s"
+
+#. translators: %s: Author display name.
+#: author.php:34
+msgid "All posts by %s"
+msgstr "Всі записи автора %s"
+
+#. translators: %s: Author display name.
+#: author-bio.php:37
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Переглянути всі публікації від %s <span class=\"meta-nav\">&rarr;</span>"
+
+#. translators: %s: Author display name.
+#: author-bio.php:29
+msgid "About %s"
+msgstr "Про автора %s"
+
+#: archive.php:39
+msgid "Archives"
+msgstr "Архіви"
+
+#. translators: %s: Date.
+#: archive.php:37
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#. translators: %s: Date.
+#: archive.php:37
+msgid "Yearly Archives: %s"
+msgstr "Архів за рік: %s"
+
+#. translators: %s: Date.
+#: archive.php:34
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "F Y"
+
+#. translators: %s: Date.
+#: archive.php:34
+msgid "Monthly Archives: %s"
+msgstr "Архів за місяць: %s"
+
+#. translators: %s: Date.
+#: archive.php:31
+msgid "Daily Archives: %s"
+msgstr "Архів за день: %s"
+
+#: 404.php:22
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "За даною адресою нічого не знайдено. Спробуйте скористатися пошуком."
+
+#: 404.php:21
+msgid "This is somewhat embarrassing, isn&rsquo;t it?"
+msgstr "Погана новина"
+
+#: 404.php:16
+msgid "Not Found"
+msgstr "Не знайдено"
+
+#. Author URI of the theme
+#: footer.php:24
+msgid "https://wordpress.org/"
+msgstr "https://uk.wordpress.org/"
+
+#. Author of the theme
+msgid "the WordPress team"
+msgstr "Команда WordPress"
+
+#. Theme URI of the theme
+msgid "https://wordpress.org/themes/twentythirteen/"
+msgstr "https://uk.wordpress.org/themes/twentythirteen/"
