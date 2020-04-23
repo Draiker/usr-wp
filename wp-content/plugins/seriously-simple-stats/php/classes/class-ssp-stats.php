@@ -239,7 +239,7 @@ class Stats {
 		if ( isset( $_GET['start'] ) ) {
 			$this->start_date = strtotime( sanitize_text_field( $_GET['start'] ) );
 		} else {
-			$this->start_date = strtotime( '1 month ago', $this->current_time );
+			$this->start_date = strtotime( '13 month ago', $this->current_time );
 		}
 
 		// Set end date for charts
