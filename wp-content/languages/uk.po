@@ -1757,7 +1757,7 @@ msgstr "Не вдалося оновити значення мета для %s �
 msgid "Whether posts of this status may have floating published dates."
 msgstr "Чи можуть записи з цим статусом мати плаваючу дату публікації."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:392
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:415
 msgid "Sorry, you are not allowed to delete revisions of this post."
 msgstr "На жаль, вам не дозволено видаляти редакції цього запису."
 
