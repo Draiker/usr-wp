@@ -848,7 +848,7 @@ if ( ! function_exists( 'render_seo_column' ) ) {
 		$nonce = wp_create_nonce( "aioseop_meta_{$column_name}_{$post_id}" );
 
 		?>
-		<div id="<?php echo "aioseop_${column_name}_${post_id}"; ?>" class="aioseop_mpc_admin_meta_options aio_editing">
+		<div id="<?php echo "aioseop_${column_name}_${post_id}"; ?>" class="aioseop_mpc_admin_meta_options">
 			<a
 				class="dashicons dashicons-edit aioseop-quickedit-pencil" 
 				href="javascript:void(0);"
@@ -1498,7 +1498,11 @@ if ( ! function_exists( 'aioseop_get_utm_url' ) ) {
 	 *
 	 * @return  string  $href
 	 */
-	function aioseop_get_utm_url( $medium, $source = 'WordPress', $campaign = 'liteplugin' ) {
+	function aioseop_get_utm_url( $medium, $source = 'WordPress', $campaign = '' ) {
+
+		if( empty( $campaign ) ) {
+			$campaign = ( AIOSEOPPRO ) ? 'proplugin' : 'liteplugin';
+		}
 
 		$href = 'https://semperplugins.com/all-in-one-seo-pack-pro-version/';
 
@@ -1543,5 +1547,30 @@ if ( ! function_exists( 'aioseop_filter_styles' ) ) {
 	function aioseop_filter_styles( $styles ) {
 		$styles[] = 'display';
 		return $styles;
+	}
+}
+
+if ( ! function_exists( 'aioseop_delete_rewrite_rules' ) ) {
+	/**
+	 * Deletes our sitemap rewrite rules to prevent conflicts with other sitemap plugins.
+	 *
+	 * @since 3.4.3
+	 */
+	function aioseop_delete_rewrite_rules() {
+		$rules = get_option( 'rewrite_rules' );
+		
+		if ( empty( $rules ) ) {
+			return;
+		}
+
+		$pattern = '#.*aiosp_.*#';
+		foreach ( $rules as $k => $v ) {
+			preg_match( $pattern, $v, $match );
+			if ( $match ) {
+				unset( $rules[ $k ] );
+			}
+		}
+
+		update_option( 'rewrite_rules', $rules );
 	}
 }

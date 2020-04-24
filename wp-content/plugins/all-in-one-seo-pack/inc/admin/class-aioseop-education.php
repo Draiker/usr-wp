@@ -33,6 +33,7 @@ class AIOSEOP_Education {
 		if ( is_admin() ) {
 			add_action( 'admin_footer_text', array( 'AIOSEOP_Education', 'admin_footer_text' ) );
 			add_action( 'admin_enqueue_scripts', array( 'AIOSEOP_Education', 'admin_enqueue_scripts' ) );
+			add_action( 'in_admin_header', array( 'AIOSEOP_Education', 'hide_notices' ) );
 
 			return;
 		}
@@ -661,7 +662,10 @@ class AIOSEOP_Education {
 			$conflicting_sitemap_plugins = self::get_conflicting_plugins( 'sitemap' );
 		}
 
-		if ( empty( $conflicting_seo_plugins ) && empty( $conflicting_sitemap_plugins ) ) {
+		$conflicting_plugins = array_merge( $conflicting_seo_plugins, $conflicting_sitemap_plugins );
+		self::check_new_conflicting_plugins( $conflicting_plugins );
+
+		if ( empty( $conflicting_plugins ) ) {
 			if ( isset( $aioseop_notices->active_notices['conflicting_plugin'] ) ) {
 				$aioseop_notices->remove_notice( 'conflicting_plugin' );
 			}
@@ -670,6 +674,33 @@ class AIOSEOP_Education {
 
 		$aioseop_notices->activate_notice( 'conflicting_plugin' );
 		add_filter( 'aioseop_admin_notice-conflicting_plugin', array( 'AIOSEOP_Education', 'filter_conflicting_plugin_notice_data' ) );
+	}
+
+	/**
+	 * Checks if new conflicting plugins were found and resets notice status.
+	 * 
+	 * @since 3.4.3
+	 * 
+	 * @param array $conflicting_plugins
+	 */
+	private static function check_new_conflicting_plugins( $conflicting_plugins ) {
+		// get_option() doesn't work here because it returns false if the option is blank, and we need to know if it exists.
+		global $wpdb;
+		$count = (int) $wpdb->get_var( "select count(*) from {$wpdb->prefix}options where option_name = 'aioseop_detected_conflicting_plugins'");
+	
+		$stored = array();
+		if( 0 !== $count ) {
+			$stored = get_option( 'aioseop_detected_conflicting_plugins' );
+			update_option( 'aioseop_detected_conflicting_plugins', $conflicting_plugins );
+		} else {
+			add_option( 'aioseop_detected_conflicting_plugins', $conflicting_plugins );
+		}
+		
+		if ( count( $stored ) < count( $conflicting_plugins ) ) {
+			if( get_user_meta( get_current_user_id(), 'aioseop_notice_display_time_conflicting_plugin' ) ) {
+				delete_user_meta( get_current_user_id(), 'aioseop_notice_display_time_conflicting_plugin' );
+			}
+		}
 	}
 
 	/**
@@ -960,5 +991,14 @@ class AIOSEOP_Education {
 			</div>
 		</div>' .
 		self::get_taxonomies_upsell_modal_markup( $page_id, $is_woocommerce_page ) . '</div>';
+	}
+
+	public static function hide_notices() {
+		if ( 'all-in-one-seo_page_aioseop-about' !== get_current_screen()->id ) {
+			return;
+		}
+
+		remove_all_actions('admin_notices');
+		remove_all_actions('all_admin_notices');
 	}
 }

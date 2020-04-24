@@ -1,6 +1,6 @@
 var aioseopQuickEdit;
 
-(function ($) {
+(function($) {
 	aioseopQuickEdit = {
 
 		/**
@@ -12,11 +12,13 @@ var aioseopQuickEdit;
 		 * @param 	String 		columnName 		The name of the column/attribute.
 		 * @param 	String 		nonce 			The nonce.
 		 */
-		aioseop_ajax_edit_meta_form: function (postId, columnName, nonce) {
+		aioseop_ajax_edit_meta_form: function(postId, columnName, nonce) {
 			let field = $(`#aioseop_${columnName}_${postId}`);
 			let dashicon = field.parent().find('.aioseop-quickedit-pencil').first();
 			let previousElements = field.html();
 			let value = field.text().trim();
+
+			field.addClass('aio_editing');
 
 			let textarea = document.createElement('textarea');
 			textarea.id = `aioseop_new_${columnName}_${postId}`;
@@ -24,7 +26,7 @@ var aioseopQuickEdit;
 			textarea.rows = 4;
 			textarea.cols = 32;
 
-			if( aioseopadmin.i18n.noValue !== value) {
+			if (aioseopadmin.i18n.noValue !== value) {
 				textarea.innerText = value;
 			}
 
@@ -36,7 +38,7 @@ var aioseopQuickEdit;
 			btnSave.href = 'javascript:void(0);';
 			btnSave.title = aioseopadmin.i18n.save;
 
-			btnSave.addEventListener('click', function () {
+			btnSave.addEventListener('click', function() {
 				aioseopQuickEdit.handle_post_meta(postId, textarea.value, columnName, nonce, previousElements);
 			});
 
@@ -46,9 +48,10 @@ var aioseopQuickEdit;
 			btnCancel.href = 'javascript:void(0);';
 			btnCancel.title = aioseopadmin.i18n.cancel;
 
-			btnCancel.addEventListener('click', function () {
+			btnCancel.addEventListener('click', function() {
 				dashicon.show();
 				field.html(previousElements);
+				field.removeClass('aio_editing');
 			});
 
 			buttons.append(btnSave, btnCancel);
@@ -68,7 +71,7 @@ var aioseopQuickEdit;
 		 * @param 	String 		nonce 				The nonce.
 		 * @param	Object		previousElements	The initial column elements (dashicon + span).
 		 */
-		handle_post_meta: function (postId, value, columnName, nonce, previousElements) {
+		handle_post_meta: function(postId, value, columnName, nonce, previousElements) {
 			let field = $(`div#aioseop_${columnName}_${postId}`);
 
 			let message = document.createElement('span');
@@ -84,10 +87,10 @@ var aioseopQuickEdit;
 
 			message.append(spinner, span);
 
-			field.fadeOut('fast', function () {
+			field.fadeOut('fast', function() {
 				field.html(message);
 
-				field.fadeIn('fast', function () {
+				field.fadeIn('fast', function() {
 
 					$.ajax({
 						type: "POST",
@@ -100,20 +103,22 @@ var aioseopQuickEdit;
 							key: columnName,
 							_ajax_nonce: nonce
 						},
-						success: function () {
+						success: function() {
 							field.empty().append(previousElements);
+							field.removeClass('aio_editing');
 
-							if('image_title' === columnName) {
+							if ('image_title' === columnName) {
 								aioseopMediaColumns.updatePostTitle(postId, value);
 							}
 
-							if('' === value) {
+							if ('' === value) {
 								value = `<strong>${aioseopadmin.i18n.noValue}</strong>`;
 							}
 							$(`#aioseop_${columnName}_${postId}_value`).html(value);
 						},
-						error: function () {
+						error: function() {
 							field.empty().append(previousElements);
+							field.removeClass('aio_editing');
 							console.log(`Request to update ${columnName} failed.`);
 						}
 					});
@@ -126,7 +131,7 @@ var aioseopQuickEdit;
 
 
 //TODO This needs to be moved to another file.
-jQuery(document).on('click', '.visibility-notice', function () {
+jQuery(document).on('click', '.visibility-notice', function() {
 
 	$.ajax({
 		url: ajaxurl,
@@ -137,7 +142,7 @@ jQuery(document).on('click', '.visibility-notice', function () {
 
 });
 
-jQuery(document).on('click', '.yst_notice', function () {
+jQuery(document).on('click', '.yst_notice', function() {
 
 	$.ajax({
 		url: ajaxurl,
@@ -148,7 +153,7 @@ jQuery(document).on('click', '.yst_notice', function () {
 
 });
 
-jQuery(document).on('click', '.woo-upgrade-notice', function () {
+jQuery(document).on('click', '.woo-upgrade-notice', function() {
 
 	$.ajax({
 		url: ajaxurl,
@@ -159,7 +164,7 @@ jQuery(document).on('click', '.woo-upgrade-notice', function () {
 
 });
 
-jQuery(document).on('click', '.sitemap_max_urls_notice', function () {
+jQuery(document).on('click', '.sitemap_max_urls_notice', function() {
 
 	$.ajax({
 		url: ajaxurl,

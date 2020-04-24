@@ -319,6 +319,12 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Module' ) ) {
 			if ( false == $option_name ) {
 				$option_name = $this->get_option_name();
 			}
+
+			// Delete rewrite rules when the XML Sitemap module is deactivated.
+			if ( 'aiosp_feature_manager_options' === $option_name && 'on' !== $option_data['aiosp_feature_manager_enable_sitemap'] ) {
+				aioseop_delete_rewrite_rules();
+			}
+
 			if ( $this->store_option || $option_name == $this->parent_option ) {
 				return update_option( $option_name, $option_data );
 			} else {
