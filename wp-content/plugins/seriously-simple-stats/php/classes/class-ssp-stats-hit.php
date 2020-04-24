@@ -185,6 +185,7 @@ class Stats_Hit {
 				'ip_address' => $ip_address,
 				'referrer'   => $referrer,
 				'date'       => $this->current_time,
+				'user_agent' => $user_agent,
 			),
 			array(
 				'%d',
