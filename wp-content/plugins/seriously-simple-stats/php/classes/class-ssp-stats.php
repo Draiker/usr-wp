@@ -893,7 +893,7 @@ class Stats {
 			'android' => __('Android App', 'seriously-simple-stats'), //Commented out for now
 			'podcast_addict' => __( 'Podcast Addict', 'seriously-simple-stats' ),
 			'playerfm' => __( 'Player FM', 'seriously-simple-stats' ),
-			'google_play' => __( 'Google Play', 'seriously-simple-stats' ) //Commented out for now
+			'google_play' => __( 'Google Play', 'seriously-simple-stats' ), //Commented out for now
 			'spotify' => __( 'Spotify', 'seriously-simple-stats' )
 		);
 
