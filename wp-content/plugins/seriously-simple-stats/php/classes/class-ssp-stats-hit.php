@@ -192,6 +192,7 @@ class Stats_Hit {
 				'%s',
 				'%s',
 				'%d',
+				'%s',
 			)
 		);
 
