@@ -132,6 +132,8 @@ class Stats_Hit {
 			$referrer = 'playerfm';
 		} else if ( stripos( $user_agent, 'Google-Play' ) !== false ) {
 			$referrer = 'google_play';
+		} else if ( stripos( $user_agent, 'Spotify' ) !== false ) {
+			$referrer = 'spotify';
 		}
 
 		// Get episode ID for database insert

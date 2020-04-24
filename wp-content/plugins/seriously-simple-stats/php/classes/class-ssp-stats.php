@@ -354,7 +354,7 @@ class Stats {
 
 			$html .= '<p class="episode-stat-data total-downloads">' . __( 'Total listens', 'seriously-simple-stats' ) . ': <b>' . $total_downloads . '</b></p>';
 
-			$itunes = $stitcher = $overcast = $pocketcasts = $direct = $new_window = $player = $android = $podcast_addict = $playerfm = $google_play = $unknown = 0;
+			$itunes = $stitcher = $overcast = $pocketcasts = $direct = $new_window = $player = $android = $podcast_addict = $playerfm = $google_play = $spotify = $unknown = 0;
 
 			foreach( $stats as $stat ) {
 				$listeners[ $stat->ip_address ] = $stat->ip_address;
@@ -386,6 +386,9 @@ class Stats {
 						break;
 					case 'google_play':
 						++$google_play;
+						break;
+					case 'spotify':
+						++$spotify;
 						break;
 					case 'podcast_addict':
 						++$podcast_addict;
@@ -432,6 +435,9 @@ class Stats {
 				// Commented out for now, could be used in the future
 				if( $google_play ){
 					$html .= '<li class="google_play">' . __( 'Google Play', 'seriously-simple-stats' ) . ': <b>' . $google_play . '</b></li>';
+				}
+				if( $spotify ){
+					$html .= '<li class="spotify">' . __( 'Spotify', 'seriously-simple-stats' ) . ': <b>' . $spotify . '</b></li>';
 				}
 				if( $podcast_addict ){
 					$html .= '<li class="podcast_addict">' . __( 'Podcast Addict', 'seriously-simple-stats' ) . ': <b>' . $podcast_addict . '</b></li>';
@@ -888,6 +894,7 @@ class Stats {
 			'podcast_addict' => __( 'Podcast Addict', 'seriously-simple-stats' ),
 			'playerfm' => __( 'Player FM', 'seriously-simple-stats' ),
 			'google_play' => __( 'Google Play', 'seriously-simple-stats' ) //Commented out for now
+			'spotify' => __( 'Spotify', 'seriously-simple-stats' )
 		);
 
 		$data = array();
