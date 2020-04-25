@@ -75,7 +75,6 @@
 					</h1>
 				</header>
 				<section class="section1">
-					<!--
 					<div id="jquery_jplayer_1" class="jp-jplayer"></div>
 					<div id="jp_container_1" role="application" aria-label="media player" class="h-player jp-audio-stream">
 						<div role="button" id="playRadioButton" class="h-player__btn jp-play">
@@ -88,16 +87,8 @@
 								<div class="h-player__now-song js-song"></div>
 							</div>
 						</div>
-						<div class="jp-no-solution">Оновіть браузер</div>
+						<div class="jp-no-solution">Ваш браузер застарів. Оновіть його до актуальної версії</div>
 					</div>
-					-->
-					<div class="season">
-                        <h1 class="season-logo">
-							<p>Сьогодні ми оновлюємо наші сервери,<br />щоб бути більш безпечними</p>
-                            <p class="seasontype">але наша музика завжди звучить <a href="http://stream.urbanspaceradio.com:8000/urban-space-radio" target="_blank"><b>тут</b></a></p>
-						</h1>
-					</div>
-
 				</section>
 				<section class="section-single">
           
