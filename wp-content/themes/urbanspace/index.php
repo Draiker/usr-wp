@@ -156,7 +156,7 @@
 				};
 
 				getPlaylist = function () {
-					$.getJSON("http://urbanspaceradio.com/songinfo/?stream=/urban-space-radio", function (songlist) {
+					$.getJSON("https://urbanspaceradio.com/songinfo/?stream=/urban-space-radio", function (songlist) {
 						updatePlaylist(songlist);
 					});
 				};
@@ -165,7 +165,7 @@
 				setInterval(getPlaylist, 5000);
 
 				var streamURL = {
-						mp3: "http://stream.urbanspaceradio.com:8000/urban-space-radio?cache-buster=" + Date.now()
+						mp3: "https://stream.urbanspaceradio.com:8443/urban-space-radio?cache-buster=" + Date.now()
 					},
 					o = !1,
 					l = navigator.userAgent.toLowerCase().indexOf("chrome") > -1,
