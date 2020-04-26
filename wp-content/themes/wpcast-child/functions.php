@@ -34,3 +34,17 @@ function wpcast_child_theme_setup() {
 	load_child_theme_textdomain( 'wpcast-child',  get_stylesheet_directory() . '/languages' );
 }
 add_action( 'after_setup_theme', 'wpcast_child_theme_setup' );
+
+add_action( 'init', 'ssp_add_categories_to_podcast' ); function ssp_add_categories_to_podcast () {
+  register_taxonomy_for_object_type( 'category', 'podcast' );
+}
+add_action( 'pre_get_posts', 'ssp_add_podcast_to_category_archives' ); function ssp_add_podcast_to_category_archives( $query ){
+  if( is_admin() ) {
+    return;
+  }
+  
+  if( $query->is_tax('category') || $query->is_category()) {
+    $query->set('post_type', array( 'post', 'podcast' ) );
+  }
+  
+}
