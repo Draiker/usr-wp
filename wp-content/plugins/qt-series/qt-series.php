@@ -23,7 +23,7 @@ if( !function_exists('qt_series_custom_series_name') ){
 }
 if( !function_exists('qt_series_custom_series_slug') ){
 	function qt_series_custom_series_slug(){
-		return 'qt-series'; // change to whatever you like, no problem. Refresh permalinks afterwards
+		return 'podcast-series'; // change to whatever you like, no problem. Refresh permalinks afterwards
 	}
 }
 
@@ -66,4 +66,3 @@ add_action( 'init', 'qt_series_load_text_domain' );
  */
 
 include(plugin_dir_path( __FILE__ ) . '/includes/taxonomy.php');
-

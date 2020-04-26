@@ -49,7 +49,7 @@ msgstr ""
 
 #: includes/taxonomy.php:18
 #: includes/taxonomy.php:19
-msgid "QT Series"
+msgid "Podcast Series"
 msgstr ""
 
 #: includes/taxonomy.php:20
@@ -98,5 +98,5 @@ msgid ""
 msgstr ""
 
 #: includes/taxonomy.php:32
-msgid "QT Serie"
+msgid "Podcast Serie"
 msgstr ""
