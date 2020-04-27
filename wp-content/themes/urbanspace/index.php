@@ -64,7 +64,7 @@
 						<a href="https://twitter.com/UrbanSpaceRadio" target="_blank" class="soc-tw"></a>
 						<a href="https://www.instagram.com/urban_space_radio" target="_blank" class="soc-instagram"></a>
 						<a href="http://tunein.com/radio/Urban-Space-Radio-s246403" target="_blank" class="soc-tunein"></a>
-						<a href="http://stream.urbanspaceradio.com:8000/urban-space-radio-m3u.m3u" target="_blank" class="soc-playlist"></a>
+						<a href="https://stream.urbanspaceradio.com:8433/urban-space-radio-m3u.m3u" target="_blank" class="soc-playlist"></a>
 						<a href="https://www.mixcloud.com/UrbanSpaceRadio" target="_blank" class="soc-mixcloud"></a>
 						<a href="https://podcasts.apple.com/ua/podcast/urban-space-radio/id1459038329" target="_blank" class="soc-applepodcasts"></a>
 						<a href="https://www.google.com/podcasts?feed=aHR0cDovL3VyYmFuc3BhY2VyYWRpby5jb20vZmVlZC9wb2RjYXN0" target="_blank" class="soc-googlepodcasts"></a>
@@ -138,11 +138,11 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js" media="handheld"></script>
 		<script src="<?php echo get_bloginfo('template_url'); ?>/assets/js/jplayer/jquery.jplayer.min.js"></script>
 		<script src="<?php echo get_bloginfo('template_url'); ?>/assets/js/fastclick.js"></script>
-		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,500,700&amp;subset=latin,cyrillic" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700&amp;subset=latin,cyrillic" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,500,700&subset=cyrillic" rel="stylesheet">
 		<script type="text/javascript">
 			$(document).ready(function(){
-				
+
 				updatePlaylist = function (songlist) {
 					for (i = 0, total = songlist.length; i < total; i++) {
 						var item = songlist[i];
@@ -162,7 +162,7 @@
 				};
 
 				getPlaylist();
-				setInterval(getPlaylist, 5000);
+				setInterval(getPlaylist, 10000);
 
 				var streamURL = {
 						mp3: "https://stream.urbanspaceradio.com:8443/urban-space-radio?cache-buster=" + Date.now()
