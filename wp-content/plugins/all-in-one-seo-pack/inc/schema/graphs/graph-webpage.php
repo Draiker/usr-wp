@@ -51,85 +51,22 @@ class AIOSEOP_Graph_WebPage extends AIOSEOP_Graph_Creativework {
 		global $post;
 		global $aioseop_options;
 
-		$context = AIOSEOP_Context::get_instance();
-
-		$current_url  = '';
-		$current_name = '';
-		$current_desc = '';
-
-		if ( is_home() ) {
-			if ( is_front_page() ) {
-				// Front Page for 'Your latest posts'.
-				$current_url  = home_url() . '/';
-				$current_name = get_bloginfo( 'name' );
-				$current_desc = get_bloginfo( 'description' );
-			} else {
-				// A static page - Posts page.
-				// Resembles elseif $wp_query->is_posts_page.
-				$page_id = get_option( 'page_for_posts' );
-
-				$current_url  = wp_get_canonical_url( $page_id );
-				$current_name = get_the_title( $page_id );
-				$current_desc = $this->get_post_description( get_post( $page_id ) );
-			}
-		} elseif ( is_front_page() && is_page() ) {
-			// A static page - Homepage.
-			$current_url  = home_url() . '/';
-			$current_name = get_the_title();
-			$current_desc = $this->get_post_description( $post );
-		} elseif ( is_post_type_archive() ) {
-			if (
-					function_exists( 'is_shop' ) &&
-					function_exists( 'wc_get_page_id' ) &&
-					is_shop()
-			) {
-				// WooCommerce - Shop Page.
-				$shop_page = get_post( wc_get_page_id( 'shop' ) );
-
-				$current_url  = wp_get_canonical_url( $shop_page );
-				$current_name = get_the_title( $shop_page );
-				$current_desc = $this->get_post_description( $shop_page );
-			} else {
-				// WP - Post Type.
-				$wp_obj = get_queried_object();
-
-				$current_url  = get_post_type_archive_link( $post );
-				$current_name = $wp_obj->label;
-				$current_desc = $wp_obj->description;
-			}
-		} elseif ( is_singular() || is_single() ) {
-			$current_url  = wp_get_canonical_url( $post );
-			$current_name = get_the_title();
-			$current_desc = $this->get_post_description( $post );
-		} elseif ( is_tax() || is_category() || is_tag() ) {
-			$term = get_queried_object();
-
-			$current_url  = get_term_link( $term );
-			$current_name = $term->name;
-			$current_desc = $term->description;
-		} elseif ( is_date() ) {
-			if ( is_year() ) {
-				$current_url = get_year_link( false );
-				/* translators: Yearly archive title. %s: Year */
-				$current_name = sprintf( __( 'Year: %s', 'all-in-one-seo-pack' ), get_the_date( 'Y' ) );
-			} elseif ( is_month() ) {
-				$current_url = get_month_link( false, false );
-				/* translators: Monthly archive title. %s: Month name and year */
-				$current_name = sprintf( __( 'Month: %s', 'all-in-one-seo-pack' ), get_the_date( 'F Y' ) );
-			} else {
-				$current_url = get_day_link( false, false, false );
-				/* translators: Daily archive title. %s: Date */
-				$current_name = sprintf( __( 'Day: %s', 'all-in-one-seo-pack' ), get_the_date( 'F j, Y' ) );
-			}
-		} elseif ( is_author() ) {
-			$user_id      = intval( $post->post_author );
-			$current_url  = get_author_posts_url( $user_id );
-			$current_name = get_the_author_meta( 'display_name', $user_id );
-		} elseif ( is_search() ) {
-			$current_url = get_search_link();
-			/* Translators: String used in search query: %s: Search */
-			$current_name = sprintf( __( 'Search results for "%s"', 'all-in-one-seo-pack' ), esc_html( get_search_query() ) );
+		if (
+				'post_type_archive' === AIOSEOP_Context::get_is() &&
+				function_exists( 'is_shop' ) &&
+				function_exists( 'wc_get_page_id' ) &&
+				is_shop()
+		) {
+			// WooCommerce - Shop Page.
+			$shop_page = get_post( wc_get_page_id( 'shop' ) );
+			$context   = AIOSEOP_Context::get_instance( $shop_page );
+		} else {
+			$context = AIOSEOP_Context::get_instance();
 		}
+
+		$current_url  = $context->get_url();
+		$current_name = $context->get_display_name();
+		$current_desc = $context->get_description();
 
 		$rtn_data = array(
 			'@type'      => $this->slug,
@@ -144,6 +81,9 @@ class AIOSEOP_Graph_WebPage extends AIOSEOP_Graph_Creativework {
 				'@id' => $context->get_url() . '#breadcrumblist',
 			),
 		);
+		if ( ! empty( $current_desc ) ) {
+			$rtn_data['description'] = $current_desc;
+		}
 
 		// Handles pages.
 		if ( is_singular() || is_single() ) {
@@ -171,16 +111,13 @@ class AIOSEOP_Graph_WebPage extends AIOSEOP_Graph_Creativework {
 			);
 		}
 
-		if ( ! empty( $current_desc ) ) {
-			$rtn_data['description'] = $current_desc;
-		}
-
 		return $rtn_data;
 	}
 
 	/**
 	 * Get Post Description.
 	 *
+	 * @deprecated 3.4.3 Use AIOSEOP_Context::get_instance( $post_object )->get_description().
 	 * @since 3.2
 	 *
 	 * @param WP_Post $post See WP_Post for details.

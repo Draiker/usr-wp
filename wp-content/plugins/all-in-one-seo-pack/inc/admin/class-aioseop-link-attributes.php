@@ -23,7 +23,11 @@ class AIOSEOP_Link_Attributes {
 	 * @return void
 	 */
 	public static function enqueue_link_attributes_classic_editor() {
-		wp_deregister_script( 'wplink' );
+		$active_plugins = get_option('active_plugins');
+		if ( in_array( 'title-and-nofollow-for-links/title-and-nofollow-for-links.php', $active_plugins ) ) {
+			wp_deregister_script( 'wplink' );
+		}
+
 		wp_enqueue_script(
 			'aioseop-link-attributes-classic-editor',
 			AIOSEOP_PLUGIN_URL . 'js/admin/aioseop-link-attributes-classic-editor.js',

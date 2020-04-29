@@ -93,7 +93,7 @@ if ( ! class_exists( 'AIOSEOP_Notices' ) ) {
 		 *
 		 * @var int $default_dismiss_delay
 		 */
-		private $default_dismiss_delay = 180;
+		private $default_dismiss_delay = 315569260; // 10 years
 
 		/**
 		 * List of Screens used in AIOSEOP.

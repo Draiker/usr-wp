@@ -237,7 +237,7 @@ if ( ! class_exists( 'All_in_One_SEO_Pack_Feature_Manager' ) ) {
 				$checkbox .= '><span class="button-primary feature_button' . $class . '"></span>';
 			} else {
 				$content  = urlencode( $args['options']['name'] );
-				$checkbox = "<a class='button feature-manager-cta-button' href='https://semperplugins.com/all-in-one-seo-pack-pro-version/?utm_source=WordPress&utm_campaign=liteplugin&utm_medium=feature_manager&utm_content=$content' target='_blank'>Upgrade</a>";
+				$checkbox = "<a class='button feature-manager-cta-button' href='" . aioseop_get_utm_url( 'feature-manager' ) . "&utm_content=$content" . "' target='_blank'>Upgrade</a>";
 			}
 
 			if ( ! empty( $args['options']['id'] ) ) {

@@ -146,6 +146,12 @@ class AIOSEOP_Updates {
 		) {
 			$this->update_schema_markup_201907();
 		}
+
+		if ( version_compare( $old_version, '3.4.3', '<' ) ) {
+			if ( empty( $aioseop_options['modules']['aiosp_feature_manager_options']['aiosp_feature_manager_enable_sitemap'] ) ) {
+				aioseop_delete_rewrite_rules();
+			}
+		}
 	}
 
 	/**

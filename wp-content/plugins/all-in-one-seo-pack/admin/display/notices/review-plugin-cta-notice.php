@@ -42,8 +42,8 @@ function aioseop_notice_review_plugin_cta() {
 					/* translators: %1$s is a placeholder, which means that it should not be translated. It will be replaced with the name of the plugin, All in One SEO Pack. */
 					'<p>' . sprintf( __( 'Are you enjoying %1$s?', 'all-in-one-seo-pack' ), AIOSEOP_PLUGIN_NAME ) . '</p>
 					<p>
-						<a href="#" class="aioseo-review-switch-step-2" data-step="2">Not Really</a>
-						<a href="#" class="aioseo-review-switch-step-3" data-step="3">Yes!</a>
+						<a href="#" class="aioseo-review-switch-step-3" data-step="3">' . __( 'Yes I love it', 'all-in-one-seo-pack' ) . '</a> 🙂 |
+						<a href="#" class="aioseo-review-switch-step-2" data-step="2">' . __( 'Not Really...', 'all-in-one-seo-pack' ) . '</a>
 					</p>
 				</div>
 				<div class="step-2" style="display:none;">' .
