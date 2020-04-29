@@ -239,7 +239,7 @@ class Stats {
 		if ( isset( $_GET['start'] ) ) {
 			$this->start_date = strtotime( sanitize_text_field( $_GET['start'] ) );
 		} else {
-			$this->start_date = strtotime( '1 month ago', $this->current_time );
+			$this->start_date = strtotime( '15 month ago', $this->current_time );
 		}
 
 		// Set end date for charts
@@ -320,7 +320,7 @@ class Stats {
 			$fields = implode( ', ', $fields );
 		}
 
-		$results = $wpdb->get_results( $wpdb->prepare( 'SELECT ' . $fields . ' FROM ' . $this->_table.' WHERE post_id = %d', $episode_id ) );
+		$results = $wpdb->get_results( $wpdb->prepare( 'SELECT ' . $fields . ' FROM ' . $this->_table.' WHERE post_id = %d AND is_bot = 0', $episode_id ) );
 
 		return $results;
 	}
@@ -354,7 +354,7 @@ class Stats {
 
 			$html .= '<p class="episode-stat-data total-downloads">' . __( 'Total listens', 'seriously-simple-stats' ) . ': <b>' . $total_downloads . '</b></p>';
 
-			$itunes = $stitcher = $overcast = $pocketcasts = $direct = $new_window = $player = $android = $podcast_addict = $playerfm = $google_play = $spotify = $unknown = 0;
+			$itunes = $stitcher = $overcast = $pocketcasts = $direct = $new_window = $player = $android = $podcast_addict = $playerfm = $google_play = $unknown = 0;
 
 			foreach( $stats as $stat ) {
 				$listeners[ $stat->ip_address ] = $stat->ip_address;
@@ -386,9 +386,6 @@ class Stats {
 						break;
 					case 'google_play':
 						++$google_play;
-						break;
-					case 'spotify':
-						++$spotify;
 						break;
 					case 'podcast_addict':
 						++$podcast_addict;
@@ -435,9 +432,6 @@ class Stats {
 				// Commented out for now, could be used in the future
 				if( $google_play ){
 					$html .= '<li class="google_play">' . __( 'Google Play', 'seriously-simple-stats' ) . ': <b>' . $google_play . '</b></li>';
-				}
-				if( $spotify ){
-					$html .= '<li class="spotify">' . __( 'Spotify', 'seriously-simple-stats' ) . ': <b>' . $spotify . '</b></li>';
 				}
 				if( $podcast_addict ){
 					$html .= '<li class="podcast_addict">' . __( 'Podcast Addict', 'seriously-simple-stats' ) . ': <b>' . $podcast_addict . '</b></li>';
@@ -518,7 +512,7 @@ class Stats {
 				// Count total entries for episode selection
 				$count_entries_sql = "SELECT COUNT(id) FROM $this->_table";
 				if( $this->episode_id_where ) {
-					$count_stats_episode_id_where = 'WHERE ' . $this->episode_id_where;
+					$count_stats_episode_id_where = 'WHERE is_bot = 0 AND ' . $this->episode_id_where;
 					$count_entries_sql = $count_entries_sql . " $count_stats_episode_id_where";
 				}
 				$total_entries = $wpdb->get_var( $count_entries_sql );
@@ -608,17 +602,17 @@ class Stats {
 
 							// Listens today
 							$start_of_day = strtotime( date( 'Y-m-d 00:00:00', $this->current_time ) );
-							$listens_today = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM $this->_table WHERE date BETWEEN %d AND %d $episode_id_where", $start_of_day, $this->current_time ) );
+							$listens_today = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM $this->_table WHERE date BETWEEN %d AND %d AND is_bot = 0 $episode_id_where", $start_of_day, $this->current_time ) );
 							$html .= $this->daily_stat( $listens_today, __( 'Listens today', 'seriously-simple-stats' ) );
 
 							// Listens this week
 							$one_week_ago = strtotime( '-1 week', $this->current_time );
-							$listens_this_week = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM $this->_table WHERE date BETWEEN %d AND %d $episode_id_where", $one_week_ago, $this->current_time ) );
+							$listens_this_week = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM $this->_table WHERE date BETWEEN %d AND %d AND is_bot = 0 $episode_id_where", $one_week_ago, $this->current_time ) );
 							$html .= $this->daily_stat( $listens_this_week, __( 'Listens this week', 'seriously-simple-stats' ) );
 
 							// Listens last week
 							$two_weeks_ago = strtotime( '-1 week', $one_week_ago );
-							$listens_last_week = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM $this->_table WHERE date BETWEEN %d AND %d $episode_id_where", $two_weeks_ago, $one_week_ago ) );
+							$listens_last_week = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM $this->_table WHERE date BETWEEN %d AND %d AND is_bot = 0 $episode_id_where", $two_weeks_ago, $one_week_ago ) );
 							$html .= $this->daily_stat( $listens_last_week, __( 'Listens last week', 'seriously-simple-stats' ) );
 
 							// Change from last week
@@ -685,7 +679,7 @@ class Stats {
 						$html .= '</' . $metabox_title . '>' . "\n";
 						$html .= '<div class="inside">' . "\n";
 
-							$sql = "SELECT COUNT(id) AS listens, post_id FROM $this->_table GROUP BY post_id ORDER BY listens DESC LIMIT 10";
+							$sql = "SELECT COUNT(id) AS listens, post_id FROM $this->_table WHERE is_bot = 0 GROUP BY post_id ORDER BY listens DESC LIMIT 10";
 							$results = $wpdb->get_results( $sql );
 
 							$html .= '<ul>' . "\n";
@@ -768,7 +762,7 @@ class Stats {
 			$episode_id_where = 'AND ' . $this->episode_id_where;
 		}
 
-		$sql = $wpdb->prepare( "SELECT date FROM $this->_table WHERE date BETWEEN %d AND %d $episode_id_where", $this->start_date, $this->end_date );
+		$sql = $wpdb->prepare( "SELECT date FROM $this->_table WHERE date BETWEEN %d AND %d AND is_bot = 0 $episode_id_where", $this->start_date, $this->end_date );
 		$results = $wpdb->get_results( $sql );
 
 		$date_data = array();
@@ -811,7 +805,7 @@ class Stats {
 			$episode_id_where = 'AND ' . $this->episode_id_where;
 		}
 
-		$sql = $wpdb->prepare( "SELECT date FROM $this->_table WHERE date BETWEEN %d AND %d $episode_id_where", $this->start_date, $this->end_date );
+		$sql = $wpdb->prepare( "SELECT date FROM $this->_table WHERE date BETWEEN %d AND %d AND is_bot = 0 $episode_id_where", $this->start_date, $this->end_date );
 		$results = $wpdb->get_results( $sql );
 
 		$date_data = array();
@@ -859,7 +853,7 @@ class Stats {
 		}
 
 		// Get all tracked data fro selected criteria
-		$sql = $wpdb->prepare( "SELECT referrer FROM $this->_table WHERE date BETWEEN %d AND %d $episode_id_where", $this->start_date, $this->end_date );
+		$sql = $wpdb->prepare( "SELECT referrer FROM $this->_table WHERE date BETWEEN %d AND %d AND is_bot = 0 $episode_id_where", $this->start_date, $this->end_date );
 		$results = $wpdb->get_results( $sql );
 
 		$referrer_data = array();
@@ -893,8 +887,7 @@ class Stats {
 			'android' => __('Android App', 'seriously-simple-stats'), //Commented out for now
 			'podcast_addict' => __( 'Podcast Addict', 'seriously-simple-stats' ),
 			'playerfm' => __( 'Player FM', 'seriously-simple-stats' ),
-			'google_play' => __( 'Google Play', 'seriously-simple-stats' ), //Commented out for now
-			'spotify' => __( 'Spotify', 'seriously-simple-stats' )
+			'google_play' => __( 'Google Play', 'seriously-simple-stats' ) //Commented out for now
 		);
 
 		$data = array();
@@ -946,7 +939,7 @@ class Stats {
 			$column_data .= "data.addColumn('$column_type', '$column_label');" . "\n";
 			//Added to ensure a unix timestamp is created for this column types data
 			if( $column_type === 'date' ){
-				$column_date++;http://jonspodcast.test/wp-admin/edit.php?post_type=feedback
+				$column_date++; //http://jonspodcast.test/wp-admin/edit.php?post_type=feedback
 			}
 		}
 
@@ -1190,7 +1183,7 @@ class Stats {
 		// Count total entries for episode selection
 		$count_entries_sql = "SELECT COUNT(id) FROM $this->_table";
 		if( $this->episode_id_where ) {
-			$count_stats_episode_id_where = 'WHERE ' . $this->episode_id_where;
+			$count_stats_episode_id_where = 'WHERE is_bot = 0 AND ' . $this->episode_id_where;
 			$count_entries_sql = $count_entries_sql . " $count_stats_episode_id_where";
 		}
 		$total_entries = $wpdb->get_var( $count_entries_sql );
@@ -1222,17 +1215,17 @@ class Stats {
 
 					// Listens today
 					$start_of_day = strtotime( date( 'Y-m-d 00:00:00', $this->current_time ) );
-					$listens_today = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM $this->_table WHERE date BETWEEN %d AND %d $episode_id_where", $start_of_day, $this->current_time ) );
+					$listens_today = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM $this->_table WHERE date BETWEEN %d AND %d AND is_bot = 0 $episode_id_where", $start_of_day, $this->current_time ) );
 					$html .= $this->daily_stat( $listens_today, __( 'Listens today', 'seriously-simple-stats' ) );
 
 					// Listens this week
 					$one_week_ago = strtotime( '-1 week', $this->current_time );
-					$listens_this_week = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM $this->_table WHERE date BETWEEN %d AND %d $episode_id_where", $one_week_ago, $this->current_time ) );
+					$listens_this_week = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM $this->_table WHERE date BETWEEN %d AND %d AND is_bot = 0 $episode_id_where", $one_week_ago, $this->current_time ) );
 					$html .= $this->daily_stat( $listens_this_week, __( 'Listens this week', 'seriously-simple-stats' ) );
 
 					// Listens last week
 					$two_weeks_ago = strtotime( '-1 week', $one_week_ago );
-					$listens_last_week = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM $this->_table WHERE date BETWEEN %d AND %d $episode_id_where", $two_weeks_ago, $one_week_ago ) );
+					$listens_last_week = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM $this->_table WHERE date BETWEEN %d AND %d AND is_bot = 0 $episode_id_where", $two_weeks_ago, $one_week_ago ) );
 					$html .= $this->daily_stat( $listens_last_week, __( 'Listens last week', 'seriously-simple-stats' ) );
 
 					$html .= '<br class="clear" />';
