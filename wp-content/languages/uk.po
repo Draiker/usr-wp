@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.4.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-03-13 23:06:54+0000\n"
+"PO-Revision-Date: 2020-04-27 21:07:28+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -48,7 +48,7 @@ msgid "&#8221;"
 msgstr "&#8221;"
 
 #. translators: Opening curly double quote.
-#: wp-includes/formatting.php:101 wp-includes/formatting.php:5379
+#: wp-includes/formatting.php:101 wp-includes/formatting.php:5396
 msgctxt "opening curly double quote"
 msgid "&#8220;"
 msgstr "&#8220;"
@@ -78,22 +78,22 @@ msgid "number_format_thousands_sep"
 msgstr " "
 
 #. translators: 1: Type of block (i.e. Text, Image etc)
-#: wp-includes/js/dist/block-editor.js:23769
+#: wp-includes/js/dist/block-editor.js:23760
 msgid "Block %1$s is at the beginning of the content and can’t be moved left"
 msgstr "Блок %1$s знаходиться на початку вмісту і не може бути переміщений вліво"
 
 #. translators: 1: Type of block (i.e. Text, Image etc)
-#: wp-includes/js/dist/block-editor.js:23764
+#: wp-includes/js/dist/block-editor.js:23755
 msgid "Block %1$s is at the beginning of the content and can’t be moved up"
 msgstr "Блок %1$s знаходиться на початку вмісту і не може бути переміщений вгору"
 
 #. translators: 1: Type of block (i.e. Text, Image etc)
-#: wp-includes/js/dist/block-editor.js:23729
+#: wp-includes/js/dist/block-editor.js:23720
 msgid "Block %1$s is at the end of the content and can’t be moved left"
 msgstr "Блок %1$s знаходиться в кінці вмісту і не може бути переміщений вліво"
 
 #. translators: 1: Type of block (i.e. Text, Image etc)
-#: wp-includes/js/dist/block-editor.js:23724
+#: wp-includes/js/dist/block-editor.js:23715
 msgid "Block %1$s is at the end of the content and can’t be moved down"
 msgstr "Блок %1$s знаходиться в кінці вмісту і не може бути переміщений вниз"
 
@@ -397,7 +397,7 @@ msgstr "Познайомтесь з бібліотекою блоків"
 
 #: wp-includes/js/dist/edit-post.js:6350
 msgid "Each block comes with its own set of controls for changing things like color, width, and alignment. These will show and hide automatically when you have a block selected."
-msgstr "Кожен блок поставляється зі своїм власним набором елементів керування. Для зміни таких речей як: колір, ширина і вирівнювання. Вони будуть відображатися і ховатися автоматично, коли у вас є обраний блок."
+msgstr "У кожного блоку є свій власний набір елементів управління для зміни кольору, ширини, вирівнювання та інших параметрів. Вони будуть відображатися при виборі блоку."
 
 #: wp-includes/js/dist/edit-post.js:6346
 msgid "Make each block your own"
@@ -439,121 +439,121 @@ msgstr "Початкова інструкція"
 msgid "Keyboard shortcuts"
 msgstr "Гарячі клавіші"
 
-#: wp-includes/js/dist/block-editor.js:25291
+#: wp-includes/js/dist/block-editor.js:25282
 msgid "Remove multiple selected blocks."
 msgstr "Видаліть декілька вибраних блоків."
 
 #. translators: 1: Type of block (i.e. Text, Image etc), 2: Position of
 #. selected block, 3: New position
-#: wp-includes/js/dist/block-editor.js:23714
-#: wp-includes/js/dist/block-editor.js:23754
+#: wp-includes/js/dist/block-editor.js:23705
+#: wp-includes/js/dist/block-editor.js:23745
 msgid "Move %1$s block from position %2$d right to position %3$d"
 msgstr "Перемістити %1$s блок з позиції %2$d вправо в позицію %3$d"
 
 #. translators: 1: Type of block (i.e. Text, Image etc), 2: Position of
 #. selected block, 3: New position
-#: wp-includes/js/dist/block-editor.js:23709
-#: wp-includes/js/dist/block-editor.js:23749
+#: wp-includes/js/dist/block-editor.js:23700
+#: wp-includes/js/dist/block-editor.js:23740
 msgid "Move %1$s block from position %2$d left to position %3$d"
 msgstr "Перемістити блок %1$s з позиції %2$d вліво в позицію %3$d"
 
-#: wp-includes/js/dist/block-editor.js:22539
+#: wp-includes/js/dist/block-editor.js:22530
 msgid "Tools offer different interactions for block selection & editing. To select, press Escape, to go back to editing, press Enter."
 msgstr "Інструменти пропонують різні взаємодії для вибору і редагування блоків. Щоб вибрати - натисніть Escape, щоб повернутися до редагування - натисніть Enter."
 
-#: wp-includes/js/dist/block-editor.js:21574
+#: wp-includes/js/dist/block-editor.js:21565
 msgid "Large screens"
 msgstr "Великі екрани"
 
-#: wp-includes/js/dist/block-editor.js:21571
+#: wp-includes/js/dist/block-editor.js:21562
 msgid "Medium screens"
 msgstr "Середні екрани"
 
-#: wp-includes/js/dist/block-editor.js:21568
+#: wp-includes/js/dist/block-editor.js:21559
 msgid "Small screens"
 msgstr "Маленькі екрани"
 
-#: wp-includes/js/dist/block-editor.js:21583
+#: wp-includes/js/dist/block-editor.js:21574
 msgid "Use the same %s on all screensizes."
 msgstr "Використовуйте один і той же %s на всіх екранах."
 
-#: wp-includes/js/dist/block-editor.js:21520
+#: wp-includes/js/dist/block-editor.js:21511
 msgctxt "Text labelling a interface as controlling a given layout property (eg: margin) for a given screen size."
 msgid "Controls the %1$s property for %2$s viewports."
 msgstr "Керує властивістю %1$s для %2$s області перегляду."
 
-#: wp-includes/js/dist/block-editor.js:21586
+#: wp-includes/js/dist/block-editor.js:21577
 msgid "Toggle between using the same value for all screen sizes or using a unique value per screen size."
 msgstr "Перемикання між використанням одного і того ж значення для всіх розмірів екрану або з використанням унікального значення для кожного розміру екрана."
 
-#: wp-includes/js/dist/block-editor.js:20918
+#: wp-includes/js/dist/block-editor.js:20909
 msgid "Open Media Library"
 msgstr "Відкрити бібліотеку файлів"
 
-#: wp-includes/js/dist/block-editor.js:19716
+#: wp-includes/js/dist/block-editor.js:19707
 msgid "Press ENTER to add this link"
 msgstr "Натисніть кнопку ENTER, щоб додати це посилання"
 
-#: wp-includes/js/dist/block-editor.js:20113
+#: wp-includes/js/dist/block-editor.js:20104
 msgid "Currently selected"
 msgstr "В даний час вибрано"
 
-#: wp-includes/js/dist/block-editor.js:20065
+#: wp-includes/js/dist/block-editor.js:20056
 msgid "Recently updated"
 msgstr "Нещодавно оновлені"
 
-#: wp-includes/js/dist/block-editor.js:19797
+#: wp-includes/js/dist/block-editor.js:19788
 msgid "Search or type url"
 msgstr "Введіть пошуковий запит або URL"
 
-#: wp-includes/js/dist/block-editor.js:19666
+#: wp-includes/js/dist/block-editor.js:19657
 msgid "Currently selected link settings"
 msgstr "Налаштування вибраного посилання"
 
-#: wp-includes/js/dist/block-editor.js:20825
+#: wp-includes/js/dist/block-editor.js:20816
 msgid "The media file has been replaced"
 msgstr "Медіафайл був замінений"
 
-#: wp-includes/js/dist/block-editor.js:19200
+#: wp-includes/js/dist/block-editor.js:19191
 msgid "Image size"
 msgstr "Розмір зображення"
 
-#: wp-includes/js/dist/block-editor.js:19068
+#: wp-includes/js/dist/block-editor.js:19059
 msgid "Gradient Presets"
 msgstr "Налаштування градієнту"
 
-#: wp-includes/js/dist/block-editor.js:19001
+#: wp-includes/js/dist/block-editor.js:18992
 msgid "Editor footer"
 msgstr "Нижня частина редактора"
 
-#: wp-includes/js/dist/block-editor.js:18195
-#: wp-includes/js/dist/block-editor.js:18449
+#: wp-includes/js/dist/block-editor.js:18186
+#: wp-includes/js/dist/block-editor.js:18440
 msgctxt "Generic label for block inserter button"
 msgid "Add block"
 msgstr "Додати блок"
 
 #. translators: %s: the name of the block when there is only one
-#: wp-includes/js/dist/block-editor.js:18193
-#: wp-includes/js/dist/block-editor.js:18447
+#: wp-includes/js/dist/block-editor.js:18184
+#: wp-includes/js/dist/block-editor.js:18438
 msgctxt "directly add the only allowed block"
 msgid "Add %s"
 msgstr "Додати %s"
 
 #. translators: %s: the name of the block that has been added
-#: wp-includes/js/dist/block-editor.js:18141
-#: wp-includes/js/dist/block-editor.js:18400
+#: wp-includes/js/dist/block-editor.js:18132
+#: wp-includes/js/dist/block-editor.js:18391
 msgid "%s block added"
 msgstr "%s блок додано"
 
-#: wp-includes/js/dist/block-editor.js:18718
+#: wp-includes/js/dist/block-editor.js:18709
 msgid "Choose variation"
 msgstr "Виберіть варіант"
 
-#: wp-includes/js/dist/block-editor.js:18720
+#: wp-includes/js/dist/block-editor.js:18711
 msgid "Select a variation to start with."
 msgstr "Виберіть варіант для початку."
 
-#: wp-includes/js/dist/block-editor.js:15314
+#: wp-includes/js/dist/block-editor.js:15305
 msgid "Multiple selected blocks"
 msgstr "Декілька вибраних блоків"
 
@@ -626,7 +626,7 @@ msgid "(%s: color %s)"
 msgstr "(%s: колір %s)"
 
 #: wp-includes/js/dist/block-editor.js:7226
-#: wp-includes/js/dist/block-editor.js:19122
+#: wp-includes/js/dist/block-editor.js:19113
 msgid "Gradient"
 msgstr "Градієнт"
 
@@ -941,7 +941,7 @@ msgstr "Завантаження медіафайлу не вдалося. Як�
 msgid "All content copied."
 msgstr "Весь вміст було скопійовано."
 
-#: wp-includes/js/dist/block-editor.js:18014
+#: wp-includes/js/dist/block-editor.js:18005
 msgid "No Preview Available."
 msgstr "Попередній перегляд недоступний."
 
@@ -997,8 +997,8 @@ msgstr "Список медіафайлів"
 msgid "Filter Media"
 msgstr "Фільтр медіафайлів"
 
-#: wp-includes/js/dist/block-editor.js:18592
-#: wp-includes/js/dist/block-editor.js:18669
+#: wp-includes/js/dist/block-editor.js:18583
+#: wp-includes/js/dist/block-editor.js:18660
 msgid "Block navigation"
 msgstr "Навігація по блокам"
 
@@ -1072,13 +1072,13 @@ msgstr "Замітка: Автоматичне відтворення відео
 msgid "Column settings"
 msgstr "Налаштування колонки"
 
-#: wp-includes/js/dist/block-editor.js:24047
-#: wp-includes/js/dist/block-editor.js:24053
+#: wp-includes/js/dist/block-editor.js:24038
+#: wp-includes/js/dist/block-editor.js:24044
 msgid "Move right"
 msgstr "Перемістити вправо"
 
-#: wp-includes/js/dist/block-editor.js:24047
-#: wp-includes/js/dist/block-editor.js:24053
+#: wp-includes/js/dist/block-editor.js:24038
+#: wp-includes/js/dist/block-editor.js:24044
 msgid "Move left"
 msgstr "Перемістити вліво"
 
@@ -1158,8 +1158,8 @@ msgstr "Цитуючи інших, ми цитуємо себе."
 msgid "One of the hardest things to do in technology is disrupt yourself."
 msgstr "One of the hardest things to do in technology is disrupt yourself."
 
-#: wp-includes/js/dist/block-editor.js:19633
-#: wp-includes/js/dist/block-editor.js:22899
+#: wp-includes/js/dist/block-editor.js:19624
+#: wp-includes/js/dist/block-editor.js:22890
 #: wp-includes/js/dist/block-library.js:9741
 #: wp-includes/js/dist/block-library.js:13578
 msgid "Open in new tab"
@@ -1357,7 +1357,7 @@ msgstr "Дізнайтеся більше про вставку"
 msgid "Paste a link to the content you want to display on your site."
 msgstr "Вставте посилання на вміст, який ви хочете відобразити на своєму сайті."
 
-#: wp-includes/js/dist/block-editor.js:26355
+#: wp-includes/js/dist/block-editor.js:26351
 msgid "Separate multiple classes with spaces."
 msgstr "Розділіть декілька класів пробілами."
 
@@ -1365,7 +1365,7 @@ msgstr "Розділіть декілька класів пробілами."
 msgid "More tools & options"
 msgstr "Більше інструментів і можливостей"
 
-#: wp-includes/js/dist/block-editor.js:26253
+#: wp-includes/js/dist/block-editor.js:26249
 msgid "Learn more about anchors"
 msgstr "Дізнайтеся більше про якорі"
 
@@ -1396,24 +1396,24 @@ msgstr "Показувати ці гарячі клавіші."
 msgid "A page reload is required for this change. Make sure your content is saved before reloading."
 msgstr "Для цієї зміни потрібно перезавантажити сторінку. Переконайтеся в тому, що ви зберегли вміст перед перезавантаженням."
 
-#: wp-includes/js/dist/block-editor.js:26251
+#: wp-includes/js/dist/block-editor.js:26247
 msgid "Enter a word or two — without spaces — to make a unique web address just for this heading, called an “anchor.” Then, you’ll be able to link directly to this section of your page."
 msgstr "Введіть слово або два - без пробілів - щоб створити унікальну веб-адресу тільки для цього заголовка, який називається “якір“. Потім ви зможете безпосередньо посилатися на цей розділ своєї сторінки."
 
-#: wp-includes/js/dist/block-editor.js:23541
+#: wp-includes/js/dist/block-editor.js:23532
 msgid "Default Style"
 msgstr "Стиль за замовчуванням"
 
-#: wp-includes/js/dist/block-editor.js:21280
+#: wp-includes/js/dist/block-editor.js:21271
 msgid "Upload a video file, pick one from your media library, or add one with a URL."
 msgstr "Завантажте відеофайл, виберіть його з медіабібліотеки або додайте URL-адресу."
 
-#: wp-includes/js/dist/block-editor.js:21278
+#: wp-includes/js/dist/block-editor.js:21269
 #: wp-includes/js/dist/block-library.js:5201
 msgid "Upload an image file, pick one from your media library, or add one with a URL."
 msgstr "Завантажте файл зображення, виберіть його з медіабібліотеки або додайте URL-адресу."
 
-#: wp-includes/js/dist/block-editor.js:18315
+#: wp-includes/js/dist/block-editor.js:18306
 msgid "Add a block"
 msgstr "Додайте блок"
 
@@ -1421,41 +1421,41 @@ msgstr "Додайте блок"
 msgid "This color combination may be hard for people to read."
 msgstr "Це поєднання кольорів може бути важким для читання людьми."
 
-#: wp-includes/js/dist/block-editor.js:18755
+#: wp-includes/js/dist/block-editor.js:18746
 msgid "Skip"
 msgstr "Пропустити"
 
-#: wp-includes/js/dist/block-editor.js:18020
+#: wp-includes/js/dist/block-editor.js:18011
 msgid "Browse through the library to learn more about what each block does."
 msgstr "Перегляньте бібліотеку, щоб дізнатися більше про те, що робить кожен блок."
 
-#: wp-includes/js/dist/block-editor.js:21276
+#: wp-includes/js/dist/block-editor.js:21267
 msgid "Upload an audio file, pick one from your media library, or add one with a URL."
 msgstr "Завантажте аудіофайл, виберіть його з медіабібліотеки або додайте URL-адресу."
 
-#: wp-includes/js/dist/block-editor.js:21273
+#: wp-includes/js/dist/block-editor.js:21264
 msgid "Upload a media file or pick one from your media library."
 msgstr "Завантажте медіафайл або виберіть його з медіабібліотеки."
 
-#: wp-includes/js/dist/block-editor.js:18020
+#: wp-includes/js/dist/block-editor.js:18011
 msgid "There are blocks available for all kinds of content: insert text, headings, images, lists, videos, tables, and lots more."
 msgstr "Є блоки, доступні для всіх видів вмісту: вставте текст, заголовки, зображення, списки, відео, таблиці і багато іншого."
 
-#: wp-includes/js/dist/block-editor.js:18020
+#: wp-includes/js/dist/block-editor.js:18011
 msgid "While writing, you can press <kbd>/</kbd> to quickly insert new blocks."
 msgstr "Під час написання, ви можете натиснути <kbd>/</kbd>, щоб швидко вставити нові блоки."
 
-#: wp-includes/js/dist/block-editor.js:18822
+#: wp-includes/js/dist/block-editor.js:18813
 msgctxt "Block vertical alignment setting"
 msgid "Vertically Align Top"
 msgstr "Вертикальне вирівнювання верху"
 
-#: wp-includes/js/dist/block-editor.js:18826
+#: wp-includes/js/dist/block-editor.js:18817
 msgctxt "Block vertical alignment setting"
 msgid "Vertically Align Middle"
 msgstr "Вертикальне вирівнювання середини"
 
-#: wp-includes/js/dist/block-editor.js:18830
+#: wp-includes/js/dist/block-editor.js:18821
 msgctxt "Block vertical alignment setting"
 msgid "Vertically Align Bottom"
 msgstr "Вертикальне вирівнювання низу"
@@ -1464,16 +1464,16 @@ msgstr "Вертикальне вирівнювання низу"
 msgid "Vivid purple"
 msgstr "Яскравий фіолетовий"
 
-#: wp-includes/js/dist/block-editor.js:18020
+#: wp-includes/js/dist/block-editor.js:18011
 msgid "Content blocks"
 msgstr "Вміст блоків"
 
-#: wp-includes/js/dist/block-editor.js:18854
+#: wp-includes/js/dist/block-editor.js:18845
 msgctxt "Block vertical alignment setting label"
 msgid "Change vertical alignment"
 msgstr "Змінити вертикальне вирівнювання"
 
-#: wp-includes/js/dist/block-editor.js:18020
+#: wp-includes/js/dist/block-editor.js:18011
 msgid "Welcome to the wonderful world of blocks! Blocks are the basis of all content within the editor."
 msgstr "Ласкаво просимо в дивовижний світ блоків! Блоки є основою всього вмісту в редакторі."
 
@@ -1593,7 +1593,7 @@ msgstr "Проблемний плагін: %1$s (версія %2$s)"
 msgid "Current theme: %1$s (version %2$s)"
 msgstr "Поточна тема: %1$s (версія %2$s)"
 
-#: wp-includes/formatting.php:4786
+#: wp-includes/formatting.php:4803
 msgid "https://wordpress.org/support/article/using-permalinks/#choosing-your-permalink-structure"
 msgstr "https://wordpress.org/support/article/using-permalinks/#choosing-your-permalink-structure"
 
@@ -1825,12 +1825,12 @@ msgid "Unexpected response from the server. The file may have been uploaded succ
 msgstr "Від сервера отримано несподівану відповідь. Файл можливо не був завантажений коректно. Перезавантажте сторінку або перевірте медіатеку."
 
 #. translators: Maximum number of words used in a post excerpt.
-#: wp-includes/formatting.php:3810
+#: wp-includes/formatting.php:3827
 msgctxt "excerpt_length"
 msgid "55"
 msgstr "55"
 
-#: wp-includes/class-wp-customize-manager.php:5466
+#: wp-includes/class-wp-customize-manager.php:5493
 msgctxt "Original Size"
 msgid "Original"
 msgstr "Початковий"
@@ -1988,15 +1988,15 @@ msgstr "Режим відновлення &#8212; %s"
 msgid "[%s] Login Details"
 msgstr "[%s] Дані для входу на сайт"
 
-#: wp-includes/media-template.php:525 wp-includes/media-template.php:646
-#: wp-includes/media.php:3918 wp-includes/js/dist/editor.js:12666
-msgid "Move to Trash"
-msgstr "Видалити в кошик"
-
 #: wp-includes/media-template.php:523 wp-includes/media-template.php:644
 #: wp-includes/media.php:3919
 msgid "Restore from Trash"
 msgstr "Відновити з кошика"
+
+#: wp-includes/media-template.php:525 wp-includes/media-template.php:646
+#: wp-includes/media.php:3918 wp-includes/js/dist/editor.js:12666
+msgid "Move to Trash"
+msgstr "Видалити"
 
 #: wp-login.php:1207 wp-includes/wp-db.php:1117 wp-includes/wp-db.php:1692
 #: wp-includes/wp-db.php:1850 wp-includes/update.php:160
@@ -2201,11 +2201,11 @@ msgstr "Остання частина URL."
 msgid "Sorry, this content could not be embedded."
 msgstr "На жаль, цей вміст не може бути вбудовано."
 
-#: wp-includes/js/dist/block-editor.js:24772
+#: wp-includes/js/dist/block-editor.js:24763
 msgid "Change block type or style"
 msgstr "Змінити тип або стиль блоку"
 
-#: wp-includes/js/dist/block-editor.js:23348
+#: wp-includes/js/dist/block-editor.js:23339
 #: wp-includes/js/dist/block-library.js:5790
 #: wp-includes/js/dist/block-library.js:6922
 #: wp-includes/js/dist/block-library.js:17706
@@ -2297,7 +2297,7 @@ msgstr "[%s] На сайті виникли технічні проблеми"
 msgid "Exit recovery mode link expired."
 msgstr "Час посилання для виходу з режиму відновлення минув."
 
-#: wp-includes/js/dist/block-editor.js:21720
+#: wp-includes/js/dist/block-editor.js:21711
 msgid "More rich text controls"
 msgstr "Більше елементів форматування Rich Text"
 
@@ -2492,7 +2492,7 @@ msgstr[1] "Невдалі <span class=\"count\">(%s)</span>"
 msgstr[2] "Невдалі <span class=\"count\">(%s)</span>"
 
 #. translators: Used to join last two items in a list with more than 2 times.
-#: wp-includes/formatting.php:5053
+#: wp-includes/formatting.php:5070
 msgid "%1$s, and %2$s"
 msgstr "%1$s і %2$s"
 
@@ -2576,7 +2576,7 @@ msgstr "Сайт %d"
 #. translators: %s: Time duration in second or seconds.
 #. translators: Time difference between two dates, in seconds. %s: Number of
 #. seconds.
-#: wp-includes/functions.php:537 wp-includes/formatting.php:3723
+#: wp-includes/functions.php:537 wp-includes/formatting.php:3740
 msgid "%s second"
 msgid_plural "%s seconds"
 msgstr[0] "%s секунда"
@@ -2635,7 +2635,7 @@ msgid "This theme failed to load properly and was paused within the admin backen
 msgstr "Ця тема не була правильно завантажена і була зупинена в майстерні адміністратора."
 
 #. translators: Used to join items in a list with more than 2 items.
-#: wp-includes/formatting.php:5051
+#: wp-includes/formatting.php:5068
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
@@ -2690,7 +2690,7 @@ msgid "Top toolbar"
 msgstr "Верхня панель інструментів"
 
 #. translators: %d: number of words
-#: wp-includes/js/dist/block-editor.js:23478
+#: wp-includes/js/dist/block-editor.js:23469
 msgid "%d word"
 msgid_plural "%d words"
 msgstr[0] "%d слово"
@@ -2713,15 +2713,15 @@ msgstr "Це зображення має порожній атрибут alt; і
 msgid "To edit the featured image, you need permission to upload media."
 msgstr "Щоб відредагувати головне зображення, вам потрібен дозвіл на завантаження медіафайлів."
 
-#: wp-includes/js/dist/block-editor.js:21263
+#: wp-includes/js/dist/block-editor.js:21254
 msgid "To edit this block, you need permission to upload media."
 msgstr "Щоб відредагувати цей блок, вам потрібен дозвіл на завантаження медіафайлів."
 
-#: wp-includes/js/dist/block-editor.js:18536
+#: wp-includes/js/dist/block-editor.js:18527
 msgid "(selected block)"
 msgstr "(вибраний блок)"
 
-#: wp-includes/js/dist/block-editor.js:15693
+#: wp-includes/js/dist/block-editor.js:15684
 msgid "Block tools"
 msgstr "Інструменти блоку"
 
@@ -2749,12 +2749,12 @@ msgstr "Почніть писати текст або HTML-код"
 msgid "Type text or HTML"
 msgstr "Напишіть текст або HTML-код"
 
-#: wp-includes/js/dist/block-editor.js:16588
+#: wp-includes/js/dist/block-editor.js:16579
 #: wp-includes/js/dist/block-library.js:3382
 msgid "Start writing or type / to choose a block"
 msgstr "Почніть писати або натисніть / для вибору блоку"
 
-#: wp-includes/js/dist/block-editor.js:24748
+#: wp-includes/js/dist/block-editor.js:24739
 msgid "Block icon"
 msgstr "Значок блоку"
 
@@ -3089,7 +3089,7 @@ msgstr "фотографія"
 msgid "Toggle to show a large initial letter."
 msgstr "Зробити початкову літеру великою."
 
-#: wp-includes/js/dist/block-editor.js:19208
+#: wp-includes/js/dist/block-editor.js:19199
 msgid "Image dimensions"
 msgstr "Розмір зображення"
 
@@ -3689,7 +3689,7 @@ msgstr "Налаштування блоку закриті"
 msgid "Close plugin"
 msgstr "Закрити плагін"
 
-#: wp-includes/js/dist/block-editor.js:18987
+#: wp-includes/js/dist/block-editor.js:18978
 msgid "Editor settings"
 msgstr "Налаштування редактора"
 
@@ -3701,7 +3701,7 @@ msgstr "Видимість"
 msgid "Close settings"
 msgstr "Закрити налаштування"
 
-#: wp-includes/js/dist/block-editor.js:18980
+#: wp-includes/js/dist/block-editor.js:18971
 msgid "Editor content"
 msgstr "Редактор вмісту"
 
@@ -3805,11 +3805,11 @@ msgstr "Редагування коду"
 msgid "Change the block type after adding a new paragraph."
 msgstr "Змініть тип блоку після додавання нового абзацу."
 
-#: wp-includes/js/dist/block-editor.js:25273
+#: wp-includes/js/dist/block-editor.js:25264
 msgid "Insert a new block before the selected block(s)."
 msgstr "Вставте новий блок перед вибраними блоками."
 
-#: wp-includes/js/dist/block-editor.js:25302
+#: wp-includes/js/dist/block-editor.js:25293
 msgid "Select all text when typing. Press again to select all blocks."
 msgstr "Виберіть весь текст під час набору тексту. Натисніть ще раз, щоб вибрати всі блоки."
 
@@ -3869,7 +3869,7 @@ msgstr "Виділіть текст напівжирним шрифтом."
 msgid "Text formatting"
 msgstr "Форматування тексту"
 
-#: wp-includes/js/dist/block-editor.js:25282
+#: wp-includes/js/dist/block-editor.js:25273
 msgid "Insert a new block after the selected block(s)."
 msgstr "Вставте новий блок після вибраних блоків."
 
@@ -3899,11 +3899,11 @@ msgstr "Недійсний багаторазовий JSON-файл"
 msgid "Forward-slash"
 msgstr "Переслати косу риску"
 
-#: wp-includes/js/dist/block-editor.js:25264
+#: wp-includes/js/dist/block-editor.js:25255
 msgid "Remove the selected block(s)."
 msgstr "Видалити вибрані блоки."
 
-#: wp-includes/js/dist/block-editor.js:25255
+#: wp-includes/js/dist/block-editor.js:25246
 msgid "Duplicate the selected block(s)."
 msgstr "Дублювати вибрані блоки."
 
@@ -3924,12 +3924,12 @@ msgctxt "button label"
 msgid "Import"
 msgstr "Імпорт"
 
-#: wp-includes/js/dist/block-editor.js:25319
+#: wp-includes/js/dist/block-editor.js:25310
 msgid "Navigate to the nearest toolbar."
 msgstr "Перейдіть на найближчу панель інструментів."
 
 #. translators: %d: number of blocks
-#: wp-includes/js/dist/block-editor.js:23474
+#: wp-includes/js/dist/block-editor.js:23465
 msgid "%d block"
 msgid_plural "%d blocks"
 msgstr[0] "%d блок"
@@ -3944,7 +3944,7 @@ msgstr "Неприпустимий JSON-файл"
 msgid "Additional settings are now available in the Editor block settings sidebar"
 msgstr "Додаткові налаштування тепер доступні на бічній панелі розширених налаштувань"
 
-#: wp-includes/js/dist/block-editor.js:18994
+#: wp-includes/js/dist/block-editor.js:18985
 msgid "Editor publish"
 msgstr "Редактор публікації"
 
@@ -3997,7 +3997,7 @@ msgstr "Глобальні ярлики"
 msgid "Options"
 msgstr "Параметри"
 
-#: wp-includes/js/dist/block-editor.js:18971
+#: wp-includes/js/dist/block-editor.js:18962
 msgid "Editor top bar"
 msgstr "Панель інструментів"
 
@@ -4013,7 +4013,7 @@ msgstr "Скинути шаблон"
 msgid "Untitled Reusable Block"
 msgstr "Без назви Багаторазовий Блок"
 
-#: wp-includes/js/dist/block-editor.js:26250
+#: wp-includes/js/dist/block-editor.js:26246
 msgid "HTML anchor"
 msgstr "HTML Якір"
 
@@ -4134,12 +4134,12 @@ msgstr "Не вдалося запланувати."
 msgid "Updating failed."
 msgstr "Помилка оновлення."
 
-#: wp-includes/js/dist/block-editor.js:21032
+#: wp-includes/js/dist/block-editor.js:21023
 #: wp-includes/js/dist/block-library.js:9739
 msgid "Link settings"
 msgstr "Налаштування посилання"
 
-#: wp-includes/js/dist/block-editor.js:26348
+#: wp-includes/js/dist/block-editor.js:26344
 msgid "Additional CSS class(es)"
 msgstr "Додатковий(і) клас(и) CSS"
 
@@ -4204,7 +4204,7 @@ msgstr "Подивитися автозбереження"
 msgid "There is an autosave of this post that is more recent than the version below."
 msgstr "Існує більш пізня версія цього запису, ніж версія нижче."
 
-#: wp-includes/js/dist/block-editor.js:23219
+#: wp-includes/js/dist/block-editor.js:23210
 msgid "Skip to the selected block"
 msgstr "Перейти до вибраного блоку"
 
@@ -4385,11 +4385,11 @@ msgstr "Використовуйте формат публікації"
 msgid "Add tags"
 msgstr "Додати позначки"
 
-#: wp-includes/js/dist/block-editor.js:24424
+#: wp-includes/js/dist/block-editor.js:24415
 msgid "Edit as HTML"
 msgstr "Редагувати як HTML"
 
-#: wp-includes/js/dist/block-editor.js:24616
+#: wp-includes/js/dist/block-editor.js:24607
 msgid "Duplicate"
 msgstr "Дублювати"
 
@@ -4417,11 +4417,11 @@ msgstr "Дозволити коментарі"
 msgid "Replace image"
 msgstr "Замінити зображення"
 
-#: wp-includes/js/dist/block-editor.js:24424
+#: wp-includes/js/dist/block-editor.js:24415
 msgid "Edit visually"
 msgstr "Редагувати візуально"
 
-#: wp-includes/js/dist/block-editor.js:17964
+#: wp-includes/js/dist/block-editor.js:17955
 msgid "Reusable"
 msgstr "Багаторазові"
 
@@ -4433,7 +4433,7 @@ msgstr "Видалити з багаторазових блоків"
 msgid "Add to Reusable blocks"
 msgstr "Додати до багаторазових блоків"
 
-#: wp-includes/js/dist/block-editor.js:24636
+#: wp-includes/js/dist/block-editor.js:24627
 msgid "Remove Block"
 msgid_plural "Remove Blocks"
 msgstr[0] "Видалити блок"
@@ -4444,7 +4444,7 @@ msgstr[2] ""
 msgid "Convert to Regular Block"
 msgstr "Перетворити в звичайний блок"
 
-#: wp-includes/js/dist/block-editor.js:17909
+#: wp-includes/js/dist/block-editor.js:17900
 #: wp-includes/js/dist/edit-post.js:3432
 msgid "Available block types"
 msgstr "Доступні типи блоків"
@@ -4489,8 +4489,8 @@ msgstr "без батька"
 msgid "no title"
 msgstr "без заголовку"
 
-#: wp-includes/js/dist/block-editor.js:17897
-#: wp-includes/js/dist/block-editor.js:17900
+#: wp-includes/js/dist/block-editor.js:17888
+#: wp-includes/js/dist/block-editor.js:17891
 #: wp-includes/js/dist/edit-post.js:3419
 msgid "Search for a block"
 msgstr "Пошук блоків"
@@ -4515,12 +4515,12 @@ msgstr "Сталася неочікувана помилка."
 msgid "(Empty heading)"
 msgstr "(Без заголовка)"
 
-#: wp-includes/js/dist/block-editor.js:24798
+#: wp-includes/js/dist/block-editor.js:24789
 msgid "Block Styles"
 msgstr "Стилі блоків"
 
 #: wp-includes/js/dist/block-editor.js:13760
-#: wp-includes/js/dist/block-editor.js:24599
+#: wp-includes/js/dist/block-editor.js:24590
 msgid "More options"
 msgstr "Ще налаштування"
 
@@ -4532,7 +4532,7 @@ msgstr "Це поєднання кольорів може утруднити ч�
 msgid "This color combination may be hard for people to read. Try using a darker background color and/or a brighter text color."
 msgstr "Це поєднання кольорів може утруднити читання. Спробуйте використовувати більше темний колір фону і / або більше яскравий колір тексту."
 
-#: wp-includes/js/dist/block-editor.js:24805
+#: wp-includes/js/dist/block-editor.js:24796
 msgid "Transform To:"
 msgstr "Перетворити в:"
 
@@ -4540,7 +4540,7 @@ msgstr "Перетворити в:"
 msgid "Copy the permalink"
 msgstr "Копіювати посилання"
 
-#: wp-includes/js/dist/block-editor.js:24772
+#: wp-includes/js/dist/block-editor.js:24763
 msgid "Change type of %d block"
 msgid_plural "Change type of %d blocks"
 msgstr[0] "Змінити тип %d блоку"
@@ -4559,15 +4559,15 @@ msgstr "(Ваша тема вже може використовувати тег
 msgid "(Incorrect heading level)"
 msgstr "(Некоректний рівень заголовка)"
 
-#: wp-includes/js/dist/block-editor.js:23799
+#: wp-includes/js/dist/block-editor.js:23790
 msgid "Blocks cannot be moved down as they are already at the bottom"
 msgstr "Блоки не можуть бути переміщені вниз, так як вони вже знаходяться в самому низу"
 
-#: wp-includes/js/dist/block-editor.js:23795
+#: wp-includes/js/dist/block-editor.js:23786
 msgid "Blocks cannot be moved up as they are already at the top"
 msgstr "Блоки не можуть бути переміщені вгору, так як вони вже знаходяться зверху"
 
-#: wp-includes/js/dist/block-editor.js:21102
+#: wp-includes/js/dist/block-editor.js:21093
 msgid "Paste or type URL"
 msgstr "Вставити або ввести URL-адресу"
 
@@ -4579,16 +4579,16 @@ msgstr "Прийняти"
 msgid "Avatar"
 msgstr "Аватар"
 
-#: wp-includes/js/dist/block-editor.js:24624
+#: wp-includes/js/dist/block-editor.js:24615
 msgid "Insert After"
 msgstr "Вставити після"
 
-#: wp-includes/js/dist/block-editor.js:24620
+#: wp-includes/js/dist/block-editor.js:24611
 msgid "Insert Before"
 msgstr "Вставити перед"
 
 #: wp-includes/js/dist/editor.js:11722
-#: wp-includes/js/dist/block-editor.js:17839
+#: wp-includes/js/dist/block-editor.js:17830
 msgid "%d result found."
 msgid_plural "%d results found."
 msgstr[0] "Знайдено %d результат."
@@ -4606,7 +4606,7 @@ msgid "%s is currently working on this post, which means you cannot make changes
 msgstr "%s в даний час працює над цим повідомленням, а це означає, що ви не можете внести зміни, якщо ви не захочете."
 
 #. translators: 1: Number of selected blocks, 2: Position of selected blocks
-#: wp-includes/js/dist/block-editor.js:23809
+#: wp-includes/js/dist/block-editor.js:23800
 msgid "Move %1$d block from position %2$d down by one place"
 msgid_plural "Move %1$d blocks from position %2$d down by one place"
 msgstr[0] "Перемістити %1$d блок з позиції %2$d в одному місці"
@@ -4614,14 +4614,14 @@ msgstr[1] "Перемістити %1$d блоки з позиції %2$d в од
 msgstr[2] "Перемістити %1$d блок з позиції %2$d в одному місці"
 
 #. translators: 1: Number of selected blocks, 2: Position of selected blocks
-#: wp-includes/js/dist/block-editor.js:23804
+#: wp-includes/js/dist/block-editor.js:23795
 msgid "Move %1$d block from position %2$d up by one place"
 msgid_plural "Move %1$d blocks from position %2$d up by one place"
 msgstr[0] "Перемістити %1$d блок з позиції %2$d в одному місці"
 msgstr[1] "Перемістити %1$d блоки з позиції %2$d в одному місці"
 msgstr[2] "Перемістити %1$d блок з позиції %2$d в одному місці"
 
-#: wp-includes/js/dist/block-editor.js:17916
+#: wp-includes/js/dist/block-editor.js:17907
 msgctxt "blocks"
 msgid "Most used"
 msgstr "Найбільш вживані"
@@ -4644,7 +4644,7 @@ msgstr "Інший користувач зараз редагує цей зап�
 msgid "%s now has editing control of this post. Don’t worry, your changes up to this moment have been saved."
 msgstr "%s тепер редагує цей запис. Не хвилюйтеся, ваші зміни до цього моменту були збережені."
 
-#: wp-includes/js/dist/block-editor.js:17978
+#: wp-includes/js/dist/block-editor.js:17969
 #: wp-includes/js/dist/edit-post.js:1385
 msgid "Manage all reusable blocks"
 msgstr "Управління всіма \"Багаторазовими блоками\""
@@ -4666,18 +4666,18 @@ msgid "Order"
 msgstr "Порядок"
 
 #. translators: 1: Type of block (i.e. Text, Image etc)
-#: wp-includes/js/dist/block-editor.js:23774
+#: wp-includes/js/dist/block-editor.js:23765
 msgid "Block %1$s is at the beginning of the content and can’t be moved right"
 msgstr "Блок %1$s знаходиться в самому верху і не може бути переміщений вище"
 
 #. translators: 1: Type of block (i.e. Text, Image etc), 2: Position of
 #. selected block, 3: New position
-#: wp-includes/js/dist/block-editor.js:23744
+#: wp-includes/js/dist/block-editor.js:23735
 msgid "Move %1$s block from position %2$d up to position %3$d"
 msgstr "Перемістити %1$s блок з позиції %2$d до позиції %3$d"
 
 #. translators: 1: Type of block (i.e. Text, Image etc)
-#: wp-includes/js/dist/block-editor.js:23734
+#: wp-includes/js/dist/block-editor.js:23725
 msgid "Block %1$s is at the end of the content and can’t be moved right"
 msgstr "Блок %1$s знаходиться в самому низу і не може бути переміщений ще нижче"
 
@@ -4685,7 +4685,7 @@ msgstr "Блок %1$s знаходиться в самому низу і не м
 msgid "Order by"
 msgstr "Сортувати за"
 
-#: wp-includes/js/dist/block-editor.js:16608
+#: wp-includes/js/dist/block-editor.js:16599
 #: wp-includes/js/dist/block-directory.js:1262
 msgid "Add block"
 msgstr "Додати блок"
@@ -4707,11 +4707,11 @@ msgstr "Кількість елементів"
 
 #: wp-includes/js/dist/components.js:35173
 #: wp-includes/js/dist/components.js:35322
-#: wp-includes/js/dist/block-editor.js:19250
+#: wp-includes/js/dist/block-editor.js:19241
 msgid "Reset"
 msgstr "Скинути"
 
-#: wp-includes/js/dist/block-editor.js:16209
+#: wp-includes/js/dist/block-editor.js:16200
 msgid "Block: %s"
 msgstr "Блок: %s"
 
@@ -4720,7 +4720,7 @@ msgstr "Блок: %s"
 msgid "Error loading block: %s"
 msgstr "Помилка завантаження блоку: %s"
 
-#: wp-includes/js/dist/block-editor.js:23593
+#: wp-includes/js/dist/block-editor.js:23584
 msgid "No block selected."
 msgstr "Блок не обраний."
 
@@ -4734,7 +4734,7 @@ msgid "Remove item"
 msgstr "Видалити пункт"
 
 #: wp-includes/js/dist/block-editor.js:14030
-#: wp-includes/js/dist/block-editor.js:24474
+#: wp-includes/js/dist/block-editor.js:24465
 msgid "Convert to Blocks"
 msgstr "Перетворити в блоки"
 
@@ -4777,7 +4777,7 @@ msgid "Change alignment"
 msgstr "Змінити вирівнювання"
 
 #. translators: %s: Type of block (i.e. Text, Image etc)
-#: wp-includes/js/dist/block-editor.js:23695
+#: wp-includes/js/dist/block-editor.js:23686
 msgid "Block %s is the only block, and cannot be moved"
 msgstr "Блок %s є єдиним блоком і не може бути переміщений"
 
@@ -4812,7 +4812,7 @@ msgstr "Змінити вирівнювання тексту"
 
 #. translators: 1: Type of block (i.e. Text, Image etc), 2: Position of
 #. selected block, 3: New position
-#: wp-includes/js/dist/block-editor.js:23704
+#: wp-includes/js/dist/block-editor.js:23695
 msgid "Move %1$s block from position %2$d down to position %3$d"
 msgstr "Перемістити блок %1$s з позиції %2$d до позиції %3$d"
 
@@ -4845,7 +4845,7 @@ msgstr "Колір: %s"
 msgid "Block updated."
 msgstr "Блок оновлений."
 
-#: wp-includes/post.php:273 wp-includes/js/dist/block-editor.js:17993
+#: wp-includes/post.php:273 wp-includes/js/dist/block-editor.js:17984
 #: wp-includes/js/dist/edit-post.js:3436
 msgid "No blocks found."
 msgstr "Блоків не знайдено."
@@ -4862,7 +4862,7 @@ msgstr "Колір: %s"
 
 #: wp-includes/js/dist/components.js:24021
 #: wp-includes/js/dist/components.js:36349
-#: wp-includes/js/dist/block-editor.js:20369
+#: wp-includes/js/dist/block-editor.js:20360
 msgid "%d result found, use up and down arrow keys to navigate."
 msgid_plural "%d results found, use up and down arrow keys to navigate."
 msgstr[0] "Знайдено %d результат. Використовуйте стрілки на клавіатурі для навігації."
@@ -4875,9 +4875,9 @@ msgstr[2] "Знайдено %d результатів. Використовуй�
 #: wp-includes/media-template.php:173
 #: wp-includes/customize/class-wp-customize-nav-menu-locations-control.php:59
 #: wp-includes/functions.php:7441
-#: wp-includes/class-wp-customize-manager.php:4277
-#: wp-includes/class-wp-customize-manager.php:5599
-#: wp-includes/class-wp-customize-manager.php:5620
+#: wp-includes/class-wp-customize-manager.php:4304
+#: wp-includes/class-wp-customize-manager.php:5626
+#: wp-includes/class-wp-customize-manager.php:5647
 #: wp-includes/js/dist/components.js:34651 wp-includes/js/dist/editor.js:8930
 msgid "(opens in a new tab)"
 msgstr "(відкривається у новій вкладці)"
@@ -5079,7 +5079,7 @@ msgstr "Page Up і Page Down"
 
 #: wp-includes/js/dist/components.js:24023
 #: wp-includes/js/dist/components.js:36349
-#: wp-includes/js/dist/block-editor.js:20371
+#: wp-includes/js/dist/block-editor.js:20362
 msgid "No results."
 msgstr "Немає результатів."
 
@@ -5743,16 +5743,16 @@ msgid "You need a higher level of permission."
 msgstr "Вам потрібен вищий рівень доступу."
 
 #. translators: %s: User who is customizing the changeset in customizer.
-#: wp-includes/class-wp-customize-manager.php:4042
+#: wp-includes/class-wp-customize-manager.php:4069
 msgid "%s is already customizing this changeset. Please wait until they are done to try customizing. Your latest changes have been autosaved."
 msgstr "Користувач %s вже редагує цей набір змін. Будь ласка, зачекайте поки зміни буде внесено щоби редагувати. Ваші останні зміни збережено."
 
 #. translators: %s: User who is customizing the changeset in customizer.
-#: wp-includes/class-wp-customize-manager.php:4044
+#: wp-includes/class-wp-customize-manager.php:4071
 msgid "%s is already customizing this changeset. Do you want to take over?"
 msgstr "Користувач %s вже редагує цей набір змін. Хочете перехопити?"
 
-#: wp-includes/class-wp-customize-manager.php:4250
+#: wp-includes/class-wp-customize-manager.php:4277
 msgid "Update anyway, even though it might break your site?"
 msgstr "Все одно оновити, навіть якщо це може зламати ваш сайт?"
 
@@ -5808,7 +5808,7 @@ msgid "Schedule"
 msgstr "Відкласти"
 
 #: wp-includes/script-loader.php:1157
-#: wp-includes/class-wp-customize-manager.php:4761
+#: wp-includes/class-wp-customize-manager.php:4788
 msgctxt "customizer changeset action/button label"
 msgid "Schedule"
 msgstr "Відкласти"
@@ -5837,19 +5837,19 @@ msgstr "Додати меню навігації до бічної колонк�
 msgid "%s has taken over and is currently customizing."
 msgstr "Користувач %s перехопив налаштування і налаштовує."
 
-#: wp-includes/class-wp-customize-manager.php:3311
+#: wp-includes/class-wp-customize-manager.php:3338
 msgid "Security check failed."
 msgstr "Перевірка безпеки не вдалася."
 
-#: wp-includes/class-wp-customize-manager.php:4236
+#: wp-includes/class-wp-customize-manager.php:4263
 msgid "Take over"
 msgstr "Перехопити"
 
-#: wp-includes/class-wp-customize-manager.php:3331
+#: wp-includes/class-wp-customize-manager.php:3358
 msgid "Sorry, you are not allowed to take over."
 msgstr "На жаль, вам не дозволено перехоплювати."
 
-#: wp-includes/class-wp-customize-manager.php:3322
+#: wp-includes/class-wp-customize-manager.php:3349
 msgid "No changeset found to take over"
 msgstr "Не знайдено змін для перехоплення."
 
@@ -5858,7 +5858,7 @@ msgid "Changeset is being edited by other user."
 msgstr "Зміни запроваджуються іншим користувачем."
 
 #. translators: %s: User who is customizing the changeset in customizer.
-#: wp-includes/class-wp-customize-manager.php:4051
+#: wp-includes/class-wp-customize-manager.php:4078
 msgid "%s is already customizing this site. Do you want to take over?"
 msgstr "Користувач %s вже налаштовує цей сайт. Хочете перехопити?"
 
@@ -5866,12 +5866,12 @@ msgstr "Користувач %s вже налаштовує цей сайт. Х�
 msgid "Looks like something&#8217;s gone wrong. Wait a couple seconds, and then try again."
 msgstr "Схоже щось пішло не так. Зачекайте пару секунд і спробуйте знову."
 
-#: wp-includes/class-wp-customize-manager.php:4232
+#: wp-includes/class-wp-customize-manager.php:4259
 msgid "Go back"
 msgstr "Назад"
 
 #. translators: %s: User who is customizing the changeset in customizer.
-#: wp-includes/class-wp-customize-manager.php:4049
+#: wp-includes/class-wp-customize-manager.php:4076
 msgid "%s is already customizing this site. Please wait until they are done to try customizing. Your latest changes have been autosaved."
 msgstr "Користувач %s вже налаштовує цей сайт. Будь ласка, зачекайте поки він закінчить. Ваші останні зміни були автоматично збережені."
 
@@ -5905,11 +5905,11 @@ msgctxt "menu locations"
 msgid "View All Locations"
 msgstr "Переглянути всі розміщення"
 
-#: wp-includes/class-wp-customize-manager.php:4966
+#: wp-includes/class-wp-customize-manager.php:4993
 msgid "While previewing a new theme, you can continue to tailor things like widgets and menus, and explore theme-specific options."
 msgstr "Під час попереднього перегляду нової теми ви можете продовжувати налаштовувати речі на кшталт віджетів та меню, а також досліджувати специфічні параметри теми."
 
-#: wp-includes/class-wp-customize-manager.php:4965
+#: wp-includes/class-wp-customize-manager.php:4992
 msgid "Looking for a theme? You can search or browse the WordPress.org theme directory, install and preview themes, then activate them right here."
 msgstr "Шукаєте тему? Ви можете шукати чи оглядати директорію тем WordPress.org, встановлювати та попередньо переглядати теми, а тоді активувати їх прямо тут."
 
@@ -6625,15 +6625,15 @@ msgstr "Якщо використовувана тема має області �
 msgid "The theme defines itself as its parent theme. Please check the %s header."
 msgstr "Тема визначає себе як батьківську для себе ж. Будь ласка, перевірте заголовок %s."
 
-#: wp-includes/class-wp-customize-manager.php:5655
+#: wp-includes/class-wp-customize-manager.php:5682
 msgid "CSS code"
 msgstr "Код CSS"
 
-#: wp-includes/class-wp-customize-manager.php:5593
+#: wp-includes/class-wp-customize-manager.php:5620
 msgid "Add your own CSS code here to customize the appearance and layout of your site."
 msgstr "Тут можна додати свій власний код CSS щоби змінити вигляд сайту."
 
-#: wp-includes/class-wp-customize-manager.php:5545
+#: wp-includes/class-wp-customize-manager.php:5572
 msgid "Your homepage displays"
 msgstr "Ваша домашня сторінка відображає"
 
@@ -6650,22 +6650,22 @@ msgstr[1] "Ваша тема може відображати меню в %s ро
 msgstr[2] "Ваша тема може відображати меню в %s розміщеннях."
 
 #: wp-includes/widgets/class-wp-widget-custom-html.php:322
-#: wp-includes/class-wp-customize-manager.php:5603
+#: wp-includes/class-wp-customize-manager.php:5630
 msgid "When using a keyboard to navigate:"
 msgstr "Коли використовується клавіатура для навігації:"
 
 #: wp-includes/widgets/class-wp-widget-custom-html.php:324
-#: wp-includes/class-wp-customize-manager.php:5605
+#: wp-includes/class-wp-customize-manager.php:5632
 msgid "In the editing area, the Tab key enters a tab character."
 msgstr "В області редагування, клавіша Tab вводить символ табуляції."
 
 #: wp-includes/widgets/class-wp-widget-custom-html.php:326
-#: wp-includes/class-wp-customize-manager.php:5607
+#: wp-includes/class-wp-customize-manager.php:5634
 msgid "Screen reader users: when in forms mode, you may need to press the Esc key twice."
 msgstr "Для користувачів читача екрану: в режимі форм вам може бути потрібно натиснути клавішу Esc двічі."
 
 #: wp-includes/widgets/class-wp-widget-custom-html.php:325
-#: wp-includes/class-wp-customize-manager.php:5606
+#: wp-includes/class-wp-customize-manager.php:5633
 msgid "To move away from this area, press the Esc key followed by the Tab key."
 msgstr "Щоби вийти з цієї області, натисніть клавішу Esc, потім клавішу Tab."
 
@@ -6676,44 +6676,44 @@ msgstr "Якщо ваша тема має декілька меню, то чіт
 #. translators: 1: Link to user profile, 2: Additional link attributes, 3:
 #. Accessibility text.
 #: wp-includes/widgets/class-wp-widget-custom-html.php:311
-#: wp-includes/class-wp-customize-manager.php:5614
+#: wp-includes/class-wp-customize-manager.php:5641
 msgid "The edit field automatically highlights code syntax. You can disable this in your <a href=\"%1$s\" %2$s>user profile%3$s</a> to work in plain text mode."
 msgstr "Поле редагування автоматично виділяє синтаксис коду. Ви можете вимкнути це у вашому <a href=\"%1$s\" %2$s>обліковому записі%3$s</a> щоби працювати в режимі простого тексту."
 
-#: wp-includes/class-wp-customize-manager.php:5528
+#: wp-includes/class-wp-customize-manager.php:5555
 msgid "You can choose what&#8217;s displayed on the homepage of your site. It can be posts in reverse chronological order (classic blog), or a fixed/static page. To set a static homepage, you first need to create two Pages. One will become the homepage, and the other will be where your posts are displayed."
 msgstr "Ви можете вибрати те, що відображається на головній сторінці вашого сайту. Це можуть бути записи в зворотному хронологічному порядку (класичний блог) або постійна/статична сторінка. Щоб встановити статичну головну сторінку, вам потрібно створити дві сторінки. Одна стане головною сторінкою, на другій будуть відображатися ваші записи."
 
-#: wp-includes/class-wp-customize-manager.php:5526
+#: wp-includes/class-wp-customize-manager.php:5553
 msgid "Homepage Settings"
 msgstr "Налаштування домашньої сторінки"
 
-#: wp-includes/class-wp-customize-manager.php:4994
+#: wp-includes/class-wp-customize-manager.php:5021
 msgid "WordPress.org themes"
 msgstr "Теми WordPress.org"
 
-#: wp-includes/class-wp-customize-manager.php:4979
+#: wp-includes/class-wp-customize-manager.php:5006
 msgid "Installed themes"
 msgstr "Встановлені теми"
 
-#: wp-includes/class-wp-customize-manager.php:4280
+#: wp-includes/class-wp-customize-manager.php:4307
 msgid "Copied"
 msgstr "Скопійовано"
 
-#: wp-includes/class-wp-customize-manager.php:3139
+#: wp-includes/class-wp-customize-manager.php:3166
 msgid "Changes trashed successfully."
 msgstr "Зміни переміщені до кошика успішно."
 
-#: wp-includes/class-wp-customize-manager.php:3120
+#: wp-includes/class-wp-customize-manager.php:3147
 msgid "Changes have already been trashed."
 msgstr "Зміни були вже видалені в корзину."
 
-#: wp-includes/class-wp-customize-manager.php:3112
-#: wp-includes/class-wp-customize-manager.php:3132
+#: wp-includes/class-wp-customize-manager.php:3139
+#: wp-includes/class-wp-customize-manager.php:3159
 msgid "Unable to trash changes."
 msgstr "Неможливо видалити зміни в кошик."
 
-#: wp-includes/class-wp-customize-manager.php:3101
+#: wp-includes/class-wp-customize-manager.php:3128
 msgid "No changes saved yet, so there is nothing to trash."
 msgstr "Ніяких змін не було збережено, тому нічого видаляти."
 
@@ -6733,23 +6733,23 @@ msgid "You must supply a future date to schedule."
 msgstr "Ви повинні вказати дату в майбутньому для планування."
 
 #. translators: %s: Site icon size in pixels.
-#: wp-includes/class-wp-customize-manager.php:5100
+#: wp-includes/class-wp-customize-manager.php:5127
 msgid "Site Icons should be square and at least %s pixels."
 msgstr "Значки сайту повинні бути квадратними і як мінімум розміром в %s пікселів."
 
-#: wp-includes/class-wp-customize-manager.php:5098
+#: wp-includes/class-wp-customize-manager.php:5125
 msgid "Site Icons are what you see in browser tabs, bookmark bars, and within the WordPress mobile apps. Upload one here!"
 msgstr "Значки сайту - те що ви бачите на вкладках браузера, панелях закладок і всередині мобільних додатків WordPress. Завантажте їх тут!"
 
-#: wp-includes/class-wp-customize-manager.php:4271
+#: wp-includes/class-wp-customize-manager.php:4298
 msgid "See how changes would look live on your website, and share the preview with people who can't access the Customizer."
 msgstr "Подивіться як зміни будуть наживо виглядати на вашому сайті і поділіться попереднім переглядом з тими, у кого немає доступу до налаштувань."
 
-#: wp-includes/class-wp-customize-manager.php:4269
+#: wp-includes/class-wp-customize-manager.php:4296
 msgid "Share Preview Link"
 msgstr "Поділитися посиланням на попередній перегляд"
 
-#: wp-includes/class-wp-customize-manager.php:4274
+#: wp-includes/class-wp-customize-manager.php:4301
 msgid "Preview Link"
 msgstr "Посилання на попередній перегляд"
 
@@ -6757,7 +6757,7 @@ msgstr "Посилання на попередній перегляд"
 msgid "Publish Settings"
 msgstr "Налаштування публікування"
 
-#: wp-includes/class-wp-customize-manager.php:3091
+#: wp-includes/class-wp-customize-manager.php:3118
 msgid "There was an authentication problem. Please reload and try again."
 msgstr "Виникла проблема з авторизацією. Будь ласка, перезавантажте і спробуйте знову."
 
@@ -7593,12 +7593,12 @@ msgstr "Помилка RSS:"
 msgid "Cannot create a comment with that type."
 msgstr "Неможливо створити коментар з цим типом."
 
-#: wp-includes/post.php:4036
+#: wp-includes/post.php:4045
 msgid "Invalid page template."
 msgstr "Невірний шаблон сторінки."
 
 #: wp-includes/script-loader.php:1211 wp-includes/rest-api.php:1332
-#: wp-includes/post.php:3736
+#: wp-includes/post.php:3739
 msgid "Invalid date."
 msgstr "Невірна дата."
 
@@ -7941,7 +7941,7 @@ msgstr "Приховати управління"
 msgid "Document Preview"
 msgstr "Перегляд документа"
 
-#: wp-includes/class-wp-customize-manager.php:5227
+#: wp-includes/class-wp-customize-manager.php:5254
 msgid "Header Media"
 msgstr "Медіафайл заголовку"
 
@@ -7975,7 +7975,7 @@ msgstr "HTML підпис для вкладення, перетворений д
 msgid "Caption for the attachment, as it exists in the database."
 msgstr "Підпис для вкладення, як воно існує в базі даних."
 
-#: wp-includes/class-wp-customize-manager.php:6002
+#: wp-includes/class-wp-customize-manager.php:6029
 msgid "Please enter a valid YouTube URL."
 msgstr "Будь ласка, введіть правильний URL YouTube."
 
@@ -7987,7 +7987,7 @@ msgstr "Розгорнути головне меню"
 msgid "Collapse Main menu"
 msgstr "Згорнути головне меню"
 
-#: wp-includes/class-wp-customize-manager.php:5341
+#: wp-includes/class-wp-customize-manager.php:5368
 msgid "Or, enter a YouTube URL:"
 msgstr "Або введіть URL YouTube:"
 
@@ -8058,7 +8058,7 @@ msgstr "У нас вже є повідомлення від цього URL дл�
 msgid "I really need an ID for this to work."
 msgstr "Мені потрібен ID, щоб це спрацювало."
 
-#: wp-includes/class-wp-customize-manager.php:5566
+#: wp-includes/class-wp-customize-manager.php:5593
 msgid "Homepage"
 msgstr "Домашня сторінка"
 
@@ -9090,110 +9090,110 @@ msgid "%1$s could not be created: %2$s"
 msgstr "%1$s не може бути створений: %2$s"
 
 #. translators: 1: .mp4, 2: .mov
-#: wp-includes/class-wp-customize-manager.php:5977
+#: wp-includes/class-wp-customize-manager.php:6004
 msgid "Only %1$s or %2$s files may be used for header video. Please convert your video file and try again, or, upload your video to YouTube and link it with the option below."
 msgstr "Тільки файли %1$s або %2$s можуть бути використані як відео заголовка. Будь ласка, конвертуйте ваш відеоролик і спробуйте знову, або завантажте його на YouTube і дайте посилання за допомогою налаштування нижче."
 
-#: wp-includes/class-wp-customize-manager.php:5969
+#: wp-includes/class-wp-customize-manager.php:5996
 msgid "This video file is too large to use as a header video. Try a shorter video or optimize the compression settings and re-upload a file that is less than 8MB. Or, upload your video to YouTube and link it with the option below."
 msgstr "Відеофайл занадто великий для використання в якості відео заголовка. Спробуйте більш короткий відеоролик або оптимізуйте налаштування стиснення і завантажте заново файл розміром менше 8 МБ. Або завантажте відео на YouTube і використайте посилання в налаштуваннях нижче."
 
-#: wp-includes/class-wp-customize-manager.php:5928
+#: wp-includes/class-wp-customize-manager.php:5955
 msgid "Unrecognized background setting."
 msgstr "Нерозпізнані налаштування фону."
 
-#: wp-includes/class-wp-customize-manager.php:5919
-#: wp-includes/class-wp-customize-manager.php:5923
+#: wp-includes/class-wp-customize-manager.php:5946
+#: wp-includes/class-wp-customize-manager.php:5950
 msgid "Invalid value for background size."
 msgstr "Некоректне значення для розміру фону."
 
-#: wp-includes/class-wp-customize-manager.php:5915
+#: wp-includes/class-wp-customize-manager.php:5942
 msgid "Invalid value for background position Y."
 msgstr "Некоректне значення для позиції фону Y."
 
-#: wp-includes/class-wp-customize-manager.php:5597
+#: wp-includes/class-wp-customize-manager.php:5624
 msgid "Learn more about CSS"
 msgstr "Дізнатися більше про CSS"
 
-#: wp-includes/class-wp-customize-manager.php:5911
+#: wp-includes/class-wp-customize-manager.php:5938
 msgid "Invalid value for background position X."
 msgstr "Некоректне значення для позиції фону X."
 
-#: wp-includes/class-wp-customize-manager.php:5907
+#: wp-includes/class-wp-customize-manager.php:5934
 msgid "Invalid value for background attachment."
 msgstr "Некоректне значення для вкладення фону."
 
-#: wp-includes/class-wp-customize-manager.php:5903
+#: wp-includes/class-wp-customize-manager.php:5930
 msgid "Invalid value for background repeat."
 msgstr "Некоректне значення для повтору фону."
 
-#: wp-includes/class-wp-customize-manager.php:5633
+#: wp-includes/class-wp-customize-manager.php:5660
 msgid "Additional CSS"
 msgstr "Додатковий код CSS"
 
-#: wp-includes/class-wp-customize-manager.php:5503
+#: wp-includes/class-wp-customize-manager.php:5530
 msgid "Scroll with Page"
 msgstr "Прокручувати зі сторінкою"
 
-#: wp-includes/class-wp-customize-manager.php:5485
+#: wp-includes/class-wp-customize-manager.php:5512
 msgid "Repeat Background Image"
 msgstr "Повторювати фонове зображення"
 
-#: wp-includes/class-wp-customize-manager.php:5462
-#: wp-includes/js/dist/block-editor.js:19235
+#: wp-includes/class-wp-customize-manager.php:5489
+#: wp-includes/js/dist/block-editor.js:19226
 msgid "Image Size"
 msgstr "Розмір зображення"
 
 #: wp-includes/customize/class-wp-customize-background-position-control.php:93
-#: wp-includes/class-wp-customize-manager.php:5440
+#: wp-includes/class-wp-customize-manager.php:5467
 msgid "Image Position"
 msgstr "Позиція зображення"
 
-#: wp-includes/class-wp-customize-manager.php:5412
+#: wp-includes/class-wp-customize-manager.php:5439
 msgctxt "Custom Preset"
 msgid "Custom"
 msgstr "Користувацький"
 
-#: wp-includes/class-wp-customize-manager.php:5411
+#: wp-includes/class-wp-customize-manager.php:5438
 msgctxt "Repeat Image"
 msgid "Repeat"
 msgstr "Повторювати"
 
-#: wp-includes/class-wp-customize-manager.php:5410
-#: wp-includes/class-wp-customize-manager.php:5467
+#: wp-includes/class-wp-customize-manager.php:5437
+#: wp-includes/class-wp-customize-manager.php:5494
 msgid "Fit to Screen"
 msgstr "На весь екран"
 
-#: wp-includes/class-wp-customize-manager.php:5408
+#: wp-includes/class-wp-customize-manager.php:5435
 msgctxt "Default Preset"
 msgid "Default"
 msgstr "За замовчуванням"
 
-#: wp-includes/class-wp-customize-manager.php:5327
+#: wp-includes/class-wp-customize-manager.php:5354
 msgid "Header Video"
 msgstr "Відео заголовка"
 
 #. translators: 1: .mp4, 2: Header height in pixels.
-#: wp-includes/class-wp-customize-manager.php:5249
+#: wp-includes/class-wp-customize-manager.php:5276
 msgid "Upload your video in %1$s format and minimize its file size for best results. Your theme recommends a height of %2$s pixels."
 msgstr "Завантажте відеоролик у форматі %1$s і мінімізуйте розмір файлу для кращих результатів. Ваша тема рекомендує висоту в %2$s пікселів."
 
 #. translators: 1: .mp4, 2: Header width in pixels.
-#: wp-includes/class-wp-customize-manager.php:5242
+#: wp-includes/class-wp-customize-manager.php:5269
 msgid "Upload your video in %1$s format and minimize its file size for best results. Your theme recommends a width of %2$s pixels."
 msgstr "Завантажте відеоролик у форматі %1$s і мінімізуйте розмір файлу для кращих результатів. Ваша тема рекомендує ширину в %2$s пікселів."
 
-#: wp-includes/class-wp-customize-manager.php:5404
+#: wp-includes/class-wp-customize-manager.php:5431
 msgctxt "Background Preset"
 msgid "Preset"
 msgstr "За замовчанням"
 
 #. translators: 1: .mp4, 2: Header size in pixels.
-#: wp-includes/class-wp-customize-manager.php:5235
+#: wp-includes/class-wp-customize-manager.php:5262
 msgid "Upload your video in %1$s format and minimize its file size for best results. Your theme recommends dimensions of %2$s pixels."
 msgstr "Завантажте відеоролик у форматі %1$s і мінімізуйте розмір файлу для кращих результатів. Ваша тема рекомендує розміри в %2$s пікселів."
 
-#: wp-includes/class-wp-customize-manager.php:5228
+#: wp-includes/class-wp-customize-manager.php:5255
 msgid "If you add a video, the image will be used as a fallback while the video loads."
 msgstr "Якщо ви додасте відеоролик, зображення буде використано як резервний варіант під час завантаження відео."
 
@@ -9213,23 +9213,23 @@ msgid "Setting does not exist or is unrecognized."
 msgstr "Налаштування відсутня або не розпізнане."
 
 #. translators: %s: Theme name.
-#: wp-includes/class-wp-customize-manager.php:4844
+#: wp-includes/class-wp-customize-manager.php:4871
 msgid "Showing details for theme: %s"
 msgstr "Показ подробиць для теми: %s"
 
 #. translators: %d: Number of themes being displayed, which cannot currently
 #. consider singular vs. plural forms.
-#: wp-includes/class-wp-customize-manager.php:4842
+#: wp-includes/class-wp-customize-manager.php:4869
 msgid "Displaying %d themes"
 msgstr "Показано %d тем"
 
 #. translators: %d: Number of theme search results, which cannot currently
 #. consider singular vs. plural forms.
-#: wp-includes/class-wp-customize-manager.php:4840
+#: wp-includes/class-wp-customize-manager.php:4867
 msgid "%d themes found"
 msgstr "Знайдено %d тем"
 
-#: wp-includes/class-wp-customize-manager.php:4838
+#: wp-includes/class-wp-customize-manager.php:4865
 msgid "Are you sure you want to delete this theme?"
 msgstr "Ви точно хочете видалити цю тему?"
 
@@ -9590,7 +9590,7 @@ msgid "Image crop area preview. Requires mouse interaction."
 msgstr "Попередній перегляд області обрізки зображення. Вимагає керування мишею."
 
 #. translators: %s: Documentation URL.
-#: wp-includes/formatting.php:4785
+#: wp-includes/formatting.php:4802
 msgid "A structure tag is required when using custom permalinks. <a href=\"%s\">Learn more</a>"
 msgstr "При використанні користувацьких постійних посилань потрібен структурний теґ. <a href=\"%s\">Дізнатися більше</a>"
 
@@ -9633,7 +9633,7 @@ msgstr "Не передавайте теги %1$s до функції %2$s."
 msgid "Link options"
 msgstr "Параметри посилання"
 
-#: wp-includes/script-loader.php:1122 wp-includes/js/dist/block-editor.js:20477
+#: wp-includes/script-loader.php:1122 wp-includes/js/dist/block-editor.js:20468
 msgid "Link selected."
 msgstr "Посилання обрано."
 
@@ -9690,7 +9690,7 @@ msgstr "Константа %1$s <strong>застаріла</strong>. Викор�
 
 #. translators: 1: Panel ID, 2: Link to 'customize_loaded_components' filter
 #. reference.
-#: wp-includes/class-wp-customize-manager.php:3851
+#: wp-includes/class-wp-customize-manager.php:3878
 msgid "Removing %1$s manually will cause PHP warnings. Use the %2$s filter instead."
 msgstr "Видалення %1$s вручну спричинить попередження PHP. Натомість використовуйте фільтр %2$s."
 
@@ -9787,11 +9787,11 @@ msgstr "Опубліковано"
 msgid "<strong>Error</strong>: Invalid username, email address or incorrect password."
 msgstr "<strong>Помилка</strong>: Невірне ім’я користувача, e-mail адреса, чи неправильний пароль."
 
-#: wp-includes/class-wp-customize-manager.php:5139
+#: wp-includes/class-wp-customize-manager.php:5166
 msgid "Choose logo"
 msgstr "Вибрати лого"
 
-#: wp-includes/class-wp-customize-manager.php:5137
+#: wp-includes/class-wp-customize-manager.php:5164
 msgid "No logo selected"
 msgstr "Лого не обрано"
 
@@ -9806,12 +9806,12 @@ msgstr "Закрити вікно"
 msgid "The called constructor method for %1$s in %2$s is <strong>deprecated</strong> since version %3$s! Use %4$s instead."
 msgstr "Викликаний метод конструктора для %1$s у %2$s <strong>застарілий</strong> із версії %3$s! Натомість використовуйте %4$s."
 
-#: wp-includes/class-wp-customize-manager.php:5133
-#: wp-includes/class-wp-customize-manager.php:5138
+#: wp-includes/class-wp-customize-manager.php:5160
+#: wp-includes/class-wp-customize-manager.php:5165
 msgid "Select logo"
 msgstr "Обрати лого"
 
-#: wp-includes/class-wp-customize-manager.php:5134
+#: wp-includes/class-wp-customize-manager.php:5161
 msgid "Change logo"
 msgstr "Змінити лого"
 
@@ -9855,12 +9855,12 @@ msgstr "<strong>Помилка</strong>: ваше посилання занад�
 msgid "<strong>Error</strong>: Your comment is too long."
 msgstr "<strong>Помилка</strong>: ваш коментар занадто довгий."
 
-#: wp-includes/class-wp-customize-manager.php:5125
+#: wp-includes/class-wp-customize-manager.php:5152
 msgid "Logo"
 msgstr "Лого"
 
 #: wp-includes/class-wp-editor.php:1389
-#: wp-includes/js/dist/block-editor.js:20523
+#: wp-includes/js/dist/block-editor.js:20514
 msgid "Paste URL or type to search"
 msgstr "Вставити посилання, чи друкувати для пошуку"
 
@@ -9874,20 +9874,20 @@ msgstr "Шаблон відсутній. Окремі теми повинні м
 msgid "Invalid object type."
 msgstr "Невірний тип об’єкта."
 
-#: wp-includes/class-wp-customize-manager.php:5074
-#: wp-includes/class-wp-customize-manager.php:5182
+#: wp-includes/class-wp-customize-manager.php:5101
+#: wp-includes/class-wp-customize-manager.php:5209
 msgid "Display Site Title and Tagline"
 msgstr "Відображення назви сайту та ключової фрази"
 
-#: wp-includes/class-wp-customize-manager.php:4924
+#: wp-includes/class-wp-customize-manager.php:4951
 msgid "Enter desktop preview mode"
 msgstr "Увійти у режим попереднього перегляду настільного комп’ютера"
 
-#: wp-includes/class-wp-customize-manager.php:4928
+#: wp-includes/class-wp-customize-manager.php:4955
 msgid "Enter tablet preview mode"
 msgstr "Увійти у режим попереднього перегляду планшета"
 
-#: wp-includes/class-wp-customize-manager.php:4931
+#: wp-includes/class-wp-customize-manager.php:4958
 msgid "Enter mobile preview mode"
 msgstr "Увійти у режим попереднього перегляду мобільного пристрою"
 
@@ -10535,7 +10535,7 @@ msgid "Press return or enter to open this section"
 msgstr "Натисніть повернутися або увійти, щоби відкрити цей розділ."
 
 #. translators: %s: Document title from the preview.
-#: wp-includes/class-wp-customize-manager.php:4481
+#: wp-includes/class-wp-customize-manager.php:4508
 msgid "Live Preview: %s"
 msgstr "Перегляд: %s"
 
@@ -10546,7 +10546,7 @@ msgstr "Запропонованої теми не існує."
 #. translators: 1: "type => link", 2: "taxonomy => link_category"
 #. translators: 1: caller_get_posts, 2: ignore_sticky_posts
 #: wp-includes/category.php:46 wp-includes/category-template.php:360
-#: wp-includes/class-wp-query.php:1810
+#: wp-includes/class-wp-query.php:1806
 msgid "%1$s is deprecated. Use %2$s instead."
 msgstr "Вираз %1$s застарілий. Використовуйте %2$s."
 
@@ -10578,7 +10578,7 @@ msgstr "Змінити розділ: %s"
 #. Asian characters), enter 'characters_excluding_spaces' or
 #. 'characters_including_spaces'. Otherwise, enter 'words'. Do not translate
 #. into your own language.
-#: wp-includes/script-loader.php:1915 wp-includes/formatting.php:3871
+#: wp-includes/script-loader.php:1915 wp-includes/formatting.php:3888
 #: wp-includes/js/dist/editor.js:12766
 msgctxt "Word count type. Do not translate!"
 msgid "words"
@@ -10684,11 +10684,11 @@ msgstr "Сховати зображення заголовка"
 msgid "Hide image"
 msgstr "Сховати зображення"
 
-#: wp-includes/class-wp-customize-manager.php:5096
+#: wp-includes/class-wp-customize-manager.php:5123
 msgid "Site Icon"
 msgstr "Іконка сайту"
 
-#: wp-includes/class-wp-customize-manager.php:5021
+#: wp-includes/class-wp-customize-manager.php:5048
 msgid "Site Identity"
 msgstr "Ідентичність сайту"
 
@@ -11833,7 +11833,7 @@ msgstr "Обрати декілька"
 
 #. translators: %s: Taxonomy label, %l: List of terms formatted as per
 #. $term_template.
-#: wp-includes/taxonomy.php:4341
+#: wp-includes/taxonomy.php:4343
 msgid "%s: %l."
 msgstr "%s: %l."
 
@@ -12033,7 +12033,7 @@ msgstr "Тривалість"
 
 #: wp-includes/widgets/class-wp-widget-media-image.php:130
 #: wp-includes/media-template.php:1166
-#: wp-includes/js/dist/block-editor.js:22909
+#: wp-includes/js/dist/block-editor.js:22900
 msgid "Link CSS Class"
 msgstr "CSS клас посилання"
 
@@ -12604,7 +12604,7 @@ msgid "Paste as text"
 msgstr "Вставити як звичайний текст"
 
 #: wp-includes/media-template.php:1179 wp-includes/media.php:3884
-#: wp-includes/js/dist/block-editor.js:20789
+#: wp-includes/js/dist/block-editor.js:20780
 msgid "Replace"
 msgstr "Замінити"
 
@@ -12824,13 +12824,13 @@ msgstr "Впорядкувати"
 
 #: wp-includes/class-wp-customize-widgets.php:699
 #: wp-includes/class-wp-customize-nav-menus.php:1028
-#: wp-includes/js/dist/block-editor.js:24050
+#: wp-includes/js/dist/block-editor.js:24041
 msgid "Move up"
 msgstr "Перемістити вгору"
 
 #: wp-includes/class-wp-customize-widgets.php:698
 #: wp-includes/class-wp-customize-nav-menus.php:1029
-#: wp-includes/js/dist/block-editor.js:24056
+#: wp-includes/js/dist/block-editor.js:24047
 msgid "Move down"
 msgstr "Перемістити вниз"
 
@@ -12858,8 +12858,8 @@ msgstr "Фінський"
 msgid "Paste is now in plain text mode. Contents will now be pasted as plain text until you toggle this option off."
 msgstr "Вставка наразі в режимі простого тексту. Вміст буде вставлятись як простий текст поки цей параметр не буде вимкнено."
 
-#: wp-includes/js/dist/block-editor.js:22520
-#: wp-includes/js/dist/block-editor.js:22526
+#: wp-includes/js/dist/block-editor.js:22511
+#: wp-includes/js/dist/block-editor.js:22517
 #: wp-includes/js/dist/edit-post.js:1328
 msgid "Tools"
 msgstr "Інструменти"
@@ -12998,7 +12998,7 @@ msgstr "Оновлення перекладів"
 msgid "The theme directory \"%s\" does not exist."
 msgstr "Каталог теми \"%s\" не існує."
 
-#: wp-includes/class-wp-query.php:1470
+#: wp-includes/class-wp-query.php:1466
 msgctxt "Comma-separated list of search stopwords in your language"
 msgid "about,an,are,as,at,be,by,com,for,from,how,in,is,it,of,on,or,that,the,this,to,was,what,when,where,who,will,with,www"
 msgstr "а,без,би,в,де,для,так,до,за,і,із,або,до,як,коли,чи,на,над,ані,але,о,про,від,перед,по,під,при,про,з,у,крізь,аби"
@@ -13068,7 +13068,7 @@ msgstr "Невдало"
 
 #. translators: Time difference between two dates, in weeks. %s: Number of
 #. weeks.
-#: wp-includes/formatting.php:3751
+#: wp-includes/formatting.php:3768
 msgid "%s week"
 msgid_plural "%s weeks"
 msgstr[0] "%s тиждень"
@@ -13077,7 +13077,7 @@ msgstr[2] "%s тижнів"
 
 #. translators: Time difference between two dates, in months. %s: Number of
 #. months.
-#: wp-includes/formatting.php:3758
+#: wp-includes/formatting.php:3775
 msgid "%s month"
 msgid_plural "%s months"
 msgstr[0] "%s місяць"
@@ -13086,7 +13086,7 @@ msgstr[2] "%s місяців"
 
 #. translators: Time difference between two dates, in years. %s: Number of
 #. years.
-#: wp-includes/formatting.php:3765
+#: wp-includes/formatting.php:3782
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s рік"
@@ -13130,7 +13130,7 @@ msgstr "d.m.Y H:i"
 msgid "g:i a"
 msgstr "H:i"
 
-#: wp-includes/js/dist/block-editor.js:23524
+#: wp-includes/js/dist/block-editor.js:23515
 msgid "Not set"
 msgstr "Не встановлено"
 
@@ -13237,8 +13237,8 @@ msgstr "Випадковий порядок"
 msgid "%d selected"
 msgstr "Вибрано: %d"
 
-#: wp-includes/media.php:3936 wp-includes/js/dist/block-editor.js:20940
-#: wp-includes/js/dist/block-editor.js:21358
+#: wp-includes/media.php:3936 wp-includes/js/dist/block-editor.js:20931
+#: wp-includes/js/dist/block-editor.js:21349
 msgid "Insert from URL"
 msgstr "Вставити з сайту"
 
@@ -13290,7 +13290,7 @@ msgstr "Неможливо вибрати редактор"
 
 #: wp-includes/widgets/class-wp-widget-media-video.php:28
 #: wp-includes/post.php:2740 wp-includes/js/dist/editor.js:8565
-#: wp-includes/js/dist/block-editor.js:21292
+#: wp-includes/js/dist/block-editor.js:21283
 #: wp-includes/js/dist/block-library.js:21833
 msgid "Video"
 msgstr "Відео"
@@ -13341,7 +13341,7 @@ msgstr "Вставити в сторінку"
 
 #: wp-includes/widgets/class-wp-widget-media-audio.php:28
 #: wp-includes/post.php:2731 wp-includes/js/dist/editor.js:8568
-#: wp-includes/js/dist/block-editor.js:21288
+#: wp-includes/js/dist/block-editor.js:21279
 #: wp-includes/js/dist/block-library.js:9205
 msgid "Audio"
 msgstr "Аудіо"
@@ -13420,7 +13420,7 @@ msgstr "Вставити галерею"
 msgid "Drop files to upload"
 msgstr "Перетягніть файли, щоб завантажити"
 
-#: wp-includes/media.php:3900 wp-includes/js/dist/block-editor.js:21400
+#: wp-includes/media.php:3900 wp-includes/js/dist/block-editor.js:21391
 msgid "Media Library"
 msgstr "Медіа бібліотека"
 
@@ -13489,14 +13489,14 @@ msgstr "Посилання до"
 
 #: wp-includes/media-template.php:772 wp-includes/media-template.php:847
 #: wp-includes/media-template.php:1120
-#: wp-includes/js/dist/block-editor.js:22842
+#: wp-includes/js/dist/block-editor.js:22833
 #: wp-includes/js/dist/block-library.js:7851
 msgid "Media File"
 msgstr "Медіафайл"
 
 #: wp-includes/media-template.php:779 wp-includes/media-template.php:844
 #: wp-includes/media-template.php:1123
-#: wp-includes/js/dist/block-editor.js:22847
+#: wp-includes/js/dist/block-editor.js:22838
 #: wp-includes/js/dist/block-library.js:7848
 msgid "Attachment Page"
 msgstr "Сторінка прикріпленого файлу"
@@ -13648,7 +13648,7 @@ msgstr "Знайдено свіжішу редакцію запису."
 msgid "Sorry, revisions are disabled."
 msgstr "На жаль, ревізії вимкнено."
 
-#: wp-includes/js/dist/block-editor.js:25311
+#: wp-includes/js/dist/block-editor.js:25302
 msgid "Clear selection."
 msgstr "Очистити вибір."
 
@@ -13665,11 +13665,11 @@ msgctxt "Name for the Text editor tab (formerly HTML)"
 msgid "Text"
 msgstr "Текст"
 
-#: wp-includes/class-wp-customize-manager.php:5194
+#: wp-includes/class-wp-customize-manager.php:5221
 msgid "Header Text Color"
 msgstr "Колір тексту заловку"
 
-#: wp-includes/class-wp-customize-manager.php:5160
+#: wp-includes/class-wp-customize-manager.php:5187
 msgid "Colors"
 msgstr "Кольори"
 
@@ -13705,7 +13705,7 @@ msgid "Sorry, you are not allowed to publish this page."
 msgstr "На жаль, ви не можете оприлюднити цю сторінку."
 
 #: wp-includes/customize/class-wp-customize-header-image-control.php:54
-#: wp-includes/class-wp-customize-manager.php:5255
+#: wp-includes/class-wp-customize-manager.php:5282
 msgid "Header Image"
 msgstr "Зображення в заголовку"
 
@@ -13749,17 +13749,17 @@ msgstr[0] "Ім'я сайту має бути не коротше %s симво�
 msgstr[1] "Ім'я сайту має бути не коротше %s символів"
 msgstr[2] "Ім'я сайту має бути не коротше %s символів"
 
-#: wp-includes/class-wp-customize-manager.php:5550
+#: wp-includes/class-wp-customize-manager.php:5577
 msgid "A static page"
 msgstr "Статична сторінка"
 
-#: wp-includes/class-wp-customize-manager.php:5218
+#: wp-includes/class-wp-customize-manager.php:5245
 #: wp-includes/js/dist/block-editor.js:7575
 msgid "Background Color"
 msgstr "Фоновий колір"
 
 #: wp-includes/customize/class-wp-customize-background-image-control.php:33
-#: wp-includes/class-wp-customize-manager.php:5364
+#: wp-includes/class-wp-customize-manager.php:5391
 msgid "Background Image"
 msgstr "Фонове зображення"
 
@@ -13781,7 +13781,7 @@ msgstr "Видалити зображення"
 msgid "Sorry, you are not allowed to edit this comment."
 msgstr "На жаль, вам не дозволено редагувати цей коментар."
 
-#: wp-includes/class-wp-customize-manager.php:5584
+#: wp-includes/class-wp-customize-manager.php:5611
 msgid "Posts page"
 msgstr "Сторінка записів"
 
@@ -13796,15 +13796,15 @@ msgstr "Дозволені файли"
 #: wp-includes/customize/class-wp-customize-media-control.php:236
 #: wp-includes/customize/class-wp-customize-media-control.php:247
 #: wp-includes/customize/class-wp-customize-media-control.php:257
-#: wp-includes/class-wp-customize-manager.php:5135
+#: wp-includes/class-wp-customize-manager.php:5162
 #: wp-includes/class-wp-editor.php:1387 wp-includes/js/dist/edit-post.js:1145
 #: wp-includes/js/dist/block-directory.js:1501
 msgid "Remove"
 msgstr "Видалити"
 
-#: wp-includes/js/dist/block-editor.js:20932
-#: wp-includes/js/dist/block-editor.js:21414
-#: wp-includes/js/dist/block-editor.js:21427
+#: wp-includes/js/dist/block-editor.js:20923
+#: wp-includes/js/dist/block-editor.js:21405
+#: wp-includes/js/dist/block-editor.js:21418
 msgid "Upload"
 msgstr "Завантажити"
 
@@ -13923,16 +13923,16 @@ msgstr "Файл стилю не вдалось завантажити."
 msgid "Error: The themes directory is either empty or doesn&#8217;t exist. Please check your installation."
 msgstr "Помилка: Тека теми не існує або порожня. Перевірте правильність встановлення."
 
-#: wp-includes/class-wp-customize-manager.php:5549
+#: wp-includes/class-wp-customize-manager.php:5576
 msgid "Your latest posts"
 msgstr "Ваші останні записи"
 
-#: wp-includes/class-wp-customize-manager.php:5055
+#: wp-includes/class-wp-customize-manager.php:5082
 msgid "Tagline"
 msgstr "Ключова фраза"
 
 #. translators: %s: Document title from the preview.
-#: wp-includes/class-wp-customize-manager.php:4478
+#: wp-includes/class-wp-customize-manager.php:4505
 msgid "Customize: %s"
 msgstr "Налаштувати: %s"
 
@@ -13942,7 +13942,7 @@ msgstr "Налаштувати: %s"
 msgid "&mdash; Select &mdash;"
 msgstr "&mdash; Обрати &mdash;"
 
-#: wp-includes/js/dist/block-editor.js:23604
+#: wp-includes/js/dist/block-editor.js:23595
 msgid "Styles"
 msgstr "Стилі"
 
@@ -13983,7 +13983,7 @@ msgid "Edit Site"
 msgstr "Редагувати сайт"
 
 #: wp-includes/script-loader.php:1298 wp-includes/script-loader.php:1391
-#: wp-includes/post.php:4573
+#: wp-includes/post.php:4582
 msgctxt "tag delimiter"
 msgid ","
 msgstr ","
@@ -14093,7 +14093,7 @@ msgstr "Створіть файл конфігурації"
 msgid "You can create a %s file through a web interface, but this doesn't work for all server setups. The safest way is to manually create the file."
 msgstr "Ви можете створити файл %s через веб-інтерфейс, але це не працює для всіх серверів. Найбезпечніший спосіб це створити файл вручну."
 
-#: wp-includes/class-wp-customize-manager.php:5596
+#: wp-includes/class-wp-customize-manager.php:5623
 msgid "https://codex.wordpress.org/CSS"
 msgstr "https://codex.wordpress.org/CSS"
 
@@ -14205,7 +14205,7 @@ msgstr "<strong>Помилка</strong>: Адресу сайту вже зайн
 msgid "Documentation"
 msgstr "Документація"
 
-#: wp-includes/general-template.php:4197 wp-includes/formatting.php:3859
+#: wp-includes/general-template.php:4197 wp-includes/formatting.php:3876
 msgid "&hellip;"
 msgstr "&hellip;"
 
@@ -14274,7 +14274,7 @@ msgctxt "admin color scheme"
 msgid "Blue"
 msgstr "Сині"
 
-#: wp-includes/formatting.php:4767
+#: wp-includes/formatting.php:4784
 msgid "The timezone you have entered is not valid. Please select a valid timezone."
 msgstr "Часовий пояс, який Ви вказали, невірний. Будь ласка, виберіть правильний часовий пояс."
 
@@ -14626,7 +14626,7 @@ msgid "Blavatar"
 msgstr "Блаватар"
 
 #. translators: %s: Taxonomy name.
-#: wp-includes/post.php:3969
+#: wp-includes/post.php:3978
 msgid "Invalid taxonomy: %s."
 msgstr "Невірна таксономія: %s."
 
@@ -14690,7 +14690,7 @@ msgid "You have searched the %1$s blog archives for <strong>&#8216;%2$s&#8217;</
 msgstr "Ви шукали <strong>&#8216;%2$s&#8217;</strong> в архівах сайту %1$s. Якщо у вас не виходить знайти щось у цих результатах, можете спробувати одне з цих посилань."
 
 #. translators: Used to join items in a list with only 2 items.
-#: wp-includes/formatting.php:5055
+#: wp-includes/formatting.php:5072
 msgid "%1$s and %2$s"
 msgstr "%1$s і %2$s"
 
@@ -14963,15 +14963,15 @@ msgstr "Цей сайт заархівовано або призупинено."
 msgid "The given object ID is not that of a menu item."
 msgstr "Вказаний ID об’єкту не належить елементу меню."
 
-#: wp-includes/formatting.php:4708
+#: wp-includes/formatting.php:4725
 msgid "The Site address you entered did not appear to be a valid URL. Please enter a valid URL."
 msgstr "Вказана адреса URL не є коректно. Будь ласка, вкажіть коректну адресу URL."
 
-#: wp-includes/formatting.php:4695
+#: wp-includes/formatting.php:4712
 msgid "The WordPress address you entered did not appear to be a valid URL. Please enter a valid URL."
 msgstr "Схоже, що посилання на URL WordPress&#8217;у  не вірне. Будь ласка, провірте це і введіть правильну адресу."
 
-#: wp-includes/formatting.php:4585
+#: wp-includes/formatting.php:4602
 msgid "The email address entered did not appear to be a valid email address. Please enter a valid email address."
 msgstr "Введена e-mail адреса недійсна. Будь ласка, введіть дійсний e-mail."
 
@@ -15396,7 +15396,7 @@ msgstr "Невірний ID коментаря."
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:361
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:828
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:398
-#: wp-includes/post.php:3609 wp-includes/post.php:4185
+#: wp-includes/post.php:3612 wp-includes/post.php:4194
 #: wp-includes/revision.php:308
 msgid "Invalid post ID."
 msgstr "Невірний ID запису."
@@ -15531,7 +15531,7 @@ msgstr "Коментарі до %1$s від %2$s"
 
 #. translators: Time difference between two dates, in minutes (min=minute). %s:
 #. Number of minutes.
-#: wp-includes/formatting.php:3730
+#: wp-includes/formatting.php:3747
 msgid "%s min"
 msgid_plural "%s mins"
 msgstr[0] "%s хв."
@@ -15541,7 +15541,7 @@ msgstr[2] "%s хв."
 #. translators: %s: Time duration in hour or hours.
 #. translators: Time difference between two dates, in hours. %s: Number of
 #. hours.
-#: wp-includes/functions.php:525 wp-includes/formatting.php:3737
+#: wp-includes/functions.php:525 wp-includes/formatting.php:3754
 msgid "%s hour"
 msgid_plural "%s hours"
 msgstr[0] "%s годину"
@@ -15549,7 +15549,7 @@ msgstr[1] "%s години"
 msgstr[2] "%s години"
 
 #. translators: Time difference between two dates, in days. %s: Number of days.
-#: wp-includes/formatting.php:3744
+#: wp-includes/formatting.php:3761
 msgid "%s day"
 msgid_plural "%s days"
 msgstr[0] "%s день"
@@ -15934,7 +15934,7 @@ msgstr "Верхній індекс"
 msgid "Cut"
 msgstr "Вирізати"
 
-#: wp-includes/class-wp-customize-manager.php:4280
+#: wp-includes/class-wp-customize-manager.php:4307
 #: wp-includes/class-wp-editor.php:1175
 msgid "Copy"
 msgstr "Копіювати"
@@ -16248,15 +16248,15 @@ msgstr "Редагувати галерею"
 #: wp-includes/script-loader.php:839
 #: wp-includes/widgets/class-wp-widget-media-image.php:28
 #: wp-includes/class-wp-editor.php:1216 wp-includes/js/dist/editor.js:8553
-#: wp-includes/js/dist/block-editor.js:21290
+#: wp-includes/js/dist/block-editor.js:21281
 #: wp-includes/js/dist/block-library.js:5200
 #: wp-includes/js/dist/block-library.js:5775
 msgid "Image"
 msgstr "Зображення"
 
 #: wp-includes/script-loader.php:643 wp-includes/class-wp-editor.php:1261
-#: wp-includes/js/dist/block-editor.js:22622
-#: wp-includes/js/dist/block-editor.js:22920
+#: wp-includes/js/dist/block-editor.js:22613
+#: wp-includes/js/dist/block-editor.js:22911
 msgid "Insert link"
 msgstr "Вставити посилання"
 
@@ -16294,7 +16294,7 @@ msgid "Remove From Bulk Edit"
 msgstr "Видалити з масового редагування"
 
 #: wp-includes/class-wp-editor.php:1257
-#: wp-includes/js/dist/block-editor.js:22956
+#: wp-includes/js/dist/block-editor.js:22947
 msgid "Remove link"
 msgstr "Видалити посилання"
 
@@ -16561,15 +16561,15 @@ msgstr[0] "Кошик <span class=\"count\">(%s)</span>"
 msgstr[1] "Кошик <span class=\"count\">(%s)</span>"
 msgstr[2] "Кошик <span class=\"count\">(%s)</span>"
 
-#: wp-includes/post.php:3656
+#: wp-includes/post.php:3659
 msgid "Content, title, and excerpt are empty."
 msgstr "Вміст, назва, та уривок порожні."
 
-#: wp-includes/post.php:3923
+#: wp-includes/post.php:3932
 msgid "Could not update post in the database"
 msgstr "Не вдалося оновити запис у базі даних"
 
-#: wp-includes/post.php:3938
+#: wp-includes/post.php:3947
 msgid "Could not insert post into the database"
 msgstr "Не вдалося вставити запис до бази даних"
 
@@ -16708,8 +16708,8 @@ msgstr "%s [Поточна редакція]"
 msgid "%s [Autosave]"
 msgstr "%s [Автозбереження]"
 
-#: wp-includes/class-wp-customize-manager.php:5409
-#: wp-includes/class-wp-customize-manager.php:5468
+#: wp-includes/class-wp-customize-manager.php:5436
+#: wp-includes/class-wp-customize-manager.php:5495
 msgid "Fill Screen"
 msgstr "Заповнити екран"
 
@@ -16837,7 +16837,7 @@ msgstr "Введена вами адреса схожа на e-mail, додат�
 msgid "Empty Term."
 msgstr "Порожній елемент"
 
-#: wp-includes/taxonomy.php:4414
+#: wp-includes/taxonomy.php:4416
 msgid "Invalid object ID."
 msgstr "Невірний ID об'єкта"
 
@@ -16912,7 +16912,7 @@ msgstr "[%1$s] Перевірте, будь ласка: \"%2$s\""
 
 #: wp-includes/widgets/class-wp-widget-media-image.php:137
 #: wp-includes/media-template.php:1162
-#: wp-includes/js/dist/block-editor.js:22903
+#: wp-includes/js/dist/block-editor.js:22894
 msgid "Link Rel"
 msgstr "rel атрибут тегу link"
 
@@ -17129,7 +17129,7 @@ msgstr "Світлий"
 
 #: wp-includes/widgets/class-wp-widget-media-image.php:78
 #: wp-includes/media-template.php:1103 wp-includes/class-wp-editor.php:1329
-#: wp-includes/js/dist/block-editor.js:19213
+#: wp-includes/js/dist/block-editor.js:19204
 #: wp-includes/js/dist/format-library.js:927
 msgid "Width"
 msgstr "Ширина"
@@ -17159,7 +17159,7 @@ msgstr "Формат часу"
 
 #: wp-includes/widgets/class-wp-widget-media-image.php:84
 #: wp-includes/media-template.php:1108 wp-includes/class-wp-editor.php:1328
-#: wp-includes/js/dist/block-editor.js:19224
+#: wp-includes/js/dist/block-editor.js:19215
 msgid "Height"
 msgstr "Висота"
 
@@ -17233,7 +17233,7 @@ msgid "1 Comment"
 msgstr "1 коментар"
 
 #: wp-includes/js/dist/components.js:39290
-#: wp-includes/js/dist/block-editor.js:21561
+#: wp-includes/js/dist/block-editor.js:21552
 msgid "All"
 msgstr "Все"
 
@@ -17315,7 +17315,7 @@ msgstr "Розділяйте позначки комами"
 #: wp-includes/customize/class-wp-customize-media-control.php:235
 #: wp-includes/customize/class-wp-customize-media-control.php:246
 #: wp-includes/customize/class-wp-customize-media-control.php:256
-#: wp-includes/class-wp-customize-manager.php:5136
+#: wp-includes/class-wp-customize-manager.php:5163
 #: wp-includes/js/dist/components.js:33463
 #: wp-includes/js/dist/components.js:35215
 #: wp-includes/js/dist/block-library.js:18937
@@ -17324,7 +17324,7 @@ msgid "Default"
 msgstr "За замовчуванням"
 
 #: wp-includes/class-wp-xmlrpc-server.php:545
-#: wp-includes/class-wp-customize-manager.php:5038
+#: wp-includes/class-wp-customize-manager.php:5065
 msgid "Site Title"
 msgstr "Назва сайту"
 
@@ -17422,8 +17422,8 @@ msgstr "Коментарі закриті."
 msgid "Website"
 msgstr "Сайт"
 
-#: wp-includes/js/dist/block-editor.js:22622
-#: wp-includes/js/dist/block-editor.js:22920
+#: wp-includes/js/dist/block-editor.js:22613
+#: wp-includes/js/dist/block-editor.js:22911
 msgid "Edit link"
 msgstr "Змінити посилання"
 
@@ -17435,7 +17435,7 @@ msgstr "<strong>Помилка</strong>: Цей e-mail вже хтось зар�
 msgid "<strong>Error</strong>: Please enter a username."
 msgstr "<strong>Помилка</strong>: Будь ласка, введіть ім’я користувача."
 
-#: wp-includes/js/dist/block-editor.js:20065
+#: wp-includes/js/dist/block-editor.js:20056
 msgid "Search results for %s"
 msgstr "Результати пошуку для %s"
 
@@ -17455,8 +17455,8 @@ msgstr "Пошук категорій"
 
 #: wp-includes/class-wp-customize-widgets.php:777 wp-includes/media.php:3921
 #: wp-includes/class-wp-editor.php:1390
-#: wp-includes/js/dist/block-editor.js:20691
-#: wp-includes/js/dist/block-editor.js:21108
+#: wp-includes/js/dist/block-editor.js:20682
+#: wp-includes/js/dist/block-editor.js:21099
 #: wp-includes/js/dist/block-library.js:23595
 #: wp-includes/js/dist/format-library.js:933
 msgid "Apply"
@@ -17485,8 +17485,8 @@ msgstr "Автор"
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:94
 #: wp-includes/class-wp-editor.php:1265 wp-includes/class-wp-editor.php:1845
 #: wp-includes/class-wp-customize-nav-menus.php:1194
-#: wp-includes/js/dist/block-editor.js:20567
-#: wp-includes/js/dist/block-editor.js:21101
+#: wp-includes/js/dist/block-editor.js:20558
+#: wp-includes/js/dist/block-editor.js:21092
 #: wp-includes/js/dist/block-library.js:13557
 msgid "URL"
 msgstr "URL"
@@ -17499,9 +17499,9 @@ msgstr "Коментар"
 #: wp-includes/class-wp-editor.php:1388
 #: wp-includes/class-walker-comment.php:242
 #: wp-includes/class-walker-comment.php:392 wp-includes/js/dist/editor.js:12394
-#: wp-includes/js/dist/block-editor.js:20132
-#: wp-includes/js/dist/block-editor.js:20751
-#: wp-includes/js/dist/block-editor.js:22532
+#: wp-includes/js/dist/block-editor.js:20123
+#: wp-includes/js/dist/block-editor.js:20742
+#: wp-includes/js/dist/block-editor.js:22523
 #: wp-includes/js/dist/block-library.js:17817
 msgid "Edit"
 msgstr "Редагувати"
@@ -17529,8 +17529,8 @@ msgstr "Зберегти"
 #: wp-includes/script-loader.php:1100 wp-includes/script-loader.php:1164
 #: wp-includes/script-loader.php:1312 wp-includes/media.php:3882
 #: wp-includes/class-wp-editor.php:1182 wp-includes/class-wp-editor.php:1886
-#: wp-includes/js/dist/block-editor.js:21334
-#: wp-includes/js/dist/block-editor.js:21337
+#: wp-includes/js/dist/block-editor.js:21325
+#: wp-includes/js/dist/block-editor.js:21328
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -17565,8 +17565,8 @@ msgstr "Сторінки"
 msgid "Users"
 msgstr "Користувачі"
 
-#: wp-includes/js/dist/block-editor.js:19806
-#: wp-includes/js/dist/block-editor.js:22646
+#: wp-includes/js/dist/block-editor.js:19797
+#: wp-includes/js/dist/block-editor.js:22637
 msgid "Submit"
 msgstr "Відправити"
 
@@ -17652,7 +17652,7 @@ msgstr "Вирівнювання"
 
 #: wp-includes/media.php:3877 wp-includes/media.php:4442
 #: wp-includes/class-wp-editor.php:1233
-#: wp-includes/js/dist/block-editor.js:21285
+#: wp-includes/js/dist/block-editor.js:21276
 msgid "Media"
 msgstr "Медіафайли"
 
@@ -17678,16 +17678,16 @@ msgstr "Переглянути сторінку"
 
 #: wp-includes/script-loader.php:841 wp-includes/script-loader.php:1165
 #: wp-includes/script-loader.php:1968
-#: wp-includes/class-wp-customize-manager.php:5627
+#: wp-includes/class-wp-customize-manager.php:5654
 #: wp-includes/class-wp-editor.php:1183 wp-includes/class-wp-editor.php:1840
 #: wp-includes/js/dist/components.js:33272
-#: wp-includes/js/dist/block-editor.js:22639
+#: wp-includes/js/dist/block-editor.js:22630
 #: wp-includes/js/dist/edit-post.js:3179 wp-includes/js/dist/edit-post.js:3503
 #: wp-includes/js/dist/edit-post.js:3848
 msgid "Close"
 msgstr "Закрити"
 
-#: wp-includes/media.php:3881 wp-includes/js/dist/block-editor.js:22535
+#: wp-includes/media.php:3881 wp-includes/js/dist/block-editor.js:22526
 msgid "Select"
 msgstr "Обрати"
 
@@ -17847,9 +17847,9 @@ msgid "Excerpt"
 msgstr "Уривок"
 
 #: wp-includes/media-template.php:1441
-#: wp-includes/class-wp-customize-manager.php:4234
+#: wp-includes/class-wp-customize-manager.php:4261
 #: wp-includes/class-wp-editor.php:1249
-#: wp-includes/js/dist/block-editor.js:24823
+#: wp-includes/js/dist/block-editor.js:24814
 #: wp-includes/js/dist/block-library.js:14219
 msgid "Preview"
 msgstr "Переглянути"
@@ -17899,13 +17899,13 @@ msgid "Search Results for &#8220;%s&#8221;"
 msgstr "Результати пошуку &#8220;%s&#8221;"
 
 #: wp-includes/script-loader.php:1152 wp-includes/script-loader.php:1320
-#: wp-includes/class-wp-customize-manager.php:4751
+#: wp-includes/class-wp-customize-manager.php:4778
 #: wp-includes/js/dist/editor.js:9397 wp-includes/js/dist/edit-post.js:4970
 msgid "Publish"
 msgstr "Опублікувати"
 
 #: wp-includes/class-wp-editor.php:1219
-#: wp-includes/js/dist/block-editor.js:23614
+#: wp-includes/js/dist/block-editor.js:23605
 msgid "Advanced"
 msgstr "Додатково"
 
@@ -17934,7 +17934,7 @@ msgid "Email: %s"
 msgstr "Email: %s"
 
 #: wp-includes/script-loader.php:1154 wp-includes/script-loader.php:1324
-#: wp-includes/class-wp-customize-manager.php:4756
+#: wp-includes/class-wp-customize-manager.php:4783
 #: wp-includes/js/dist/editor.js:11076
 msgid "Save Draft"
 msgstr "Зберегти"
@@ -17946,7 +17946,7 @@ msgstr "Сповіщення"
 #: wp-includes/script-loader.php:696 wp-includes/script-loader.php:875
 #: wp-includes/widgets/class-wp-widget-text.php:538
 #: wp-includes/widgets/class-wp-widget-text.php:553
-#: wp-includes/class-wp-customize-manager.php:4207
+#: wp-includes/class-wp-customize-manager.php:4234
 msgid "Dismiss"
 msgstr "Відхилити"
 
