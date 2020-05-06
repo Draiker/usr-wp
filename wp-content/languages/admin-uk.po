@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the WordPress - 5.4.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-04-27 21:16:56+0000\n"
+"PO-Revision-Date: 2020-05-01 21:32:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: GlotPress/2.4.0-alpha\n"
+"X-Generator: GlotPress/3.0.0-alpha\n"
 "Language: uk_UA\n"
 "Project-Id-Version: WordPress - 5.4.x - Development - Administration\n"
 
@@ -1340,10 +1340,6 @@ msgstr[2] "%s рекомендованих поліпшень"
 msgid "REST API availability"
 msgstr "Доступність REST API"
 
-#: wp-admin/includes/class-wp-site-health.php:1986
-msgid "Loopback request"
-msgstr "Петлевой запит"
-
 #: wp-admin/includes/class-wp-site-health.php:1972
 msgid "Debugging enabled"
 msgstr "Налагодження ввімкнено"
@@ -1445,6 +1441,10 @@ msgstr "Безпечне підключення"
 #: wp-admin/includes/class-wp-site-health.php:2186
 msgid "The loopback request to your site failed, this means features relying on them are not currently working as expected."
 msgstr "Петльовий запит до вашого сайту не вдався. Можливості, які залежать від його працездатності, не можуть працювати так, як повинні."
+
+#: wp-admin/includes/class-wp-site-health.php:1986
+msgid "Loopback request"
+msgstr "Петльовий запит"
 
 #: wp-admin/includes/class-wp-site-health.php:1815
 msgid "The REST API is available"
@@ -10208,11 +10208,11 @@ msgstr "Ви можете налаштовувати вигляд цього е�
 
 #: wp-admin/plugins.php:460
 msgid "Most of the time, plugins play nicely with the core of WordPress and with other plugins. Sometimes, though, a plugin&#8217;s code will get in the way of another plugin, causing compatibility issues. If your site starts doing strange things, this may be the problem. Try deactivating all your plugins and re-activating them in various combinations until you isolate which one(s) caused the issue."
-msgstr "У більшості випадків плаґіни коректно працюють з ядром WordPress та іншими плаґінами. Втім, іноді код одного плаґіну може стати перешкодою для роботи іншого, викликаючи проблеми сумісності. Якщо на вашому сайті відбуваються дивні речі, причина може бути в цьому. Спробуйте деактивувати всі плаґіни і повторно активувати їх у різних комбінаціях, щоб визначити, який з них став причиною проблеми."
+msgstr "У більшості випадків плагіни коректно працюють з ядром WordPress та іншими плагінами. Втім, іноді код одного плагіну може стати перешкодою для роботи іншого, викликаючи проблеми сумісності. Якщо на вашому сайті відбуваються дивні речі, причина може бути в цьому. Спробуйте деактивувати всі плагіни і повторно активувати їх у різних комбінаціях, щоб визначити, який з них став причиною проблеми."
 
-#: wp-admin/theme-editor.php:38
-msgid "After typing in your edits, click Update File."
-msgstr "Після внесення змін, натисніть на «Оновити файл»."
+#: wp-admin/widgets.php:57
+msgid "Widgets are independent sections of content that can be placed into any widgetized area provided by your theme (commonly called sidebars). To populate your sidebars/widget areas with individual widgets, drag and drop the title bars into the desired area. By default, only the first widget area is expanded. To populate additional widget areas, click on their title bars to expand them."
+msgstr "Віджети - це незалежні блоки вмісту, які можна розміщувати в областях, передбачених Вашою темою (зазвичай їх називають бічними колонками). Щоб заповнити їх віджетами, перетягніть заголовки в бажану область. За замовчуванням розкривається тільки перша область. Щоб заповнити решта областей, розгорніть їх натисканням на заголовки."
 
 #: wp-admin/theme-editor.php:30
 msgid "Begin by choosing a theme to edit from the dropdown menu and clicking the Select button. A list then appears of the theme&#8217;s template files. Clicking once on any file name causes the file to appear in the large Editor box."
@@ -10230,13 +10230,13 @@ msgstr "Увімкнувши режим доступності на вкладц
 msgid "Widgets may be used multiple times. You can give each widget a title, to display on your site, but it&#8217;s not required."
 msgstr "Віджети можна використовувати багатократно. Кожному віджету можна дати заголовок, але це необов’язково."
 
-#: wp-admin/widgets.php:57
-msgid "Widgets are independent sections of content that can be placed into any widgetized area provided by your theme (commonly called sidebars). To populate your sidebars/widget areas with individual widgets, drag and drop the title bars into the desired area. By default, only the first widget area is expanded. To populate additional widget areas, click on their title bars to expand them."
-msgstr "Віджети - це незалежні блоки вмісту, які можна розміщувати в областях, передбачених Вашою темою (зазвичай їх називають бічними колонками). Щоб заповнити їх віджетами, перетягніть заголовки в бажану область. За замовчуванням розкривається тільки перша область. Щоб заповнити решта областей, розгорніть їх натисканням на заголовки."
-
 #: wp-admin/theme-editor.php:39
 msgid "<strong>Advice:</strong> Think very carefully about your site crashing if you are live-editing the theme currently in use."
 msgstr "<strong>Порада:</strong> Якщо ви редагуєте тему, яка використовується в даний момент, подумайте про можливе порушення працездатності сайту."
+
+#: wp-admin/theme-editor.php:38
+msgid "After typing in your edits, click Update File."
+msgstr "Після внесення змін, натисніть «Оновити файл»."
 
 #: wp-admin/includes/meta-boxes.php:933
 msgid "(no parent)"
@@ -10270,14 +10270,14 @@ msgstr "<strong>Опис</strong> &mdash; Опис схований за зам�
 msgid "You can change the display of this screen using the Screen Options tab to set how many items are displayed per screen and to display/hide columns in the table."
 msgstr "Ви можете змінити вигляд цього екрану на вкладці \"Параметри екрану\", вказавши кількість елементів на екрані та видимі стовпчики в таблиці."
 
-#: wp-admin/edit-tags.php:262
-msgid "What&#8217;s the difference between categories and tags? Normally, tags are ad-hoc keywords that identify important information in your post (names, subjects, etc) that may or may not recur in other posts, while categories are pre-determined sections. If you think of your site like a book, the categories are like the Table of Contents and the tags are like the terms in the index."
-msgstr "Яка ж відмінність між позначками і категоріями? Зазвичай для позначок використовують ключові слова, які підходять для даної публікації. А в якості категорій використовують наперед підготовлені розділи. Якщо розглядати сайт як книжку — то категорії це зміст, а позначки це предметний покажчик."
-
 #. translators: %s: URL to Writing Settings screen.
 #: wp-admin/edit-tags.php:250
 msgid "You can use categories to define sections of your site and group related posts. The default category is &#8220;Uncategorized&#8221; until you change it in your <a href=\"%s\">writing settings</a>."
 msgstr "Можна групувати публікації у категорії. За замовчуванням публікації відносяться до категорії «Без категорії», але це можна змінити у <a href=\"%s\">налаштуваннях створення</a>."
+
+#: wp-admin/edit-tags.php:262
+msgid "What&#8217;s the difference between categories and tags? Normally, tags are ad-hoc keywords that identify important information in your post (names, subjects, etc) that may or may not recur in other posts, while categories are pre-determined sections. If you think of your site like a book, the categories are like the Table of Contents and the tags are like the terms in the index."
+msgstr "Яка ж відмінність між позначками і категоріями? Зазвичай для позначок використовують ключові слова, які підходять для даної публікації. А в якості категорій використовують наперед підготовлені розділи. Якщо розглядати сайт як книжку — то категорії це зміст, а позначки це предметний покажчик."
 
 #: wp-admin/edit-tags.php:277
 msgid "When adding a new tag on this screen, you&#8217;ll fill in the following fields:"
@@ -10775,13 +10775,6 @@ msgstr "Користувач вже існує. Пароль наслідува�
 msgid "The password you chose during installation."
 msgstr "Пароль, обраний вами під час інсталяції."
 
-#. translators: 1: URL to WordPress release notes, 2: WordPress version number,
-#. 3: Minimum required PHP version number, 4: Minimum required MySQL version
-#. number, 5: Current PHP version number, 6: Current MySQL version number.
-#: wp-admin/update-core.php:100 wp-admin/upgrade.php:98
-msgid "You cannot update because <a href=\"%1$s\">WordPress %2$s</a> requires PHP version %3$s or higher and MySQL version %4$s or higher. You are running PHP version %5$s and MySQL version %6$s."
-msgstr "Неможливо встановити оновлення, тому що <a href=\"%1$s\">WordPress %2$s</a> вимагає PHP версії %3$s або вище і MySQL версії %4$s або вище. У вас PHP версії %5$s і MySQL версії %6$s."
-
 #: wp-admin/update-core.php:320 wp-admin/update-core.php:437
 #: wp-admin/update-core.php:854 wp-admin/update-core.php:858
 #: wp-admin/plugins.php:142
@@ -10797,6 +10790,13 @@ msgstr "Оновити WordPress"
 #: wp-admin/update-core.php:631
 msgid "WordPress updated successfully"
 msgstr "Оновлення WordPress пройшло успішно!"
+
+#. translators: 1: URL to WordPress release notes, 2: WordPress version number,
+#. 3: Minimum required PHP version number, 4: Minimum required MySQL version
+#. number, 5: Current PHP version number, 6: Current MySQL version number.
+#: wp-admin/update-core.php:100 wp-admin/upgrade.php:98
+msgid "You cannot update because <a href=\"%1$s\">WordPress %2$s</a> requires PHP version %3$s or higher and MySQL version %4$s or higher. You are running PHP version %5$s and MySQL version %6$s."
+msgstr "Неможливо встановити оновлення, тому що <a href=\"%1$s\">WordPress %2$s</a> вимагає PHP версії %3$s або вище і MySQL версії %4$s або вище. У вас PHP версії %5$s і MySQL версії %6$s."
 
 #: wp-admin/update-core.php:699 wp-admin/update-core.php:742
 msgid "WordPress Updates"
@@ -10870,6 +10870,13 @@ msgstr "Ви впевнені, що хочете видалити ці файл�
 msgid "This address is used for admin purposes. If you change this, we will send you an email at your new address to confirm it. <strong>The new address will not become active until confirmed.</strong>"
 msgstr "Ця адреса використовується в цілях адміністрування. Якщо ви зміните її, на вашу нову адресу буде надіслано e-mail повідомлення для підтвердження. <strong>Нова адреса не буде діяти до підтвердження.</strong>"
 
+#. translators: 1: URL to WordPress release notes, 2: WordPress version number,
+#. 3: Minimum required PHP version number, 4: Minimum required MySQL version
+#. number, 5: Current PHP version number, 6: Current MySQL version number.
+#: wp-admin/install.php:253
+msgid "You cannot install because <a href=\"%1$s\">WordPress %2$s</a> requires PHP version %3$s or higher and MySQL version %4$s or higher. You are running PHP version %5$s and MySQL version %6$s."
+msgstr "Не вдалося продовжити встановлення, оскільки <a href=\"%1$s\">WordPress %2$s</a> вимагає PHP версії %3$s або вище і MySQL версії %4$s або вище. У вас PHP версії %5$s і MySQL версії %6$s."
+
 #: wp-admin/includes/plugin.php:488
 msgid "Advanced caching plugin."
 msgstr "Розширений плагін кешування."
@@ -10904,13 +10911,6 @@ msgstr "Зовнішній кеш об’єктів."
 #: wp-admin/includes/plugin.php:499
 msgid "Executed before Multisite is loaded."
 msgstr "Виконується до завантаження мережі сайтів."
-
-#. translators: 1: URL to WordPress release notes, 2: WordPress version number,
-#. 3: Minimum required PHP version number, 4: Minimum required MySQL version
-#. number, 5: Current PHP version number, 6: Current MySQL version number.
-#: wp-admin/install.php:253
-msgid "You cannot install because <a href=\"%1$s\">WordPress %2$s</a> requires PHP version %3$s or higher and MySQL version %4$s or higher. You are running PHP version %5$s and MySQL version %6$s."
-msgstr "Не вдалося продовжити встановлення, оскільки <a href=\"%1$s\">WordPress %2$s</a> вимагає PHP версії %3$s або вище і MySQL версії %4$s або вище. У вас PHP версії %5$s і MySQL версії %6$s."
 
 #: wp-admin/edit-comments.php:314
 msgid "This comment is already marked as spam."
@@ -11378,6 +11378,11 @@ msgstr "Порт"
 msgid "Mail Server"
 msgstr "Поштовий сервер"
 
+#. translators: 1, 2, 3: Examples of random email addresses.
+#: wp-admin/options-writing.php:145
+msgid "To post to WordPress by email you must set up a secret email account with POP3 access. Any mail received at this address will be posted, so it&#8217;s a good idea to keep this address very secret. Here are three random strings you could use: %1$s, %2$s, %3$s."
+msgstr "Щоб оприлюднювати записи у WordPress по e-mail, ви мусите налаштувати секретний обліковий запис e-mail із доступом через POP3. Будь-який лист, надісланий на цю адресу, буде оприлюднено, тому варто тримати цю адресу у великому секреті. Ось три випадкові рядки, які ви можете використати: %1$s, %2$s, %3$s."
+
 #: wp-admin/options-writing.php:140
 msgid "Post via email"
 msgstr "Оприлюднення по e-mail"
@@ -11397,11 +11402,6 @@ msgstr "WordPress має автоматично виправляти невір�
 #: wp-admin/options-writing.php:72
 msgid "Convert emoticons like <code>:-)</code> and <code>:-P</code> to graphics on display"
 msgstr "При відображені конвертувати смайлики подібні до <code>:-)</code> та <code>:-P</code>, в зображення"
-
-#. translators: 1, 2, 3: Examples of random email addresses.
-#: wp-admin/options-writing.php:145
-msgid "To post to WordPress by email you must set up a secret email account with POP3 access. Any mail received at this address will be posted, so it&#8217;s a good idea to keep this address very secret. Here are three random strings you could use: %1$s, %2$s, %3$s."
-msgstr "Щоб оприлюднювати записи у WordPress по e-mail, ви мусите налаштувати секретний обліковий запис e-mail із доступом через POP3. Будь-який лист, надісланий на цю адресу, буде оприлюднено, тому варто тримати цю адресу у великому секреті. Ось три випадкові рядки, які ви можете використати: %1$s, %2$s, %3$s."
 
 #: wp-admin/options-writing.php:16
 msgid "Writing Settings"
@@ -11640,14 +11640,14 @@ msgstr "Відображення аватару"
 msgid "Avatars"
 msgstr "Аватари"
 
-#: wp-admin/options-discussion.php:200
-msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be held in the <a href=\"edit-comments.php?comment_status=moderated\">moderation queue</a>. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
-msgstr "Коли коментар містить будь-яке з цих слів у вмісті, назві, посиланні, адресі e-mail, або IP-адресі, він буде затриманий для <a href=\"edit-comments.php?comment_status=moderated\">схвалення</a>. Одне слово чи IP-адреса в одному рядку. Будуть включені внутрішні слова, наприклад слово \"press\" знайдеться у слові \"WordPress\"."
-
 #. translators: %s: Number of links.
 #: wp-admin/options-discussion.php:194
 msgid "Hold a comment in the queue if it contains %s or more links. (A common characteristic of comment spam is a large number of hyperlinks.)"
 msgstr "Затримати коментар для схвалення, якщо він містить %s, або більше посилань. (Поширена особливість коментаря зі спамом в тому, що він містить багато посилань.)"
+
+#: wp-admin/options-discussion.php:200
+msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be held in the <a href=\"edit-comments.php?comment_status=moderated\">moderation queue</a>. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
+msgstr "Коли коментар містить будь-яке з цих слів у вмісті, назві, посиланні, адресі e-mail, або IP-адресі, він буде затриманий для <a href=\"edit-comments.php?comment_status=moderated\">схвалення</a>. Одне слово чи IP-адреса в одному рядку. Будуть включені внутрішні слова, наприклад слово \"press\" знайдеться у слові \"WordPress\"."
 
 #: wp-admin/options-discussion.php:188 wp-admin/options-discussion.php:189
 msgid "Comment Moderation"
@@ -11823,11 +11823,6 @@ msgstr "Полагодити і оптимізувати базу даних"
 #: wp-admin/maint/repair.php:167
 msgid "Repair Database"
 msgstr "Полагодити базу даних"
-
-#. translators: %s: URL to "Fixing WordPress" forum.
-#: wp-admin/maint/repair.php:146
-msgid "Some database problems could not be repaired. Please copy-and-paste the following list of errors to the <a href=\"%s\">WordPress support forums</a> to get additional assistance."
-msgstr "Деякі проблеми із базою даних неможливо виправити. Будь ласка напишіть про ці проблеми на <a href=\"%s\">форумах підтримки WordPress (англ.)</a>"
 
 #: wp-admin/maint/repair.php:20
 msgid "WordPress &rsaquo; Database Repair"
@@ -12127,6 +12122,10 @@ msgstr "Ці налаштування можуть бути змінені дл�
 msgid "Permalink structure updated. Remove write access on %s file now!"
 msgstr "Структура посилань оновлена. А зараз заберіть права запису до файлу %s!"
 
+#: wp-admin/options-discussion.php:209
+msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be put in the Trash. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
+msgstr "Якщо коментар містить будь-які з цих слів у своєму тексті, імені автора, URL, адресу e-mail або IP, то він буде позначений як спам. Кожне слово або IP задається з нового рядка. Використовується пошук по підрядку, тобто по слову &#8220;press&#8221; буде знайдено &#8220;WordPress&#8221;."
+
 #: wp-admin/options-discussion.php:207 wp-admin/options-discussion.php:208
 msgid "Comment Blocklist"
 msgstr "Чорний список коментарів"
@@ -12147,9 +12146,10 @@ msgstr "<strong>Помилка</strong>: Пароль не може вміщув
 msgid "<strong>Error</strong>: Please enter a password."
 msgstr "<strong>Помилка</strong>: Будь ласка, введіть пароль."
 
-#: wp-admin/options-discussion.php:209
-msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be put in the Trash. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
-msgstr "Якщо коментар містить будь-які з цих слів у своєму тексті, імені автора, URL, адресу e-mail або IP, то він буде позначений як спам. Кожне слово або IP задається з нового рядка. Використовується пошук по підрядку, тобто по слову &#8220;press&#8221; буде знайдено &#8220;WordPress&#8221;."
+#. translators: %s: URL to "Fixing WordPress" forum.
+#: wp-admin/maint/repair.php:146
+msgid "Some database problems could not be repaired. Please copy-and-paste the following list of errors to the <a href=\"%s\">WordPress support forums</a> to get additional assistance."
+msgstr "Деякі проблеми в базі даних не вдалося виправити. Будь ласка, скопіюйте список помилок і зверніться на <a href=\"%s\">форуми підтримки WordPress</a> за подальшою допомогою."
 
 #: wp-admin/includes/file.php:400 wp-admin/includes/file.php:460
 #: wp-admin/includes/file.php:693 wp-admin/includes/file.php:699
