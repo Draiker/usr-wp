@@ -107,6 +107,10 @@ class Stats_Hit {
 		if ( $CrawlerDetect->isCrawler( $user_agent ) ) {
 			return;
 		}
+		//Exclude bots from CFNetwork
+		if ( stripos( $user_agent, 'CFNetwork' ) !== false ) {
+			return;
+		}
 
 		// Check for specific podcasting services in user agent
 		// The iOS Podcasts app makes a HEAD request with user agent Podcasts/2.4 and then a GET request with user agent AppleCoreMedia
@@ -116,7 +120,9 @@ class Stats_Hit {
 			return;
 		}
 
-		if ( stripos( $user_agent, 'itunes' ) !== false || stripos( $user_agent, 'AppleCoreMedia' ) !== false ) {
+		if ( stripos( $user_agent, 'itunes' ) !== false || 
+		     stripos( $user_agent, 'AppleCoreMedia' ) !== false ||
+                     stripos( $user_agent, 'watchOS' ) !== false ) {
 			$referrer = 'itunes';
 		} else if ( stripos( $user_agent, 'stitcher' ) !== false ) {
 			$referrer = 'stitcher';
