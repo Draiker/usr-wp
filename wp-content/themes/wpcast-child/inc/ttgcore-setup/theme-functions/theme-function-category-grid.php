@@ -103,7 +103,6 @@ if(!function_exists( 'wpcast_template_category_grid' )){
 								</div>
 								<div class="wpcast-bgimg">
 									<?php  
-									$image_id =  get_term_meta( $serie_id , 'qt_taxonomy_img_id', true );
 									if( $image_id ){
 										$img = wp_get_attachment_image_src ( $image_id, 'medium' ); 
 										?>
