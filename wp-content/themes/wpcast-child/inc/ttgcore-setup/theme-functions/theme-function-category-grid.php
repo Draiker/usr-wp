@@ -76,6 +76,7 @@ if(!function_exists( 'wpcast_template_category_grid' )){
 						$catid = $val->term_taxonomy_id; 
 						$link = get_category_link( $catid );
 						$name = $val->cat_name;
+						$desc = $val->description;
 						$category = get_category($catid);
 						$count = $category->category_count;
 						$image_id =  get_term_meta( $catid , 'qt_taxonomy_img_id', true );
@@ -84,17 +85,41 @@ if(!function_exists( 'wpcast_template_category_grid' )){
 
 						<div class="wpcast-col wpcast-s12 wpcast-m6 wpcast-l4 wpcast-catid-<?php echo esc_attr( $catid ); ?>">
 							<div class="wpcast-cat-card">
-								<?php
-								if( $image_id ){
-									$img = wp_get_attachment_image_src ( $image_id, 'medium' ); 
-									?><img src="<?php echo esc_url( $img[0] ); ?>" width="<?php echo esc_attr( $img[1] ); ?>" height="<?php echo esc_attr( $img[2] ); ?>" alt="<?php echo esc_attr( $name ); ?>" /><?php
-								}
-								?>
 								<a href="<?php echo esc_url( $link ); ?>">
 									<h6 class="wpcast-cutme"><?php echo esc_html( $name ); ?></h6>
 									<small><?php echo esc_html( $count ); echo ' '; echo esc_html( $label ); ?></small>
 								</a>
 								<hr class="wpcast-catid-<?php echo esc_attr( $catid ); ?>">
+							</div>
+						</div>
+
+						<div class="wpcast-scard wpcast-primary-light wpcast-negative">
+							<div class="wpcast-scard__con">
+								<div class="wpcast-scard__t">
+									<h6 class="wpcast-caption"><?php esc_html_e( 'Season', 'wpcast' ); ?></h6>
+									<h4 ><a href="<?php echo esc_url( $link ); ?>" class="wpcast-cutme-t-2 wpcast-negative"><?php echo esc_html( $name ); ?></a></h4>
+								</div>
+								<div class="wpcast-scard__des">
+									<p class="wpcast-intro ">
+										<span class="wpcast-cutme-3">
+											<?php echo esc_html( $desc ); ?>
+										</span>
+									</p>
+								</div>
+							</div>
+							<div class="wpcast-scard__foot wpcast-negative">
+								<a href="<?php echo esc_url( $link ); ?>" class="wpcast-btn wpcast-btn__ghost wpcast-icon-l wpcast-btn__neg"><i class="material-icons">play_arrow</i> <?php echo esc_html( $count ); ?> <?php esc_html_e( 'Episodes', 'wpcast' ); ?></a>
+							</div>
+							<div class="wpcast-bgimg">
+								<?php  
+								$image_id =  get_term_meta( $serie_id , 'qt_taxonomy_img_id', true );
+								if( $image_id ){
+									$img = wp_get_attachment_image_src ( $image_id, 'medium' ); 
+									?>
+									<img src="<?php echo esc_url( $img[0] ); ?>" width="<?php echo esc_attr( $img[1] ); ?>" height="<?php echo esc_attr( $img[2] ); ?>" alt="<?php echo esc_attr( $name ); ?>" />
+									<?php
+								}
+								?>
 							</div>
 						</div>
 
