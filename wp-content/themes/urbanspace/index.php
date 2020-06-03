@@ -64,7 +64,7 @@
 						<a href="https://twitter.com/UrbanSpaceRadio" target="_blank" class="soc-tw"></a>
 						<a href="https://www.instagram.com/urban_space_radio" target="_blank" class="soc-instagram"></a>
 						<a href="http://tunein.com/radio/Urban-Space-Radio-s246403" target="_blank" class="soc-tunein"></a>
-						<a href="https://stream.urbanspaceradio.com:8433/urban-space-radio-m3u.m3u" target="_blank" class="soc-playlist"></a>
+						<a href="https://stream.urbanspaceradio.com:8443/urban-space-radio-m3u.m3u" target="_blank" class="soc-playlist"></a>
 						<a href="https://www.mixcloud.com/UrbanSpaceRadio" target="_blank" class="soc-mixcloud"></a>
 						<a href="https://podcasts.apple.com/ua/podcast/urban-space-radio/id1459038329" target="_blank" class="soc-applepodcasts"></a>
 						<a href="https://www.google.com/podcasts?feed=aHR0cDovL3VyYmFuc3BhY2VyYWRpby5jb20vZmVlZC9wb2RjYXN0" target="_blank" class="soc-googlepodcasts"></a>
